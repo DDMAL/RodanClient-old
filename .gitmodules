@@ -1,6 +1,6 @@
 [submodule "Rodan/Frameworks/LPKit"]
 	path = Rodan/Frameworks/LPKit
-	url = git@github.com:luddep/LPKit.git
+	url = git@github.com:aljungberg/LPKit.git
 [submodule "Rodan/Frameworks/TNKit"]
 	path = Rodan/Frameworks/TNKit
 	url = git@github.com:ArchipelProject/TNKit.git
