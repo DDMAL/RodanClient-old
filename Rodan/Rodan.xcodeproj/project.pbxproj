@@ -1,0 +1,510 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXFileReference section */
+		01274BAFB464F3E555D4D94D /* Classifier.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Classifier.j; path = Models/Classifier.j; sourceTree = SOURCE_ROOT; };
+		015E44EEB74202CB12E8542D /* Models∕GameraGlyphs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Models∕GameraGlyphs.m"; path = ".XcodeSupport/Models∕GameraGlyphs.m"; sourceTree = SOURCE_ROOT; };
+		02DF4DDCBB2D20B461C79E20 /* Transformers∕GameraClassNameTransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Transformers∕GameraClassNameTransformer.h"; path = ".XcodeSupport/Transformers∕GameraClassNameTransformer.h"; sourceTree = SOURCE_ROOT; };
+		032E417C96E09BF3E3D9EADE /* Models∕ResultsPackage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Models∕ResultsPackage.h"; path = ".XcodeSupport/Models∕ResultsPackage.h"; sourceTree = SOURCE_ROOT; };
+		063C45C2BFD50436ACEE0053 /* InteractiveJobsController.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = InteractiveJobsController.j; path = Controllers/InteractiveJobsController.j; sourceTree = SOURCE_ROOT; };
+		06CB4B49BD7062B0B0DD013A /* RunJobStatusTransformer.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RunJobStatusTransformer.j; path = Transformers/RunJobStatusTransformer.j; sourceTree = SOURCE_ROOT; };
+		07BD480A92D00A4DFB47A7EA /* Delegates∕OpenClassifierTableViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Delegates∕OpenClassifierTableViewDelegate.h"; path = ".XcodeSupport/Delegates∕OpenClassifierTableViewDelegate.h"; sourceTree = SOURCE_ROOT; };
+		08974E3382C357D2B0EA4983 /* Delegates∕GlyphsTableViewDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Delegates∕GlyphsTableViewDelegate.m"; path = ".XcodeSupport/Delegates∕GlyphsTableViewDelegate.m"; sourceTree = SOURCE_ROOT; };
+		09614B6B9BDD4220011A1B4C /* Page.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Page.j; path = Models/Page.j; sourceTree = SOURCE_ROOT; };
+		0A46451AABB00093F59ECCC4 /* Models∕ResultsPackage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Models∕ResultsPackage.m"; path = ".XcodeSupport/Models∕ResultsPackage.m"; sourceTree = SOURCE_ROOT; };
+		0BDF4666B812FBFE6A1F5D48 /* Models∕Page.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Models∕Page.m"; path = ".XcodeSupport/Models∕Page.m"; sourceTree = SOURCE_ROOT; };
+		0D464161A6DC1BA566A0331B /* UploadWindowController.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = UploadWindowController.j; path = Controllers/UploadWindowController.j; sourceTree = SOURCE_ROOT; };
+		0D824F31A5DE1958759C16AE /* Controllers∕ServerAdminController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Controllers∕ServerAdminController.h"; path = ".XcodeSupport/Controllers∕ServerAdminController.h"; sourceTree = SOURCE_ROOT; };
+		0E1E4DBEA406136C1B914270 /* ResultThumbnailTransformer.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ResultThumbnailTransformer.j; path = Transformers/ResultThumbnailTransformer.j; sourceTree = SOURCE_ROOT; };
+		0E74473DBEB15F94491269E6 /* Models∕TreeNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Models∕TreeNode.h"; path = ".XcodeSupport/Models∕TreeNode.h"; sourceTree = SOURCE_ROOT; };
+		10C84881B4C2A5B784E21FC8 /* SymbolOutlineDelegate.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SymbolOutlineDelegate.j; path = Delegates/SymbolOutlineDelegate.j; sourceTree = SOURCE_ROOT; };
+		110F42C0B17B4CD5836A2CC0 /* Models∕Classifier.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Models∕Classifier.m"; path = ".XcodeSupport/Models∕Classifier.m"; sourceTree = SOURCE_ROOT; };
+		11F84263A5CA72EEBA1AF406 /* Delegates∕LoadActiveWorkflowDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Delegates∕LoadActiveWorkflowDelegate.m"; path = ".XcodeSupport/Delegates∕LoadActiveWorkflowDelegate.m"; sourceTree = SOURCE_ROOT; };
+		12E243BFB747AAA31387657F /* Models∕SymbolCollection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Models∕SymbolCollection.h"; path = ".XcodeSupport/Models∕SymbolCollection.h"; sourceTree = SOURCE_ROOT; };
+		132641FDBF93FE2AAF70B588 /* Models∕ClassifierSetting.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Models∕ClassifierSetting.m"; path = ".XcodeSupport/Models∕ClassifierSetting.m"; sourceTree = SOURCE_ROOT; };
+		14AE4FB180AC0F24E267709E /* Controllers∕JobController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Controllers∕JobController.h"; path = ".XcodeSupport/Controllers∕JobController.h"; sourceTree = SOURCE_ROOT; };
+		15864FBAA5114FEEB3BBC080 /* Delegates∕ClassifierTableViewDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Delegates∕ClassifierTableViewDelegate.m"; path = ".XcodeSupport/Delegates∕ClassifierTableViewDelegate.m"; sourceTree = SOURCE_ROOT; };
+		16054CC7A206480A5D9231D1 /* PhotoView.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PhotoView.j; path = Views/PhotoView.j; sourceTree = SOURCE_ROOT; };
+		16CD4F6A85EDF2FED5DD64E8 /* Transformers∕GameraClassNameTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Transformers∕GameraClassNameTransformer.m"; path = ".XcodeSupport/Transformers∕GameraClassNameTransformer.m"; sourceTree = SOURCE_ROOT; };
+		17254014B20EBC6A6209C336 /* WorkflowJob.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WorkflowJob.j; path = Models/WorkflowJob.j; sourceTree = SOURCE_ROOT; };
+		17504CA0AA375A4B3AA6EDA1 /* AppController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppController.h; path = .XcodeSupport/AppController.h; sourceTree = SOURCE_ROOT; };
+		18374EBDB86BCC87DA2EE040 /* ResultsViewPagesDelegate.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ResultsViewPagesDelegate.j; path = Delegates/ResultsViewPagesDelegate.j; sourceTree = SOURCE_ROOT; };
+		188D4B2492727DCC8097F4F4 /* PngTransformer.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PngTransformer.j; path = Transformers/PngTransformer.j; sourceTree = SOURCE_ROOT; };
+		1B314E418A309593B9570110 /* WorkflowController.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WorkflowController.j; path = Controllers/WorkflowController.j; sourceTree = SOURCE_ROOT; };
+		1D664F3E98A8069DE46BCB5B /* GameraClassNameTransformer.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GameraClassNameTransformer.j; path = Transformers/GameraClassNameTransformer.j; sourceTree = SOURCE_ROOT; };
+		1E6841E191485C8FB97FE447 /* AppController.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppController.j; path = AppController.j; sourceTree = SOURCE_ROOT; };
+		209C4AD8AECD33B44CDD723F /* Transformers∕ResultThumbnailTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Transformers∕ResultThumbnailTransformer.m"; path = ".XcodeSupport/Transformers∕ResultThumbnailTransformer.m"; sourceTree = SOURCE_ROOT; };
+		216F403296BE4AA423E3B878 /* Controllers∕ServerAdminController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Controllers∕ServerAdminController.m"; path = ".XcodeSupport/Controllers∕ServerAdminController.m"; sourceTree = SOURCE_ROOT; };
+		249E43FF9C75ADDD48BD37B3 /* Controllers∕ClassifierController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Controllers∕ClassifierController.m"; path = ".XcodeSupport/Controllers∕ClassifierController.m"; sourceTree = SOURCE_ROOT; };
+		2718448AA6B21C61B2D1EECB /* Controllers∕LogInController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Controllers∕LogInController.m"; path = ".XcodeSupport/Controllers∕LogInController.m"; sourceTree = SOURCE_ROOT; };
+		29724528972704CB08E88047 /* Delegates∕SymbolOutlineDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Delegates∕SymbolOutlineDelegate.m"; path = ".XcodeSupport/Delegates∕SymbolOutlineDelegate.m"; sourceTree = SOURCE_ROOT; };
+		29E243CFA5CDA56B1D7944D8 /* Models∕ClassifierSetting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Models∕ClassifierSetting.h"; path = ".XcodeSupport/Models∕ClassifierSetting.h"; sourceTree = SOURCE_ROOT; };
+		2A8C43E18AAAC674CF52A82D /* Transformers∕JobArgumentsTransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Transformers∕JobArgumentsTransformer.h"; path = ".XcodeSupport/Transformers∕JobArgumentsTransformer.h"; sourceTree = SOURCE_ROOT; };
+		2CE64D83893A06D43DCA8500 /* GlyphsTransformer.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GlyphsTransformer.j; path = Transformers/GlyphsTransformer.j; sourceTree = SOURCE_ROOT; };
+		2E074E7082A58D4EFFA53D9B /* PageGlyphs.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PageGlyphs.j; path = Models/PageGlyphs.j; sourceTree = SOURCE_ROOT; };
+		30E74F62A9D5931EEB17E5BE /* Delegates∕OpenClassifierTableViewDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Delegates∕OpenClassifierTableViewDelegate.m"; path = ".XcodeSupport/Delegates∕OpenClassifierTableViewDelegate.m"; sourceTree = SOURCE_ROOT; };
+		31C74A8FB2C627C5DCE97145 /* Delegates∕ResultsViewRunJobsDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Delegates∕ResultsViewRunJobsDelegate.m"; path = ".XcodeSupport/Delegates∕ResultsViewRunJobsDelegate.m"; sourceTree = SOURCE_ROOT; };
+		3245451E8022B77DC7F7BE1E /* Controllers∕MenuItemsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Controllers∕MenuItemsController.m"; path = ".XcodeSupport/Controllers∕MenuItemsController.m"; sourceTree = SOURCE_ROOT; };
+		326D4245A8FF4007B07EA27D /* Delegates∕NewClassifierTextfieldDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Delegates∕NewClassifierTextfieldDelegate.m"; path = ".XcodeSupport/Delegates∕NewClassifierTextfieldDelegate.m"; sourceTree = SOURCE_ROOT; };
+		330B435DABF8CBAE70ED1857 /* Models∕Glyph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Models∕Glyph.h"; path = ".XcodeSupport/Models∕Glyph.h"; sourceTree = SOURCE_ROOT; };
+		364240DF9B0F4F6DD7D46C08 /* Transformers∕ResultThumbnailTransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Transformers∕ResultThumbnailTransformer.h"; path = ".XcodeSupport/Transformers∕ResultThumbnailTransformer.h"; sourceTree = SOURCE_ROOT; };
+		372E469391A4D5081401EFEF /* GlyphsTableViewDelegate.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GlyphsTableViewDelegate.j; path = Delegates/GlyphsTableViewDelegate.j; sourceTree = SOURCE_ROOT; };
+		38954B8EAF5C82DAC30BF272 /* Models∕WorkflowJob.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Models∕WorkflowJob.h"; path = ".XcodeSupport/Models∕WorkflowJob.h"; sourceTree = SOURCE_ROOT; };
+		393F44AE9CCA8BF364727C9A /* Models∕User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Models∕User.m"; path = ".XcodeSupport/Models∕User.m"; sourceTree = SOURCE_ROOT; };
+		39484806B04A4377002EAB06 /* Controllers∕WorkflowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Controllers∕WorkflowController.h"; path = ".XcodeSupport/Controllers∕WorkflowController.h"; sourceTree = SOURCE_ROOT; };
+		39654ABBAB52B6A24B25BE0F /* ClassifierTableViewDelegate.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ClassifierTableViewDelegate.j; path = Delegates/ClassifierTableViewDelegate.j; sourceTree = SOURCE_ROOT; };
+		3BB84657B9F8F8091AAFD273 /* Models∕RunJob.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Models∕RunJob.m"; path = ".XcodeSupport/Models∕RunJob.m"; sourceTree = SOURCE_ROOT; };
+		3F054CDC9BBD3AE1D239F953 /* Transformers∕JobTypeTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Transformers∕JobTypeTransformer.m"; path = ".XcodeSupport/Transformers∕JobTypeTransformer.m"; sourceTree = SOURCE_ROOT; };
+		3F0C413A8A887BA6AB4B090E /* Models∕Classifier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Models∕Classifier.h"; path = ".XcodeSupport/Models∕Classifier.h"; sourceTree = SOURCE_ROOT; };
+		40E44132A6640A9160DF5BEF /* ResultsPackageController.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ResultsPackageController.j; path = Controllers/ResultsPackageController.j; sourceTree = SOURCE_ROOT; };
+		43164C238354A9700FE69D0A /* Models∕Workflow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Models∕Workflow.h"; path = ".XcodeSupport/Models∕Workflow.h"; sourceTree = SOURCE_ROOT; };
+		44A14AECA8B2B600CFED7E3C /* Controllers∕ResultsPackageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Controllers∕ResultsPackageController.h"; path = ".XcodeSupport/Controllers∕ResultsPackageController.h"; sourceTree = SOURCE_ROOT; };
+		4535437B9A385F22C9490713 /* Views∕ViewWithObjectValue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Views∕ViewWithObjectValue.m"; path = ".XcodeSupport/Views∕ViewWithObjectValue.m"; sourceTree = SOURCE_ROOT; };
+		476240F2BB06D7652E0FC641 /* SymbolCollection.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SymbolCollection.j; path = Models/SymbolCollection.j; sourceTree = SOURCE_ROOT; };
+		47FC4384831FB2CAC48760DF /* Models∕Project.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Models∕Project.m"; path = ".XcodeSupport/Models∕Project.m"; sourceTree = SOURCE_ROOT; };
+		48BF4F3B8177D569BDDC3747 /* Models∕User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Models∕User.h"; path = ".XcodeSupport/Models∕User.h"; sourceTree = SOURCE_ROOT; };
+		4A1D40F3A9B6BEB6C785D4DB /* Models∕Result.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Models∕Result.h"; path = ".XcodeSupport/Models∕Result.h"; sourceTree = SOURCE_ROOT; };
+		4D24406697001CE345214B05 /* Delegates∕NewClassifierTextfieldDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Delegates∕NewClassifierTextfieldDelegate.h"; path = ".XcodeSupport/Delegates∕NewClassifierTextfieldDelegate.h"; sourceTree = SOURCE_ROOT; };
+		4E054824B5FEBF1E7D6CF420 /* Models∕WorkflowJob.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Models∕WorkflowJob.m"; path = ".XcodeSupport/Models∕WorkflowJob.m"; sourceTree = SOURCE_ROOT; };
+		4FAB4F5191326934370AA4C9 /* Transformers∕RunJobSettingsTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Transformers∕RunJobSettingsTransformer.m"; path = ".XcodeSupport/Transformers∕RunJobSettingsTransformer.m"; sourceTree = SOURCE_ROOT; };
+		4FAF4E148BC38ACFBA20929E /* ClassifierSettingsController.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ClassifierSettingsController.j; path = Controllers/ClassifierSettingsController.j; sourceTree = SOURCE_ROOT; };
+		516940AF9C612DF8C47EA811 /* Models∕MinimalClassifier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Models∕MinimalClassifier.h"; path = ".XcodeSupport/Models∕MinimalClassifier.h"; sourceTree = SOURCE_ROOT; };
+		523D46708AAE9339B6AE22B6 /* Views∕WorkflowCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Views∕WorkflowCollectionView.h"; path = ".XcodeSupport/Views∕WorkflowCollectionView.h"; sourceTree = SOURCE_ROOT; };
+		532C40738E73A2BD5E25A678 /* AppController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppController.m; path = .XcodeSupport/AppController.m; sourceTree = SOURCE_ROOT; };
+		53B24969B90605583ECE0FC7 /* Transformers∕DateFormatTransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Transformers∕DateFormatTransformer.h"; path = ".XcodeSupport/Transformers∕DateFormatTransformer.h"; sourceTree = SOURCE_ROOT; };
+		54B24E188BD453DE343F42E9 /* Controllers∕ClassifierController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Controllers∕ClassifierController.h"; path = ".XcodeSupport/Controllers∕ClassifierController.h"; sourceTree = SOURCE_ROOT; };
+		57674AE79DFD3EFFF533A9CA /* Transformers∕RunJobStatusTransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Transformers∕RunJobStatusTransformer.h"; path = ".XcodeSupport/Transformers∕RunJobStatusTransformer.h"; sourceTree = SOURCE_ROOT; };
+		58994FC8AC99845834815689 /* Models∕WorkflowJobSetting.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Models∕WorkflowJobSetting.m"; path = ".XcodeSupport/Models∕WorkflowJobSetting.m"; sourceTree = SOURCE_ROOT; };
+		59A947468406926175BE6FFE /* Delegates∕PageGlyphsTableViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Delegates∕PageGlyphsTableViewDelegate.h"; path = ".XcodeSupport/Delegates∕PageGlyphsTableViewDelegate.h"; sourceTree = SOURCE_ROOT; };
+		5BA24503B35E2D30FB6F368E /* Transformers∕RetryFailedRunJobsTransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Transformers∕RetryFailedRunJobsTransformer.h"; path = ".XcodeSupport/Transformers∕RetryFailedRunJobsTransformer.h"; sourceTree = SOURCE_ROOT; };
+		5CBD4E18BB2F4E3CE379850A /* Delegates∕ResultsViewResultsDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Delegates∕ResultsViewResultsDelegate.m"; path = ".XcodeSupport/Delegates∕ResultsViewResultsDelegate.m"; sourceTree = SOURCE_ROOT; };
+		5CEF4C0EBC6EDCC262D2F232 /* LogInController.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LogInController.j; path = Controllers/LogInController.j; sourceTree = SOURCE_ROOT; };
+		5E8F44EB8D41215A435B7C0E /* Transformers∕ResultsDisplayTransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Transformers∕ResultsDisplayTransformer.h"; path = ".XcodeSupport/Transformers∕ResultsDisplayTransformer.h"; sourceTree = SOURCE_ROOT; };
+		5F1C46C79C50F44C972929AF /* ClassifierSetting.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ClassifierSetting.j; path = Models/ClassifierSetting.j; sourceTree = SOURCE_ROOT; };
+		613043B089234B30E9A5CAF0 /* ClassifierControllerFetchDelegates.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ClassifierControllerFetchDelegates.j; path = Delegates/ClassifierControllerFetchDelegates.j; sourceTree = SOURCE_ROOT; };
+		623F45408C4512A6F7D9F456 /* Workflow.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Workflow.j; path = Models/Workflow.j; sourceTree = SOURCE_ROOT; };
+		6319463B868698D1BE29C011 /* Delegates∕ResultsViewPagesDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Delegates∕ResultsViewPagesDelegate.m"; path = ".XcodeSupport/Delegates∕ResultsViewPagesDelegate.m"; sourceTree = SOURCE_ROOT; };
+		639B499DA3ABFD9C9F517DEF /* Models∕MinimalClassifier.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Models∕MinimalClassifier.m"; path = ".XcodeSupport/Models∕MinimalClassifier.m"; sourceTree = SOURCE_ROOT; };
+		65734F74B29684F7B37C1112 /* Project.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Project.j; path = Models/Project.j; sourceTree = SOURCE_ROOT; };
+		65FE4C4C95196CDDA3EB3F2D /* WorkflowJobSetting.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WorkflowJobSetting.j; path = Models/WorkflowJobSetting.j; sourceTree = SOURCE_ROOT; };
+		662C44229F2F4E602D6AE3CB /* Delegates∕WorkflowDesignerJobSettingsDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Delegates∕WorkflowDesignerJobSettingsDelegate.m"; path = ".XcodeSupport/Delegates∕WorkflowDesignerJobSettingsDelegate.m"; sourceTree = SOURCE_ROOT; };
+		6772474A8E733F029FE5ADB2 /* Transformers∕ArrayCountTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Transformers∕ArrayCountTransformer.m"; path = ".XcodeSupport/Transformers∕ArrayCountTransformer.m"; sourceTree = SOURCE_ROOT; };
+		6913496CB8D8FE3AA4716A1D /* ResultsViewResultsDelegate.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ResultsViewResultsDelegate.j; path = Delegates/ResultsViewResultsDelegate.j; sourceTree = SOURCE_ROOT; };
+		6A1545CD8D3375880CC9195C /* Categories∕CPButtonBar+PopupButtons.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Categories∕CPButtonBar+PopupButtons.h"; path = ".XcodeSupport/Categories∕CPButtonBar+PopupButtons.h"; sourceTree = SOURCE_ROOT; };
+		6A974E82AC3D1E06705E34C8 /* Controllers∕PageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Controllers∕PageController.m"; path = ".XcodeSupport/Controllers∕PageController.m"; sourceTree = SOURCE_ROOT; };
+		6CC947B4B8713BE99A33DDE2 /* Transformers∕GlyphsTransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Transformers∕GlyphsTransformer.h"; path = ".XcodeSupport/Transformers∕GlyphsTransformer.h"; sourceTree = SOURCE_ROOT; };
+		6E6C4E589E226C80082F687A /* Controllers∕PageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Controllers∕PageController.h"; path = ".XcodeSupport/Controllers∕PageController.h"; sourceTree = SOURCE_ROOT; };
+		6EEE48FDBBC85EEAE1A7E5A2 /* Controllers∕WorkflowDesignerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Controllers∕WorkflowDesignerController.m"; path = ".XcodeSupport/Controllers∕WorkflowDesignerController.m"; sourceTree = SOURCE_ROOT; };
+		703B4458AA1B21BA2564C79D /* RunJob.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RunJob.j; path = Models/RunJob.j; sourceTree = SOURCE_ROOT; };
+		716A4FAAB62B3C5E0F2A7AF1 /* CPButtonBar+PopupButtons.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CPButtonBar+PopupButtons.j"; path = "Categories/CPButtonBar+PopupButtons.j"; sourceTree = SOURCE_ROOT; };
+		747F44128EC4F36DF146E959 /* Models∕SymbolCollection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Models∕SymbolCollection.m"; path = ".XcodeSupport/Models∕SymbolCollection.m"; sourceTree = SOURCE_ROOT; };
+		749C44D4BD2C3BFFF8B95676 /* Models∕Project.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Models∕Project.h"; path = ".XcodeSupport/Models∕Project.h"; sourceTree = SOURCE_ROOT; };
+		756C49F7BD99663DE86A0314 /* Features.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Features.j; path = Models/Features.j; sourceTree = SOURCE_ROOT; };
+		75944E4CA14589BBD84E9DE1 /* Result.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Result.j; path = Models/Result.j; sourceTree = SOURCE_ROOT; };
+		769A452EB25D4E1D1A75BFEC /* WorkflowDesignerDelegate.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WorkflowDesignerDelegate.j; path = Delegates/WorkflowDesignerDelegate.j; sourceTree = SOURCE_ROOT; };
+		7709468A8C9894D2C94EE5A1 /* Delegates∕WorkflowDesignerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Delegates∕WorkflowDesignerDelegate.h"; path = ".XcodeSupport/Delegates∕WorkflowDesignerDelegate.h"; sourceTree = SOURCE_ROOT; };
+		7A134A2396EC1BFCEFFDEE03 /* Transformers∕ByteCountTransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Transformers∕ByteCountTransformer.h"; path = ".XcodeSupport/Transformers∕ByteCountTransformer.h"; sourceTree = SOURCE_ROOT; };
+		7A544256A954C8E7A39DF893 /* MinimalClassifier.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MinimalClassifier.j; path = Models/MinimalClassifier.j; sourceTree = SOURCE_ROOT; };
+		7ADE4F6A83683B4076B087ED /* Models∕PageGlyphs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Models∕PageGlyphs.h"; path = ".XcodeSupport/Models∕PageGlyphs.h"; sourceTree = SOURCE_ROOT; };
+		7C7848F98D7BB147D2D45E9F /* ServerAdminController.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ServerAdminController.j; path = Controllers/ServerAdminController.j; sourceTree = SOURCE_ROOT; };
+		7D844D2FA5D0E10702E62BB1 /* ClassifierViewController.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ClassifierViewController.j; path = Controllers/ClassifierViewController.j; sourceTree = SOURCE_ROOT; };
+		7F564BB09E3A50275605B438 /* ResultsViewWorkflowsDelegate.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ResultsViewWorkflowsDelegate.j; path = Delegates/ResultsViewWorkflowsDelegate.j; sourceTree = SOURCE_ROOT; };
+		802F4CCB88C383338382CE6D /* Models∕RunJob.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Models∕RunJob.h"; path = ".XcodeSupport/Models∕RunJob.h"; sourceTree = SOURCE_ROOT; };
+		816A48CEA31E4864E217EC6F /* Models∕PageGlyphs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Models∕PageGlyphs.m"; path = ".XcodeSupport/Models∕PageGlyphs.m"; sourceTree = SOURCE_ROOT; };
+		83AE4C138AD0EDFFAB04F208 /* Job.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Job.j; path = Models/Job.j; sourceTree = SOURCE_ROOT; };
+		84D141F8BAF06BC1F8515B8E /* Models∕Result.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Models∕Result.m"; path = ".XcodeSupport/Models∕Result.m"; sourceTree = SOURCE_ROOT; };
+		84ED483D882187F3E62EF13D /* Models∕Workflow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Models∕Workflow.m"; path = ".XcodeSupport/Models∕Workflow.m"; sourceTree = SOURCE_ROOT; };
+		84F74506BAFC518ED29B5730 /* Models∕Features.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Models∕Features.m"; path = ".XcodeSupport/Models∕Features.m"; sourceTree = SOURCE_ROOT; };
+		858A4EA4B0E1958772E3FB28 /* MenuItemsController.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MenuItemsController.j; path = Controllers/MenuItemsController.j; sourceTree = SOURCE_ROOT; };
+		87BF4F318B44D1823E6BF8D9 /* WorkflowDesignerController.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WorkflowDesignerController.j; path = Controllers/WorkflowDesignerController.j; sourceTree = SOURCE_ROOT; };
+		89D44F8B8713006D0746141B /* Models∕WorkflowRun.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Models∕WorkflowRun.m"; path = ".XcodeSupport/Models∕WorkflowRun.m"; sourceTree = SOURCE_ROOT; };
+		8A1E44EE86C61D844191893B /* User.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = User.j; path = Models/User.j; sourceTree = SOURCE_ROOT; };
+		8C97471D949FA8B6C4A62CF1 /* ByteCountTransformer.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ByteCountTransformer.j; path = Transformers/ByteCountTransformer.j; sourceTree = SOURCE_ROOT; };
+		8E7E4729A4DA89AFF07B7746 /* Controllers∕InteractiveJobsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Controllers∕InteractiveJobsController.m"; path = ".XcodeSupport/Controllers∕InteractiveJobsController.m"; sourceTree = SOURCE_ROOT; };
+		8FF548C5AFA5738E919A1244 /* RunJobSettingsTransformer.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RunJobSettingsTransformer.j; path = Transformers/RunJobSettingsTransformer.j; sourceTree = SOURCE_ROOT; };
+		9039449B9B9308B0A8E6187A /* JobController.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = JobController.j; path = Controllers/JobController.j; sourceTree = SOURCE_ROOT; };
+		909E4B618B7E735358B25B54 /* ResultsDisplayTransformer.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ResultsDisplayTransformer.j; path = Transformers/ResultsDisplayTransformer.j; sourceTree = SOURCE_ROOT; };
+		911A41B5A5BB573378F76DA9 /* Controllers∕UserPreferencesController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Controllers∕UserPreferencesController.h"; path = ".XcodeSupport/Controllers∕UserPreferencesController.h"; sourceTree = SOURCE_ROOT; };
+		91BE476FBC35C02AC501C7CB /* RetryFailedRunJobsTransformer.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RetryFailedRunJobsTransformer.j; path = Transformers/RetryFailedRunJobsTransformer.j; sourceTree = SOURCE_ROOT; };
+		92364390A55966A384629BA9 /* Transformers∕RunJobStatusTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Transformers∕RunJobStatusTransformer.m"; path = ".XcodeSupport/Transformers∕RunJobStatusTransformer.m"; sourceTree = SOURCE_ROOT; };
+		929F4CC2BD7C43C2FBE0E11F /* Models∕WorkflowRun.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Models∕WorkflowRun.h"; path = ".XcodeSupport/Models∕WorkflowRun.h"; sourceTree = SOURCE_ROOT; };
+		945145659ECB1D4FFBC5928B /* Transformers∕ByteCountTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Transformers∕ByteCountTransformer.m"; path = ".XcodeSupport/Transformers∕ByteCountTransformer.m"; sourceTree = SOURCE_ROOT; };
+		955D41CF8EB0664D672E8A1A /* TreeNode.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TreeNode.j; path = Models/TreeNode.j; sourceTree = SOURCE_ROOT; };
+		96F041EBB9B85AA67A834700 /* OpenClassifierTableViewDelegate.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = OpenClassifierTableViewDelegate.j; path = Delegates/OpenClassifierTableViewDelegate.j; sourceTree = SOURCE_ROOT; };
+		96F44BE4B81BE7DD1FC846C7 /* Models∕Job.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Models∕Job.m"; path = ".XcodeSupport/Models∕Job.m"; sourceTree = SOURCE_ROOT; };
+		99B940D2B6E1EB709EFFF0F5 /* Transformers∕UsernameTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Transformers∕UsernameTransformer.m"; path = ".XcodeSupport/Transformers∕UsernameTransformer.m"; sourceTree = SOURCE_ROOT; };
+		9A5E418395FFD5E9ACFCFA0D /* ClassifierController.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ClassifierController.j; path = Controllers/ClassifierController.j; sourceTree = SOURCE_ROOT; };
+		9E444D39B21B3F9329FF5F82 /* Models∕Page.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Models∕Page.h"; path = ".XcodeSupport/Models∕Page.h"; sourceTree = SOURCE_ROOT; };
+		9F084AC4833761794DDB9190 /* Delegates∕WorkflowDesignerDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Delegates∕WorkflowDesignerDelegate.m"; path = ".XcodeSupport/Delegates∕WorkflowDesignerDelegate.m"; sourceTree = SOURCE_ROOT; };
+		9F8E41EFA98567417F14C106 /* Transformers∕UsernameTransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Transformers∕UsernameTransformer.h"; path = ".XcodeSupport/Transformers∕UsernameTransformer.h"; sourceTree = SOURCE_ROOT; };
+		A0F740B4973485CE2DA7BB4F /* Transformers∕DateFormatTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Transformers∕DateFormatTransformer.m"; path = ".XcodeSupport/Transformers∕DateFormatTransformer.m"; sourceTree = SOURCE_ROOT; };
+		A1B34095BBEC96F8D401FF6D /* Transformers∕ResultsDisplayTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Transformers∕ResultsDisplayTransformer.m"; path = ".XcodeSupport/Transformers∕ResultsDisplayTransformer.m"; sourceTree = SOURCE_ROOT; };
+		A29347288C49AA2934EBEC92 /* Delegates∕ResultsViewResultsDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Delegates∕ResultsViewResultsDelegate.h"; path = ".XcodeSupport/Delegates∕ResultsViewResultsDelegate.h"; sourceTree = SOURCE_ROOT; };
+		A2C2436EBB095F2B454E3143 /* JobArgumentsTransformer.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = JobArgumentsTransformer.j; path = Transformers/JobArgumentsTransformer.j; sourceTree = SOURCE_ROOT; };
+		A48B4602B3EC6A829B26EB83 /* Controllers∕UploadWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Controllers∕UploadWindowController.h"; path = ".XcodeSupport/Controllers∕UploadWindowController.h"; sourceTree = SOURCE_ROOT; };
+		A4FD40CD930DE74B2F723D04 /* Delegates∕ResultsViewRunsDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Delegates∕ResultsViewRunsDelegate.m"; path = ".XcodeSupport/Delegates∕ResultsViewRunsDelegate.m"; sourceTree = SOURCE_ROOT; };
+		A61D4DC395B22FF858B2FE07 /* Categories∕CPButtonBar+PopupButtons.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Categories∕CPButtonBar+PopupButtons.m"; path = ".XcodeSupport/Categories∕CPButtonBar+PopupButtons.m"; sourceTree = SOURCE_ROOT; };
+		A63F44F59325DE0C204A3A71 /* Transformers∕PngTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Transformers∕PngTransformer.m"; path = ".XcodeSupport/Transformers∕PngTransformer.m"; sourceTree = SOURCE_ROOT; };
+		A67F4F43903B8114E77310F0 /* Delegates∕ResultsViewRunsDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Delegates∕ResultsViewRunsDelegate.h"; path = ".XcodeSupport/Delegates∕ResultsViewRunsDelegate.h"; sourceTree = SOURCE_ROOT; };
+		A73242AAA9A31115C1272F1A /* xcc_general_include.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = xcc_general_include.h; path = .XcodeSupport/xcc_general_include.h; sourceTree = SOURCE_ROOT; };
+		A84848CE80585B3519EE7A44 /* UserPreferencesController.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = UserPreferencesController.j; path = Controllers/UserPreferencesController.j; sourceTree = SOURCE_ROOT; };
+		A9174994922D6F62837ABF36 /* Delegates∕PageGlyphsTableViewDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Delegates∕PageGlyphsTableViewDelegate.m"; path = ".XcodeSupport/Delegates∕PageGlyphsTableViewDelegate.m"; sourceTree = SOURCE_ROOT; };
+		A95447E39423229364147EEB /* Controllers∕ClassifierViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Controllers∕ClassifierViewController.h"; path = ".XcodeSupport/Controllers∕ClassifierViewController.h"; sourceTree = SOURCE_ROOT; };
+		AA0345279B7B879381453664 /* Controllers∕ClassifierSettingsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Controllers∕ClassifierSettingsController.h"; path = ".XcodeSupport/Controllers∕ClassifierSettingsController.h"; sourceTree = SOURCE_ROOT; };
+		AA5446BABBCAF498164DF501 /* Models∕Glyph.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Models∕Glyph.m"; path = ".XcodeSupport/Models∕Glyph.m"; sourceTree = SOURCE_ROOT; };
+		AC1F47898460AE2E2BCA3CB7 /* Transformers∕GlyphsTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Transformers∕GlyphsTransformer.m"; path = ".XcodeSupport/Transformers∕GlyphsTransformer.m"; sourceTree = SOURCE_ROOT; };
+		AC4D4279BBBACDCD2AFE431B /* ResultsViewRunsDelegate.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ResultsViewRunsDelegate.j; path = Delegates/ResultsViewRunsDelegate.j; sourceTree = SOURCE_ROOT; };
+		AC73469AA7DD750DEDD85970 /* Models∕TreeNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Models∕TreeNode.m"; path = ".XcodeSupport/Models∕TreeNode.m"; sourceTree = SOURCE_ROOT; };
+		ACE64DB4A98B3F271C7F305C /* Transformers∕CheckBoxTransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Transformers∕CheckBoxTransformer.h"; path = ".XcodeSupport/Transformers∕CheckBoxTransformer.h"; sourceTree = SOURCE_ROOT; };
+		AD804127910DC37236920948 /* Views∕WorkflowCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Views∕WorkflowCollectionView.m"; path = ".XcodeSupport/Views∕WorkflowCollectionView.m"; sourceTree = SOURCE_ROOT; };
+		AEA346E9B0C194A9E624335E /* Controllers∕WorkflowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Controllers∕WorkflowController.m"; path = ".XcodeSupport/Controllers∕WorkflowController.m"; sourceTree = SOURCE_ROOT; };
+		B04F4DEE90E3FCB00320DCC6 /* Delegates∕GlyphsTableViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Delegates∕GlyphsTableViewDelegate.h"; path = ".XcodeSupport/Delegates∕GlyphsTableViewDelegate.h"; sourceTree = SOURCE_ROOT; };
+		B2A046A3B96A5D8303712AB3 /* DateFormatTransformer.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DateFormatTransformer.j; path = Transformers/DateFormatTransformer.j; sourceTree = SOURCE_ROOT; };
+		B3F24797A70BA66FD72151E7 /* Controllers∕InteractiveJobsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Controllers∕InteractiveJobsController.h"; path = ".XcodeSupport/Controllers∕InteractiveJobsController.h"; sourceTree = SOURCE_ROOT; };
+		B57743079963637E6F46B0FC /* Controllers∕LogInController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Controllers∕LogInController.h"; path = ".XcodeSupport/Controllers∕LogInController.h"; sourceTree = SOURCE_ROOT; };
+		B5BE408F948D24C9B5166FCB /* Views∕PhotoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Views∕PhotoView.h"; path = ".XcodeSupport/Views∕PhotoView.h"; sourceTree = SOURCE_ROOT; };
+		B6A8479899D6A2605B5C0E15 /* Delegates∕ResultsViewWorkflowsDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Delegates∕ResultsViewWorkflowsDelegate.h"; path = ".XcodeSupport/Delegates∕ResultsViewWorkflowsDelegate.h"; sourceTree = SOURCE_ROOT; };
+		B7F344F485B8A9C0B8C3ED92 /* ResultsViewRunJobsDelegate.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ResultsViewRunJobsDelegate.j; path = Delegates/ResultsViewRunJobsDelegate.j; sourceTree = SOURCE_ROOT; };
+		B81F4A749FB2C422AE4F23B3 /* Delegates∕LoadActiveWorkflowDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Delegates∕LoadActiveWorkflowDelegate.h"; path = ".XcodeSupport/Delegates∕LoadActiveWorkflowDelegate.h"; sourceTree = SOURCE_ROOT; };
+		B8F1449B995B818A2896E357 /* Transformers∕JobArgumentsTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Transformers∕JobArgumentsTransformer.m"; path = ".XcodeSupport/Transformers∕JobArgumentsTransformer.m"; sourceTree = SOURCE_ROOT; };
+		BCA5464799C8B0BC5DE88DEC /* Delegates∕ResultsViewRunJobsDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Delegates∕ResultsViewRunJobsDelegate.h"; path = ".XcodeSupport/Delegates∕ResultsViewRunJobsDelegate.h"; sourceTree = SOURCE_ROOT; };
+		C0284B01957766C30959BC8C /* PageController.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PageController.j; path = Controllers/PageController.j; sourceTree = SOURCE_ROOT; };
+		C11B497AB93E19E7FE683747 /* Transformers∕RetryFailedRunJobsTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Transformers∕RetryFailedRunJobsTransformer.m"; path = ".XcodeSupport/Transformers∕RetryFailedRunJobsTransformer.m"; sourceTree = SOURCE_ROOT; };
+		C81E40259BE785075F8D27E9 /* NewClassifierTextfieldDelegate.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = NewClassifierTextfieldDelegate.j; path = Delegates/NewClassifierTextfieldDelegate.j; sourceTree = SOURCE_ROOT; };
+		C894484993FEA2CC303453BA /* Glyph.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Glyph.j; path = Models/Glyph.j; sourceTree = SOURCE_ROOT; };
+		CC1543FDA76B49744126DE8E /* Delegates∕ClassifierControllerFetchDelegates.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Delegates∕ClassifierControllerFetchDelegates.h"; path = ".XcodeSupport/Delegates∕ClassifierControllerFetchDelegates.h"; sourceTree = SOURCE_ROOT; };
+		CD99467DB7E0F984E3639C5F /* WorkflowRun.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WorkflowRun.j; path = Models/WorkflowRun.j; sourceTree = SOURCE_ROOT; };
+		CE364FB99FAB6F0C5BCE8036 /* JobTypeTransformer.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = JobTypeTransformer.j; path = Transformers/JobTypeTransformer.j; sourceTree = SOURCE_ROOT; };
+		D1AF454CB04C74DAA5E2B3B8 /* Transformers∕ArrayCountTransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Transformers∕ArrayCountTransformer.h"; path = ".XcodeSupport/Transformers∕ArrayCountTransformer.h"; sourceTree = SOURCE_ROOT; };
+		D29E4413851389164951E459 /* Controllers∕ProjectController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Controllers∕ProjectController.m"; path = ".XcodeSupport/Controllers∕ProjectController.m"; sourceTree = SOURCE_ROOT; };
+		D625472DA405C49612292E84 /* Delegates∕ClassifierControllerFetchDelegates.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Delegates∕ClassifierControllerFetchDelegates.m"; path = ".XcodeSupport/Delegates∕ClassifierControllerFetchDelegates.m"; sourceTree = SOURCE_ROOT; };
+		D9244F9B930AFD00AC851892 /* Controllers∕ProjectController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Controllers∕ProjectController.h"; path = ".XcodeSupport/Controllers∕ProjectController.h"; sourceTree = SOURCE_ROOT; };
+		D9764065913BE1EDA0460AF8 /* Controllers∕UploadWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Controllers∕UploadWindowController.m"; path = ".XcodeSupport/Controllers∕UploadWindowController.m"; sourceTree = SOURCE_ROOT; };
+		D9774225A6FFC7FCA97922EA /* Transformers∕PngTransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Transformers∕PngTransformer.h"; path = ".XcodeSupport/Transformers∕PngTransformer.h"; sourceTree = SOURCE_ROOT; };
+		DC1E44CFB433009FB178E958 /* ViewWithObjectValue.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ViewWithObjectValue.j; path = Views/ViewWithObjectValue.j; sourceTree = SOURCE_ROOT; };
+		DC5F4A39A9E5C73608DBA385 /* Views∕PhotoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Views∕PhotoView.m"; path = ".XcodeSupport/Views∕PhotoView.m"; sourceTree = SOURCE_ROOT; };
+		DE044AC6B7E8AC00FF8B4950 /* Controllers∕JobController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Controllers∕JobController.m"; path = ".XcodeSupport/Controllers∕JobController.m"; sourceTree = SOURCE_ROOT; };
+		DE6D4C5787805951DD2B8AE0 /* CheckBoxTransformer.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CheckBoxTransformer.j; path = Transformers/CheckBoxTransformer.j; sourceTree = SOURCE_ROOT; };
+		DEDC45079F5DFAB99E2C375A /* Controllers∕ResultsPackageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Controllers∕ResultsPackageController.m"; path = ".XcodeSupport/Controllers∕ResultsPackageController.m"; sourceTree = SOURCE_ROOT; };
+		E10F42CEB868750EC0A176F9 /* Delegates∕WorkflowDesignerJobSettingsDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Delegates∕WorkflowDesignerJobSettingsDelegate.h"; path = ".XcodeSupport/Delegates∕WorkflowDesignerJobSettingsDelegate.h"; sourceTree = SOURCE_ROOT; };
+		E164FE29172185F500263CE3 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = "<group>"; };
+		E33D40CDA1E0867F6BB35613 /* Controllers∕MenuItemsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Controllers∕MenuItemsController.h"; path = ".XcodeSupport/Controllers∕MenuItemsController.h"; sourceTree = SOURCE_ROOT; };
+		E3BC4E6185ECD5A98709D5AB /* Controllers∕WorkflowDesignerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Controllers∕WorkflowDesignerController.h"; path = ".XcodeSupport/Controllers∕WorkflowDesignerController.h"; sourceTree = SOURCE_ROOT; };
+		E4AF497FAE46184FE319EE7B /* WorkflowDesignerJobSettingsDelegate.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WorkflowDesignerJobSettingsDelegate.j; path = Delegates/WorkflowDesignerJobSettingsDelegate.j; sourceTree = SOURCE_ROOT; };
+		E4C4448BB2B04A41BFC472A1 /* GameraGlyphs.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GameraGlyphs.j; path = Models/GameraGlyphs.j; sourceTree = SOURCE_ROOT; };
+		E54444F49A0813D3F83808B9 /* Transformers∕CheckBoxTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Transformers∕CheckBoxTransformer.m"; path = ".XcodeSupport/Transformers∕CheckBoxTransformer.m"; sourceTree = SOURCE_ROOT; };
+		E61C48DCA1B911E85D59B970 /* ArrayCountTransformer.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ArrayCountTransformer.j; path = Transformers/ArrayCountTransformer.j; sourceTree = SOURCE_ROOT; };
+		E6C04D908AB276EC281C989C /* ProjectController.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ProjectController.j; path = Controllers/ProjectController.j; sourceTree = SOURCE_ROOT; };
+		E842411ABDB5648B399F5560 /* Delegates∕ClassifierTableViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Delegates∕ClassifierTableViewDelegate.h"; path = ".XcodeSupport/Delegates∕ClassifierTableViewDelegate.h"; sourceTree = SOURCE_ROOT; };
+		E8A641D5BFEDD5E39FE2AFBB /* Models∕WorkflowJobSetting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Models∕WorkflowJobSetting.h"; path = ".XcodeSupport/Models∕WorkflowJobSetting.h"; sourceTree = SOURCE_ROOT; };
+		E8EC44F89A3A8983E48BE032 /* ResultsPackage.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ResultsPackage.j; path = Models/ResultsPackage.j; sourceTree = SOURCE_ROOT; };
+		E95C48B18B4CDC2D148FAA95 /* Transformers∕JobTypeTransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Transformers∕JobTypeTransformer.h"; path = ".XcodeSupport/Transformers∕JobTypeTransformer.h"; sourceTree = SOURCE_ROOT; };
+		ED05445AB16D01F50FBD56C5 /* Delegates∕ResultsViewPagesDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Delegates∕ResultsViewPagesDelegate.h"; path = ".XcodeSupport/Delegates∕ResultsViewPagesDelegate.h"; sourceTree = SOURCE_ROOT; };
+		EE9A4940BC36A61485C23295 /* Models∕Job.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Models∕Job.h"; path = ".XcodeSupport/Models∕Job.h"; sourceTree = SOURCE_ROOT; };
+		EEB549A3BD305FA3FF28BC65 /* Controllers∕ClassifierSettingsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Controllers∕ClassifierSettingsController.m"; path = ".XcodeSupport/Controllers∕ClassifierSettingsController.m"; sourceTree = SOURCE_ROOT; };
+		EFB24BB189BAF01239C4E740 /* Transformers∕RunJobSettingsTransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Transformers∕RunJobSettingsTransformer.h"; path = ".XcodeSupport/Transformers∕RunJobSettingsTransformer.h"; sourceTree = SOURCE_ROOT; };
+		F0824D4BBB8D8082908EFF25 /* Delegates∕SymbolOutlineDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Delegates∕SymbolOutlineDelegate.h"; path = ".XcodeSupport/Delegates∕SymbolOutlineDelegate.h"; sourceTree = SOURCE_ROOT; };
+		F35E4D40B2AB897B405B75A1 /* Controllers∕ClassifierViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Controllers∕ClassifierViewController.m"; path = ".XcodeSupport/Controllers∕ClassifierViewController.m"; sourceTree = SOURCE_ROOT; };
+		F47942C1A007AC70E15C518A /* Models∕GameraGlyphs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Models∕GameraGlyphs.h"; path = ".XcodeSupport/Models∕GameraGlyphs.h"; sourceTree = SOURCE_ROOT; };
+		F4A1495C83A27F7749587E38 /* Models∕Features.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Models∕Features.h"; path = ".XcodeSupport/Models∕Features.h"; sourceTree = SOURCE_ROOT; };
+		F6614ED5BA3FE1E9C7631F3F /* WorkflowCollectionView.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WorkflowCollectionView.j; path = Views/WorkflowCollectionView.j; sourceTree = SOURCE_ROOT; };
+		F952474BA5E4275FE55A41A2 /* Delegates∕ResultsViewWorkflowsDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Delegates∕ResultsViewWorkflowsDelegate.m"; path = ".XcodeSupport/Delegates∕ResultsViewWorkflowsDelegate.m"; sourceTree = SOURCE_ROOT; };
+		FCA3473D9D6AB1A653877820 /* Views∕ViewWithObjectValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Views∕ViewWithObjectValue.h"; path = ".XcodeSupport/Views∕ViewWithObjectValue.h"; sourceTree = SOURCE_ROOT; };
+		FD634E7FB265CA49E3FB2765 /* LoadActiveWorkflowDelegate.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LoadActiveWorkflowDelegate.j; path = Delegates/LoadActiveWorkflowDelegate.j; sourceTree = SOURCE_ROOT; };
+		FDA54463B04D9AE51C20F3CE /* PageGlyphsTableViewDelegate.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PageGlyphsTableViewDelegate.j; path = Delegates/PageGlyphsTableViewDelegate.j; sourceTree = SOURCE_ROOT; };
+		FE75448E8FCB0E81EFE93AEB /* Controllers∕UserPreferencesController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Controllers∕UserPreferencesController.m"; path = ".XcodeSupport/Controllers∕UserPreferencesController.m"; sourceTree = SOURCE_ROOT; };
+		FEE242E393484F3B4BEBEFA1 /* UsernameTransformer.j */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = UsernameTransformer.j; path = Transformers/UsernameTransformer.j; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		65DC4014B893A6A9AB3E5691 /* Cappuccino Source */ = {
+			isa = PBXGroup;
+			children = (
+				1E6841E191485C8FB97FE447 /* AppController.j */,
+				E61C48DCA1B911E85D59B970 /* ArrayCountTransformer.j */,
+				8C97471D949FA8B6C4A62CF1 /* ByteCountTransformer.j */,
+				DE6D4C5787805951DD2B8AE0 /* CheckBoxTransformer.j */,
+				01274BAFB464F3E555D4D94D /* Classifier.j */,
+				9A5E418395FFD5E9ACFCFA0D /* ClassifierController.j */,
+				613043B089234B30E9A5CAF0 /* ClassifierControllerFetchDelegates.j */,
+				5F1C46C79C50F44C972929AF /* ClassifierSetting.j */,
+				4FAF4E148BC38ACFBA20929E /* ClassifierSettingsController.j */,
+				39654ABBAB52B6A24B25BE0F /* ClassifierTableViewDelegate.j */,
+				7D844D2FA5D0E10702E62BB1 /* ClassifierViewController.j */,
+				716A4FAAB62B3C5E0F2A7AF1 /* CPButtonBar+PopupButtons.j */,
+				B2A046A3B96A5D8303712AB3 /* DateFormatTransformer.j */,
+				756C49F7BD99663DE86A0314 /* Features.j */,
+				1D664F3E98A8069DE46BCB5B /* GameraClassNameTransformer.j */,
+				E4C4448BB2B04A41BFC472A1 /* GameraGlyphs.j */,
+				C894484993FEA2CC303453BA /* Glyph.j */,
+				372E469391A4D5081401EFEF /* GlyphsTableViewDelegate.j */,
+				2CE64D83893A06D43DCA8500 /* GlyphsTransformer.j */,
+				063C45C2BFD50436ACEE0053 /* InteractiveJobsController.j */,
+				83AE4C138AD0EDFFAB04F208 /* Job.j */,
+				A2C2436EBB095F2B454E3143 /* JobArgumentsTransformer.j */,
+				9039449B9B9308B0A8E6187A /* JobController.j */,
+				CE364FB99FAB6F0C5BCE8036 /* JobTypeTransformer.j */,
+				FD634E7FB265CA49E3FB2765 /* LoadActiveWorkflowDelegate.j */,
+				5CEF4C0EBC6EDCC262D2F232 /* LogInController.j */,
+				858A4EA4B0E1958772E3FB28 /* MenuItemsController.j */,
+				7A544256A954C8E7A39DF893 /* MinimalClassifier.j */,
+				C81E40259BE785075F8D27E9 /* NewClassifierTextfieldDelegate.j */,
+				96F041EBB9B85AA67A834700 /* OpenClassifierTableViewDelegate.j */,
+				09614B6B9BDD4220011A1B4C /* Page.j */,
+				C0284B01957766C30959BC8C /* PageController.j */,
+				2E074E7082A58D4EFFA53D9B /* PageGlyphs.j */,
+				FDA54463B04D9AE51C20F3CE /* PageGlyphsTableViewDelegate.j */,
+				16054CC7A206480A5D9231D1 /* PhotoView.j */,
+				188D4B2492727DCC8097F4F4 /* PngTransformer.j */,
+				65734F74B29684F7B37C1112 /* Project.j */,
+				E6C04D908AB276EC281C989C /* ProjectController.j */,
+				75944E4CA14589BBD84E9DE1 /* Result.j */,
+				909E4B618B7E735358B25B54 /* ResultsDisplayTransformer.j */,
+				E8EC44F89A3A8983E48BE032 /* ResultsPackage.j */,
+				40E44132A6640A9160DF5BEF /* ResultsPackageController.j */,
+				18374EBDB86BCC87DA2EE040 /* ResultsViewPagesDelegate.j */,
+				6913496CB8D8FE3AA4716A1D /* ResultsViewResultsDelegate.j */,
+				B7F344F485B8A9C0B8C3ED92 /* ResultsViewRunJobsDelegate.j */,
+				AC4D4279BBBACDCD2AFE431B /* ResultsViewRunsDelegate.j */,
+				7F564BB09E3A50275605B438 /* ResultsViewWorkflowsDelegate.j */,
+				0E1E4DBEA406136C1B914270 /* ResultThumbnailTransformer.j */,
+				91BE476FBC35C02AC501C7CB /* RetryFailedRunJobsTransformer.j */,
+				703B4458AA1B21BA2564C79D /* RunJob.j */,
+				8FF548C5AFA5738E919A1244 /* RunJobSettingsTransformer.j */,
+				06CB4B49BD7062B0B0DD013A /* RunJobStatusTransformer.j */,
+				7C7848F98D7BB147D2D45E9F /* ServerAdminController.j */,
+				476240F2BB06D7652E0FC641 /* SymbolCollection.j */,
+				10C84881B4C2A5B784E21FC8 /* SymbolOutlineDelegate.j */,
+				955D41CF8EB0664D672E8A1A /* TreeNode.j */,
+				0D464161A6DC1BA566A0331B /* UploadWindowController.j */,
+				8A1E44EE86C61D844191893B /* User.j */,
+				FEE242E393484F3B4BEBEFA1 /* UsernameTransformer.j */,
+				A84848CE80585B3519EE7A44 /* UserPreferencesController.j */,
+				DC1E44CFB433009FB178E958 /* ViewWithObjectValue.j */,
+				623F45408C4512A6F7D9F456 /* Workflow.j */,
+				F6614ED5BA3FE1E9C7631F3F /* WorkflowCollectionView.j */,
+				1B314E418A309593B9570110 /* WorkflowController.j */,
+				87BF4F318B44D1823E6BF8D9 /* WorkflowDesignerController.j */,
+				769A452EB25D4E1D1A75BFEC /* WorkflowDesignerDelegate.j */,
+				E4AF497FAE46184FE319EE7B /* WorkflowDesignerJobSettingsDelegate.j */,
+				17254014B20EBC6A6209C336 /* WorkflowJob.j */,
+				65FE4C4C95196CDDA3EB3F2D /* WorkflowJobSetting.j */,
+				CD99467DB7E0F984E3639C5F /* WorkflowRun.j */,
+			);
+			name = "Cappuccino Source";
+			sourceTree = "<group>";
+		};
+		E164FE221721857400263CE3 /*  */ = {
+			isa = PBXGroup;
+			children = (
+				E164FE29172185F500263CE3 /* Resources */,
+				FA2745589C4AFA3AE3A26A3A /* Cocoa Classes */,
+				65DC4014B893A6A9AB3E5691 /* Cappuccino Source */,
+			);
+			sourceTree = "<group>";
+		};
+		FA2745589C4AFA3AE3A26A3A /* Cocoa Classes */ = {
+			isa = PBXGroup;
+			children = (
+				17504CA0AA375A4B3AA6EDA1 /* AppController.h */,
+				532C40738E73A2BD5E25A678 /* AppController.m */,
+				6A1545CD8D3375880CC9195C /* Categories∕CPButtonBar+PopupButtons.h */,
+				A61D4DC395B22FF858B2FE07 /* Categories∕CPButtonBar+PopupButtons.m */,
+				54B24E188BD453DE343F42E9 /* Controllers∕ClassifierController.h */,
+				249E43FF9C75ADDD48BD37B3 /* Controllers∕ClassifierController.m */,
+				AA0345279B7B879381453664 /* Controllers∕ClassifierSettingsController.h */,
+				EEB549A3BD305FA3FF28BC65 /* Controllers∕ClassifierSettingsController.m */,
+				A95447E39423229364147EEB /* Controllers∕ClassifierViewController.h */,
+				F35E4D40B2AB897B405B75A1 /* Controllers∕ClassifierViewController.m */,
+				B3F24797A70BA66FD72151E7 /* Controllers∕InteractiveJobsController.h */,
+				8E7E4729A4DA89AFF07B7746 /* Controllers∕InteractiveJobsController.m */,
+				14AE4FB180AC0F24E267709E /* Controllers∕JobController.h */,
+				DE044AC6B7E8AC00FF8B4950 /* Controllers∕JobController.m */,
+				B57743079963637E6F46B0FC /* Controllers∕LogInController.h */,
+				2718448AA6B21C61B2D1EECB /* Controllers∕LogInController.m */,
+				E33D40CDA1E0867F6BB35613 /* Controllers∕MenuItemsController.h */,
+				3245451E8022B77DC7F7BE1E /* Controllers∕MenuItemsController.m */,
+				6E6C4E589E226C80082F687A /* Controllers∕PageController.h */,
+				6A974E82AC3D1E06705E34C8 /* Controllers∕PageController.m */,
+				D9244F9B930AFD00AC851892 /* Controllers∕ProjectController.h */,
+				D29E4413851389164951E459 /* Controllers∕ProjectController.m */,
+				44A14AECA8B2B600CFED7E3C /* Controllers∕ResultsPackageController.h */,
+				DEDC45079F5DFAB99E2C375A /* Controllers∕ResultsPackageController.m */,
+				0D824F31A5DE1958759C16AE /* Controllers∕ServerAdminController.h */,
+				216F403296BE4AA423E3B878 /* Controllers∕ServerAdminController.m */,
+				A48B4602B3EC6A829B26EB83 /* Controllers∕UploadWindowController.h */,
+				D9764065913BE1EDA0460AF8 /* Controllers∕UploadWindowController.m */,
+				911A41B5A5BB573378F76DA9 /* Controllers∕UserPreferencesController.h */,
+				FE75448E8FCB0E81EFE93AEB /* Controllers∕UserPreferencesController.m */,
+				39484806B04A4377002EAB06 /* Controllers∕WorkflowController.h */,
+				AEA346E9B0C194A9E624335E /* Controllers∕WorkflowController.m */,
+				E3BC4E6185ECD5A98709D5AB /* Controllers∕WorkflowDesignerController.h */,
+				6EEE48FDBBC85EEAE1A7E5A2 /* Controllers∕WorkflowDesignerController.m */,
+				CC1543FDA76B49744126DE8E /* Delegates∕ClassifierControllerFetchDelegates.h */,
+				D625472DA405C49612292E84 /* Delegates∕ClassifierControllerFetchDelegates.m */,
+				E842411ABDB5648B399F5560 /* Delegates∕ClassifierTableViewDelegate.h */,
+				15864FBAA5114FEEB3BBC080 /* Delegates∕ClassifierTableViewDelegate.m */,
+				B04F4DEE90E3FCB00320DCC6 /* Delegates∕GlyphsTableViewDelegate.h */,
+				08974E3382C357D2B0EA4983 /* Delegates∕GlyphsTableViewDelegate.m */,
+				B81F4A749FB2C422AE4F23B3 /* Delegates∕LoadActiveWorkflowDelegate.h */,
+				11F84263A5CA72EEBA1AF406 /* Delegates∕LoadActiveWorkflowDelegate.m */,
+				4D24406697001CE345214B05 /* Delegates∕NewClassifierTextfieldDelegate.h */,
+				326D4245A8FF4007B07EA27D /* Delegates∕NewClassifierTextfieldDelegate.m */,
+				07BD480A92D00A4DFB47A7EA /* Delegates∕OpenClassifierTableViewDelegate.h */,
+				30E74F62A9D5931EEB17E5BE /* Delegates∕OpenClassifierTableViewDelegate.m */,
+				59A947468406926175BE6FFE /* Delegates∕PageGlyphsTableViewDelegate.h */,
+				A9174994922D6F62837ABF36 /* Delegates∕PageGlyphsTableViewDelegate.m */,
+				ED05445AB16D01F50FBD56C5 /* Delegates∕ResultsViewPagesDelegate.h */,
+				6319463B868698D1BE29C011 /* Delegates∕ResultsViewPagesDelegate.m */,
+				A29347288C49AA2934EBEC92 /* Delegates∕ResultsViewResultsDelegate.h */,
+				5CBD4E18BB2F4E3CE379850A /* Delegates∕ResultsViewResultsDelegate.m */,
+				BCA5464799C8B0BC5DE88DEC /* Delegates∕ResultsViewRunJobsDelegate.h */,
+				31C74A8FB2C627C5DCE97145 /* Delegates∕ResultsViewRunJobsDelegate.m */,
+				A67F4F43903B8114E77310F0 /* Delegates∕ResultsViewRunsDelegate.h */,
+				A4FD40CD930DE74B2F723D04 /* Delegates∕ResultsViewRunsDelegate.m */,
+				B6A8479899D6A2605B5C0E15 /* Delegates∕ResultsViewWorkflowsDelegate.h */,
+				F952474BA5E4275FE55A41A2 /* Delegates∕ResultsViewWorkflowsDelegate.m */,
+				F0824D4BBB8D8082908EFF25 /* Delegates∕SymbolOutlineDelegate.h */,
+				29724528972704CB08E88047 /* Delegates∕SymbolOutlineDelegate.m */,
+				7709468A8C9894D2C94EE5A1 /* Delegates∕WorkflowDesignerDelegate.h */,
+				9F084AC4833761794DDB9190 /* Delegates∕WorkflowDesignerDelegate.m */,
+				E10F42CEB868750EC0A176F9 /* Delegates∕WorkflowDesignerJobSettingsDelegate.h */,
+				662C44229F2F4E602D6AE3CB /* Delegates∕WorkflowDesignerJobSettingsDelegate.m */,
+				3F0C413A8A887BA6AB4B090E /* Models∕Classifier.h */,
+				110F42C0B17B4CD5836A2CC0 /* Models∕Classifier.m */,
+				29E243CFA5CDA56B1D7944D8 /* Models∕ClassifierSetting.h */,
+				132641FDBF93FE2AAF70B588 /* Models∕ClassifierSetting.m */,
+				F4A1495C83A27F7749587E38 /* Models∕Features.h */,
+				84F74506BAFC518ED29B5730 /* Models∕Features.m */,
+				F47942C1A007AC70E15C518A /* Models∕GameraGlyphs.h */,
+				015E44EEB74202CB12E8542D /* Models∕GameraGlyphs.m */,
+				330B435DABF8CBAE70ED1857 /* Models∕Glyph.h */,
+				AA5446BABBCAF498164DF501 /* Models∕Glyph.m */,
+				EE9A4940BC36A61485C23295 /* Models∕Job.h */,
+				96F44BE4B81BE7DD1FC846C7 /* Models∕Job.m */,
+				516940AF9C612DF8C47EA811 /* Models∕MinimalClassifier.h */,
+				639B499DA3ABFD9C9F517DEF /* Models∕MinimalClassifier.m */,
+				9E444D39B21B3F9329FF5F82 /* Models∕Page.h */,
+				0BDF4666B812FBFE6A1F5D48 /* Models∕Page.m */,
+				7ADE4F6A83683B4076B087ED /* Models∕PageGlyphs.h */,
+				816A48CEA31E4864E217EC6F /* Models∕PageGlyphs.m */,
+				749C44D4BD2C3BFFF8B95676 /* Models∕Project.h */,
+				47FC4384831FB2CAC48760DF /* Models∕Project.m */,
+				4A1D40F3A9B6BEB6C785D4DB /* Models∕Result.h */,
+				84D141F8BAF06BC1F8515B8E /* Models∕Result.m */,
+				032E417C96E09BF3E3D9EADE /* Models∕ResultsPackage.h */,
+				0A46451AABB00093F59ECCC4 /* Models∕ResultsPackage.m */,
+				802F4CCB88C383338382CE6D /* Models∕RunJob.h */,
+				3BB84657B9F8F8091AAFD273 /* Models∕RunJob.m */,
+				12E243BFB747AAA31387657F /* Models∕SymbolCollection.h */,
+				747F44128EC4F36DF146E959 /* Models∕SymbolCollection.m */,
+				0E74473DBEB15F94491269E6 /* Models∕TreeNode.h */,
+				AC73469AA7DD750DEDD85970 /* Models∕TreeNode.m */,
+				48BF4F3B8177D569BDDC3747 /* Models∕User.h */,
+				393F44AE9CCA8BF364727C9A /* Models∕User.m */,
+				43164C238354A9700FE69D0A /* Models∕Workflow.h */,
+				84ED483D882187F3E62EF13D /* Models∕Workflow.m */,
+				38954B8EAF5C82DAC30BF272 /* Models∕WorkflowJob.h */,
+				4E054824B5FEBF1E7D6CF420 /* Models∕WorkflowJob.m */,
+				E8A641D5BFEDD5E39FE2AFBB /* Models∕WorkflowJobSetting.h */,
+				58994FC8AC99845834815689 /* Models∕WorkflowJobSetting.m */,
+				929F4CC2BD7C43C2FBE0E11F /* Models∕WorkflowRun.h */,
+				89D44F8B8713006D0746141B /* Models∕WorkflowRun.m */,
+				D1AF454CB04C74DAA5E2B3B8 /* Transformers∕ArrayCountTransformer.h */,
+				6772474A8E733F029FE5ADB2 /* Transformers∕ArrayCountTransformer.m */,
+				7A134A2396EC1BFCEFFDEE03 /* Transformers∕ByteCountTransformer.h */,
+				945145659ECB1D4FFBC5928B /* Transformers∕ByteCountTransformer.m */,
+				ACE64DB4A98B3F271C7F305C /* Transformers∕CheckBoxTransformer.h */,
+				E54444F49A0813D3F83808B9 /* Transformers∕CheckBoxTransformer.m */,
+				53B24969B90605583ECE0FC7 /* Transformers∕DateFormatTransformer.h */,
+				A0F740B4973485CE2DA7BB4F /* Transformers∕DateFormatTransformer.m */,
+				02DF4DDCBB2D20B461C79E20 /* Transformers∕GameraClassNameTransformer.h */,
+				16CD4F6A85EDF2FED5DD64E8 /* Transformers∕GameraClassNameTransformer.m */,
+				6CC947B4B8713BE99A33DDE2 /* Transformers∕GlyphsTransformer.h */,
+				AC1F47898460AE2E2BCA3CB7 /* Transformers∕GlyphsTransformer.m */,
+				2A8C43E18AAAC674CF52A82D /* Transformers∕JobArgumentsTransformer.h */,
+				B8F1449B995B818A2896E357 /* Transformers∕JobArgumentsTransformer.m */,
+				E95C48B18B4CDC2D148FAA95 /* Transformers∕JobTypeTransformer.h */,
+				3F054CDC9BBD3AE1D239F953 /* Transformers∕JobTypeTransformer.m */,
+				D9774225A6FFC7FCA97922EA /* Transformers∕PngTransformer.h */,
+				A63F44F59325DE0C204A3A71 /* Transformers∕PngTransformer.m */,
+				5E8F44EB8D41215A435B7C0E /* Transformers∕ResultsDisplayTransformer.h */,
+				A1B34095BBEC96F8D401FF6D /* Transformers∕ResultsDisplayTransformer.m */,
+				364240DF9B0F4F6DD7D46C08 /* Transformers∕ResultThumbnailTransformer.h */,
+				209C4AD8AECD33B44CDD723F /* Transformers∕ResultThumbnailTransformer.m */,
+				5BA24503B35E2D30FB6F368E /* Transformers∕RetryFailedRunJobsTransformer.h */,
+				C11B497AB93E19E7FE683747 /* Transformers∕RetryFailedRunJobsTransformer.m */,
+				EFB24BB189BAF01239C4E740 /* Transformers∕RunJobSettingsTransformer.h */,
+				4FAB4F5191326934370AA4C9 /* Transformers∕RunJobSettingsTransformer.m */,
+				57674AE79DFD3EFFF533A9CA /* Transformers∕RunJobStatusTransformer.h */,
+				92364390A55966A384629BA9 /* Transformers∕RunJobStatusTransformer.m */,
+				9F8E41EFA98567417F14C106 /* Transformers∕UsernameTransformer.h */,
+				99B940D2B6E1EB709EFFF0F5 /* Transformers∕UsernameTransformer.m */,
+				B5BE408F948D24C9B5166FCB /* Views∕PhotoView.h */,
+				DC5F4A39A9E5C73608DBA385 /* Views∕PhotoView.m */,
+				FCA3473D9D6AB1A653877820 /* Views∕ViewWithObjectValue.h */,
+				4535437B9A385F22C9490713 /* Views∕ViewWithObjectValue.m */,
+				523D46708AAE9339B6AE22B6 /* Views∕WorkflowCollectionView.h */,
+				AD804127910DC37236920948 /* Views∕WorkflowCollectionView.m */,
+				A73242AAA9A31115C1272F1A /* xcc_general_include.h */,
+			);
+			name = "Cocoa Classes";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		E164FE231721857400263CE3 /* Project Object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+			};
+			buildConfigurationList = E164FE261721857400263CE3 /* Build configuration list for PBXProject "Unity-iPhone" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E164FE221721857400263CE3 /*  */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		E164FE271721857400263CE3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		E164FE281721857400263CE3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E164FE261721857400263CE3 /* Build configuration list for PBXProject "Unity-iPhone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E164FE271721857400263CE3 /* Debug */,
+				E164FE281721857400263CE3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E164FE231721857400263CE3 /* Project Object */;
+}
