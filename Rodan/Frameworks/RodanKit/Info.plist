@@ -24,5 +24,7 @@
     <string>poly_mask</string>
     <key>gamera.toolkits.rodan_plugins.plugins.rdn_rotate.rdn_rotate</key>
     <string>rotate</string>
+    <key>gamera.custom.lyric_extraction.pixel_segment</key>
+    <string>pixel_segment</string>
 </dict>
 </plist>
