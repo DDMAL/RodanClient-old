@@ -18,6 +18,7 @@
     @outlet CPArrayController               _runsArrayController;
             WorkflowRun                     _currentlySelectedWorkflowRun @accessors(property=currentlySelectedWorkflowRun);
             CPString                        _workflowUUID;
+            BOOL                            _selectionFlag;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////
@@ -33,7 +34,7 @@
                                               name:RodanShouldLoadWorkflowRunsNotification
                                               object:nil];
     }
-
+    _selectionFlag = NO;
     return self;
 }
 
@@ -41,6 +42,7 @@
 {
     _currentlySelectedWorkflowRun = nil;
     _workflowUUID = nil;
+    _selectionFlag = NO;
     [_runsArrayController setContent:nil];
     [_resultsViewPagesDelegate reset];
 }
@@ -66,8 +68,12 @@
 ////////////////////////////////////////////////////////////////////////////////////////////
 - (void)tableViewSelectionIsChanging:(CPNotification)aNotification
 {
-    _currentlySelectedWorkflowRun = nil;
-    [_resultsViewPagesDelegate reset];
+    if (!_selectionFlag)
+    {
+        _currentlySelectedWorkflowRun = nil;
+        [_resultsViewPagesDelegate reset];
+    }
+    _selectionFlag = NO;
 }
 
 - (BOOL)tableView:(CPTableView)aTableView shouldSelectRow:(int)rowIndex
@@ -75,6 +81,7 @@
     _currentlySelectedWorkflowRun = [[_runsArrayController contentArray] objectAtIndex:rowIndex];
     [[CPNotificationCenter defaultCenter] postNotificationName:RodanShouldLoadWorkflowPagesNotification
                                           object:_currentlySelectedWorkflowRun];
+    _selectionFlag = YES;
     return YES;
 }
 

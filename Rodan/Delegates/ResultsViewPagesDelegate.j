@@ -16,6 +16,7 @@
     @outlet CPArrayController           _pageArrayController;
             Page                        _currentlySelectedPage;
             WorkflowRun                 _associatedWorkflowRun;
+            BOOL                        _selectionFlag;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////
@@ -31,7 +32,7 @@
                                               name:RodanShouldLoadWorkflowPagesNotification
                                               object:nil];
     }
-
+    _selectionFlag = NO;
     return self;
 }
 
@@ -39,6 +40,7 @@
 {
     _currentlySelectedPage = nil;
     _associatedWorkflowRun = nil;
+    _selectionFlag = NO;
     [_pageArrayController setContent:nil];
     [_resultsViewResultsDelegate reset];
     [_resultsViewRunJobsDelegate reset];
@@ -49,9 +51,13 @@
 ////////////////////////////////////////////////////////////////////////////////////////////
 - (void)tableViewSelectionIsChanging:(CPNotification)aNotification
 {
-    _currentlySelectedPage = nil;
-    [_resultsViewResultsDelegate reset];
-    [_resultsViewRunJobsDelegate reset];
+    if (!_selectionFlag)
+    {
+        _currentlySelectedPage = nil;
+        [_resultsViewResultsDelegate reset];
+        [_resultsViewRunJobsDelegate reset];
+    }
+    _selectionFlag = NO;
 }
 
 - (BOOL)tableView:(CPTableView)aTableView shouldSelectRow:(int)rowIndex
@@ -64,6 +70,7 @@
                                           object:objectToPass];
     [[CPNotificationCenter defaultCenter] postNotificationName:RodanShouldLoadWorkflowPageResultsNotification
                                           object:objectToPass];
+    _selectionFlag = YES;
     return YES;
 }
 

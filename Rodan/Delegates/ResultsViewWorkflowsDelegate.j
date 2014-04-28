@@ -18,6 +18,7 @@
     @outlet     CPView                  _workflowControlView;
                 Workflow                _currentlySelectedWorkflow;
                 Workflow                _loadingWorkflow;
+                BOOL                    _selectionFlag;
 
 }
 
@@ -35,6 +36,7 @@
 
 - (id)init
 {
+    _selectionChangeFlag = NO;
     [[CPNotificationCenter defaultCenter] addObserver:self
                                           selector:@selector(handleShouldLoadWorkflowsNotification:)
                                           name:RodanShouldLoadWorkflowsNotification
@@ -49,6 +51,7 @@
 {
     [_resultsViewRunsDelegate reset];
     _currentlySelectedWorkflow = [WorkflowController activeWorkflow];
+    _selectionFlag = NO;
 }
 
 /**
@@ -67,18 +70,24 @@
 ////////////////////////////////////////////////////////////////////////////////////////////
 - (void)tableViewSelectionIsChanging:(CPNotification)aNotification
 {
-    _currentlySelectedWorkflow = nil;
-    [WorkflowController setActiveWorkflow:nil];
-    [_resultsViewRunsDelegate reset];
+    if (!_selectionFlag)
+    {
+        _currentlySelectedWorkflow = nil;
+        [WorkflowController setActiveWorkflow:nil];
+        [_resultsViewRunsDelegate reset];
+    }
+    _selectionFlag = NO;
 }
 
 - (BOOL)tableView:(CPTableView)aTableView shouldSelectRow:(int)rowIndex
 {
+
     _currentlySelectedWorkflow = [[_workflowArrayController contentArray] objectAtIndex:rowIndex];
     [WorkflowController setActiveWorkflow:_currentlySelectedWorkflow];
     [_resultsViewRunsDelegate reset];
     [[CPNotificationCenter defaultCenter] postNotificationName:RodanShouldLoadWorkflowRunsNotification
                                           object:[_currentlySelectedWorkflow uuid]];
+    _selectionFlag = YES;
     return YES;
 }
 
