@@ -7,6 +7,18 @@
     {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// PUBLIC
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        /**
+         * Returns the geometries.
+         */
+        this.getGeometries = function()
+        {
+            return _geometries;
+        };
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // INITIALIZATION
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /**
@@ -17,23 +29,13 @@
             _initialize();
             _layerImage.loadImage(_settings.image.source);
         };
-
-        /**
-         * Returns the geometries.
-         */
-        var getGeometries = function()
-        {
-            return _geometries;
-        };
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// INITIALIZATION
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        
         /**
          * Initialization method.
          */
         var _initialize = function()
         {
+            _geometries = [];
             _initializeKinetic();
             _layerImage = _createLayerImage();
             _layerCorrections = _createLayerCorrections();
@@ -110,12 +112,8 @@
                     _handleStateRectangle(aEvent);
                     break;
 
-                case _STATE.GLYPH_COLORING:
-                    _handleStateGlyphColoring(aEvent);
-                    break;
-
-                case _STATE.PROCESSING:
-                    // do nothing
+                case _STATE.GLYPH_COLOURING:
+                    _handleStateGlyphColouring(aEvent);
                     break;
 
                 default:
@@ -178,7 +176,7 @@
                 {
                     aEvent.preventDefault();
                     _clearKineticLine();
-                    _setState(_STATE.GLYPH_COLORING);
+                    _setState(_STATE.GLYPH_COLOURING);
                 }
             }
             else if(aEvent.type === 'mousemove' && _inputPolygon.length > 0)
@@ -201,7 +199,7 @@
                     _inputPolygon.push({x: aEvent.layerX, y: _inputPolygon[0].y});
                     _inputPolygon.push({x: aEvent.layerX, y: aEvent.layerY});
                     _inputPolygon.push({x: _inputPolygon[0].x, y: aEvent.layerY});
-                    _setState(_STATE.GLYPH_COLORING);
+                    _setState(_STATE.GLYPH_COLOURING);
                 }
                 else
                 {
@@ -229,27 +227,27 @@
         /**
          * Handle glyph coloring state.
          */
-        var _handleStateGlyphColoring = function(aEvent)
+        var _handleStateGlyphColouring = function(aEvent)
         {
             if(aEvent.type === 'keydown')
             {
-                if(aEvent.which === 82) // neume
+                if(aEvent.which === 78) // neume
                 {
-                    _glyphColoring = _settings.glyphs.neume;
+                    _glyphColouring = _settings.glyphs.neume;
                 }
-                else if(aEvent.which === 66) // black
+                else if(aEvent.which === 84) // text
                 {
-                    _glyphColoring = _settings.glyphs.text;
+                    _glyphColouring = _settings.glyphs.text;
                 }
-                else if(aEvent.which === 87) // white/erase
+                else if(aEvent.which === 69) // white/erase
                 {
-                    _glyphColoring = _settings.glyphs.white;
+                    _glyphColouring = _settings.glyphs.white;
                 }
-                else if(aEvent.which === 32 && _glyphColoring !== null)
+                else if(aEvent.which === 32 && _glyphColouring !== null)
                 {
                     aEvent.preventDefault();
                     _saveGeometry();
-                    _colorGlyphs(_glyphColoring);
+                    _colourGlyphs(_glyphColouring);
                     _clearKineticPolygon();
                     _clearKineticLine();
                     _setState(_STATE.IDLE);
@@ -314,6 +312,7 @@
             {
                 _kineticPolygon.destroy();
             }
+            _kineticPolygon = null;
         };
 
         /**
@@ -325,6 +324,7 @@
             {
                 _kineticLine.destroy();
             }
+            _kineticLine = null;
         };
 
         /**
@@ -356,7 +356,7 @@
         /**
          * Color image.
          */
-        var _colorGlyphs = function(aGlyphSettings)
+        var _colourGlyphs = function(aGlyphSettings)
         {
             // Get bounding box.
             var upperLeftX = Number.MAX_VALUE;
@@ -396,10 +396,10 @@
                     // If in threshold, color.
                     if(decision)
                     {
-                        imageData.data[i] = aGlyphSettings.color[0];
-                        imageData.data[i + 1] = aGlyphSettings.color[1];
-                        imageData.data[i + 2] = aGlyphSettings.color[2];
-                        imageData.data[i + 3] = aGlyphSettings.color[3];
+                        imageData.data[i] = aGlyphSettings.colour[0];
+                        imageData.data[i + 1] = aGlyphSettings.colour[1];
+                        imageData.data[i + 2] = aGlyphSettings.colour[2];
+                        imageData.data[i + 3] = aGlyphSettings.colour[3];
                     }
                 }
                 positionX++;
@@ -417,11 +417,7 @@
          */
         var _saveGeometry = function()
         {
-            if(_geometries === null)
-            {
-                _geometries = [];
-            }
-            var newGeometry = {color: _glyphColoring.color,
+            var newGeometry = {colour: _glyphColouring.colour,
                                points: _inputPolygon,
                                workingWidth: _kineticImage.getWidth(),
                                originalWidth: _settings.image.originalWidth};
@@ -500,12 +496,8 @@
                     stateTitle = "Defining rectangle";
                     break;
 
-                case _STATE.GLYPH_COLORING:
-                    stateTitle = "Glyph coloring";
-                    break;
-
-                case _STATE.PROCESSING:
-                    stateTitle = "Processing";
+                case _STATE.GLYPH_COLOURING:
+                    stateTitle = "Glyph colouring";
                     break;
 
                 default:
@@ -543,8 +535,7 @@
             IDLE: 0,
             POLYGON: 2,
             RECTANGLE: 3,
-            GLYPH_COLORING: 4,
-            PROCESSING: 5
+            GLYPH_COLOURING: 4
         };
 
         // Default settings.
@@ -600,21 +591,21 @@
             {
                 text:
                 {
-                    color: [0, 0, 0, 255],
-                    thresholds: [220, 220, 220, 255],
-                    inverseThresholds: [false, true, true, false]
+                    colour: [255, 0, 0, 255],
+                    thresholds: [220, 127, 220, 255],
+                    inverseThresholds: [true, false, true, false]
                 },
 
                 neume:
                 {
-                    color: [255, 0, 0, 255],
-                    thresholds: [220, 220, 220, 255],
-                    inverseThresholds: [true, true, true, false]
+                    colour: [0, 255, 0, 255],
+                    thresholds: [127, 220, 220, 255],
+                    inverseThresholds: [false, true, true, false]
                 },
 
                 white: // erase
                 {
-                    color: [255, 255, 255, 255],
+                    colour: [255, 255, 255, 255],
                     thresholds: [0, 0, 0, 0],
                     inverseThresholds: [false, false, false, false]
                 }
@@ -644,7 +635,7 @@
         var _kineticPolygon = null;
         var _kineticImage = null;
         var _imageContext = null;
-        var _glyphColoring = null;
+        var _glyphColouring = null;
         var _correctionsContext = null;
         var _kineticLine = null;
         var _geometries = null;
@@ -656,12 +647,15 @@
 
     $.fn.PixelSegmentation = function(aOptions)
     {
-        var element = $(this);
-        if (element.data('PixelSegmentation'))
+        return this.each(function()
         {
-            return;
-        }
-        var instance = new PixelSegmentation(aOptions);
-        element.data('PixelSegmentation', element);
+            var element = $(this);
+            if (element.data('PixelSegmentation'))
+            {
+                return;
+            }
+            var instance = new PixelSegmentation(aOptions);
+            element.data('PixelSegmentation', instance);
+        });
     };
 })(jQuery);
