@@ -40,7 +40,6 @@
 @import "Controllers/JobController.j"
 @import "Controllers/MenuItemsController.j"
 @import "Controllers/InteractiveJobsController.j"
-@import "Controllers/ClassifierViewController.j"
 @import "Controllers/ResultsPackageController.j"
 
 @import "Delegates/ResultsViewPagesDelegate.j"
@@ -91,9 +90,7 @@ RodanShouldLoadInteractiveJobsNotification = @"RodanShouldLoadInteractiveJobsNot
 RodanShouldLoadWorkflowRunsNotification = @"RodanShouldLoadWorkflowRunsNotification";
 RodanShouldLoadWorkflowPagesNotification = @"RodanShouldLoadWorkflowPagesNotification";
 RodanShouldLoadWorkflowRunsJobsNotification = @"RodanShouldLoadWorkflowRunsJobsNotification";
-RodanShouldLoadClassifiersNotification = @"RodanShouldLoadClassifiersNotification";
 RodanShouldLoadPagesNotification = @"RodanShouldLoadPagesNotification";
-RodanShouldLoadClassifierNotification = @"RodanShouldLoadClassifierNotification";
 RodanShouldLoadWorkflowDesignerDataNotification = @"RodanShouldLoadWorkflowDesignerDataNotification";
 RodanShouldLoadWorkflowsNotification = @"RodanShouldLoadWorkflowsNotification";
 RodanShouldLoadWorkflowPageResultsNotification = @"RodanShouldLoadWorkflowPageResultsNotification";
@@ -106,7 +103,6 @@ RodanHasFocusInteractiveJobsViewNotification = @"RodanHasFocusInteractiveJobsVie
 RodanHasFocusWorkflowResultsViewNotification = @"RodanHasFocusWorkflowResultsViewNotification";
 RodanHasFocusWorkflowDesignerViewNotification = @"RodanHasFocusWorkflowDesignerViewNotification";
 RodanHasFocusPagesViewNotification = @"RodanHasFocusPagesViewNotification";
-RodanHasFocusClassifierViewNotification = @"RodanHasFocusClassifierViewNotification";
 
 
 isLoggedIn = NO;
@@ -145,7 +141,6 @@ activeProject = nil;  // URI to the currently open project
     @outlet     CPToolbarItem   workflowResultsToolbarItem;
     @outlet     CPToolbarItem   jobsToolbarItem;
     @outlet     CPToolbarItem   usersToolbarItem;
-    @outlet     CPToolbarItem   classifierToolbarItem;
     @outlet     CPToolbarItem   workflowDesignerToolbarItem;
     @outlet     CPButtonBar     workflowAddRemoveBar;
 
@@ -159,8 +154,6 @@ activeProject = nil;  // URI to the currently open project
     @outlet     LogInController             logInController;
     @outlet     WorkflowController          workflowController;
     @outlet     WorkflowDesignerController  workflowDesignerController;
-
-    @outlet     ClassifierViewController    classifierViewController;
 
     CGRect      _theWindowBounds;
 
@@ -246,8 +239,6 @@ activeProject = nil;  // URI to the currently open project
     [center addObserver:self selector:@selector(cannotLogIn:) name:RodanLogInErrorNotification object:nil];
     [center addObserver:self selector:@selector(didLogOut:) name:RodanDidLogOutNotification object:nil];
 
-    [center addObserver:self selector:@selector(switchWorkspaceToClassifier:) name:RodanShouldLoadClassifierNotification object:nil];
-
     [theToolbar setVisible:NO];
 
     var statusToolbarIcon = [[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"toolbar-status.png"] size:CGSizeMake(32.0, 32.0)],
@@ -255,7 +246,6 @@ activeProject = nil;  // URI to the currently open project
         workflowResultsToolbarIcon = [[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"toolbar-workflows.png"] size:CGSizeMake(32.0, 32.0)],
         jobsToolbarIcon = [[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"toolbar-jobs.png"] size:CGSizeMake(32.0, 32.0)],
         usersToolbarIcon = [[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"toolbar-users.png"] size:CGSizeMake(46.0, 32.0)],
-        classifierToolbarIcon = [[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"toolbar-classifier.png"] size:CGSizeMake(32.0, 32.0)],
         workflowDesignerToolbarIcon = [[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"toolbar-workflow-designer.png"] size:CGSizeMake(32.0, 32.0)],
         backgroundTexture = [[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"workflow-backgroundTexture.png"] size:CGSizeMake(200.0, 200.0)];
 
@@ -264,7 +254,6 @@ activeProject = nil;  // URI to the currently open project
     [workflowResultsToolbarItem setImage:workflowResultsToolbarIcon];
     [jobsToolbarItem setImage:jobsToolbarIcon];
     [usersToolbarItem setImage:usersToolbarIcon];
-    [classifierToolbarItem setImage:classifierToolbarIcon];
     [workflowDesignerToolbarItem setImage:workflowDesignerToolbarIcon];
 
     [chooseWorkflowView setBackgroundColor:[CPColor colorWithPatternImage:backgroundTexture]];
@@ -278,9 +267,6 @@ activeProject = nil;  // URI to the currently open project
     [contentScrollView setAutohidesScrollers:YES];
 
     [contentView setSubviews:[contentScrollView]];
-
-    [classifierViewController setCSRFToken:CSRFToken];
-    [classifierViewController loadView];  // Loads ClassifierView.xib and instantiates its objects
 }
 
 
@@ -342,7 +328,6 @@ activeProject = nil;  // URI to the currently open project
 
     [projectController fetchProjects];
     [jobController fetchJobs];
-    [classifierViewController fetchClassifiers];
 }
 
 - (void)didLogOut:(id)aNotification
@@ -365,7 +350,7 @@ activeProject = nil;  // URI to the currently open project
 
 - (void)didLoadProject:(CPNotification)aNotification
 {
-    [theWindow setTitle:@"Rodan — " + [activeProject projectName]];
+    [theWindow setTitle:@"Rodan &mdash; " + [activeProject projectName]];
 
     [CPMenu setMenuBarVisible:YES];
     [theToolbar setVisible:YES];
@@ -446,21 +431,6 @@ activeProject = nil;  // URI to the currently open project
     [usersGroupsView setAutoresizingMask:CPViewWidthSizable];
     [usersGroupsView setFrame:[contentScrollView bounds]];
     [contentScrollView setDocumentView:usersGroupsView];
-}
-
-- (IBAction)switchWorkspaceToClassifier:(id)aSender
-{
-    [RKNotificationTimer clearTimedNotification];
-
-    [menuItemsController reset];
-    [menuItemsController setClassifierIsActive:YES];
-    var classifierView = [classifierViewController view];
-    [classifierView setAutoresizingMask:CPViewWidthSizable | CPViewHeightSizable];
-    [classifierView setFrame:[contentScrollView bounds]];
-    [contentScrollView setDocumentView:[classifierViewController view]];
-
-    [[CPNotificationCenter defaultCenter] postNotificationName:RodanHasFocusClassifierViewNotification
-                                          object:nil];
 }
 
 - (IBAction)switchWorkspaceToWorkflowDesigner:(id)aSender

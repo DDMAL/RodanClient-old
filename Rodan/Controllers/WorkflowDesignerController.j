@@ -8,7 +8,6 @@
 @global activeUser
 @global RodanHasFocusWorkflowDesignerViewNotification
 @global RodanShouldLoadWorkflowDesignerNotification
-@global RodanShouldLoadClassifiersNotification
 @global RodanShouldLoadPagesNotification
 @global RodanDidLoadWorkflowNotification
 @global RodanRemoveJobFromWorkflowNotification
@@ -135,8 +134,6 @@ var _msLOADINTERVAL = 5.0;
 - (void)receiveHasFocusEvent:(CPNotification)aNotification
 {
     [[CPNotificationCenter defaultCenter] postNotificationName:RodanShouldLoadWorkflowsNotification
-                                          object:nil];
-    [[CPNotificationCenter defaultCenter] postNotificationName:RodanShouldLoadClassifiersNotification
                                           object:nil];
     [[CPNotificationCenter defaultCenter] postNotificationName:RodanShouldLoadPagesNotification
                                           object:nil];

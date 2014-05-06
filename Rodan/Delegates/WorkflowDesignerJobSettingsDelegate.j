@@ -1,18 +1,14 @@
 @import "../Controllers/WorkflowController.j"
 @import "../Frameworks/RodanKit/RKNumberFormatter.j"
-@import "../Models/MinimalClassifier.j"
 @import "../Models/Job.j"
 
-@global RodanShouldLoadClassifiersNotification
 @global JOBSETTING_TYPE_INT
 @global JOBSETTING_TYPE_REAL
 @global JOBSETTING_TYPE_UUIDWORKFLOWJOB
 @global JOBSETTING_TYPE_CHOICE
-@global JOBSETTING_TYPE_UUIDCLASSIFIER
 
 @implementation WorkflowDesignerJobSettingsDelegate : CPObject
 {
-    CPArray _classifiers;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////
@@ -22,10 +18,6 @@
 {
     if (self = [super init])
     {
-        [[CPNotificationCenter defaultCenter] addObserver:self
-                                              selector:@selector(handleShouldLoadNotification:)
-                                              name:RodanShouldLoadClassifiersNotification
-                                              object:nil];
     }
     return self;
 }
@@ -82,10 +74,6 @@
  */
 - (void)handleShouldLoadNotification:(CPNotification)aNotification
 {
-    [WLRemoteAction schedule:WLRemoteActionGetType
-                    path:@"/classifiers/"
-                    delegate:self
-                    message:nil];
 }
 
 /**
@@ -93,12 +81,6 @@
  */
 - (void)remoteActionDidFinish:(WLRemoteAction)aAction
 {
-    if ([aAction result])
-    {
-        [WLRemoteObject setDirtProof:YES];
-        _classifiers = [MinimalClassifier objectsFromJson:[aAction result]];
-        [WLRemoteObject setDirtProof:NO];
-    }
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////
@@ -132,10 +114,6 @@
 
         case JOBSETTING_TYPE_CHOICE:
             dataView = [self _createPopUpButton:aSetting];
-            break;
-
-        case JOBSETTING_TYPE_UUIDCLASSIFIER:
-            dataView = [self _createClassifierPopUpButton:aSetting];
             break;
 
         default:
@@ -258,58 +236,6 @@
 
     // Initialize, bind, return.
     if (defaultSelection === null)
-    {
-        [button selectItemAtIndex:0];
-    }
-    else
-    {
-        [button selectItem:defaultSelection];
-    }
-    [aSetting bind:"settingDefault" toObject:button withKeyPath:"selectedItem.representedObject" options:null];
-    [button sizeToFit];
-    [button setAutoresizingMask:CPViewWidthSizable | CPViewHeightSizable];
-    return button;
-}
-
-/**
- * Given a workflow job setting, create a pop-up button that allows selection of classifiers.
- */
-- (CPPopUpButton)_createClassifierPopUpButton:(WorkflowJobSetting)aSetting
-{
-    // Nil check.
-    var button = [CPPopUpButton new];
-    if (aSetting === nil)
-    {
-        return button;
-    }
-
-    // Nil check.
-    if (_classifiers === nil)
-    {
-        return button;
-    }
-
-    // Enumerate through classifiers and add menu items to the button.
-    // Also, look for the current setting (if there).
-    var classifierEnumerator = [_classifiers objectEnumerator],
-        classifier = nil,
-        defaultSelection = nil;
-    while (classifier = [classifierEnumerator nextObject])
-    {
-        // Create and add item.
-        var menuItem = [[CPMenuItem alloc] initWithTitle:[classifier name] action:null keyEquivalent:null];
-        [menuItem setRepresentedObject:[classifier pk]];
-        [button addItem:menuItem];
-
-        // Check if the pk matches the current setting.  If it does, THIS one should be our default item.
-        if ([aSetting settingDefault] === [classifier pk])
-        {
-            defaultSelection = menuItem;
-        }
-    }
-
-    // Initialize, bind, return.
-    if (defaultSelection === nil)
     {
         [button selectItemAtIndex:0];
     }
