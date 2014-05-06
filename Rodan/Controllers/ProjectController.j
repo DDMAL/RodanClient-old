@@ -34,7 +34,7 @@
     return self;
 }
 
-- (id)awakeFromCib
+- (void)awakeFromCib
 {
     [[CPNotificationCenter defaultCenter] addObserver:self
                                           selector:@selector(shouldLoadProject:)

@@ -19,7 +19,6 @@
                 Workflow                _currentlySelectedWorkflow;
                 Workflow                _loadingWorkflow;
                 BOOL                    _selectionFlag;
-
 }
 
 #pragma mark Public
@@ -36,7 +35,7 @@
 
 - (id)init
 {
-    _selectionChangeFlag = NO;
+    _selectionFlag = NO;
     [[CPNotificationCenter defaultCenter] addObserver:self
                                           selector:@selector(handleShouldLoadWorkflowsNotification:)
                                           name:RodanShouldLoadWorkflowsNotification

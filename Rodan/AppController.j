@@ -208,7 +208,7 @@ activeProject = nil;  // URI to the currently open project
 
 }
 
-- (id)awakeFromCib
+- (void)awakeFromCib
 {
     CPLogRegister(CPLogConsole);
     isLoggedIn = NO;

@@ -6,7 +6,6 @@
 + (CPString)version
 {
     var bundle = [CPBundle bundleForClass:[self class]];
-
-    return [bundle objectForInfoDictionaryKey:@"CPBundleVersion"];
+    return [bundle objectForInfoDictionaryKey:@"CPBundleInfoDictionaryVersion"];
 }
 @end

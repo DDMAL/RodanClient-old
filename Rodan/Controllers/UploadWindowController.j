@@ -38,7 +38,7 @@
     CPString modelListUrl @accessors;  // initialized in XCode (Identity tab)
 }
 
-- (id)awakeFromCib
+- (void)awakeFromCib
 {
     [cappuccinoWindow setDefaultButton:submitButton];
 
