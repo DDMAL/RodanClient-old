@@ -591,7 +591,7 @@
 						<reference ref="997812866"/>
 						<reference ref="386065890"/>
 					</array>
-					<array class="NSMutableArray" key="NSToolbarIBDefaultItems">
+					<array key="NSToolbarIBDefaultItems">
 						<reference ref="39400255"/>
 						<reference ref="886137399"/>
 						<reference ref="386065890"/>
@@ -613,7 +613,7 @@
 					<reference key="NSSuperview"/>
 					<reference key="NSWindow"/>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
 				<string key="NSMinSize">{1024, 678}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
@@ -821,7 +821,7 @@
 					<string key="NSFrameSize">{743, 377}</string>
 					<string key="NSReuseIdentifierKey">_NS:20</string>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
 			</object>
@@ -957,7 +957,7 @@
 					<string key="NSFrameSize">{473, 306}</string>
 					<string key="NSReuseIdentifierKey">_NS:20</string>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
 			</object>
@@ -1261,7 +1261,7 @@
 					<reference key="NSNextKeyView" ref="512674773"/>
 					<string key="NSReuseIdentifierKey">_NS:20</string>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
 			</object>
@@ -1401,7 +1401,7 @@
 					<reference key="NSNextKeyView" ref="928455372"/>
 					<string key="NSReuseIdentifierKey">_NS:20</string>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
 			</object>
@@ -1534,7 +1534,7 @@
 					<reference key="NSNextKeyView" ref="139492834"/>
 					<string key="NSReuseIdentifierKey">_NS:20</string>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
 			</object>
@@ -1715,7 +1715,7 @@
 					<reference key="NSNextKeyView" ref="28123836"/>
 					<string key="NSReuseIdentifierKey">_NS:20</string>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
 			</object>
@@ -2792,7 +2792,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 					<reference key="NSNextKeyView" ref="224082549"/>
 					<string key="NSReuseIdentifierKey">_NS:20</string>
 				</object>
-				<string key="NSScreenRect">{{1680, 0}, {1920, 1200}}</string>
+				<string key="NSScreenRect">{{1920, 0}, {1920, 1178}}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
 			</object>
@@ -3006,7 +3006,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 					<reference key="NSNextKeyView" ref="1010765780"/>
 					<string key="NSReuseIdentifierKey">_NS:20</string>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
 			</object>
@@ -3467,7 +3467,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 				<string key="NSClassName">NSView</string>
 			</object>
 			<object class="NSCustomView" id="37409648">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">256</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="NSCustomView" id="799487720">
@@ -3475,6 +3475,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 						<int key="NSvFlags">258</int>
 						<string key="NSFrame">{{20, 60}, {741, 26}}</string>
 						<reference key="NSSuperview" ref="37409648"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="587798979"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<string key="NSClassName">CPButtonBar</string>
@@ -3484,6 +3485,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 						<int key="NSvFlags">257</int>
 						<string key="NSFrame">{{692, 13}, {74, 32}}</string>
 						<reference key="NSSuperview" ref="37409648"/>
+						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="84633541">
@@ -3507,6 +3509,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 						<int key="NSvFlags">268</int>
 						<string key="NSFrame">{{17, 492}, {265, 21}}</string>
 						<reference key="NSSuperview" ref="37409648"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="897287897"/>
 						<string key="NSReuseIdentifierKey">_NS:1535</string>
 						<bool key="NSEnabled">YES</bool>
@@ -3533,13 +3536,14 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 						<array class="NSMutableArray" key="NSSubviews">
 							<object class="NSClipView" id="1005364474">
 								<reference key="NSNextResponder" ref="897287897"/>
-								<int key="NSvFlags">2304</int>
+								<int key="NSvFlags">2322</int>
 								<array class="NSMutableArray" key="NSSubviews">
 									<object class="NSTableView" id="584126452">
 										<reference key="NSNextResponder" ref="1005364474"/>
 										<int key="NSvFlags">256</int>
-										<string key="NSFrameSize">{726, 366}</string>
+										<string key="NSFrameSize">{741, 381}</string>
 										<reference key="NSSuperview" ref="1005364474"/>
+										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="666193864"/>
 										<string key="NSReuseIdentifierKey">_NS:13</string>
 										<bool key="NSEnabled">YES</bool>
@@ -3548,17 +3552,17 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 										<object class="NSTableHeaderView" key="NSHeaderView" id="502366825">
 											<reference key="NSNextResponder" ref="666193864"/>
 											<int key="NSvFlags">256</int>
-											<string key="NSFrameSize">{726, 17}</string>
+											<string key="NSFrameSize">{741, 17}</string>
 											<reference key="NSSuperview" ref="666193864"/>
+											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="541957506"/>
 											<string key="NSReuseIdentifierKey">_NS:16</string>
 											<reference key="NSTableView" ref="584126452"/>
 										</object>
 										<object class="_NSCornerView" key="NSCornerView" id="541957506">
-											<reference key="NSNextResponder" ref="897287897"/>
+											<nil key="NSNextResponder"/>
 											<int key="NSvFlags">256</int>
 											<string key="NSFrame">{{726, 0}, {16, 17}}</string>
-											<reference key="NSSuperview" ref="897287897"/>
 											<reference key="NSNextKeyView" ref="1005364474"/>
 											<string key="NSReuseIdentifierKey">_NS:19</string>
 										</object>
@@ -3643,7 +3647,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 												<reference key="NSTableView" ref="584126452"/>
 											</object>
 											<object class="NSTableColumn" id="946467081">
-												<double key="NSWidth">129.58203125</double>
+												<double key="NSWidth">144.58203125</double>
 												<double key="NSMinWidth">10</double>
 												<double key="NSMaxWidth">3.4028234663852886e+38</double>
 												<object class="NSTableHeaderCell" key="NSHeaderCell">
@@ -3685,8 +3689,9 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 										<int key="NSTableViewGroupRowStyle">1</int>
 									</object>
 								</array>
-								<string key="NSFrame">{{0, 17}, {726, 366}}</string>
+								<string key="NSFrame">{{0, 17}, {741, 381}}</string>
 								<reference key="NSSuperview" ref="897287897"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="584126452"/>
 								<string key="NSReuseIdentifierKey">_NS:11</string>
 								<reference key="NSDocView" ref="584126452"/>
@@ -3696,8 +3701,9 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 							<object class="NSScroller" id="392117973">
 								<reference key="NSNextResponder" ref="897287897"/>
 								<int key="NSvFlags">256</int>
-								<string key="NSFrame">{{726, 17}, {15, 366}}</string>
+								<string key="NSFrame">{{725, 17}, {16, 381}}</string>
 								<reference key="NSSuperview" ref="897287897"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="167841865"/>
 								<string key="NSReuseIdentifierKey">_NS:58</string>
 								<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
@@ -3709,8 +3715,9 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 							<object class="NSScroller" id="167841865">
 								<reference key="NSNextResponder" ref="897287897"/>
 								<int key="NSvFlags">256</int>
-								<string key="NSFrame">{{0, 383}, {726, 15}}</string>
+								<string key="NSFrame">{{0, 382}, {741, 16}}</string>
 								<reference key="NSSuperview" ref="897287897"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="799487720"/>
 								<string key="NSReuseIdentifierKey">_NS:60</string>
 								<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
@@ -3722,22 +3729,23 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 							</object>
 							<object class="NSClipView" id="666193864">
 								<reference key="NSNextResponder" ref="897287897"/>
-								<int key="NSvFlags">2304</int>
+								<int key="NSvFlags">2338</int>
 								<array class="NSMutableArray" key="NSSubviews">
 									<reference ref="502366825"/>
 								</array>
-								<string key="NSFrameSize">{726, 17}</string>
+								<string key="NSFrameSize">{741, 17}</string>
 								<reference key="NSSuperview" ref="897287897"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="502366825"/>
 								<string key="NSReuseIdentifierKey">_NS:15</string>
 								<reference key="NSDocView" ref="502366825"/>
 								<reference key="NSBGColor" ref="261822172"/>
 								<int key="NScvFlags">4</int>
 							</object>
-							<reference ref="541957506"/>
 						</array>
 						<string key="NSFrame">{{20, 86}, {741, 398}}</string>
 						<reference key="NSSuperview" ref="37409648"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="1005364474"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<int key="NSsFlags">133168</int>
@@ -3752,6 +3760,8 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 					</object>
 				</array>
 				<string key="NSFrameSize">{780, 533}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="473989494"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<string key="NSClassName">NSView</string>
@@ -20181,1441 +20191,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes">
-			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<object class="IBPartialClassDescription">
-					<string key="className">AppController</string>
-					<string key="superclassName">NSObject</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="logOut:">id</string>
-						<string key="openServerAdmin:">id</string>
-						<string key="openUserPreferences:">id</string>
-						<string key="showWorkflowDesigner:">id</string>
-						<string key="switchWorkspaceToInteractiveJobs:">id</string>
-						<string key="switchWorkspaceToManagePages:">id</string>
-						<string key="switchWorkspaceToProjectStatus:">id</string>
-						<string key="switchWorkspaceToUsersGroups:">id</string>
-						<string key="switchWorkspaceToWorkflowDesigner:">id</string>
-						<string key="switchWorkspaceToWorkflowResults:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="logOut:">
-							<string key="name">logOut:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="openServerAdmin:">
-							<string key="name">openServerAdmin:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="openUserPreferences:">
-							<string key="name">openUserPreferences:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="showWorkflowDesigner:">
-							<string key="name">showWorkflowDesigner:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="switchWorkspaceToInteractiveJobs:">
-							<string key="name">switchWorkspaceToInteractiveJobs:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="switchWorkspaceToManagePages:">
-							<string key="name">switchWorkspaceToManagePages:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="switchWorkspaceToProjectStatus:">
-							<string key="name">switchWorkspaceToProjectStatus:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="switchWorkspaceToUsersGroups:">
-							<string key="name">switchWorkspaceToUsersGroups:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="switchWorkspaceToWorkflowDesigner:">
-							<string key="name">switchWorkspaceToWorkflowDesigner:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="switchWorkspaceToWorkflowResults:">
-							<string key="name">switchWorkspaceToWorkflowResults:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="accountPreferencesView">NSView</string>
-						<string key="chooseWorkflowView">NSView</string>
-						<string key="imageUploadButton">UploadButton</string>
-						<string key="interactiveJobsView">NSView</string>
-						<string key="jobController">JobController</string>
-						<string key="jobsToolbarItem">NSToolbarItem</string>
-						<string key="logInController">LogInController</string>
-						<string key="loginWaitScreenView">NSView</string>
-						<string key="managePagesView">NSView</string>
-						<string key="menuItemsController">NSObject</string>
-						<string key="pageController">PageController</string>
-						<string key="pagesToolbarItem">NSToolbarItem</string>
-						<string key="projectArrayController">NSArrayController</string>
-						<string key="projectController">ProjectController</string>
-						<string key="projectStatusView">NSView</string>
-						<string key="rodanMenuItem">NSMenuItem</string>
-						<string key="serverAdminWindow">NSWindow</string>
-						<string key="statusToolbarItem">NSToolbarItem</string>
-						<string key="switchWorkspaceMenu">NSMenu</string>
-						<string key="theToolbar">TNToolbar</string>
-						<string key="theWindow">NSWindow</string>
-						<string key="userAdminView">NSView</string>
-						<string key="userPreferencesWindow">NSWindow</string>
-						<string key="usersGroupsView">NSView</string>
-						<string key="usersToolbarItem">NSToolbarItem</string>
-						<string key="workflowAddRemoveBar">CPButtonBar</string>
-						<string key="workflowController">WorkflowController</string>
-						<string key="workflowDesignerController">WorkflowDesignerController</string>
-						<string key="workflowDesignerToolbarItem">NSToolbarItem</string>
-						<string key="workflowDesignerView">NSView</string>
-						<string key="workflowResultsToolbarItem">NSToolbarItem</string>
-						<string key="workflowResultsView">NSView</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="accountPreferencesView">
-							<string key="name">accountPreferencesView</string>
-							<string key="candidateClassName">NSView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="chooseWorkflowView">
-							<string key="name">chooseWorkflowView</string>
-							<string key="candidateClassName">NSView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="imageUploadButton">
-							<string key="name">imageUploadButton</string>
-							<string key="candidateClassName">UploadButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="interactiveJobsView">
-							<string key="name">interactiveJobsView</string>
-							<string key="candidateClassName">NSView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="jobController">
-							<string key="name">jobController</string>
-							<string key="candidateClassName">JobController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="jobsToolbarItem">
-							<string key="name">jobsToolbarItem</string>
-							<string key="candidateClassName">NSToolbarItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="logInController">
-							<string key="name">logInController</string>
-							<string key="candidateClassName">LogInController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="loginWaitScreenView">
-							<string key="name">loginWaitScreenView</string>
-							<string key="candidateClassName">NSView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="managePagesView">
-							<string key="name">managePagesView</string>
-							<string key="candidateClassName">NSView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="menuItemsController">
-							<string key="name">menuItemsController</string>
-							<string key="candidateClassName">NSObject</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="pageController">
-							<string key="name">pageController</string>
-							<string key="candidateClassName">PageController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="pagesToolbarItem">
-							<string key="name">pagesToolbarItem</string>
-							<string key="candidateClassName">NSToolbarItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="projectArrayController">
-							<string key="name">projectArrayController</string>
-							<string key="candidateClassName">NSArrayController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="projectController">
-							<string key="name">projectController</string>
-							<string key="candidateClassName">ProjectController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="projectStatusView">
-							<string key="name">projectStatusView</string>
-							<string key="candidateClassName">NSView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="rodanMenuItem">
-							<string key="name">rodanMenuItem</string>
-							<string key="candidateClassName">NSMenuItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="serverAdminWindow">
-							<string key="name">serverAdminWindow</string>
-							<string key="candidateClassName">NSWindow</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="statusToolbarItem">
-							<string key="name">statusToolbarItem</string>
-							<string key="candidateClassName">NSToolbarItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="switchWorkspaceMenu">
-							<string key="name">switchWorkspaceMenu</string>
-							<string key="candidateClassName">NSMenu</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="theToolbar">
-							<string key="name">theToolbar</string>
-							<string key="candidateClassName">TNToolbar</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="theWindow">
-							<string key="name">theWindow</string>
-							<string key="candidateClassName">NSWindow</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="userAdminView">
-							<string key="name">userAdminView</string>
-							<string key="candidateClassName">NSView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="userPreferencesWindow">
-							<string key="name">userPreferencesWindow</string>
-							<string key="candidateClassName">NSWindow</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="usersGroupsView">
-							<string key="name">usersGroupsView</string>
-							<string key="candidateClassName">NSView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="usersToolbarItem">
-							<string key="name">usersToolbarItem</string>
-							<string key="candidateClassName">NSToolbarItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="workflowAddRemoveBar">
-							<string key="name">workflowAddRemoveBar</string>
-							<string key="candidateClassName">CPButtonBar</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="workflowController">
-							<string key="name">workflowController</string>
-							<string key="candidateClassName">WorkflowController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="workflowDesignerController">
-							<string key="name">workflowDesignerController</string>
-							<string key="candidateClassName">WorkflowDesignerController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="workflowDesignerToolbarItem">
-							<string key="name">workflowDesignerToolbarItem</string>
-							<string key="candidateClassName">NSToolbarItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="workflowDesignerView">
-							<string key="name">workflowDesignerView</string>
-							<string key="candidateClassName">NSView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="workflowResultsToolbarItem">
-							<string key="name">workflowResultsToolbarItem</string>
-							<string key="candidateClassName">NSToolbarItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="workflowResultsView">
-							<string key="name">workflowResultsView</string>
-							<string key="candidateClassName">NSView</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/AppController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">ClassifierController</string>
-					<string key="superclassName">NSObject</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">createClassifier:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">createClassifier:</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">createClassifier:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</object>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="classifierArrayController">NSArrayController</string>
-						<string key="classifierTableViewDelegate">ClassifierTableViewDelegate</string>
-						<string key="classifierUploadWindowController">UploadWindowController</string>
-						<string key="createButton">NSButton</string>
-						<string key="deleteClassifierWindow">NSWindow</string>
-						<string key="nameUsedLabel">NSTextField</string>
-						<string key="newClassifierTextfield">NSTextField</string>
-						<string key="newClassifierWindow">NSWindow</string>
-						<string key="openButton">NSButton</string>
-						<string key="openClassifierTableView">NSTableView</string>
-						<string key="openClassifierTableViewDelegate">OpenClassifierTableViewDelegate</string>
-						<string key="openClassifierWindow">NSWindow</string>
-						<string key="pageGlyphsTableViewDelegate">PageGlyphsTableViewDelegate</string>
-						<string key="pageImageController">NSObjectController</string>
-						<string key="symbolTableColumn">NSTableColumn</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="classifierArrayController">
-							<string key="name">classifierArrayController</string>
-							<string key="candidateClassName">NSArrayController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="classifierTableViewDelegate">
-							<string key="name">classifierTableViewDelegate</string>
-							<string key="candidateClassName">ClassifierTableViewDelegate</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="classifierUploadWindowController">
-							<string key="name">classifierUploadWindowController</string>
-							<string key="candidateClassName">UploadWindowController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="createButton">
-							<string key="name">createButton</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="deleteClassifierWindow">
-							<string key="name">deleteClassifierWindow</string>
-							<string key="candidateClassName">NSWindow</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="nameUsedLabel">
-							<string key="name">nameUsedLabel</string>
-							<string key="candidateClassName">NSTextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="newClassifierTextfield">
-							<string key="name">newClassifierTextfield</string>
-							<string key="candidateClassName">NSTextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="newClassifierWindow">
-							<string key="name">newClassifierWindow</string>
-							<string key="candidateClassName">NSWindow</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="openButton">
-							<string key="name">openButton</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="openClassifierTableView">
-							<string key="name">openClassifierTableView</string>
-							<string key="candidateClassName">NSTableView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="openClassifierTableViewDelegate">
-							<string key="name">openClassifierTableViewDelegate</string>
-							<string key="candidateClassName">OpenClassifierTableViewDelegate</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="openClassifierWindow">
-							<string key="name">openClassifierWindow</string>
-							<string key="candidateClassName">NSWindow</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="pageGlyphsTableViewDelegate">
-							<string key="name">pageGlyphsTableViewDelegate</string>
-							<string key="candidateClassName">PageGlyphsTableViewDelegate</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="pageImageController">
-							<string key="name">pageImageController</string>
-							<string key="candidateClassName">NSObjectController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="symbolTableColumn">
-							<string key="name">symbolTableColumn</string>
-							<string key="candidateClassName">NSTableColumn</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/ClassifierController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">ClassifierSettingsController</string>
-					<string key="superclassName">NSObject</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">settingsWindowController</string>
-						<string key="NS.object.0">UploadWindowController</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">settingsWindowController</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">settingsWindowController</string>
-							<string key="candidateClassName">UploadWindowController</string>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/ClassifierSettingsController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">ClassifierTableViewDelegate</string>
-					<string key="superclassName">GlyphsTableViewDelegate</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/ClassifierTableViewDelegate.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">ClassifierViewController</string>
-					<string key="superclassName">NSViewController</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="classifierController">ClassifierController</string>
-						<string key="classifierSettingsController">ClassifierSettingsController</string>
-						<string key="classifierSettingsUploadButton">UploadButton</string>
-						<string key="classifierUploadButton">UploadButton</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="classifierController">
-							<string key="name">classifierController</string>
-							<string key="candidateClassName">ClassifierController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="classifierSettingsController">
-							<string key="name">classifierSettingsController</string>
-							<string key="candidateClassName">ClassifierSettingsController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="classifierSettingsUploadButton">
-							<string key="name">classifierSettingsUploadButton</string>
-							<string key="candidateClassName">UploadButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="classifierUploadButton">
-							<string key="name">classifierUploadButton</string>
-							<string key="candidateClassName">UploadButton</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/ClassifierViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">GlyphsTableViewDelegate</string>
-					<string key="superclassName">NSObject</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="theOtherTableViewDelegate">GlyphsTableViewDelegate</string>
-						<string key="theTableView">NSTableView</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="theOtherTableViewDelegate">
-							<string key="name">theOtherTableViewDelegate</string>
-							<string key="candidateClassName">GlyphsTableViewDelegate</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="theTableView">
-							<string key="name">theTableView</string>
-							<string key="candidateClassName">NSTableView</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/GlyphsTableViewDelegate.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">InteractiveJobsController</string>
-					<string key="superclassName">NSObject</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">displayInteractiveJobWindow:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">displayInteractiveJobWindow:</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">displayInteractiveJobWindow:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</object>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="_classifierViewController">ClassifierViewController</string>
-						<string key="interactiveJobsArrayController">NSArrayController</string>
-						<string key="interactiveJobsTableView">NSTableView</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="_classifierViewController">
-							<string key="name">_classifierViewController</string>
-							<string key="candidateClassName">ClassifierViewController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="interactiveJobsArrayController">
-							<string key="name">interactiveJobsArrayController</string>
-							<string key="candidateClassName">NSArrayController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="interactiveJobsTableView">
-							<string key="name">interactiveJobsTableView</string>
-							<string key="candidateClassName">NSTableView</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/InteractiveJobsController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">JobController</string>
-					<string key="superclassName">NSObject</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="_menuCategory">NSMenu</string>
-						<string key="_menuIsInteractive">NSMenu</string>
-						<string key="jobArrayController">NSArrayController</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="_menuCategory">
-							<string key="name">_menuCategory</string>
-							<string key="candidateClassName">NSMenu</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_menuIsInteractive">
-							<string key="name">_menuIsInteractive</string>
-							<string key="candidateClassName">NSMenu</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="jobArrayController">
-							<string key="name">jobArrayController</string>
-							<string key="candidateClassName">NSArrayController</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/JobController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">JobListDelegate</string>
-					<string key="superclassName">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/JobListDelegate.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">LoadActiveProjectDelegate</string>
-					<string key="superclassName">NSObject</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="pageArrayController">NSArrayController</string>
-						<string key="workflowArrayController">NSArrayController</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="pageArrayController">
-							<string key="name">pageArrayController</string>
-							<string key="candidateClassName">NSArrayController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="workflowArrayController">
-							<string key="name">workflowArrayController</string>
-							<string key="candidateClassName">NSArrayController</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/LoadActiveProjectDelegate.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">LoadActiveWorkflowDelegate</string>
-					<string key="superclassName">NSObject</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="currentWorkflowArrayController">NSArrayController</string>
-						<string key="workflowController">WorkflowController</string>
-						<string key="workflowPagesArrayController">NSArrayController</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="currentWorkflowArrayController">
-							<string key="name">currentWorkflowArrayController</string>
-							<string key="candidateClassName">NSArrayController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="workflowController">
-							<string key="name">workflowController</string>
-							<string key="candidateClassName">WorkflowController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="workflowPagesArrayController">
-							<string key="name">workflowPagesArrayController</string>
-							<string key="candidateClassName">NSArrayController</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/LoadActiveWorkflowDelegate.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">LogInController</string>
-					<string key="superclassName">NSObject</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">closeSheet:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">closeSheet:</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">closeSheet:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</object>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="logInWindow">NSWindow</string>
-						<string key="passwordField">NSSecureTextField</string>
-						<string key="submitButton">NSButton</string>
-						<string key="usernameField">NSTextField</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="logInWindow">
-							<string key="name">logInWindow</string>
-							<string key="candidateClassName">NSWindow</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="passwordField">
-							<string key="name">passwordField</string>
-							<string key="candidateClassName">NSSecureTextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="submitButton">
-							<string key="name">submitButton</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="usernameField">
-							<string key="name">usernameField</string>
-							<string key="candidateClassName">NSTextField</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/LogInController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">LogOutController</string>
-					<string key="superclassName">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/LogOutController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">MenuItemsController</string>
-					<string key="superclassName">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/MenuItemsController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">OpenClassifierTableViewDelegate</string>
-					<string key="superclassName">NSObject</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">deleteClassifierWindow</string>
-						<string key="NS.object.0">NSWindow</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">deleteClassifierWindow</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">deleteClassifierWindow</string>
-							<string key="candidateClassName">NSWindow</string>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/OpenClassifierTableViewDelegate.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">PageController</string>
-					<string key="superclassName">NSObject</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="removePage:">id</string>
-						<string key="viewOriginal:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="removePage:">
-							<string key="name">removePage:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="viewOriginal:">
-							<string key="name">viewOriginal:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="imageUploadButton">UploadButton</string>
-						<string key="imageView">NSImageView</string>
-						<string key="pageArrayController">NSArrayController</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="imageUploadButton">
-							<string key="name">imageUploadButton</string>
-							<string key="candidateClassName">UploadButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="imageView">
-							<string key="name">imageView</string>
-							<string key="candidateClassName">NSImageView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="pageArrayController">
-							<string key="name">pageArrayController</string>
-							<string key="candidateClassName">NSArrayController</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/PageController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">PageGlyphsTableViewDelegate</string>
-					<string key="superclassName">GlyphsTableViewDelegate</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/PageGlyphsTableViewDelegate.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">PageListCellView</string>
-					<string key="superclassName">NSView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/PageListCellView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">PageListDelegate</string>
-					<string key="superclassName">NSObject</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">pageArrayController</string>
-						<string key="NS.object.0">NSArrayController</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">pageArrayController</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">pageArrayController</string>
-							<string key="candidateClassName">NSArrayController</string>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/PageListDelegate.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">ProjectController</string>
-					<string key="superclassName">NSObject</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="closeProject:">id</string>
-						<string key="newProject:">id</string>
-						<string key="openProject:">id</string>
-						<string key="shouldDeleteProjects:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="closeProject:">
-							<string key="name">closeProject:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="newProject:">
-							<string key="name">newProject:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="openProject:">
-							<string key="name">openProject:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="shouldDeleteProjects:">
-							<string key="name">shouldDeleteProjects:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="activeProjectDelegate">LoadActiveProjectDelegate</string>
-						<string key="jobController">JobController</string>
-						<string key="pageArrayController">NSArrayController</string>
-						<string key="pageController">PageController</string>
-						<string key="projectAddRemoveButtonBar">CPButtonBar</string>
-						<string key="projectArrayController">NSArrayController</string>
-						<string key="selectProjectView">NSView</string>
-						<string key="workflowArrayController">NSArrayController</string>
-						<string key="workflowController">WorkflowController</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="activeProjectDelegate">
-							<string key="name">activeProjectDelegate</string>
-							<string key="candidateClassName">LoadActiveProjectDelegate</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="jobController">
-							<string key="name">jobController</string>
-							<string key="candidateClassName">JobController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="pageArrayController">
-							<string key="name">pageArrayController</string>
-							<string key="candidateClassName">NSArrayController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="pageController">
-							<string key="name">pageController</string>
-							<string key="candidateClassName">PageController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="projectAddRemoveButtonBar">
-							<string key="name">projectAddRemoveButtonBar</string>
-							<string key="candidateClassName">CPButtonBar</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="projectArrayController">
-							<string key="name">projectArrayController</string>
-							<string key="candidateClassName">NSArrayController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="selectProjectView">
-							<string key="name">selectProjectView</string>
-							<string key="candidateClassName">NSView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="workflowArrayController">
-							<string key="name">workflowArrayController</string>
-							<string key="candidateClassName">NSArrayController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="workflowController">
-							<string key="name">workflowController</string>
-							<string key="candidateClassName">WorkflowController</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/ProjectController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">ResultsPackageController</string>
-					<string key="superclassName">NSObject</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="closeCreateResultsPackageWindow:">id</string>
-						<string key="handleCreatePackageRequest:">id</string>
-						<string key="handleDownload:">id</string>
-						<string key="handleJobRadioAction:">id</string>
-						<string key="handlePageRadioAction:">id</string>
-						<string key="openCreateResultsPackageWindow:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="closeCreateResultsPackageWindow:">
-							<string key="name">closeCreateResultsPackageWindow:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="handleCreatePackageRequest:">
-							<string key="name">handleCreatePackageRequest:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="handleDownload:">
-							<string key="name">handleDownload:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="handleJobRadioAction:">
-							<string key="name">handleJobRadioAction:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="handlePageRadioAction:">
-							<string key="name">handlePageRadioAction:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="openCreateResultsPackageWindow:">
-							<string key="name">openCreateResultsPackageWindow:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="_createResultsPackageWindow">NSWindow</string>
-						<string key="_jobRadioGroup">NSMatrix</string>
-						<string key="_jobTableView">NSTableView</string>
-						<string key="_jobsArrayController">NSArrayController</string>
-						<string key="_pageRadioGroup">NSMatrix</string>
-						<string key="_pageTableView">NSTableView</string>
-						<string key="_resultsPackagesArrayController">NSArrayController</string>
-						<string key="_runsDelegate">ResultsViewRunsDelegate</string>
-						<string key="_workflowPagesArrayController">NSArrayController</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="_createResultsPackageWindow">
-							<string key="name">_createResultsPackageWindow</string>
-							<string key="candidateClassName">NSWindow</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_jobRadioGroup">
-							<string key="name">_jobRadioGroup</string>
-							<string key="candidateClassName">NSMatrix</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_jobTableView">
-							<string key="name">_jobTableView</string>
-							<string key="candidateClassName">NSTableView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_jobsArrayController">
-							<string key="name">_jobsArrayController</string>
-							<string key="candidateClassName">NSArrayController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_pageRadioGroup">
-							<string key="name">_pageRadioGroup</string>
-							<string key="candidateClassName">NSMatrix</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_pageTableView">
-							<string key="name">_pageTableView</string>
-							<string key="candidateClassName">NSTableView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_resultsPackagesArrayController">
-							<string key="name">_resultsPackagesArrayController</string>
-							<string key="candidateClassName">NSArrayController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_runsDelegate">
-							<string key="name">_runsDelegate</string>
-							<string key="candidateClassName">ResultsViewRunsDelegate</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_workflowPagesArrayController">
-							<string key="name">_workflowPagesArrayController</string>
-							<string key="candidateClassName">NSArrayController</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/ResultsPackageController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">ResultsViewPagesDelegate</string>
-					<string key="superclassName">NSObject</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="_pageArrayController">NSArrayController</string>
-						<string key="_resultsViewResultsDelegate">ResultsViewResultsDelegate</string>
-						<string key="_resultsViewRunJobsDelegate">ResultsViewRunJobsDelegate</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="_pageArrayController">
-							<string key="name">_pageArrayController</string>
-							<string key="candidateClassName">NSArrayController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_resultsViewResultsDelegate">
-							<string key="name">_resultsViewResultsDelegate</string>
-							<string key="candidateClassName">ResultsViewResultsDelegate</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_resultsViewRunJobsDelegate">
-							<string key="name">_resultsViewRunJobsDelegate</string>
-							<string key="candidateClassName">ResultsViewRunJobsDelegate</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/ResultsViewPagesDelegate.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">ResultsViewResultsDelegate</string>
-					<string key="superclassName">NSObject</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">_resultArrayController</string>
-						<string key="NS.object.0">NSArrayController</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">_resultArrayController</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">_resultArrayController</string>
-							<string key="candidateClassName">NSArrayController</string>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/ResultsViewResultsDelegate.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">ResultsViewRunJobsDelegate</string>
-					<string key="superclassName">NSObject</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="closeRunJobErrorDetailsWindow:">id</string>
-						<string key="closeViewJobSettingsWindow:">id</string>
-						<string key="displayInteractiveJobWindow:">id</string>
-						<string key="openRunJobErrorDetailsWindow:">id</string>
-						<string key="openViewJobSettingsWindow:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="closeRunJobErrorDetailsWindow:">
-							<string key="name">closeRunJobErrorDetailsWindow:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="closeViewJobSettingsWindow:">
-							<string key="name">closeViewJobSettingsWindow:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="displayInteractiveJobWindow:">
-							<string key="name">displayInteractiveJobWindow:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="openRunJobErrorDetailsWindow:">
-							<string key="name">openRunJobErrorDetailsWindow:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="openViewJobSettingsWindow:">
-							<string key="name">openViewJobSettingsWindow:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="_interactiveJobsController">InteractiveJobsController</string>
-						<string key="_runJobArrayController">NSArrayController</string>
-						<string key="_runJobErrorDetailsWindow">NSWindow</string>
-						<string key="_runJobErrorTextField">NSTextField</string>
-						<string key="_runJobErrorView">NSView</string>
-						<string key="_runJobSettingsArrayController">NSArrayController</string>
-						<string key="_viewJobSettingsWindow">NSWindow</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="_interactiveJobsController">
-							<string key="name">_interactiveJobsController</string>
-							<string key="candidateClassName">InteractiveJobsController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_runJobArrayController">
-							<string key="name">_runJobArrayController</string>
-							<string key="candidateClassName">NSArrayController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_runJobErrorDetailsWindow">
-							<string key="name">_runJobErrorDetailsWindow</string>
-							<string key="candidateClassName">NSWindow</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_runJobErrorTextField">
-							<string key="name">_runJobErrorTextField</string>
-							<string key="candidateClassName">NSTextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_runJobErrorView">
-							<string key="name">_runJobErrorView</string>
-							<string key="candidateClassName">NSView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_runJobSettingsArrayController">
-							<string key="name">_runJobSettingsArrayController</string>
-							<string key="candidateClassName">NSArrayController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_viewJobSettingsWindow">
-							<string key="name">_viewJobSettingsWindow</string>
-							<string key="candidateClassName">NSWindow</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/ResultsViewRunJobsDelegate.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">ResultsViewRunsDelegate</string>
-					<string key="superclassName">NSObject</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">cancelWorkflowRun:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">cancelWorkflowRun:</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">cancelWorkflowRun:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</object>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="_interactiveJobsController">InteractiveJobsController</string>
-						<string key="_resultsViewPagesDelegate">ResultsViewPagesDelegate</string>
-						<string key="_runsArrayController">NSArrayController</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="_interactiveJobsController">
-							<string key="name">_interactiveJobsController</string>
-							<string key="candidateClassName">InteractiveJobsController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_resultsViewPagesDelegate">
-							<string key="name">_resultsViewPagesDelegate</string>
-							<string key="candidateClassName">ResultsViewPagesDelegate</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_runsArrayController">
-							<string key="name">_runsArrayController</string>
-							<string key="candidateClassName">NSArrayController</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/ResultsViewRunsDelegate.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">ResultsViewWorkflowsDelegate</string>
-					<string key="superclassName">NSObject</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="_resultsViewRunsDelegate">ResultsViewRunsDelegate</string>
-						<string key="_workflowArrayController">NSArrayController</string>
-						<string key="_workflowControlView">NSView</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="_resultsViewRunsDelegate">
-							<string key="name">_resultsViewRunsDelegate</string>
-							<string key="candidateClassName">ResultsViewRunsDelegate</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_workflowArrayController">
-							<string key="name">_workflowArrayController</string>
-							<string key="candidateClassName">NSArrayController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_workflowControlView">
-							<string key="name">_workflowControlView</string>
-							<string key="candidateClassName">NSView</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/ResultsViewWorkflowsDelegate.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">ServerAdminController</string>
-					<string key="superclassName">NSObject</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">switchViews:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">switchViews:</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">switchViews:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</object>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="celeryQueueView">NSView</string>
-						<string key="jobsAdminView">NSView</string>
-						<string key="projectAdminView">NSView</string>
-						<string key="theToolbar">NSToolbar</string>
-						<string key="theWindow">NSWindow</string>
-						<string key="userAdminView">NSView</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="celeryQueueView">
-							<string key="name">celeryQueueView</string>
-							<string key="candidateClassName">NSView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="jobsAdminView">
-							<string key="name">jobsAdminView</string>
-							<string key="candidateClassName">NSView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="projectAdminView">
-							<string key="name">projectAdminView</string>
-							<string key="candidateClassName">NSView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="theToolbar">
-							<string key="name">theToolbar</string>
-							<string key="candidateClassName">NSToolbar</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="theWindow">
-							<string key="name">theWindow</string>
-							<string key="candidateClassName">NSWindow</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="userAdminView">
-							<string key="name">userAdminView</string>
-							<string key="candidateClassName">NSView</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/ServerAdminController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">UploadWindowController</string>
-					<string key="superclassName">NSObject</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="arrayController">NSArrayController</string>
-						<string key="cappuccinoWindow">NSWindow</string>
-						<string key="chooseFileButton">UploadButton</string>
-						<string key="fileTextField">NSTextField</string>
-						<string key="nameTextField">NSTextField</string>
-						<string key="nameUsedLabel">NSTextField</string>
-						<string key="submitButton">NSButton</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="arrayController">
-							<string key="name">arrayController</string>
-							<string key="candidateClassName">NSArrayController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="cappuccinoWindow">
-							<string key="name">cappuccinoWindow</string>
-							<string key="candidateClassName">NSWindow</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="chooseFileButton">
-							<string key="name">chooseFileButton</string>
-							<string key="candidateClassName">UploadButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="fileTextField">
-							<string key="name">fileTextField</string>
-							<string key="candidateClassName">NSTextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="nameTextField">
-							<string key="name">nameTextField</string>
-							<string key="candidateClassName">NSTextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="nameUsedLabel">
-							<string key="name">nameUsedLabel</string>
-							<string key="candidateClassName">NSTextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="submitButton">
-							<string key="name">submitButton</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/UploadWindowController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">UserPreferencesController</string>
-					<string key="superclassName">NSObject</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">switchPreferences:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">switchPreferences:</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">switchPreferences:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</object>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="accountPreferencesView">NSView</string>
-						<string key="somethingElseView">NSView</string>
-						<string key="theToolbar">NSToolbar</string>
-						<string key="theWindow">NSWindow</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="accountPreferencesView">
-							<string key="name">accountPreferencesView</string>
-							<string key="candidateClassName">NSView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="somethingElseView">
-							<string key="name">somethingElseView</string>
-							<string key="candidateClassName">NSView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="theToolbar">
-							<string key="name">theToolbar</string>
-							<string key="candidateClassName">NSToolbar</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="theWindow">
-							<string key="name">theWindow</string>
-							<string key="candidateClassName">NSWindow</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/UserPreferencesController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">WorkflowController</string>
-					<string key="superclassName">NSObject</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="runWorkflow:">id</string>
-						<string key="testWorkflow:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="runWorkflow:">
-							<string key="name">runWorkflow:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="testWorkflow:">
-							<string key="name">testWorkflow:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="resultsViewWorkflowsDelegate">ResultsViewWorkflowsDelegate</string>
-						<string key="workflowAddRemoveBar">CPButtonBar</string>
-						<string key="workflowArrayController">NSArrayController</string>
-						<string key="workflowPagesArrayController">NSArrayController</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="resultsViewWorkflowsDelegate">
-							<string key="name">resultsViewWorkflowsDelegate</string>
-							<string key="candidateClassName">ResultsViewWorkflowsDelegate</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="workflowAddRemoveBar">
-							<string key="name">workflowAddRemoveBar</string>
-							<string key="candidateClassName">CPButtonBar</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="workflowArrayController">
-							<string key="name">workflowArrayController</string>
-							<string key="candidateClassName">NSArrayController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="workflowPagesArrayController">
-							<string key="name">workflowPagesArrayController</string>
-							<string key="candidateClassName">NSArrayController</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/WorkflowController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">WorkflowDesignerController</string>
-					<string key="superclassName">NSObject</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="closeAddPagesSheet:">id</string>
-						<string key="openAddPagesWindow:">id</string>
-						<string key="removePagesFromWorkflow:">id</string>
-						<string key="selectWorkflow:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="closeAddPagesSheet:">
-							<string key="name">closeAddPagesSheet:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="openAddPagesWindow:">
-							<string key="name">openAddPagesWindow:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="removePagesFromWorkflow:">
-							<string key="name">removePagesFromWorkflow:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="selectWorkflow:">
-							<string key="name">selectWorkflow:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="addPagesToWorkflowButton">NSButton</string>
-						<string key="addPagesToWorkflowTableView">NSTableView</string>
-						<string key="addPagesToWorkflowWindow">NSWindow</string>
-						<string key="currentWorkflow">NSTableView</string>
-						<string key="currentWorkflowArrayController">NSArrayController</string>
-						<string key="jobList">NSTableView</string>
-						<string key="loadActiveWorkflowDelegate">LoadActiveWorkflowDelegate</string>
-						<string key="menuItemsController">NSObject</string>
-						<string key="pageArrayController">NSArrayController</string>
-						<string key="pageList">NSTableView</string>
-						<string key="pageListAddRemoveButtonBar">CPButtonBar</string>
-						<string key="pageRunTabView">TNTabView</string>
-						<string key="pageTab">NSView</string>
-						<string key="pageThumbnailView">NSView</string>
-						<string key="runAddRemoveButtonBar">CPButtonBar</string>
-						<string key="runArrayController">NSArrayController</string>
-						<string key="runList">NSTableView</string>
-						<string key="runTab">NSView</string>
-						<string key="selectedWorkflowJobDescription">LPMultiLineTextField</string>
-						<string key="selectedWorkflowJobDescriptionTab">NSView</string>
-						<string key="selectedWorkflowJobSettingsTab">NSView</string>
-						<string key="workflowArrayController">NSArrayController</string>
-						<string key="workflowJobTabView">TNTabView</string>
-						<string key="workflowPagesArrayController">NSArrayController</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="addPagesToWorkflowButton">
-							<string key="name">addPagesToWorkflowButton</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="addPagesToWorkflowTableView">
-							<string key="name">addPagesToWorkflowTableView</string>
-							<string key="candidateClassName">NSTableView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="addPagesToWorkflowWindow">
-							<string key="name">addPagesToWorkflowWindow</string>
-							<string key="candidateClassName">NSWindow</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="currentWorkflow">
-							<string key="name">currentWorkflow</string>
-							<string key="candidateClassName">NSTableView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="currentWorkflowArrayController">
-							<string key="name">currentWorkflowArrayController</string>
-							<string key="candidateClassName">NSArrayController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="jobList">
-							<string key="name">jobList</string>
-							<string key="candidateClassName">NSTableView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="loadActiveWorkflowDelegate">
-							<string key="name">loadActiveWorkflowDelegate</string>
-							<string key="candidateClassName">LoadActiveWorkflowDelegate</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="menuItemsController">
-							<string key="name">menuItemsController</string>
-							<string key="candidateClassName">NSObject</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="pageArrayController">
-							<string key="name">pageArrayController</string>
-							<string key="candidateClassName">NSArrayController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="pageList">
-							<string key="name">pageList</string>
-							<string key="candidateClassName">NSTableView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="pageListAddRemoveButtonBar">
-							<string key="name">pageListAddRemoveButtonBar</string>
-							<string key="candidateClassName">CPButtonBar</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="pageRunTabView">
-							<string key="name">pageRunTabView</string>
-							<string key="candidateClassName">TNTabView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="pageTab">
-							<string key="name">pageTab</string>
-							<string key="candidateClassName">NSView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="pageThumbnailView">
-							<string key="name">pageThumbnailView</string>
-							<string key="candidateClassName">NSView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="runAddRemoveButtonBar">
-							<string key="name">runAddRemoveButtonBar</string>
-							<string key="candidateClassName">CPButtonBar</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="runArrayController">
-							<string key="name">runArrayController</string>
-							<string key="candidateClassName">NSArrayController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="runList">
-							<string key="name">runList</string>
-							<string key="candidateClassName">NSTableView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="runTab">
-							<string key="name">runTab</string>
-							<string key="candidateClassName">NSView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="selectedWorkflowJobDescription">
-							<string key="name">selectedWorkflowJobDescription</string>
-							<string key="candidateClassName">LPMultiLineTextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="selectedWorkflowJobDescriptionTab">
-							<string key="name">selectedWorkflowJobDescriptionTab</string>
-							<string key="candidateClassName">NSView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="selectedWorkflowJobSettingsTab">
-							<string key="name">selectedWorkflowJobSettingsTab</string>
-							<string key="candidateClassName">NSView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="workflowArrayController">
-							<string key="name">workflowArrayController</string>
-							<string key="candidateClassName">NSArrayController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="workflowJobTabView">
-							<string key="name">workflowJobTabView</string>
-							<string key="candidateClassName">TNTabView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="workflowPagesArrayController">
-							<string key="name">workflowPagesArrayController</string>
-							<string key="candidateClassName">NSArrayController</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/WorkflowDesignerController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">WorkflowDesignerDelegate</string>
-					<string key="superclassName">NSObject</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="currentWorkflow">NSTableView</string>
-						<string key="currentWorkflowArrayController">NSArrayController</string>
-						<string key="jobArrayController">NSArrayController</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="currentWorkflow">
-							<string key="name">currentWorkflow</string>
-							<string key="candidateClassName">NSTableView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="currentWorkflowArrayController">
-							<string key="name">currentWorkflowArrayController</string>
-							<string key="candidateClassName">NSArrayController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="jobArrayController">
-							<string key="name">jobArrayController</string>
-							<string key="candidateClassName">NSArrayController</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/WorkflowDesignerDelegate.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">WorkflowDesignerJobSettingsDelegate</string>
-					<string key="superclassName">NSObject</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">saveCurrentlySelectedWorkflowJobSettings:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">saveCurrentlySelectedWorkflowJobSettings:</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">saveCurrentlySelectedWorkflowJobSettings:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/WorkflowDesignerJobSettingsDelegate.h</string>
-					</object>
-				</object>
-			</array>
-		</object>
+		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaFramework</string>
 		<bool key="IBDocument.previouslyAttemptedUpgradeToXcode5">YES</bool>
