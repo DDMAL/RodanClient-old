@@ -79,6 +79,7 @@
 - (BOOL)tableView:(CPTableView)aTableView shouldSelectRow:(int)rowIndex
 {
     _currentlySelectedWorkflowRun = [[_runsArrayController contentArray] objectAtIndex:rowIndex];
+    [_resultsViewPagesDelegate reset];
     [[CPNotificationCenter defaultCenter] postNotificationName:RodanShouldLoadWorkflowPagesNotification
                                           object:_currentlySelectedWorkflowRun];
     _selectionFlag = YES;
