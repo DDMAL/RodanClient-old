@@ -122,7 +122,7 @@ activeProject = nil;  // URI to the currently open project
     @outlet     CPView      managePagesView;
     @outlet     CPView      usersGroupsView;
     @outlet     CPView      chooseWorkflowView;
-    @outlet     CPView      workflowDesignerView;
+    // @outlet     CPView      workflowDesignerView;
                 CPView      contentView;
     @outlet     CPObject    menuItemsController;
 
@@ -152,8 +152,8 @@ activeProject = nil;  // URI to the currently open project
     @outlet     JobController               jobController;
     @outlet     UploadButton                imageUploadButton;
     @outlet     LogInController             logInController;
-    @outlet     WorkflowController          workflowController;
-    @outlet     WorkflowDesignerController  workflowDesignerController;
+    // @outlet     WorkflowController          workflowController;
+    // @outlet     WorkflowDesignerController  workflowDesignerController;
 
     CGRect      _theWindowBounds;
 
