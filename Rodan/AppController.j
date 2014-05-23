@@ -433,18 +433,18 @@ activeProject = nil;  // URI to the currently open project
     [contentScrollView setDocumentView:usersGroupsView];
 }
 
-- (IBAction)switchWorkspaceToWorkflowDesigner:(id)aSender
-{
-    [RKNotificationTimer clearTimedNotification];
+// - (IBAction)switchWorkspaceToWorkflowDesigner:(id)aSender
+// {
+//     [RKNotificationTimer clearTimedNotification];
 
-    [menuItemsController reset];
-    [chooseWorkflowView setFrame:[contentScrollView bounds]];
-    [chooseWorkflowView layoutIfNeeded];
-    [contentScrollView setDocumentView:chooseWorkflowView];
+//     [menuItemsController reset];
+//     [chooseWorkflowView setFrame:[contentScrollView bounds]];
+//     [chooseWorkflowView layoutIfNeeded];
+//     [contentScrollView setDocumentView:chooseWorkflowView];
 
-    [[CPNotificationCenter defaultCenter] postNotificationName:RodanHasFocusWorkflowDesignerViewNotification
-                                          object:nil];
-}
+//     [[CPNotificationCenter defaultCenter] postNotificationName:RodanHasFocusWorkflowDesignerViewNotification
+//                                           object:nil];
+// }
 
 - (IBAction)openUserPreferences:(id)aSender
 {
@@ -466,14 +466,14 @@ activeProject = nil;  // URI to the currently open project
     [serverAdminWindow orderFront:aSender];
 }
 
-- (IBAction)showWorkflowDesigner:(id)aSender
-{
-    [RKNotificationTimer clearTimedNotification];
+// - (IBAction)showWorkflowDesigner:(id)aSender
+// {
+//     [RKNotificationTimer clearTimedNotification];
 
-    [workflowDesignerView setFrame:[contentScrollView bounds]];
-    [workflowDesignerView layoutIfNeeded];
-    [contentScrollView setDocumentView:workflowDesignerView];
-}
+//     [workflowDesignerView setFrame:[contentScrollView bounds]];
+//     [workflowDesignerView layoutIfNeeded];
+//     [contentScrollView setDocumentView:workflowDesignerView];
+// }
 
 - (void)observerDebug:(id)aNotification
 {
