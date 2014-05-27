@@ -487,25 +487,6 @@
 							<bool key="NSToolbarIsUserRemovable">YES</bool>
 							<int key="NSToolbarItemVisibilityPriority">0</int>
 						</object>
-						<object class="NSToolbarItem" key="ED8473BB-AB97-4013-8C36-8E919EB0D8FA" id="997812866">
-							<object class="NSMutableString" key="NSToolbarItemIdentifier">
-								<characters key="NS.bytes">ED8473BB-AB97-4013-8C36-8E919EB0D8FA</characters>
-							</object>
-							<string key="NSToolbarItemLabel">Designer</string>
-							<string key="NSToolbarItemPaletteLabel">Designer</string>
-							<string key="NSToolbarItemToolTip"/>
-							<nil key="NSToolbarItemView"/>
-							<nil key="NSToolbarItemImage"/>
-							<nil key="NSToolbarItemTarget"/>
-							<nil key="NSToolbarItemAction"/>
-							<string key="NSToolbarItemMinSize">{0, 0}</string>
-							<string key="NSToolbarItemMaxSize">{0, 0}</string>
-							<bool key="NSToolbarItemEnabled">YES</bool>
-							<bool key="NSToolbarItemAutovalidates">YES</bool>
-							<int key="NSToolbarItemTag">-1</int>
-							<bool key="NSToolbarIsUserRemovable">YES</bool>
-							<int key="NSToolbarItemVisibilityPriority">0</int>
-						</object>
 						<object class="NSToolbarItem" key="FE684A4D-D528-4664-AC1F-3406D6564214" id="39400255">
 							<object class="NSMutableString" key="NSToolbarItemIdentifier">
 								<characters key="NS.bytes">FE684A4D-D528-4664-AC1F-3406D6564214</characters>
@@ -580,7 +561,7 @@
 							</object>
 						</object>
 					</dictionary>
-					<array key="NSToolbarIBAllowedItems">
+					<array class="NSMutableArray" key="NSToolbarIBAllowedItems">
 						<reference ref="871643068"/>
 						<reference ref="1050303471"/>
 						<reference ref="1032991924"/>
@@ -588,15 +569,13 @@
 						<reference ref="268167294"/>
 						<reference ref="39400255"/>
 						<reference ref="886137399"/>
-						<reference ref="997812866"/>
 						<reference ref="386065890"/>
 					</array>
-					<array key="NSToolbarIBDefaultItems">
+					<array class="NSMutableArray" key="NSToolbarIBDefaultItems">
 						<reference ref="39400255"/>
 						<reference ref="886137399"/>
 						<reference ref="386065890"/>
 						<reference ref="1032991924"/>
-						<reference ref="997812866"/>
 						<reference ref="386065890"/>
 						<reference ref="268167294"/>
 						<reference ref="103925040"/>
@@ -12272,7 +12251,6 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 							<reference ref="268167294"/>
 							<reference ref="39400255"/>
 							<reference ref="886137399"/>
-							<reference ref="997812866"/>
 							<reference ref="386065890"/>
 						</array>
 						<reference key="parent" ref="597817345"/>
@@ -13713,11 +13691,6 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 						<string key="id">2411</string>
 						<reference key="object" ref="512241416"/>
 						<reference key="parent" ref="28123836"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">2422</string>
-						<reference key="object" ref="997812866"/>
-						<reference key="parent" ref="940143442"/>
 					</object>
 					<object class="IBObjectRecord">
 						<string key="id">2495</string>
@@ -16749,8 +16722,6 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 				<string key="2409.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="2410.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="2411.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="2422.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="2422.designableToolbarItemIdentifier">workflowDesignerToolbarButton</string>
 				<string key="2495.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="2496.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="2502.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
