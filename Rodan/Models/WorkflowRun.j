@@ -12,6 +12,9 @@
 @global RUNJOB_STATUS_HASFINISHED
 @global RUNJOB_STATUS_CANCELLED
 
+/**
+ * WorkflowRun model.
+ */
 @implementation WorkflowRun : WLRemoteObject
 {
     CPString    pk          @accessors;
@@ -43,7 +46,9 @@
     ];
 }
 
-/* This modifies the request path so that we can launch a test run */
+/**
+ * This modifies the request path so that we can launch a test run.
+ */
 - (CPString)postPath
 {
     var pathComponents = @"";
@@ -52,6 +57,9 @@
     return [self remotePath] + pathComponents;
 }
 
+/**
+ * Returns the remote path.
+ */
 - (CPString)remotePath
 {
     if ([self pk])
@@ -62,6 +70,15 @@
     {
         return @"/workflowruns/";
     }
+}
+
+/* This modifies the request path so that we can launch a test run */
+- (CPString)postPath
+{
+    var pathComponents = @"";
+    if (testRun)
+        pathComponents = "?test=true&page_id=" + testPageID;
+    return [self remotePath] + pathComponents;
 }
 
 /**
@@ -80,6 +97,18 @@
         }
     }
     return NO;
+}
+
+/**
+ * Override for WLRemoteLink::remoteActionDidFail.
+ * We need to cancel the action.
+ */
+- (void)remoteActionDidFail:(WLRemoteAction)aAction
+{
+    if (aAction != nil)
+    {
+        [aAction cancel];
+    }
 }
 
 @end
