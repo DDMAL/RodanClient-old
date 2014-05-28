@@ -1,1 +1,6 @@
 .DS_Store
+Rodan/Frameworks/AppKit
+Rodan/Frameworks/Debug/
+Rodan/Frameworks/Foundation
+Rodan/Frameworks/Objective-J
+Rodan/Resources/MainMenu.cib
