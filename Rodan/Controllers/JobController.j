@@ -1,8 +1,11 @@
+@import "../AppController.j"
 @import "../Models/Job.j"
 @import "../Models/TreeNode.j"
 
 @global RodanDidLoadJobsNotification
 @global RodanJobTreeNeedsRefresh
+
+@class AppController
 
 @implementation JobController : CPObject
 {
@@ -39,7 +42,7 @@
 - (void)fetchJobs
 {
     [WLRemoteAction schedule:WLRemoteActionGetType
-                    path:"/jobs/?enabled=1"
+                    path:[AppController serverHost] + "/jobs/?enabled=1"
                     delegate:self
                     message:"Loading jobs"];
 }

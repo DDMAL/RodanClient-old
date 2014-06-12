@@ -1,7 +1,10 @@
 @import <Ratatosk/WLRemoteTransformers.j>
+@import "../AppController.j"
 @import "User.j"
 @import "Page.j"
 @import "Workflow.j"
+
+@class AppController
 
 /* a full representation of a project, including arrays for the pages and workflows */
 @implementation Project : WLRemoteObject
@@ -54,7 +57,7 @@
     if ([self pk])
         return [self pk];
     else
-        return @"/projects/";
+        return [AppController serverHost] + @"/projects/";
 }
 
 // - (CPString)remoteAction:(WLRemoteAction)anAction decodeResponseBody:(Object)aResponseBody

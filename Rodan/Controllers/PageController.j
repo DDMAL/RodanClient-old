@@ -1,11 +1,14 @@
 @import <AppKit/AppKit.j>
 @import <FileUpload/FileUpload.j>
 @import <Ratatosk/Ratatosk.j>
+@import "../AppController.j"
 @import "../Models/Page.j"
 
 @global activeProject
 @global RodanHasFocusPagesViewNotification
 @global RodanShouldLoadPagesNotification
+
+@class AppController
 
 var _msLOADINTERVAL = 5.0;
 
@@ -97,7 +100,7 @@ var _msLOADINTERVAL = 5.0;
 - (void)sendLoadRequest
 {
     [WLRemoteAction schedule:WLRemoteActionGetType
-                    path:@"pages?project=" + [activeProject uuid]
+                    path:[AppController serverHost] + @"pages?project=" + [activeProject uuid]
                     delegate:self
                     message:"Loading Workflow Run Results"];
 }

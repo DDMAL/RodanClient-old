@@ -1,13 +1,15 @@
 @import <Foundation/CPObject.j>
+@import "../AppController.j"
 @import "../Models/ResultsPackage.j"
 @import "../Models/WorkflowRun.j"
 @import "../Models/Job.j"
 
 @global RodanShouldLoadWorkflowResultsPackagesNotification
 @global RodanShouldLoadWorkflowRunsJobsNotification
-
 @global activeUser
 @global activeProject
+
+@class AppController
 
 var RADIOTAG_ALL = 1,
     RADIOTAG_SELECTED = 0;
@@ -203,7 +205,7 @@ var RADIOTAG_ALL = 1,
     var getParameters = @"?workflowrun=" + [aWorkflowRun pk];
     getParameters += @"&creator=" + [activeUser pk];
     [WLRemoteAction schedule:WLRemoteActionGetType
-                    path:@"/resultspackages/" + getParameters
+                    path:[AppController serverHost] + @"/resultspackages/" + getParameters
                     delegate:self
                     message:RodanShouldLoadWorkflowResultsPackagesNotification];
 }
@@ -211,7 +213,7 @@ var RADIOTAG_ALL = 1,
 {
     var getParameters = @"?workflowrun=" + [aWorkflowRun pk];
     [WLRemoteAction schedule:WLRemoteActionGetType
-                    path:@"/jobs/" + getParameters
+                    path:[AppController serverHost] + @"/jobs/" + getParameters
                     delegate:self
                     message:RodanShouldLoadWorkflowRunsJobsNotification];
 }

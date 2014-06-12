@@ -1,5 +1,6 @@
 @import <AppKit/AppKit.j>
 @import <Ratatosk/Ratatosk.j>
+@import "../AppController.j"
 @import "../Models/Project.j"
 @import "../Transformers/ArrayCountTransformer.j"
 
@@ -7,9 +8,10 @@
 @global RodanDidLoadProjectsNotification
 @global RodanDidLoadProjectNotification
 @global RodanDidCloseProjectNotification
-
 @global activeUser
 @global activeProject
+
+@class AppController
 
 @implementation ProjectController : CPObject
 {
@@ -64,7 +66,7 @@
 
 - (void)fetchProjects
 {
-    [WLRemoteAction schedule:WLRemoteActionGetType path:"/projects/" delegate:self message:"Loading projects"];
+    [WLRemoteAction schedule:WLRemoteActionGetType path:[AppController serverHost] + "/projects/" delegate:self message:"Loading projects"];
 }
 
 - (void)remoteActionDidFinish:(WLRemoteAction)anAction

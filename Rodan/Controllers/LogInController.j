@@ -54,8 +54,7 @@
     var username = [usernameField objectValue],
         password = [passwordField objectValue];
     CSRFToken = [[CPCookie alloc] initWithName:@"csrftoken"];
-
-    var request = [CPURLRequest requestWithURL:@"/auth/session/"];
+    var request = [CPURLRequest requestWithURL:[AppController serverHost] + @"/auth/session/"];
     [request setValue:[CSRFToken value] forHTTPHeaderField:@"X-CSRFToken"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"]
@@ -128,7 +127,7 @@
 {
     if (self = [super init])
     {
-        var request = [CPURLRequest requestWithURL:@"/auth/status/"];
+        var request = [CPURLRequest requestWithURL:[AppController serverHost] + @"/auth/status/"];
         [request setHTTPMethod:@"GET"];
         var conn = [CPURLConnection connectionWithRequest:request delegate:self];
     }
@@ -198,7 +197,7 @@
     var obj = [[LogOutController alloc] init];
 
     var CSRFToken = [[CPCookie alloc] initWithName:@"csrftoken"],
-        request = [CPURLRequest requestWithURL:@"/auth/logout/"];
+        request = [CPURLRequest requestWithURL:[AppController serverHost] + @"/auth/logout/"];
     [request setValue:[CSRFToken value] forHTTPHeaderField:@"X-CSRFToken"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPMethod:@"POST"];
