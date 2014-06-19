@@ -5,6 +5,8 @@
 
 @global RodanShouldLoadWorkflowPageResultsNotification
 
+@class AppController
+
 /**
  * Delegate to handle the results table in the Results view.
  */
@@ -83,7 +85,7 @@
         parameters += @"&page=" + [_associatedPage uuid];
         parameters += @"&ordering=created";
         [WLRemoteAction schedule:WLRemoteActionGetType
-                        path:@"/results/" + parameters
+                        path:[AppController serverHost] + @"/results/" + parameters
                         delegate:self
                         message:nil];
     }

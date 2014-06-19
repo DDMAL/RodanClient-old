@@ -6,6 +6,7 @@
 @global RodanShouldLoadWorkflowsNotification
 @global RodanShouldLoadWorkflowRunsNotification
 
+@class AppController
 @class WorkflowController
 
 /**
@@ -59,7 +60,7 @@
 - (void)sendLoadRequest
 {
     [WLRemoteAction schedule:WLRemoteActionGetType
-                    path:@"/workflows/?project=" + [activeProject uuid]
+                    path:[AppController serverHost] + @"/workflows/?project=" + [activeProject uuid]
                     delegate:self
                     message:nil];
 }

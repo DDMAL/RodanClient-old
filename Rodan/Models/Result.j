@@ -1,6 +1,8 @@
 @import <Ratatosk/WLRemoteTransformers.j>
 @import "RunJob.j"
 
+@class AppController
+
 @implementation Result : WLRemoteObject
 {
     CPString    pk              @accessors;
@@ -42,7 +44,7 @@
     if ([self pk])
         return [self pk]
     else
-        return @"/results/";
+        return [AppController serverHost] + @"/results/";
 }
 
 @end

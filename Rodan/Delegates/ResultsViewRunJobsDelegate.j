@@ -5,6 +5,8 @@
 
 @global RodanShouldLoadRunJobsNotification
 
+@class AppController
+
 /**
  * Delegate to handle the run jobs table in the Results view.
  */
@@ -80,7 +82,7 @@
         parameters += @"&page=" + [_associatedPage uuid];
         parameters += @"&ordering=sequence";
         [WLRemoteAction schedule:WLRemoteActionGetType
-                        path:@"/runjobs/" + parameters
+                        path:[AppController serverHost] + @"/runjobs/" + parameters
                         delegate:self
                         message:nil];
     }

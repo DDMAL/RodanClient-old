@@ -59,29 +59,6 @@
     else
         return [AppController serverHost] + @"/projects/";
 }
-
-// - (CPString)remoteAction:(WLRemoteAction)anAction decodeResponseBody:(Object)aResponseBody
-// {
-
-//     var response = JSON.parse(aResponseBody);
-//     console.log(response);
-//     /*
-//         setDirtProof ensures that updating this object does
-//         not kick off a PATCH request for a change.
-//     */
-//     [WLRemoteObject setDirtProof:YES];
-//     [self setPk:response.url];
-//     [self setResourceURI:response.url];
-//     [self setProjectOwner:response.creator];
-//     [self setPages:response.pages];
-//     [self setWorkflows:response.workflows];
-//     [WLRemoteObject setDirtProof:NO];
-
-//     CPLog("Done updating object");
-//     console.log(self);
-
-//     return aResponseBody;
-// }
 @end
 
 
@@ -112,7 +89,7 @@
     if ([self pk])
         return [self pk];
     else
-        return @"/projects/";
+        return [AppController serverHost] + @"/projects/";
 }
 
 - (id)initWithCreator:(User)aCreator

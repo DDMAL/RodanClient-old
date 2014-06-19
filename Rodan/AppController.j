@@ -110,6 +110,7 @@ activeProject = nil;  // URI to the currently open project
 
 // Server host to use for all requests.
 var serverHost = "//rodan-dev.simssa.ca";
+[CPURLConnection setWithCredentials:YES];
 
 @implementation AppController : CPObject
 {

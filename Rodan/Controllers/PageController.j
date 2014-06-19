@@ -100,7 +100,7 @@ var _msLOADINTERVAL = 5.0;
 - (void)sendLoadRequest
 {
     [WLRemoteAction schedule:WLRemoteActionGetType
-                    path:[AppController serverHost] + @"pages?project=" + [activeProject uuid]
+                    path:[AppController serverHost] + @"/pages/?project=" + [activeProject uuid]
                     delegate:self
                     message:"Loading Workflow Run Results"];
 }

@@ -6,6 +6,8 @@
 @global RodanDidLogInNotification
 @global RodanDidLogOutNotification
 
+@class AppController
+
 /*
     The Rodan client login process looks like this: The client sends a request to the
     server to see if the user is authorized to proceed (see the auth.SessionStatus view). If they are
