@@ -108,10 +108,6 @@ isLoggedIn = NO;
 activeUser = nil;     // URI to the currently logged-in user
 activeProject = nil;  // URI to the currently open project
 
-// Server host to use for all requests.
-var serverHost = "//rodan-dev.simssa.ca";
-[CPURLConnection setWithCredentials:YES];
-
 @implementation AppController : CPObject
 {
     @outlet     CPWindow    theWindow;
@@ -164,24 +160,6 @@ var serverHost = "//rodan-dev.simssa.ca";
                 CPCookie        CSRFToken;
                 CPString        projectName;
 
-}
-
-/*!
-    Returns string to be used as server host.  Default is nil.
-    @return string representing base URL (or nil if DNE)
-*/
-+ (CPString)serverHost
-{
-    return serverHost;
-}
-
-/*!
-    Sets string to be used as server host.
-    @param aServerHost string representing base URL (or nil)
-*/
-+ (void)setServerHost:(CPString)aServerHost
-{
-    serverHost = "//" + aServerHost;
 }
 
 + (void)initialize

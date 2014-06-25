@@ -100,9 +100,10 @@ var _msLOADINTERVAL = 5.0;
 - (void)sendLoadRequest
 {
     [WLRemoteAction schedule:WLRemoteActionGetType
-                    path:[AppController serverHost] + @"/pages/?project=" + [activeProject uuid]
+                    path:[[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/pages/?project=" + [activeProject uuid]
                     delegate:self
-                    message:"Loading Workflow Run Results"];
+                    message:"Loading Workflow Run Results"
+                    withCredentials:YES];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////

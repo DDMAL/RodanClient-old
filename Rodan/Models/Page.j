@@ -48,6 +48,6 @@
     if ([self pk])
         return [self pk]
     else
-        return [AppController serverHost] + @"/pages/";
+        return [[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/pages/";
 }
 @end

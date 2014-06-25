@@ -205,17 +205,19 @@ var RADIOTAG_ALL = 1,
     var getParameters = @"?workflowrun=" + [aWorkflowRun pk];
     getParameters += @"&creator=" + [activeUser pk];
     [WLRemoteAction schedule:WLRemoteActionGetType
-                    path:[AppController serverHost] + @"/resultspackages/" + getParameters
+                    path:[[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/resultspackages/" + getParameters
                     delegate:self
-                    message:RodanShouldLoadWorkflowResultsPackagesNotification];
+                    message:RodanShouldLoadWorkflowResultsPackagesNotification
+                    withCredentials:YES];
 }
 - (void)_requestJobs:(WorkflowRun)aWorkflowRun
 {
     var getParameters = @"?workflowrun=" + [aWorkflowRun pk];
     [WLRemoteAction schedule:WLRemoteActionGetType
-                    path:[AppController serverHost] + @"/jobs/" + getParameters
+                    path:[[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/jobs/" + getParameters
                     delegate:self
-                    message:RodanShouldLoadWorkflowRunsJobsNotification];
+                    message:RodanShouldLoadWorkflowRunsJobsNotification
+                    withCredentials:YES];
 }
 
 - (void)_processRemoteActionResultPackages:(WLRemoteAction)aAction

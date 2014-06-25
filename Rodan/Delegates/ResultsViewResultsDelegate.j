@@ -85,9 +85,10 @@
         parameters += @"&page=" + [_associatedPage uuid];
         parameters += @"&ordering=created";
         [WLRemoteAction schedule:WLRemoteActionGetType
-                        path:[AppController serverHost] + @"/results/" + parameters
+                        path:[[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/results/" + parameters
                         delegate:self
-                        message:nil];
+                        message:nil
+                        withCredentials:YES];
     }
 }
 

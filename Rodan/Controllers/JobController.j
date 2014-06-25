@@ -42,9 +42,10 @@
 - (void)fetchJobs
 {
     [WLRemoteAction schedule:WLRemoteActionGetType
-                    path:[AppController serverHost] + "/jobs/?enabled=1"
+                    path:[[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + "/jobs/?enabled=1"
                     delegate:self
-                    message:"Loading jobs"];
+                    message:"Loading jobs"
+                    withCredentials:YES];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////

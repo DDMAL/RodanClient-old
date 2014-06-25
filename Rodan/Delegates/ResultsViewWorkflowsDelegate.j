@@ -60,9 +60,10 @@
 - (void)sendLoadRequest
 {
     [WLRemoteAction schedule:WLRemoteActionGetType
-                    path:[AppController serverHost] + @"/workflows/?project=" + [activeProject uuid]
+                    path:[[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/workflows/?project=" + [activeProject uuid]
                     delegate:self
-                    message:nil];
+                    message:nil
+                    withCredentials:YES];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////

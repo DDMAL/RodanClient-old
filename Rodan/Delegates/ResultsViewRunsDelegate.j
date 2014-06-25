@@ -102,9 +102,10 @@
         var parameters = @"?workflow=" + _workflowUUID;
         parameters += @"&ordering=created";
         [WLRemoteAction schedule:WLRemoteActionGetType
-                        path:[AppController serverHost] + @"/workflowruns/" + parameters
+                        path:[[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/workflowruns/" + parameters
                         delegate:self
-                        message:nil];
+                        message:nil
+                        withCredentials:YES];
     }
 }
 

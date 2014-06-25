@@ -56,7 +56,8 @@
     [WLRemoteAction schedule:WLRemoteActionGetType
                     path:[self modelListUrl]
                     delegate:self
-                    message:"Loading classifier settings list"];
+                    message:"Loading classifier settings list"
+                    withCredentials:YES];
 }
 
 - (void)remoteActionDidFinish:(WLRemoteAction)anAction

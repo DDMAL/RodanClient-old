@@ -70,7 +70,7 @@
     }
     else
     {
-        return [AppController serverHost] + @"/workflowruns/";
+        return [[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/workflowruns/";
     }
 }
 

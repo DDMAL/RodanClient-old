@@ -82,9 +82,10 @@
         parameters += @"&page=" + [_associatedPage uuid];
         parameters += @"&ordering=sequence";
         [WLRemoteAction schedule:WLRemoteActionGetType
-                        path:[AppController serverHost] + @"/runjobs/" + parameters
+                        path:[[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/runjobs/" + parameters
                         delegate:self
-                        message:nil];
+                        message:nil
+                        withCredentials:YES];
     }
 }
 

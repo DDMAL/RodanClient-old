@@ -57,7 +57,7 @@
     if ([self pk])
         return [self pk];
     else
-        return [AppController serverHost] + @"/projects/";
+        return [[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/projects/";
 }
 @end
 
@@ -89,7 +89,7 @@
     if ([self pk])
         return [self pk];
     else
-        return [AppController serverHost] + @"/projects/";
+        return [[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/projects/";
 }
 
 - (id)initWithCreator:(User)aCreator

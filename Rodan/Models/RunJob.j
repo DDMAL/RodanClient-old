@@ -81,7 +81,7 @@ RUNJOB_STATUS_CANCELLED = 9;
     if ([self pk])
         return [self pk]
     else
-        return [AppController serverHost] + @"/runjobs/";
+        return [[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/runjobs/";
 }
 
 - (BOOL)canRunInteractive

@@ -66,7 +66,11 @@
 
 - (void)fetchProjects
 {
-    [WLRemoteAction schedule:WLRemoteActionGetType path:[AppController serverHost] + "/projects/" delegate:self message:"Loading projects"];
+    [WLRemoteAction schedule:WLRemoteActionGetType 
+                    path:[[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + "/projects/" 
+                    delegate:self 
+                    message:"Loading projects"
+                    withCredentials:YES];
 }
 
 - (void)remoteActionDidFinish:(WLRemoteAction)anAction
@@ -129,7 +133,8 @@
     [WLRemoteAction schedule:WLRemoteActionGetType
                     path:[[aNotification object] pk]
                     delegate:activeProjectDelegate
-                    message:"Loading Project"];
+                    message:"Loading Project"
+                    withCredentials:YES];
 }
 
 - (IBAction)openProject:(id)aSender

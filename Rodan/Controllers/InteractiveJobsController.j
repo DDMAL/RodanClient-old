@@ -55,9 +55,10 @@ var _LOADINTERVAL = 5.0,
         projectUUID = [activeProject uuid];
     }
     [WLRemoteAction schedule:WLRemoteActionGetType
-                    path:[AppController serverHost] + "/runjobs/?requires_interaction=true&project=" + projectUUID
+                    path:[[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + "/runjobs/?requires_interaction=true&project=" + projectUUID
                     delegate:self
-                    message:"Retrieving RunJobs"];
+                    message:"Retrieving RunJobs"
+                    withCredentials:YES];
 }
 
 /**

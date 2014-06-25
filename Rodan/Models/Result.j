@@ -44,7 +44,7 @@
     if ([self pk])
         return [self pk]
     else
-        return [AppController serverHost] + @"/results/";
+        return [[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/results/";
 }
 
 @end

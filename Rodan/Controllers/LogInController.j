@@ -56,14 +56,14 @@
     var username = [usernameField objectValue],
         password = [passwordField objectValue];
     CSRFToken = [[CPCookie alloc] initWithName:@"csrftoken"];
-    var request = [CPURLRequest requestWithURL:[AppController serverHost] + @"/auth/session/"];
+    var request = [CPURLRequest requestWithURL:[[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/auth/session/"];
     [request setValue:[CSRFToken value] forHTTPHeaderField:@"X-CSRFToken"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"]
     [request setHTTPBody:@"username=" + username + "&password=" + password];
     [request setHTTPMethod:@"POST"];
 
-    var conn = [CPURLConnection connectionWithRequest:request delegate:self];
+    var conn = [CPURLConnection connectionWithRequest:request delegate:self withCredentials:YES];
 }
 
 - (void)connection:(CPURLConnection)connection didFailWithError:(id)error
@@ -129,9 +129,9 @@
 {
     if (self = [super init])
     {
-        var request = [CPURLRequest requestWithURL:[AppController serverHost] + @"/auth/status/"];
+        var request = [CPURLRequest requestWithURL:[[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/auth/status/"];
         [request setHTTPMethod:@"GET"];
-        var conn = [CPURLConnection connectionWithRequest:request delegate:self];
+        var conn = [CPURLConnection connectionWithRequest:request delegate:self withCredentials:YES];
     }
     return self;
 }
@@ -199,7 +199,7 @@
     var obj = [[LogOutController alloc] init];
 
     var CSRFToken = [[CPCookie alloc] initWithName:@"csrftoken"],
-        request = [CPURLRequest requestWithURL:[AppController serverHost] + @"/auth/logout/"];
+        request = [CPURLRequest requestWithURL:[[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/auth/logout/"];
     [request setValue:[CSRFToken value] forHTTPHeaderField:@"X-CSRFToken"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPMethod:@"POST"];

@@ -149,7 +149,8 @@ var _msLOADINTERVAL = 5.0;
     [WLRemoteAction schedule:WLRemoteActionGetType
                     path:[[aNotification object] pk]
                     delegate:loadActiveWorkflowDelegate
-                    message:"Loading Workflow Jobs"];
+                    message:"Loading Workflow Jobs"
+                    withCredentials:YES];
 }
 
 - (@action)selectWorkflow:(id)aSender
