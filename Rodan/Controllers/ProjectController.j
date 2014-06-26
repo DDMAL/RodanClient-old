@@ -1,5 +1,6 @@
 @import <AppKit/AppKit.j>
 @import <Ratatosk/Ratatosk.j>
+@import "AbstractController.j"
 @import "../AppController.j"
 @import "../Models/Project.j"
 @import "../Transformers/ArrayCountTransformer.j"
@@ -11,9 +12,7 @@
 @global activeUser
 @global activeProject
 
-@class AppController
-
-@implementation ProjectController : CPObject
+@implementation ProjectController : AbstractController
 {
     @outlet     CPArrayController           projectArrayController;
                 CPValueTransformer          projectCountTransformer;
@@ -26,14 +25,6 @@
     @outlet     WorkflowController          workflowController;
     @outlet     CPArrayController           workflowArrayController;
     @outlet     JobController               jobController;
-}
-
-- (id)init
-{
-    if (self = [super init])
-    {
-    }
-    return self;
 }
 
 - (void)awakeFromCib
@@ -66,9 +57,9 @@
 
 - (void)fetchProjects
 {
-    [WLRemoteAction schedule:WLRemoteActionGetType 
-                    path:[[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + "/projects/" 
-                    delegate:self 
+    [WLRemoteAction schedule:WLRemoteActionGetType
+                    path:[self serverHost] + "/projects/"
+                    delegate:self
                     message:"Loading projects"
                     withCredentials:YES];
 }

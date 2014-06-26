@@ -1,27 +1,27 @@
 @import <AppKit/AppKit.j>
 @import <FileUpload/FileUpload.j>
 @import <Ratatosk/Ratatosk.j>
-@import "../AppController.j"
+@import "AbstractController.j"
 @import "../Models/Page.j"
 
 @global activeProject
 @global RodanHasFocusPagesViewNotification
 @global RodanShouldLoadPagesNotification
 
-@class AppController
-
-var _msLOADINTERVAL = 5.0;
-
-@implementation PageController : CPObject
+/**
+ * Handles control of all Page-related tasks.
+ */
+@implementation PageController : AbstractController
 {
     @outlet     UploadButton        imageUploadButton;
     @outlet     CPImageView         imageView;
     @outlet     CPArrayController   pageArrayController;
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////
-// Init Methods
-////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+// Public Methods
+///////////////////////////////////////////////////////////////////////////////
+#pragma mark Public Methods
 - (void)awakeFromCib
 {
     // Subscriptions for self.
@@ -45,17 +45,15 @@ var _msLOADINTERVAL = 5.0;
     return self;
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////
-// Public Methods
-////////////////////////////////////////////////////////////////////////////////////////////
-- (void)createObjectsWithJSONResponse:(id)aResponse
+- (void)emptyPageArrayController
 {
-    [WLRemoteObject setDirtProof:YES];  // turn off auto-creation of pages since we've already done it.
-    var pages = [Page objectsFromJson:aResponse.pages];
-    [pageArrayController addObjects:pages];
-    [WLRemoteObject setDirtProof:NO];
+    [pageArrayController setContent:nil];
 }
 
+///////////////////////////////////////////////////////////////////////////////
+// Public Delegate Methods
+///////////////////////////////////////////////////////////////////////////////
+#pragma mark Public Delegate Methods
 - (void)uploadButton:(UploadButton)button didChangeSelection:(CPArray)selection
 {
     var nextPageOrder = [[pageArrayController contentArray] valueForKeyPath:@"@max.pageOrder"] + 1;
@@ -74,7 +72,7 @@ var _msLOADINTERVAL = 5.0;
 {
     [button resetSelection];
     var data = JSON.parse(response);
-    [self createObjectsWithJSONResponse:data];
+    [self _createObjectsWithJSONResponse:data];
 }
 
 - (void)uploadButtonDidBeginUpload:(UploadButton)button
@@ -89,43 +87,17 @@ var _msLOADINTERVAL = 5.0;
     [self handleShouldLoadNotification:null];
 }
 
-- (void)emptyPageArrayController
-{
-    [pageArrayController setContent:nil];
-}
-
-/**
- * Does a page load request.
- */
-- (void)sendLoadRequest
-{
-    [WLRemoteAction schedule:WLRemoteActionGetType
-                    path:[[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/pages/?project=" + [activeProject uuid]
-                    delegate:self
-                    message:"Loading Workflow Run Results"
-                    withCredentials:YES];
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////
-// Handler Methods
-////////////////////////////////////////////////////////////////////////////////////////////
 - (void)receiveHasFocusEvent:(CPNotification)aNotification
 {
-    [RKNotificationTimer setTimedNotification:_msLOADINTERVAL
+    [RKNotificationTimer setTimedNotification:[self refreshRate]
                          notification:RodanShouldLoadPagesNotification];
 }
 
-/**
- * Handles load notification
- */
 - (void)handleShouldLoadNotification:(CPNotification)aNotification
 {
-    [self sendLoadRequest];
+    [self _sendLoadRequest];
 }
 
-/**
- * Handles remote object load.
- */
 - (void)remoteActionDidFinish:(WLRemoteAction)aAction
 {
     if ([aAction result])
@@ -137,12 +109,6 @@ var _msLOADINTERVAL = 5.0;
     }
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////
-// Action Methods
-////////////////////////////////////////////////////////////////////////////////////////////
-/**
- * Initializes packaging of results.
- */
 - (@action)viewOriginal:(id)aSender
 {
     var selectedObjects = [pageArrayController selectedObjects];
@@ -150,5 +116,26 @@ var _msLOADINTERVAL = 5.0;
     {
         window.open([[selectedObjects objectAtIndex:0] pageImage], "_blank");
     }
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Private Methods
+///////////////////////////////////////////////////////////////////////////////
+#pragma mark Private Methods
+- (void)_sendLoadRequest
+{
+    [WLRemoteAction schedule:WLRemoteActionGetType
+                    path:[self serverHost] + @"/pages/?project=" + [activeProject uuid]
+                    delegate:self
+                    message:"Loading Workflow Run Results"
+                    withCredentials:YES];
+}
+
+- (void)createObjectsWithJSONResponse:(id)aResponse
+{
+    [WLRemoteObject setDirtProof:YES];  // turn off auto-creation of pages since we've already done it.
+    var pages = [Page objectsFromJson:aResponse.pages];
+    [pageArrayController addObjects:pages];
+    [WLRemoteObject setDirtProof:NO];
 }
 @end
