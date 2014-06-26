@@ -2,11 +2,7 @@
 @import <RodanKit/RKInteractiveJob.j>
 @import <RodanKit/RKDiva.j>
 @import <RodanKit/RKNotificationTimer.j>
-
-@import "../AppController.j"
 @import "../Models/RunJob.j"
-
-@class AppController
 
 @global RodanHasFocusInteractiveJobsViewNotification
 @global RodanShouldLoadInteractiveJobsNotification
