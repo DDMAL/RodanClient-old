@@ -29,8 +29,7 @@
 @import <RodanKit/RodanKit.j>
 
 @import "Categories/CPButtonBar+PopupButtons.j"
-
-@import "Controllers/LogInController.j"
+@import "Controllers/AuthenticationController.j"
 @import "Controllers/UserPreferencesController.j"
 @import "Controllers/ServerAdminController.j"
 @import "Controllers/WorkflowController.j"
@@ -41,14 +40,14 @@
 @import "Controllers/MenuItemsController.j"
 @import "Controllers/InteractiveJobsController.j"
 @import "Controllers/ResultsPackageController.j"
-
 @import "Delegates/ResultsViewPagesDelegate.j"
 @import "Delegates/ResultsViewResultsDelegate.j"
 @import "Delegates/ResultsViewRunsDelegate.j"
 @import "Delegates/ResultsViewWorkflowsDelegate.j"
 @import "Delegates/WorkflowDesignerJobSettingsDelegate.j"
 @import "Delegates/ResultsViewRunJobsDelegate.j"
-
+@import "Models/Project.j"
+@import "Models/User.j"
 @import "Transformers/ArrayCountTransformer.j"
 @import "Transformers/GameraClassNameTransformer.j"
 @import "Transformers/CheckBoxTransformer.j"
@@ -60,32 +59,23 @@
 @import "Transformers/RetryFailedRunJobsTransformer.j"
 @import "Transformers/ByteCountTransformer.j"
 
-@import "Models/Project.j"
-@import "Models/User.j"
-
 RodanDidLoadProjectNotification = @"RodanDidLoadProjectNotification";
 RodanDidCloseProjectNotification = @"RodanDidCloseProjectNotification";
 RodanShouldLoadProjectNotification = @"RodanShouldLoadProjectNotification";
 RodanDidLoadProjectsNotification = @"RodanDidLoadProjectsNotification";
-
 RodanDidLoadJobsNotification = @"RodanDidLoadJobsNotification";
 RodanJobTreeNeedsRefresh = @"RodanJobTreeNeedsRefresh";
-
 RodanDidLoadWorkflowsNotification = @"RodanDidLoadWorkflowsNotification";
 RodanDidLoadWorkflowNotification = @"RodanDidLoadWorkflowNotification";
 RodanShouldLoadWorkflowDesignerNotification = @"RodanShouldLoadWorkflowDesignerNotification";
 RodanDidRefreshWorkflowsNotification = @"RodanDidRefreshWorkflowsNotification";
-
 RodanRemoveJobFromWorkflowNotification = @"RodanRemoveJobFromWorkflowNotification";
 RodanWorkflowTreeNeedsRefresh = @"RodanWorkflowTreeNeedsRefresh";
-
 RodanMustLogInNotification = @"RodanMustLogInNotification";
 RodanDidLogInNotification = @"RodanDidLogInNotification";
 RodanCannotLogInNotification = @"RodanCannotLogInNotification";
 RodanLogInErrorNotification = @"RodanLogInErrorNotification";
 RodanDidLogOutNotification = @"RodanDidLogOutNotification";
-
-// Data loading events.
 RodanShouldLoadInteractiveJobsNotification = @"RodanShouldLoadInteractiveJobsNotification";
 RodanShouldLoadWorkflowRunsNotification = @"RodanShouldLoadWorkflowRunsNotification";
 RodanShouldLoadWorkflowPagesNotification = @"RodanShouldLoadWorkflowPagesNotification";
@@ -97,71 +87,57 @@ RodanShouldLoadWorkflowPageResultsNotification = @"RodanShouldLoadWorkflowPageRe
 RodanShouldLoadRunJobsNotification = @"RodanShouldLoadRunJobsNotification";
 RodanWorkflowResultsTimerNotification = @"RodanWorkflowResultsTimerNotification";
 RodanShouldLoadWorkflowResultsPackagesNotification = @"RodanShouldLoadWorkflowResultsPackagesNotification";
-
-// View entry events.
 RodanHasFocusInteractiveJobsViewNotification = @"RodanHasFocusInteractiveJobsViewNotification";
 RodanHasFocusWorkflowResultsViewNotification = @"RodanHasFocusWorkflowResultsViewNotification";
 RodanHasFocusWorkflowDesignerViewNotification = @"RodanHasFocusWorkflowDesignerViewNotification";
 RodanHasFocusPagesViewNotification = @"RodanHasFocusPagesViewNotification";
 
-isLoggedIn = NO;
 activeUser = nil;     // URI to the currently logged-in user
 activeProject = nil;  // URI to the currently open project
 
 @implementation AppController : CPObject
 {
-    @outlet     CPWindow    theWindow;
-    @outlet     TNToolbar   theToolbar  @accessors(readonly);
-                CPBundle    theBundle;
-
-    @outlet     CPView      projectStatusView;
-    @outlet     CPView      loginWaitScreenView;
-    @outlet     CPView      workflowResultsView;
-    @outlet     CPView      interactiveJobsView;
-    @outlet     CPView      managePagesView;
-    @outlet     CPView      usersGroupsView;
-    @outlet     CPView      chooseWorkflowView;
-    @outlet     CPView      workflowDesignerView;
-                CPView      contentView;
-    @outlet     CPObject    menuItemsController;
-
-    // @outlet     CPScrollView    contentScrollView;
-                CPScrollView        contentScrollView       @accessors(readonly);
-    @outlet     CPArrayController   projectArrayController;
-
-    @outlet     CPWindow    userPreferencesWindow;
-    @outlet     CPView      accountPreferencesView;
-
-    @outlet     CPWindow    serverAdminWindow;
-    @outlet     CPView      userAdminView;
-
-    @outlet     CPToolbarItem   statusToolbarItem;
-    @outlet     CPToolbarItem   pagesToolbarItem;
-    @outlet     CPToolbarItem   workflowResultsToolbarItem;
-    @outlet     CPToolbarItem   jobsToolbarItem;
-    @outlet     CPToolbarItem   usersToolbarItem;
-    @outlet     CPToolbarItem   workflowDesignerToolbarItem;
-    @outlet     CPButtonBar     workflowAddRemoveBar;
-
-    @outlet     CPMenu          switchWorkspaceMenu;
-    @outlet     CPMenuItem      rodanMenuItem;
-
+    @outlet     CPWindow                    theWindow;
+    @outlet     TNToolbar                   theToolbar  @accessors(readonly);
+    @outlet     CPView                      projectStatusView;
+    @outlet     CPView                      loginWaitScreenView;
+    @outlet     CPView                      workflowResultsView;
+    @outlet     CPView                      interactiveJobsView;
+    @outlet     CPView                      managePagesView;
+    @outlet     CPView                      chooseWorkflowView;
+    @outlet     CPView                      workflowDesignerView;
+    @outlet     CPObject                    menuItemsController;
+    @outlet     CPArrayController           projectArrayController;
+    @outlet     CPToolbarItem               statusToolbarItem;
+    @outlet     CPToolbarItem               pagesToolbarItem;
+    @outlet     CPToolbarItem               workflowResultsToolbarItem;
+    @outlet     CPToolbarItem               jobsToolbarItem;
+    @outlet     CPToolbarItem               usersToolbarItem;
+    @outlet     CPToolbarItem               workflowDesignerToolbarItem;
+    @outlet     CPButtonBar                 workflowAddRemoveBar;
+    @outlet     CPMenu                      switchWorkspaceMenu;
+    @outlet     CPMenuItem                  rodanMenuItem;
     @outlet     ProjectController           projectController;
     @outlet     PageController              pageController;
     @outlet     JobController               jobController;
     @outlet     UploadButton                imageUploadButton;
-    @outlet     LogInController             logInController;
+    @outlet     AuthenticationController    authenticationController;
     @outlet     WorkflowController          workflowController;
     @outlet     WorkflowDesignerController  workflowDesignerController;
 
-    CGRect      _theWindowBounds;
-
-                CPCookie        sessionID;
-                CPCookie        CSRFToken;
-                CPString        projectName;
+    CGRect          _theWindowBounds;
+    CPScrollView    contentScrollView @accessors(readonly);
+    CPView          contentView;
+    CPBundle        theBundle;
+    CPCookie        CSRFToken;
+    CPString        projectName;
 
 }
 
+///////////////////////////////////////////////////////////////////////////////
+// Public Static Methods
+///////////////////////////////////////////////////////////////////////////////
+#pragma mark Public Static Methods
 + (void)initialize
 {
     [super initialize];
@@ -171,50 +147,44 @@ activeProject = nil;  // URI to the currently open project
 + (void)registerValueTransformers
 {
     arrayCountTransformer = [[ArrayCountTransformer alloc] init];
-    [ArrayCountTransformer setValueTransformer:arrayCountTransformer
-                             forName:@"ArrayCountTransformer"];
+    [ArrayCountTransformer setValueTransformer:arrayCountTransformer forName:@"ArrayCountTransformer"];
 
     gameraClassNameTransformer = [[GameraClassNameTransformer alloc] init];
-    [GameraClassNameTransformer setValueTransformer:gameraClassNameTransformer
-                                forName:@"GameraClassNameTransformer"];
+    [GameraClassNameTransformer setValueTransformer:gameraClassNameTransformer forName:@"GameraClassNameTransformer"];
 
     dateFormatTransformer = [[DateFormatTransformer alloc] init];
-    [DateFormatTransformer setValueTransformer:dateFormatTransformer
-                                forName:@"DateFormatTransformer"];
+    [DateFormatTransformer setValueTransformer:dateFormatTransformer forName:@"DateFormatTransformer"];
 
     resultsDisplayTransformer = [[ResultsDisplayTransformer alloc] init];
-    [ResultsDisplayTransformer setValueTransformer:resultsDisplayTransformer
-                                forName:@"ResultsDisplayTransformer"];
+    [ResultsDisplayTransformer setValueTransformer:resultsDisplayTransformer forName:@"ResultsDisplayTransformer"];
 
     runJobStatusTransformer = [[RunJobStatusTransformer alloc] init];
-    [RunJobStatusTransformer setValueTransformer:runJobStatusTransformer
-                                forName:@"RunJobStatusTransformer"];
+    [RunJobStatusTransformer setValueTransformer:runJobStatusTransformer forName:@"RunJobStatusTransformer"];
 
     resultThumbnailTransformer = [[ResultThumbnailTransformer alloc] init];
-    [ResultThumbnailTransformer setValueTransformer:resultThumbnailTransformer
-                                forName:@"ResultThumbnailTransformer"];
+    [ResultThumbnailTransformer setValueTransformer:resultThumbnailTransformer forName:@"ResultThumbnailTransformer"];
 
     retryFailedRunJobsTransformer = [[RetryFailedRunJobsTransformer alloc] init];
-    [RetryFailedRunJobsTransformer setValueTransformer:retryFailedRunJobsTransformer
-                                forName:@"RetryFailedRunJobsTransformer"];
+    [RetryFailedRunJobsTransformer setValueTransformer:retryFailedRunJobsTransformer forName:@"RetryFailedRunJobsTransformer"];
 
 }
 
+///////////////////////////////////////////////////////////////////////////////
+// Public Methods
+///////////////////////////////////////////////////////////////////////////////
+#pragma mark Public Methods
 - (void)awakeFromCib
 {
     CPLogRegister(CPLogConsole);
-    isLoggedIn = NO;
 
-    [[LogInCheckController alloc] initCheckingStatus];
+    // Initialize authentication control.
+    [authenticationController checkIsAuthenticated];
 
-    sessionID = [[CPCookie alloc] initWithName:@"sessionid"];
     CSRFToken = [[CPCookie alloc] initWithName:@"csrftoken"];
-
-    [[WLRemoteLink sharedRemoteLink] setDelegate:self];
 
     [theWindow setFullPlatformWindow:YES];
 
-    [imageUploadButton setValue:[CSRFToken value] forParameter:@"csrfmiddlewaretoken"]
+    //[imageUploadButton setValue:[CSRFToken value] forParameter:@"csrfmiddlewaretoken"]
     [imageUploadButton setBordered:YES];
     [imageUploadButton setFileKey:@"files"];
     [imageUploadButton allowsMultipleFiles:YES];
@@ -291,13 +261,11 @@ activeProject = nil;  // URI to the currently open project
 {
     var blankView = [[CPView alloc] init];
     [contentScrollView setDocumentView:blankView];
-    [logInController runLogInSheet];
+    [authenticationController runLogInSheet];
 }
 
 - (void)cannotLogIn:(id)aNotification
 {
-    isLoggedIn = NO;
-
     // display an alert that they cannot log in
     var alert = [[CPAlert alloc] init];
     [alert setTitle:@"Cannot Log In"];
@@ -322,9 +290,7 @@ activeProject = nil;  // URI to the currently open project
 
 - (void)didLogIn:(id)aNotification
 {
-    isLoggedIn = YES;
     activeUser = [aNotification object];
-
     [projectController fetchProjects];
     [jobController fetchJobs];
 }
@@ -344,7 +310,7 @@ activeProject = nil;  // URI to the currently open project
 
 - (@action)logOut:(id)aSender
 {
-    [LogOutController logOut];
+    [authenticationController logOut];
 }
 
 - (void)didLoadProject:(CPNotification)aNotification
@@ -420,18 +386,6 @@ activeProject = nil;  // URI to the currently open project
                                           object:nil];
 }
 
-- (IBAction)switchWorkspaceToUsersGroups:(id)aSender
-{
-    [RKNotificationTimer clearTimedNotification];
-
-    [menuItemsController reset];
-    [menuItemsController setUsersIsActive:YES];
-
-    [usersGroupsView setAutoresizingMask:CPViewWidthSizable];
-    [usersGroupsView setFrame:[contentScrollView bounds]];
-    [contentScrollView setDocumentView:usersGroupsView];
-}
-
 - (IBAction)switchWorkspaceToWorkflowDesigner:(id)aSender
 {
     [RKNotificationTimer clearTimedNotification];
@@ -443,26 +397,6 @@ activeProject = nil;  // URI to the currently open project
 
     [[CPNotificationCenter defaultCenter] postNotificationName:RodanHasFocusWorkflowDesignerViewNotification
                                           object:nil];
-}
-
-- (IBAction)openUserPreferences:(id)aSender
-{
-    [RKNotificationTimer clearTimedNotification];
-
-    [userPreferencesWindow center];
-    var preferencesContentView = [userPreferencesWindow contentView];
-    [preferencesContentView addSubview:accountPreferencesView];
-    [userPreferencesWindow orderFront:aSender];
-}
-
-- (IBAction)openServerAdmin:(id)aSender
-{
-    [RKNotificationTimer clearTimedNotification];
-
-    [serverAdminWindow center];
-    var serverAdminContentView = [serverAdminWindow contentView];
-    [serverAdminContentView addSubview:userAdminView];
-    [serverAdminWindow orderFront:aSender];
 }
 
 - (IBAction)showWorkflowDesigner:(id)aSender
@@ -477,19 +411,5 @@ activeProject = nil;  // URI to the currently open project
 - (void)observerDebug:(id)aNotification
 {
     CPLog("Notification was Posted: " + [aNotification name]);
-}
-
-#pragma mark WLRemoteLink Delegate
-
-- (void)remoteLink:(WLRemoteLink)aLink willSendRequest:(CPURLRequest)aRequest withDelegate:(id)aDelegate context:(id)aContext
-{
-    switch ([[aRequest HTTPMethod] uppercaseString])
-    {
-        case "POST":
-        case "PUT":
-        case "PATCH":
-        case "DELETE":
-            [aRequest setValue:[CSRFToken value] forHTTPHeaderField:"X-CSRFToken"];
-    }
 }
 @end
