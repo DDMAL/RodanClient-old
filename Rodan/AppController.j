@@ -30,8 +30,6 @@
 
 @import "Categories/CPButtonBar+PopupButtons.j"
 @import "Controllers/AuthenticationController.j"
-@import "Controllers/UserPreferencesController.j"
-@import "Controllers/ServerAdminController.j"
 @import "Controllers/WorkflowController.j"
 @import "Controllers/WorkflowDesignerController.j"
 @import "Controllers/ProjectController.j"
