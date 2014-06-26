@@ -16376,7 +16376,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">JobController</string>
-					<string key="superclassName">NSObject</string>
+					<string key="superclassName">AbstractController</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="_menuCategory">NSMenu</string>
 						<string key="_menuIsInteractive">NSMenu</string>
