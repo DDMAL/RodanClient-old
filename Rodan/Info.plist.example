@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Main cib file base name</key>
+	<string>MainMenu.cib</string>
+	<key>CPBundleName</key>
+	<string>Rodan</string>
+
+	<!-- 
+	Set this to the remote Rodan server (make sure to include "//" at beginning).
+	If the client is running on the same domain, you can leave the entry blank.
+	-->
+	<key>ServerHost</key>
+	<string>//rodan.server.somewhere</string>
+
+	<!-- 
+	Set this to "token" or "session" (no quotes). See the Rodan wiki for details.
+
+	session: won't work if domain of server is different than client
+	-->
+	<key>AuthenticationType</key>
+	<string>use token or session</string>
+</dict>
+</plist>
