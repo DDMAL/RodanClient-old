@@ -1,8 +1,6 @@
 @import <Ratatosk/WLRemoteTransformers.j>
 @import "RunJob.j"
 
-@class AppController
-
 @implementation Result : WLRemoteObject
 {
     CPString    pk              @accessors;

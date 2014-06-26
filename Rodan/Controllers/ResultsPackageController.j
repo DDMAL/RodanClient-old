@@ -9,8 +9,6 @@
 @global activeUser
 @global activeProject
 
-@class AppController
-
 var RADIOTAG_ALL = 1,
     RADIOTAG_SELECTED = 0;
 

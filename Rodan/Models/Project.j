@@ -4,8 +4,6 @@
 @import "Page.j"
 @import "Workflow.j"
 
-@class AppController
-
 /* a full representation of a project, including arrays for the pages and workflows */
 @implementation Project : WLRemoteObject
 {

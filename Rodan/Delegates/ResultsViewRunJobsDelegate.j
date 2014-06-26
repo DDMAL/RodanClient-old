@@ -5,8 +5,6 @@
 
 @global RodanShouldLoadRunJobsNotification
 
-@class AppController
-
 /**
  * Delegate to handle the run jobs table in the Results view.
  */

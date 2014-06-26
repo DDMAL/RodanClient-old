@@ -12,8 +12,6 @@
 @global RUNJOB_STATUS_HASFINISHED
 @global RUNJOB_STATUS_CANCELLED
 
-@class AppController
-
 /**
  * WorkflowRun model.
  */

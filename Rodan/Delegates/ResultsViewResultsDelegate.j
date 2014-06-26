@@ -5,8 +5,6 @@
 
 @global RodanShouldLoadWorkflowPageResultsNotification
 
-@class AppController
-
 /**
  * Delegate to handle the results table in the Results view.
  */

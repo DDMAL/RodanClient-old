@@ -1,8 +1,6 @@
 @import <Ratatosk/WLRemoteTransformers.j>
 @import "User.j"
 
-@class AppController
-
 @implementation Page : WLRemoteObject
 {
     CPString    pk              @accessors;

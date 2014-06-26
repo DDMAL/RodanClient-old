@@ -6,7 +6,6 @@
 @global RodanShouldLoadWorkflowsNotification
 @global RodanShouldLoadWorkflowRunsNotification
 
-@class AppController
 @class WorkflowController
 
 /**

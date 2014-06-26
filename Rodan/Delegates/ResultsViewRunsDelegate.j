@@ -7,8 +7,6 @@
 @global RodanShouldLoadWorkflowRunsNotification
 @global RodanShouldLoadWorkflowPagesNotification
 
-@class AppController
-
 /**
  * Runs status delegate that handles the "runs" view.
  */
