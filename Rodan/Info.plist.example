@@ -16,10 +16,16 @@
 
 	<!-- 
 	Set this to "token" or "session" (no quotes). See the Rodan wiki for details.
-
-	session: won't work if domain of server is different than client
+	NOTE: "session" won't work if domain of server is different than client.
 	-->
 	<key>AuthenticationType</key>
 	<string>use token or session</string>
+
+	<!-- 
+	Interval (in seconds) between pulls from the server for refreshing lists
+	and such.
+	-->
+	<key>RefreshRate</key>
+	<string>5</string>
 </dict>
 </plist>
