@@ -6,3 +6,9 @@ Rodan/Frameworks/Objective-J
 Rodan/Resources/MainMenu.cib
 
 /Rodan/Info.plist
+
+/Rodan/Rodan.xcodeproj/
+
+/Rodan/.XcodeSupport/
+
+*.cib
