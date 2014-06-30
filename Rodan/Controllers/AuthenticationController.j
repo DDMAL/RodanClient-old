@@ -42,6 +42,7 @@
         _urlCheckIsAuthenticated = [self serverHost] + "/auth/status/";
         _CSRFToken = nil;
         _authenticationToken = nil;
+
         switch (_authenticationType)
         {
             case "token":
@@ -111,18 +112,16 @@
 - (void)connection:(CPURLConnection)connection didReceiveResponse:(CPURLResponse)response
 {
     CPLog("received a status code of " + [response statusCode]);
+
     switch ([response statusCode])
     {
         case 400:
-            alert = [[CPAlert alloc] init];
-            [alert setMessageText:@"Error."];
-            [alert setAlertStyle:CPWarningAlertStyle];
-            [alert addButtonWithTitle:@"Try Again"];
-            [alert runModal];
+            [self _runAlert:[response statusCode] withMessage:"bad request"];
             [connection cancel];
             break;
 
         case 401:
+            [connection cancel];
             [[CPNotificationCenter defaultCenter] postNotificationName:RodanMustLogInNotification
                                                   object:nil];
             [connection cancel];
@@ -144,6 +143,7 @@
     if (data)
     {
         var data = JSON.parse(data);
+
         if (data.hasOwnProperty('token'))
         {
             _authenticationToken = "Token " + data.token;
@@ -219,5 +219,15 @@
         // some default action
     }
     return aRequest;
+}
+
+- (void)_runAlert:(CPInteger)aStatusCode withMessage:(CPString)aMessage
+{
+    var error = "Error " + aStatusCode + ": " + aMessage;
+    alert = [[CPAlert alloc] init];
+    [alert setMessageText:error];
+    [alert setAlertStyle:CPWarningAlertStyle];
+    [alert addButtonWithTitle:@"Try Again"];
+    [alert runModal];
 }
 @end
