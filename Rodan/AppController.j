@@ -47,15 +47,17 @@
 @import "Models/Project.j"
 @import "Models/User.j"
 @import "Transformers/ArrayCountTransformer.j"
+@import "Transformers/ByteCountTransformer.j"
 @import "Transformers/GameraClassNameTransformer.j"
 @import "Transformers/CheckBoxTransformer.j"
 @import "Transformers/DateFormatTransformer.j"
+@import "Transformers/JobArgumentsTransformer.j"
+@import "Transformers/RetryFailedRunJobsTransformer.j"
 @import "Transformers/ResultsDisplayTransformer.j"
+@import "Transformers/ResultThumbnailTransformer.j"
+@import "Transformers/RunJobSettingsTransformer.j"
 @import "Transformers/RunJobStatusTransformer.j"
 @import "Transformers/UsernameTransformer.j"
-@import "Transformers/ResultThumbnailTransformer.j"
-@import "Transformers/RetryFailedRunJobsTransformer.j"
-@import "Transformers/ByteCountTransformer.j"
 
 RodanDidLoadProjectNotification = @"RodanDidLoadProjectNotification";
 RodanDidCloseProjectNotification = @"RodanDidCloseProjectNotification";

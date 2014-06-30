@@ -1,8 +1,6 @@
 @import <Ratatosk/WLRemoteObject.j>
 @import "Result.j"
 @import "Page.j"
-@import "../Transformers/RunJobSettingsTransformer.j"
-@import "../Transformers/JobArgumentsTransformer.j"
 
 RUNJOB_STATUS_FAILED = -1,
 RUNJOB_STATUS_NOTRUNNING = 0,
