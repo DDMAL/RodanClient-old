@@ -6,7 +6,7 @@
 	url = git@github.com:ArchipelProject/TNKit.git
 [submodule "Rodan/Frameworks/Ratatosk"]
 	path = Rodan/Frameworks/Ratatosk
-	url = https://github.com/wireload/Ratatosk
+	url = git@github.com:mrbannon/Ratatosk.git
 [submodule "Rodan/Frameworks/cappuccino"]
 	path = Rodan/Frameworks/cappuccino
 	url = git@github.com:ahankinson/cappuccino.git
