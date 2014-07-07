@@ -27,5 +27,14 @@
 	-->
 	<key>RefreshRate</key>
 	<string>5</string>
+
+	<!--
+	Comma-delimited list of plug-ins. Plug-ins must have their own directory
+	in "PlugIns". The directory name is given below.  (E.g. a plug-in called
+	"MyPlugIn" will have a directory called "MyPlugIn" in the "PlugIns"
+	directory, and its entry below would be "MyPlugin".)
+	-->
+	<key>PlugIns</key>
+	<string></string>
 </dict>
 </plist>

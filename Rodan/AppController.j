@@ -116,13 +116,14 @@ activeProject = nil;  // URI to the currently open project
     @outlet     CPToolbarItem               usersToolbarItem;
     @outlet     CPToolbarItem               workflowDesignerToolbarItem;
     @outlet     CPButtonBar                 workflowAddRemoveBar;
+    @outlet     CPMenu                      plugInsMenu;
     @outlet     CPMenu                      switchWorkspaceMenu;
     @outlet     CPMenuItem                  rodanMenuItem;
-    @outlet     ProjectController           projectController;
-    @outlet     PageController              pageController;
-    @outlet     JobController               jobController;
-    @outlet     UploadButton                imageUploadButton;
     @outlet     AuthenticationController    authenticationController;
+    @outlet     JobController               jobController;
+    @outlet     PageController              pageController;
+    @outlet     ProjectController           projectController;
+    @outlet     UploadButton                imageUploadButton;
     @outlet     WorkflowController          workflowController;
     @outlet     WorkflowDesignerController  workflowDesignerController;
 
@@ -237,6 +238,10 @@ activeProject = nil;  // URI to the currently open project
     [contentScrollView setAutohidesScrollers:YES];
 
     [contentView setSubviews:[contentScrollView]];
+
+    // Load plugins.
+    [PlugInsController setMenu:plugInsMenu];
+    [PlugInsController loadPlugIns];
 }
 
 
