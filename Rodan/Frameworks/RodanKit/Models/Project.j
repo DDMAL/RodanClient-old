@@ -1,5 +1,4 @@
 @import <Ratatosk/WLRemoteTransformers.j>
-@import "../AppController.j"
 @import "User.j"
 @import "Page.j"
 @import "Workflow.j"

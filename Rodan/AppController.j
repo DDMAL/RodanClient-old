@@ -42,21 +42,10 @@
 @import "Delegates/ResultsViewRunsDelegate.j"
 @import "Delegates/ResultsViewWorkflowsDelegate.j"
 @import "Delegates/ResultsViewRunJobsDelegate.j"
-@import "Models/Project.j"
-@import "Models/User.j"
-@import "Transformers/ArrayCountTransformer.j"
-@import "Transformers/ByteCountTransformer.j"
 @import "Transformers/GameraClassNameTransformer.j"
-@import "Transformers/CheckBoxTransformer.j"
-@import "Transformers/DateFormatTransformer.j"
-@import "Transformers/JobArgumentsTransformer.j"
 @import "Transformers/RetryFailedRunJobsTransformer.j"
 @import "Transformers/ResultsDisplayTransformer.j"
 @import "Transformers/ResultThumbnailTransformer.j"
-@import "Transformers/RunJobSettingsTransformer.j"
-@import "Transformers/RunJobStatusTransformer.j"
-@import "Transformers/UsernameTransformer.j"
-
 
 RodanDidLoadProjectNotification = @"RodanDidLoadProjectNotification";
 RodanDidCloseProjectNotification = @"RodanDidCloseProjectNotification";
@@ -136,32 +125,23 @@ activeProject = nil;  // URI to the currently open project
 + (void)initialize
 {
     [super initialize];
+    [RodanKit initialize];
     [self registerValueTransformers];
 }
 
 + (void)registerValueTransformers
 {
-    arrayCountTransformer = [[ArrayCountTransformer alloc] init];
-    [ArrayCountTransformer setValueTransformer:arrayCountTransformer forName:@"ArrayCountTransformer"];
-
     gameraClassNameTransformer = [[GameraClassNameTransformer alloc] init];
     [GameraClassNameTransformer setValueTransformer:gameraClassNameTransformer forName:@"GameraClassNameTransformer"];
 
-    dateFormatTransformer = [[DateFormatTransformer alloc] init];
-    [DateFormatTransformer setValueTransformer:dateFormatTransformer forName:@"DateFormatTransformer"];
-
     resultsDisplayTransformer = [[ResultsDisplayTransformer alloc] init];
     [ResultsDisplayTransformer setValueTransformer:resultsDisplayTransformer forName:@"ResultsDisplayTransformer"];
-
-    runJobStatusTransformer = [[RunJobStatusTransformer alloc] init];
-    [RunJobStatusTransformer setValueTransformer:runJobStatusTransformer forName:@"RunJobStatusTransformer"];
 
     resultThumbnailTransformer = [[ResultThumbnailTransformer alloc] init];
     [ResultThumbnailTransformer setValueTransformer:resultThumbnailTransformer forName:@"ResultThumbnailTransformer"];
 
     retryFailedRunJobsTransformer = [[RetryFailedRunJobsTransformer alloc] init];
     [RetryFailedRunJobsTransformer setValueTransformer:retryFailedRunJobsTransformer forName:@"RetryFailedRunJobsTransformer"];
-
 }
 
 ///////////////////////////////////////////////////////////////////////////////

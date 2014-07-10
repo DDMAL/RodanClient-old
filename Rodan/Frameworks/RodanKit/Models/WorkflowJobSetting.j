@@ -1,5 +1,3 @@
-
-
 @implementation WorkflowJobSetting : CPObject
 {
     CPNumber    settingDefault @accessors;

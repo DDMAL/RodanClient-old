@@ -1,8 +1,8 @@
 @import <Foundation/CPObject.j>
+@import <RodanKit/Models/Job.j>
+@import <RodanKit/Models/ResultsPackage.j>
+@import <RodanKit/Models/WorkflowRun.j>
 @import "../AppController.j"
-@import "../Models/ResultsPackage.j"
-@import "../Models/WorkflowRun.j"
-@import "../Models/Job.j"
 
 @global RodanShouldLoadWorkflowResultsPackagesNotification
 @global RodanShouldLoadWorkflowRunsJobsNotification

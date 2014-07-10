@@ -1,4 +1,4 @@
-@import "../Models/RunJob.j"
+@import <RodanKit/Models/RunJob.j>
 
 @global RUNJOB_STATUS_FAILED
 @global RUNJOB_STATUS_NOTRUNNING

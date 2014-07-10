@@ -1,6 +1,5 @@
 @import <Foundation/CPObject.j>
 @import "../Controllers/WorkflowController.j"
-@import "../Models/Workflow.j"
 
 @global activeProject
 @global RodanShouldLoadWorkflowsNotification

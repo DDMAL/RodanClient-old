@@ -1,4 +1,3 @@
-
 /*
     This is a very simple class that allows us to observe the state of the
     application and set menu items to be active/inactive as needed.

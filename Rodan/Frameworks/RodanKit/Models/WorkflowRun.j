@@ -1,5 +1,4 @@
 @import <Ratatosk/WLRemoteObject.j>
-@import "../Transformers/RunJobStatusTransformer.j"
 @import "RunJob.j"
 @import "User.j"
 @import "Page.j"

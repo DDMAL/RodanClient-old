@@ -1,9 +1,8 @@
 @import <AppKit/AppKit.j>
 @import <Ratatosk/Ratatosk.j>
+@import <RodanKit/Models/Project.j>
 @import "AbstractController.j"
 @import "../AppController.j"
-@import "../Models/Project.j"
-@import "../Transformers/ArrayCountTransformer.j"
 
 @global RodanShouldLoadProjectNotification
 @global RodanDidLoadProjectsNotification

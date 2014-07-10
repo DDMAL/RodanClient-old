@@ -1,7 +1,6 @@
 @import <Foundation/CPObject.j>
 @import "../Controllers/InteractiveJobsController.j"
 @import "../Delegates/ResultsViewPagesDelegate.j"
-@import "../Models/WorkflowRun.j"
 
 
 @global RodanShouldLoadWorkflowRunsNotification
