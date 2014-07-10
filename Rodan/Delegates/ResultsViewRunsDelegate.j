@@ -7,6 +7,7 @@
 @global RodanShouldLoadWorkflowRunsNotification
 @global RodanShouldLoadWorkflowPagesNotification
 
+@class AppController
 
 /**
  * Runs status delegate that handles the "runs" view.
@@ -101,9 +102,10 @@
         var parameters = @"?workflow=" + _workflowUUID;
         parameters += @"&ordering=created";
         [WLRemoteAction schedule:WLRemoteActionGetType
-                        path:@"/workflowruns/" + parameters
+                        path:[[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/workflowruns/" + parameters
                         delegate:self
-                        message:nil];
+                        message:nil
+                        withCredentials:YES];
     }
 }
 

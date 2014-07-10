@@ -104,7 +104,6 @@ RodanHasFocusWorkflowResultsViewNotification = @"RodanHasFocusWorkflowResultsVie
 // RodanHasFocusWorkflowDesignerViewNotification = @"RodanHasFocusWorkflowDesignerViewNotification";
 RodanHasFocusPagesViewNotification = @"RodanHasFocusPagesViewNotification";
 
-
 isLoggedIn = NO;
 activeUser = nil;     // URI to the currently logged-in user
 activeProject = nil;  // URI to the currently open project

@@ -6,5 +6,7 @@
 	<string>MainMenu.cib</string>
 	<key>CPBundleName</key>
 	<string>Rodan</string>
+	<key>ServerHost</key>
+	<string>//insert_server_host_here</string>
 </dict>
 </plist>
