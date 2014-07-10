@@ -7,6 +7,3 @@
 [submodule "Rodan/Frameworks/Ratatosk"]
 	path = Rodan/Frameworks/Ratatosk
 	url = git@github.com:mrbannon/Ratatosk.git
-[submodule "Rodan/Frameworks/cappuccino"]
-	path = Rodan/Frameworks/cappuccino
-	url = git@github.com:cappuccino/cappuccino.git
