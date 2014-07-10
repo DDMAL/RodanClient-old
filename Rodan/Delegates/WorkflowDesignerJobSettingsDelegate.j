@@ -1,5 +1,5 @@
+@import <RodanKit/Tools/RKNumberFormatter.j>
 @import "../Controllers/WorkflowController.j"
-@import "../Frameworks/RodanKit/RKNumberFormatter.j"
 @import "../Models/Job.j"
 
 @global JOBSETTING_TYPE_INT
