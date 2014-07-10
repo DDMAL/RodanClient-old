@@ -1,3 +1,12 @@
+/**
+ * This class handles all authentication to the remote server. Two types of
+ * authentication are supported: "token" and "session" (see Rodan wiki).
+ * The type of authentication can be set in the root Info.plist.
+ *
+ * This also acts as a delegate for WLRemoteLink so it can add the
+ * appropriate headers for REST calls.
+ */
+
 @import <AppKit/AppKit.j>
 @import <Ratatosk/Ratatosk.j>
 @import "AbstractController.j"
@@ -8,14 +17,6 @@
 @global RodanDidLogInNotification
 @global RodanDidLogOutNotification
 
-/**
- * This class handles all authentication to the remote server. Two types of
- * authentication are supported: "token" and "session" (see Rodan wiki).
- * The type of authentication can be set in the root Info.plist.
- *
- * This also acts as a delegate for WLRemoteLink so it can add the
- * appropriate headers for REST calls.
- */
 @implementation AuthenticationController : AbstractController
 {
     @outlet     CPTextField       usernameField;

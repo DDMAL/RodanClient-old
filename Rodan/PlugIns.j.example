@@ -1,0 +1,4 @@
+/**
+ * Import the folder and principal class file of your plug-in here.
+ */
+//@import "PlugIns/YourPlugInFolder/YourPugInPrincipalClassFile.j"

@@ -21,21 +21,24 @@
     WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-@import <Foundation/CPObject.j>
 @import <AppKit/AppKit.j>
 @import <FileUpload/FileUpload.j>
+@import <Foundation/CPObject.j>
 @import <Ratatosk/Ratatosk.j>
-@import <TNKit/TNKit.j>
 @import <RodanKit/RodanKit.j>
+@import <TNKit/TNKit.j>
 
 @import "Categories/CPButtonBar+PopupButtons.j"
 @import "Controllers/AuthenticationController.j"
 @import "Controllers/WorkflowController.j"
+@import "Controllers/WorkflowDesignerController.j"
 @import "Controllers/ProjectController.j"
 @import "Controllers/PageController.j"
 @import "Controllers/JobController.j"
 @import "Controllers/MenuItemsController.j"
-@import "Controllers/InteractiveJobsController.j"
+@import "Controllers/PageController.j"
+@import "Controllers/PlugInsController.j"
+@import "Controllers/ProjectController.j"
 @import "Controllers/ResultsPackageController.j"
 @import "Controllers/WorkflowController.j"
 @import "Delegates/ResultsViewPagesDelegate.j"
@@ -57,6 +60,7 @@
 @import "Transformers/RunJobSettingsTransformer.j"
 @import "Transformers/RunJobStatusTransformer.j"
 @import "Transformers/UsernameTransformer.j"
+
 
 RodanDidLoadProjectNotification = @"RodanDidLoadProjectNotification";
 RodanDidCloseProjectNotification = @"RodanDidCloseProjectNotification";
@@ -109,13 +113,14 @@ activeProject = nil;  // URI to the currently open project
     @outlet     CPToolbarItem               jobsToolbarItem;
     @outlet     CPToolbarItem               usersToolbarItem;
     @outlet     CPButtonBar                 workflowAddRemoveBar;
+    @outlet     CPMenu                      plugInsMenu;
     @outlet     CPMenu                      switchWorkspaceMenu;
     @outlet     CPMenuItem                  rodanMenuItem;
-    @outlet     ProjectController           projectController;
-    @outlet     PageController              pageController;
-    @outlet     JobController               jobController;
-    @outlet     UploadButton                imageUploadButton;
     @outlet     AuthenticationController    authenticationController;
+    @outlet     JobController               jobController;
+    @outlet     PageController              pageController;
+    @outlet     ProjectController           projectController;
+    @outlet     UploadButton                imageUploadButton;
     @outlet     WorkflowController          workflowController;
 
 
@@ -226,6 +231,10 @@ activeProject = nil;  // URI to the currently open project
     [contentScrollView setAutohidesScrollers:YES];
 
     [contentView setSubviews:[contentScrollView]];
+
+    // Load plugins.
+    [PlugInsController setMenu:plugInsMenu];
+    [PlugInsController loadPlugIns];
 }
 
 

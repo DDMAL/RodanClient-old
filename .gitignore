@@ -12,3 +12,7 @@ Rodan/Resources/MainMenu.cib
 /Rodan/.XcodeSupport/
 
 *.cib
+
+/Rodan/Build/
+
+/Rodan/PlugIns.j
