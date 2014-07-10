@@ -1,6 +1,7 @@
 /**
- * This class handles plugin bundle related code. It is its own delegate.
+ * This class handles plugin bundle related code.
  */
+ @import "../PlugIns.j"
 
 var instance = nil;
 
@@ -30,7 +31,15 @@ var instance = nil;
 + (void)loadPlugIn:(CPString)aString
 {
     var bundle = [CPBundle bundleWithPath:"PlugIns/" + aString];
-    [bundle loadWithDelegate:[PlugInsController _getInstance]];
+    if (bundle != nil)
+    {
+        CPLog("bundle '" + [bundle objectForInfoDictionaryKey:"CPBundleName"] + "' found");
+        [[PlugInsController _getInstance] _addBundle:bundle];
+    }
+    else
+    {
+        CPLog("bundle '" + [bundle objectForInfoDictionaryKey:"CPBundleName"] + "' NOT found");
+    }
 }
 
 + (void)setMenu:(CPMenu)aMenu
@@ -42,24 +51,13 @@ var instance = nil;
 // Public Delegate Methods
 ///////////////////////////////////////////////////////////////////////////////
 #pragma mark Public Delegate Methods
-- (void)bundleDidFinishLoading:(CPBundle)aBundle
-{
-    if ([aBundle isLoaded])
-    {
-        CPLog("bundle loaded: " + [aBundle bundlePath]);
-        [self _addBundle:aBundle];
-    }
-    else
-    {
-        CPLog("bundle failed to load: " + [aBundle bundlePath]);
-    }
-}
-
 - (@action)selectedPlugIn:(id)aSender
 {
-    var bundle = [_bundleMap objectForKey:aSender],sharedApplication = [CPApplication sharedApplication];
-   // var controller = [[CPViewController alloc] initWithCibName:"test" bundle:bundle];
-    //[[sharedApplication mainWindow] setContentView:[controller view]];
+    var bundle = [_bundleMap objectForKey:aSender],
+        sharedApplication = [CPApplication sharedApplication];
+    var controller = [[CPViewController alloc] initWithCibName:[bundle objectForInfoDictionaryKey:"CPCibName"]
+                                               bundle:bundle];
+    [[sharedApplication mainWindow] setContentView:[controller view]];
 }
 
 ///////////////////////////////////////////////////////////////////////////////

@@ -1,6 +1,10 @@
 /**
  * This is a general interactive job view that most (if not all) interactive jobs can use.
  */
+
+@import <AppKit/CPWebView.j>
+@import <AppKit/CPWindow.j>
+
 @implementation RKInteractiveJob : CPWebView
 {
 }

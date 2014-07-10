@@ -21,12 +21,12 @@
     WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-@import <Foundation/CPObject.j>
 @import <AppKit/AppKit.j>
 @import <FileUpload/FileUpload.j>
+@import <Foundation/CPObject.j>
 @import <Ratatosk/Ratatosk.j>
-@import <TNKit/TNKit.j>
 @import <RodanKit/RodanKit.j>
+@import <TNKit/TNKit.j>
 
 @import "Categories/CPButtonBar+PopupButtons.j"
 @import "Controllers/AuthenticationController.j"
@@ -59,6 +59,7 @@
 @import "Transformers/RunJobSettingsTransformer.j"
 @import "Transformers/RunJobStatusTransformer.j"
 @import "Transformers/UsernameTransformer.j"
+
 
 RodanDidLoadProjectNotification = @"RodanDidLoadProjectNotification";
 RodanDidCloseProjectNotification = @"RodanDidCloseProjectNotification";
