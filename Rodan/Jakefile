@@ -93,3 +93,15 @@ function printResults(configuration)
     print(configuration+" app built at path: "+FILE.join("Build", configuration, "Rodan"));
     print("----------------------------");
 }
+
+task("test", function()
+{
+    var tests = new FileList('Test/*Test.j');
+    var cmd = ["ojtest"].concat(tests.items());
+    var cmdString = cmd.map(OS.enquote).join(" ");
+    var cmdString = "env OBJJ_INCLUDE_PATHS='./Frameworks' " + cmdString;
+
+    var code = OS.system(cmdString);
+    if (code !== 0)
+        OS.exit(code);
+});

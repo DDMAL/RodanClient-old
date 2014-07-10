@@ -31,7 +31,6 @@
 @import "Categories/CPButtonBar+PopupButtons.j"
 @import "Controllers/AuthenticationController.j"
 @import "Controllers/WorkflowController.j"
-@import "Controllers/WorkflowDesignerController.j"
 @import "Controllers/ProjectController.j"
 @import "Controllers/PageController.j"
 @import "Controllers/JobController.j"
@@ -42,7 +41,6 @@
 @import "Delegates/ResultsViewResultsDelegate.j"
 @import "Delegates/ResultsViewRunsDelegate.j"
 @import "Delegates/ResultsViewWorkflowsDelegate.j"
-@import "Delegates/WorkflowDesignerJobSettingsDelegate.j"
 @import "Delegates/ResultsViewRunJobsDelegate.j"
 @import "Models/Project.j"
 @import "Models/User.j"
@@ -67,7 +65,6 @@ RodanDidLoadJobsNotification = @"RodanDidLoadJobsNotification";
 RodanJobTreeNeedsRefresh = @"RodanJobTreeNeedsRefresh";
 RodanDidLoadWorkflowsNotification = @"RodanDidLoadWorkflowsNotification";
 RodanDidLoadWorkflowNotification = @"RodanDidLoadWorkflowNotification";
-RodanShouldLoadWorkflowDesignerNotification = @"RodanShouldLoadWorkflowDesignerNotification";
 RodanDidRefreshWorkflowsNotification = @"RodanDidRefreshWorkflowsNotification";
 RodanRemoveJobFromWorkflowNotification = @"RodanRemoveJobFromWorkflowNotification";
 RodanWorkflowTreeNeedsRefresh = @"RodanWorkflowTreeNeedsRefresh";
@@ -81,7 +78,6 @@ RodanShouldLoadWorkflowRunsNotification = @"RodanShouldLoadWorkflowRunsNotificat
 RodanShouldLoadWorkflowPagesNotification = @"RodanShouldLoadWorkflowPagesNotification";
 RodanShouldLoadWorkflowRunsJobsNotification = @"RodanShouldLoadWorkflowRunsJobsNotification";
 RodanShouldLoadPagesNotification = @"RodanShouldLoadPagesNotification";
-RodanShouldLoadWorkflowDesignerDataNotification = @"RodanShouldLoadWorkflowDesignerDataNotification";
 RodanShouldLoadWorkflowsNotification = @"RodanShouldLoadWorkflowsNotification";
 RodanShouldLoadWorkflowPageResultsNotification = @"RodanShouldLoadWorkflowPageResultsNotification";
 RodanShouldLoadRunJobsNotification = @"RodanShouldLoadRunJobsNotification";
@@ -89,7 +85,6 @@ RodanWorkflowResultsTimerNotification = @"RodanWorkflowResultsTimerNotification"
 RodanShouldLoadWorkflowResultsPackagesNotification = @"RodanShouldLoadWorkflowResultsPackagesNotification";
 RodanHasFocusInteractiveJobsViewNotification = @"RodanHasFocusInteractiveJobsViewNotification";
 RodanHasFocusWorkflowResultsViewNotification = @"RodanHasFocusWorkflowResultsViewNotification";
-RodanHasFocusWorkflowDesignerViewNotification = @"RodanHasFocusWorkflowDesignerViewNotification";
 RodanHasFocusPagesViewNotification = @"RodanHasFocusPagesViewNotification";
 
 activeUser = nil;     // URI to the currently logged-in user
@@ -105,7 +100,6 @@ activeProject = nil;  // URI to the currently open project
     @outlet     CPView                      interactiveJobsView;
     @outlet     CPView                      managePagesView;
     @outlet     CPView                      chooseWorkflowView;
-    @outlet     CPView                      workflowDesignerView;
     @outlet     CPObject                    menuItemsController;
     @outlet     CPArrayController           projectArrayController;
     @outlet     CPToolbarItem               statusToolbarItem;
@@ -113,7 +107,6 @@ activeProject = nil;  // URI to the currently open project
     @outlet     CPToolbarItem               workflowResultsToolbarItem;
     @outlet     CPToolbarItem               jobsToolbarItem;
     @outlet     CPToolbarItem               usersToolbarItem;
-    @outlet     CPToolbarItem               workflowDesignerToolbarItem;
     @outlet     CPButtonBar                 workflowAddRemoveBar;
     @outlet     CPMenu                      switchWorkspaceMenu;
     @outlet     CPMenuItem                  rodanMenuItem;
@@ -123,7 +116,7 @@ activeProject = nil;  // URI to the currently open project
     @outlet     UploadButton                imageUploadButton;
     @outlet     AuthenticationController    authenticationController;
     @outlet     WorkflowController          workflowController;
-    @outlet     WorkflowDesignerController  workflowDesignerController;
+
 
     CGRect          _theWindowBounds;
     CPScrollView    contentScrollView @accessors(readonly);
@@ -200,8 +193,6 @@ activeProject = nil;  // URI to the currently open project
     [center addObserver:self selector:@selector(didLoadProject:) name:RodanDidLoadProjectNotification object:nil];
     // [center addObserver:self selector:@selector(showProjectsChooser:) name:RodanDidLoadProjectsNotification object:nil];
     // [center addObserver:self selector:@selector(didCloseProject:) name:RodanDidCloseProjectNotification object:nil];
-    [center addObserver:self selector:@selector(showWorkflowDesigner:) name:RodanDidLoadWorkflowNotification object:nil];
-
     [center addObserver:self selector:@selector(didLogIn:) name:RodanDidLogInNotification object:nil];
     [center addObserver:self selector:@selector(mustLogIn:) name:RodanMustLogInNotification object:nil];
     [center addObserver:self selector:@selector(cannotLogIn:) name:RodanCannotLogInNotification object:nil];
@@ -215,7 +206,6 @@ activeProject = nil;  // URI to the currently open project
         workflowResultsToolbarIcon = [[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"toolbar-workflows.png"] size:CGSizeMake(32.0, 32.0)],
         jobsToolbarIcon = [[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"toolbar-jobs.png"] size:CGSizeMake(32.0, 32.0)],
         usersToolbarIcon = [[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"toolbar-users.png"] size:CGSizeMake(46.0, 32.0)],
-        workflowDesignerToolbarIcon = [[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"toolbar-workflow-designer.png"] size:CGSizeMake(32.0, 32.0)],
         backgroundTexture = [[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"workflow-backgroundTexture.png"] size:CGSizeMake(200.0, 200.0)];
 
     [statusToolbarItem setImage:statusToolbarIcon];
@@ -223,7 +213,6 @@ activeProject = nil;  // URI to the currently open project
     [workflowResultsToolbarItem setImage:workflowResultsToolbarIcon];
     [jobsToolbarItem setImage:jobsToolbarIcon];
     [usersToolbarItem setImage:usersToolbarIcon];
-    [workflowDesignerToolbarItem setImage:workflowDesignerToolbarIcon];
 
     [chooseWorkflowView setBackgroundColor:[CPColor colorWithPatternImage:backgroundTexture]];
 
@@ -385,29 +374,6 @@ activeProject = nil;  // URI to the currently open project
     [[CPNotificationCenter defaultCenter] postNotificationName:RodanHasFocusInteractiveJobsViewNotification
                                           object:nil];
 }
-
-- (IBAction)switchWorkspaceToWorkflowDesigner:(id)aSender
-{
-    [RKNotificationTimer clearTimedNotification];
-
-    [menuItemsController reset];
-    [chooseWorkflowView setFrame:[contentScrollView bounds]];
-    [chooseWorkflowView layoutIfNeeded];
-    [contentScrollView setDocumentView:chooseWorkflowView];
-
-    [[CPNotificationCenter defaultCenter] postNotificationName:RodanHasFocusWorkflowDesignerViewNotification
-                                          object:nil];
-}
-
-- (IBAction)showWorkflowDesigner:(id)aSender
-{
-    [RKNotificationTimer clearTimedNotification];
-
-    [workflowDesignerView setFrame:[contentScrollView bounds]];
-    [workflowDesignerView layoutIfNeeded];
-    [contentScrollView setDocumentView:workflowDesignerView];
-}
-
 - (void)observerDebug:(id)aNotification
 {
     CPLog("Notification was Posted: " + [aNotification name]);
