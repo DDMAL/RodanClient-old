@@ -1,8 +1,6 @@
 @import <Ratatosk/WLRemoteTransformers.j>
 @import "User.j"
 
-@class AppController
-
 @implementation Page : WLRemoteObject
 {
     CPString    pk              @accessors;
@@ -48,6 +46,6 @@
     if ([self pk])
         return [self pk]
     else
-        return [[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/pages/";
+        return @"/pages/";
 }
 @end

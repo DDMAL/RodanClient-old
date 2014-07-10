@@ -3,10 +3,7 @@
 @import <RodanKit/RKDiva.j>
 @import <RodanKit/RKNotificationTimer.j>
 
-@import "../AppController.j"
 @import "../Models/RunJob.j"
-
-@class AppController
 
 @global RodanHasFocusInteractiveJobsViewNotification
 @global RodanShouldLoadInteractiveJobsNotification
@@ -55,10 +52,9 @@ var _LOADINTERVAL = 5.0,
         projectUUID = [activeProject uuid];
     }
     [WLRemoteAction schedule:WLRemoteActionGetType
-                    path:[[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + "/runjobs/?requires_interaction=true&project=" + projectUUID
+                    path:"/runjobs/?requires_interaction=true&project=" + projectUUID
                     delegate:self
-                    message:"Retrieving RunJobs"
-                    withCredentials:YES];
+                    message:"Retrieving RunJobs"];
 }
 
 /**
@@ -124,4 +120,15 @@ var _LOADINTERVAL = 5.0,
     return YES;
 }
 
+/*
+- (@action)displayDivaWindow:(id)aSender
+{
+    var divaWindow = [[CPWindow alloc] initWithContentRect:CGRectMake(0, 0, 800, 600) styleMask:CPClosableWindowMask | CPResizableWindowMask],
+        divaView = [[RKDiva alloc] initWithFrame:[[divaWindow contentView] bounds]];
+    [divaView setAutoresizingMask:CPViewWidthSizable | CPViewHeightSizable];
+
+    [[divaWindow contentView] addSubview:divaView];
+    [divaWindow center];
+    [divaWindow makeKeyAndOrderFront:aSender];
+}*/
 @end

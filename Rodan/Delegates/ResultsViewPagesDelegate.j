@@ -89,8 +89,7 @@
         [WLRemoteAction schedule:WLRemoteActionGetType
                         path:[_associatedWorkflowRun pk] + "/?by_page=true"
                         delegate:self
-                        message:nil
-                        withCredentials:YES];
+                        message:nil];
     }
 }
 

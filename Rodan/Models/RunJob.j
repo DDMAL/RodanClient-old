@@ -4,8 +4,6 @@
 @import "../Transformers/RunJobSettingsTransformer.j"
 @import "../Transformers/JobArgumentsTransformer.j"
 
-@class AppController
-
 RUNJOB_STATUS_FAILED = -1,
 RUNJOB_STATUS_NOTRUNNING = 0,
 RUNJOB_STATUS_RUNNING = 1,
@@ -81,7 +79,7 @@ RUNJOB_STATUS_CANCELLED = 9;
     if ([self pk])
         return [self pk]
     else
-        return [[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/runjobs/";
+        return @"/runjobs/";
 }
 
 - (BOOL)canRunInteractive

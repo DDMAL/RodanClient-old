@@ -1,15 +1,13 @@
 @import <Foundation/CPObject.j>
-@import "../AppController.j"
 @import "../Models/ResultsPackage.j"
 @import "../Models/WorkflowRun.j"
 @import "../Models/Job.j"
 
 @global RodanShouldLoadWorkflowResultsPackagesNotification
 @global RodanShouldLoadWorkflowRunsJobsNotification
+
 @global activeUser
 @global activeProject
-
-@class AppController
 
 var RADIOTAG_ALL = 1,
     RADIOTAG_SELECTED = 0;
@@ -205,19 +203,17 @@ var RADIOTAG_ALL = 1,
     var getParameters = @"?workflowrun=" + [aWorkflowRun pk];
     getParameters += @"&creator=" + [activeUser pk];
     [WLRemoteAction schedule:WLRemoteActionGetType
-                    path:[[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/resultspackages/" + getParameters
+                    path:@"/resultspackages/" + getParameters
                     delegate:self
-                    message:RodanShouldLoadWorkflowResultsPackagesNotification
-                    withCredentials:YES];
+                    message:RodanShouldLoadWorkflowResultsPackagesNotification];
 }
 - (void)_requestJobs:(WorkflowRun)aWorkflowRun
 {
     var getParameters = @"?workflowrun=" + [aWorkflowRun pk];
     [WLRemoteAction schedule:WLRemoteActionGetType
-                    path:[[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/jobs/" + getParameters
+                    path:@"/jobs/" + getParameters
                     delegate:self
-                    message:RodanShouldLoadWorkflowRunsJobsNotification
-                    withCredentials:YES];
+                    message:RodanShouldLoadWorkflowRunsJobsNotification];
 }
 
 - (void)_processRemoteActionResultPackages:(WLRemoteAction)aAction

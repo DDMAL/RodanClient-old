@@ -6,8 +6,6 @@
 @global RodanDidLogInNotification
 @global RodanDidLogOutNotification
 
-@class AppController
-
 /*
     The Rodan client login process looks like this: The client sends a request to the
     server to see if the user is authorized to proceed (see the auth.SessionStatus view). If they are
@@ -56,14 +54,15 @@
     var username = [usernameField objectValue],
         password = [passwordField objectValue];
     CSRFToken = [[CPCookie alloc] initWithName:@"csrftoken"];
-    var request = [CPURLRequest requestWithURL:[[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/auth/session/"];
+
+    var request = [CPURLRequest requestWithURL:@"/auth/session/"];
     [request setValue:[CSRFToken value] forHTTPHeaderField:@"X-CSRFToken"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"]
     [request setHTTPBody:@"username=" + username + "&password=" + password];
     [request setHTTPMethod:@"POST"];
 
-    var conn = [CPURLConnection connectionWithRequest:request delegate:self withCredentials:YES];
+    var conn = [CPURLConnection connectionWithRequest:request delegate:self];
 }
 
 - (void)connection:(CPURLConnection)connection didFailWithError:(id)error
@@ -129,9 +128,9 @@
 {
     if (self = [super init])
     {
-        var request = [CPURLRequest requestWithURL:[[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/auth/status/"];
+        var request = [CPURLRequest requestWithURL:@"/auth/status/"];
         [request setHTTPMethod:@"GET"];
-        var conn = [CPURLConnection connectionWithRequest:request delegate:self withCredentials:YES];
+        var conn = [CPURLConnection connectionWithRequest:request delegate:self];
     }
     return self;
 }
@@ -199,7 +198,7 @@
     var obj = [[LogOutController alloc] init];
 
     var CSRFToken = [[CPCookie alloc] initWithName:@"csrftoken"],
-        request = [CPURLRequest requestWithURL:[[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/auth/logout/"];
+        request = [CPURLRequest requestWithURL:@"/auth/logout/"];
     [request setValue:[CSRFToken value] forHTTPHeaderField:@"X-CSRFToken"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPMethod:@"POST"];
