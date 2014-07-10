@@ -9,4 +9,4 @@
 	url = git@github.com:mrbannon/Ratatosk.git
 [submodule "Rodan/Frameworks/cappuccino"]
 	path = Rodan/Frameworks/cappuccino
-	url = git@github.com:ahankinson/cappuccino.git
+	url = https://github.com/cappuccino/cappuccino.git
