@@ -37,6 +37,7 @@
 @import "Controllers/MenuItemsController.j"
 @import "Controllers/InteractiveJobsController.j"
 @import "Controllers/ResultsPackageController.j"
+@import "Controllers/WorkflowController.j"
 @import "Delegates/ResultsViewPagesDelegate.j"
 @import "Delegates/ResultsViewResultsDelegate.j"
 @import "Delegates/ResultsViewRunsDelegate.j"
