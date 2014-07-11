@@ -1,6 +1,6 @@
 @import <Foundation/CPObject.j>
 
-@import "WorkflowJob.j"
+@import "WorkflowJobView.j"
 @import "Link.j"
 @import "OutputPort.j"
 @import "Seed.j"
@@ -54,18 +54,18 @@ var LENGTH = 100.0,
         
 
         //create workflowJobs on designerView - note length and width will depend on the type of just with number of inputs
-        workflowJobs[0] = [[WorkflowJob alloc] initWithPoint:points[0] size:CGSizeMake(WIDTH*2, LENGTH) inputPortNum:3 outputPortNum:2 type:"Lyrical" refNumber:0];
-        workflowJobs[1] = [[WorkflowJob alloc] initWithPoint:points[1] size:CGSizeMake(WIDTH, LENGTH) inputPortNum:1 outputPortNum:1 type:"Black & White" refNumber:1];
-        workflowJobs[2] = [[WorkflowJob alloc] initWithPoint:points[2] size:CGSizeMake(WIDTH*2, LENGTH) inputPortNum:1 outputPortNum:3 type:"Cropped Border" refNumber:2];
-        workflowJobs[3] = [[WorkflowJob alloc] initWithPoint:points[3] size:CGSizeMake(WIDTH, LENGTH) inputPortNum:1 outputPortNum:1 type:"Cropped Border" refNumber:3];
-        workflowJobs[4] = [[WorkflowJob alloc] initWithPoint:points[4] size:CGSizeMake(WIDTH, LENGTH) inputPortNum:1 outputPortNum:1 type:"Cropped Border" refNumber:4];
-        workflowJobs[5] = [[WorkflowJob alloc] initWithPoint:points[5] size:CGSizeMake(WIDTH*2.5, LENGTH) inputPortNum:1 outputPortNum:4 type:"Cropped Border" refNumber:5];
+        workflowJobs[0] = [[WorkflowJobView alloc] initWithPoint:points[0] size:CGSizeMake(WIDTH*2, LENGTH) inputPortNum:3 outputPortNum:2 type:"Lyrical" refNumber:0];
+        workflowJobs[1] = [[WorkflowJobView alloc] initWithPoint:points[1] size:CGSizeMake(WIDTH, LENGTH) inputPortNum:1 outputPortNum:1 type:"Black & White" refNumber:1];
+        workflowJobs[2] = [[WorkflowJobView alloc] initWithPoint:points[2] size:CGSizeMake(WIDTH*2, LENGTH) inputPortNum:1 outputPortNum:3 type:"Cropped Border" refNumber:2];
+        workflowJobs[3] = [[WorkflowJobView alloc] initWithPoint:points[3] size:CGSizeMake(WIDTH, LENGTH) inputPortNum:1 outputPortNum:1 type:"Cropped Border" refNumber:3];
+        workflowJobs[4] = [[WorkflowJobView alloc] initWithPoint:points[4] size:CGSizeMake(WIDTH, LENGTH) inputPortNum:1 outputPortNum:1 type:"Cropped Border" refNumber:4];
+        workflowJobs[5] = [[WorkflowJobView alloc] initWithPoint:points[5] size:CGSizeMake(WIDTH*2.5, LENGTH) inputPortNum:1 outputPortNum:4 type:"Cropped Border" refNumber:5];
 
-        // workflowJobs[0] = [[WorkflowJob alloc] initWithCibNamed:"WorkflowJobView.cib" bundle:[CPBundle mainBundle]];
-        // workflowJobs[1] = [[WorkflowJob alloc] initWithCibNamed:"WorkflowJobView.cib" bundle:[CPBundle mainBundle]];
-        // workflowJobs[2] = [[WorkflowJob alloc] initWithCibNamed:"WorkflowJobView.cib" bundle:[CPBundle mainBundle]];
-        // workflowJobs[3] = [[WorkflowJob alloc] initWithCibNamed:"WorkflowJobView.cib" bundle:[CPBundle mainBundle]];
-        // workflowJobs[4] = [[WorkflowJob alloc] initWithCibNamed:"WorkflowJobView.cib" bundle:[CPBundle mainBundle]];
+        // workflowJobs[0] = [[WorkflowJobView alloc] initWithCibNamed:"WorkflowJobView.cib" bundle:[CPBundle mainBundle]];
+        // workflowJobs[1] = [[WorkflowJobView alloc] initWithCibNamed:"WorkflowJobView.cib" bundle:[CPBundle mainBundle]];
+        // workflowJobs[2] = [[WorkflowJobView alloc] initWithCibNamed:"WorkflowJobView.cib" bundle:[CPBundle mainBundle]];
+        // workflowJobs[3] = [[WorkflowJobView alloc] initWithCibNamed:"WorkflowJobView.cib" bundle:[CPBundle mainBundle]];
+        // workflowJobs[4] = [[WorkflowJobView alloc] initWithCibNamed:"WorkflowJobView.cib" bundle:[CPBundle mainBundle]];
 
 
         //change attributes for various workflowJobs

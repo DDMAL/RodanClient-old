@@ -5,7 +5,7 @@
 @import "OutputPort.j"
 @import "SettingsHUD.j"
 
-@implementation WorkflowJob : CPView 
+@implementation WorkflowJobView : CPView 
 {
     CPBox                   workflowJob                     @accessors;
     CPUInteger              outputPortNumber                @accessors;

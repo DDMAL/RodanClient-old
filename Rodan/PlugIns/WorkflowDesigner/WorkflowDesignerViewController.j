@@ -4,7 +4,6 @@
 
 @import "WorkflowDesignerView.j"
 @import "ToolPanel.j"
-@import "WorkflowJob.j"
 @import "Menu.j"
 
 
@@ -12,14 +11,14 @@ TableTestDragAndDropTableViewDataType = @"TableTestDragAndDropTableViewDataType"
 CustomOutlineViewDragType = @"CustomOutlineViewDragType";
 
 
-@implementation PlugInViewController : CPViewController
+@implementation WorkflowDesignerViewController : CPViewController
 {
 
-    @outlet             CPView                  contentView             @accessors;
-                        CPScrollView            contentScrollView;
+                        CGRect                  viewBounds;
 
     @outlet             CPSplitView             workflowDesignerView    @accessors;
-    // @outlet             CPView                  designerView            @accessors;
+
+
     @outlet             CPScrollView            designerView            @accessors;
     @outlet             CPSplitView             leftSideBar             @accessors;
     @outlet             CPSplitView             rightSideBar            @accessors;
@@ -143,7 +142,6 @@ CustomOutlineViewDragType = @"CustomOutlineViewDragType";
 - (void)applicationDidFinishLaunching:(CPNotification)aNotification
 {
     // This is called when the application is done loading.
-    [contentView setNeedsDisplay:true];
 
     
 
@@ -151,32 +149,19 @@ CustomOutlineViewDragType = @"CustomOutlineViewDragType";
 
 - (void)awakeFromCib
 {
+    //init. Bundle to resources
     theBundle = [CPBundle mainBundle];
+    viewBounds = [self bounds];
 
     var center = [CPNotificationCenter defaultCenter];
-
-    //init. Bundle to resources
-
-    //init contentView attributes
-    [contentView setBackgroundColor:[CPColor colorWithHexString:"FFFFFF"]];
-    [contentView setAutoresizingMask:CPViewWidthSizable | CPViewHeightSizable];
     
-    //add scrollView on contentView
-    contentScrollView = [[CPScrollView alloc] initWithFrame:[contentView bounds]];
-    [contentScrollView setAutoresizingMask:CPViewWidthSizable | CPViewHeightSizable];
-    [contentScrollView setHasHorizontalScroller:YES];
-    [contentScrollView setHasVerticalScroller:YES];
-    [contentScrollView setAutohidesScrollers:YES];
-    [contentView setSubviews:[contentScrollView]];
-
-    
-    [workflowDesignerView setFrame:_theWindowBounds];
+    [workflowDesignerView setFrame:viewBounds];
     [workflowDesignerView setAutoresizingMask:CPViewWidthSizable | CPViewHeightSizable];
     [self addSubview:workflowDesignerView];
 
 
 
-    [designerView setFrame:CGRectMake(300.0, 0.0, CGRectGetWidth(_theWindowBounds) - 600.0, CGRectGetHeight(_theWindowBounds))];
+    [designerView setFrame:CGRectMake(300.0, 0.0, CGRectGetWidth(viewBounds) - 600.0, CGRectGetHeight(viewBounds))];
     [designerView setAutoresizingMask:CPViewWidthSizable | CPViewHeightSizable];
     [designerView setAutoresizesSubviews:YES];
     [designerView setBackgroundColor:[CPColor colorWithHexString:"FFFFFF"]];
@@ -188,14 +173,14 @@ CustomOutlineViewDragType = @"CustomOutlineViewDragType";
     [designerView setDocumentView:workflowDiagram];
 
     //left Side Bar
-    [leftSideBar setFrame:CGRectMake(0.0, 0.0, 300.0, CGRectGetHeight(_theWindowBounds))];
+    [leftSideBar setFrame:CGRectMake(0.0, 0.0, 300.0, CGRectGetHeight(viewBounds))];
     [leftSideBar setAutoresizingMask:CPViewWidthSizable | CPViewHeightSizable];
     [leftSideBar setBackgroundColor:[CPColor colorWithHexString:"E6E6E6"]];
     [leftSideBar setDelegate:self];
 
 
     //Right Side Bar
-    [rightSideBar setFrame:CGRectMake(CGRectGetWidth(_theWindowBounds) - 300.0, 0.0, 300.0, CGRectGetHeight(_theWindowBounds))];
+    [rightSideBar setFrame:CGRectMake(CGRectGetWidth(viewBounds) - 300.0, 0.0, 300.0, CGRectGetHeight(viewBounds))];
     [rightSideBar setAutoresizingMask:CPViewHeightSizable | CPViewWidthSizable];
     [rightSideBar setBackgroundColor:[CPColor colorWithHexString:"E6E6E6"]];
     [rightSideBar setDelegate:self];
