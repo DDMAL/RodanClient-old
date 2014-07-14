@@ -56,7 +56,7 @@
     if ([self pk])
         return [self pk]
     else
-        return @"/workflows/";
+        return [[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/workflows/";
 }
 
 - (void)addPage:(id)aPage

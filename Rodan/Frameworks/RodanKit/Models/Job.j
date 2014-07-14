@@ -65,7 +65,7 @@ JOBSETTING_TYPE_UUIDCLASSIFIER = @"uuid_classifier";
     }
     else
     {
-        return @"/jobs/";
+        return [[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/jobs/";
     }
 }
 @end

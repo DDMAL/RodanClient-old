@@ -36,7 +36,7 @@
     if ([self pk])
         return [self pk]
     else
-        return @"/workflowjobs/";
+        return [[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/workflowjobs/";
 }
 
 - (void)removeFromWorkflow

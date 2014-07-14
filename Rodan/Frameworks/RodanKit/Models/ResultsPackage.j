@@ -37,7 +37,7 @@
     if ([self pk])
         return [self pk]
     else
-        return @"/resultspackages/";
+        return [[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/resultspackages/";
 }
 
 @end
