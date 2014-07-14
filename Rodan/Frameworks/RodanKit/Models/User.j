@@ -28,6 +28,11 @@
     ];
 }
 
+- (CPString)postPath
+{
+    return [[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/users/"
+}
+
 - (CPString)remotePath
 {
     if ([self pk])
