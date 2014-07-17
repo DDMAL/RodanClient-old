@@ -3,6 +3,7 @@
 
 // Controllers
 @import "Controllers/AbstractController.j"
+@import "Controllers/JobController.j"
 
 // Models
 @import "Models/Job.j"

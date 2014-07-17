@@ -30,7 +30,6 @@
 
 @import "Categories/CPButtonBar+PopupButtons.j"
 @import "Controllers/AuthenticationController.j"
-@import "Controllers/JobController.j"
 @import "Controllers/MenuItemsController.j"
 @import "Controllers/PageController.j"
 @import "Controllers/PlugInsController.j"
