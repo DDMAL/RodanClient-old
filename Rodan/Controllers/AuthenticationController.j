@@ -10,7 +10,6 @@
 @import <AppKit/AppKit.j>
 @import <Ratatosk/Ratatosk.j>
 @import <RodanKit/Models/User.j>
-@import "AbstractController.j"
 
 @global RodanMustLogInNotification
 @global RodanCannotLogInNotification

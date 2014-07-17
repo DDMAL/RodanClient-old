@@ -1,6 +1,9 @@
 
 @import <Foundation/CPObject.j>
 
+// Controllers
+@import "Controllers/AbstractController.j"
+
 // Models
 @import "Models/Job.j"
 @import "Models/Page.j"

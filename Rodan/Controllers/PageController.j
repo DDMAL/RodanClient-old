@@ -3,7 +3,6 @@
 @import <Ratatosk/Ratatosk.j>
 @import <RodanKit/Models/Page.j>
 @import <RodanKit/Tools/RKNotificationTimer.j>
-@import "AbstractController.j"
 
 @global activeProject
 @global RodanHasFocusPagesViewNotification
