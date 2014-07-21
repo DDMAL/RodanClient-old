@@ -1,7 +1,7 @@
 @import "WorkflowJob.j"
 @import "WorkflowRun.j"
 @import "Job.j"
-@import "Page.j"
+// @import "Page.j"
 
 @implementation Workflow : WLRemoteObject
 {
@@ -12,11 +12,14 @@
     CPNumber    runs            @accessors;
     CPArray     workflowJobs    @accessors;
     CPArray     workflowRuns    @accessors;
-    CPArray     pages           @accessors;
+    CPArray     pages           @accessors; //change to resource ? 
     CPString    description     @accessors;
     BOOL        hasStarted      @accessors;
     CPString    workflowCreator @accessors;
     CPImage     sourceListIcon  @accessors;
+
+    CPDate      created         @accessors;
+    CPDate      updated         @accessors;
 }
 
 - (id)init
@@ -44,10 +47,12 @@
         ['projectURL',      'project'         ],
         ['workflowJobs',    'workflow_jobs',  [WLForeignObjectsTransformer forObjectClass:WorkflowJob]],
         ['workflowRuns',    'workflow_runs',  [WLForeignObjectsTransformer forObjectClass:WorkflowRun]],
-        ['pages',           'pages',          [WLForeignObjectsTransformer forObjectClass:Page]],
+        ['pages',           'pages',          [WLForeignObjectsTransformer forObjectClass:Page]],   //change to resource? 
         ['description',     'description'     ],
         ['hasStarted',      'has_started'     ],
-        ['workflowCreator', 'creator'         ]
+        ['workflowCreator', 'creator'         ],
+        ['created', 'created', [[WLDateTransformer alloc] init], true],
+        ['updated', 'updated', [[WLDateTransformer alloc] init], true]
     ];
 }
 

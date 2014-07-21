@@ -6,17 +6,20 @@ JOBSETTING_TYPE_UUIDCLASSIFIER = @"uuid_classifier";
 
 @implementation Job : WLRemoteObject
 {
-    CPString    pk              @accessors;
-    CPString    jobName         @accessors;
-    CPArray     settings        @accessors;
-    CPArray     inputTypes      @accessors;
-    CPArray     outputTypes     @accessors;
-    CPString    category        @accessors;
-    CPString    description     @accessors;
-    BOOL        isEnabled       @accessors;
-    BOOL        isInteractive   @accessors;
+    CPString        pk                  @accessors;
+    CPString        jobName             @accessors;
+    CPArray         settings            @accessors;
+    
+    CPArray         inputPortTypes      @accessors;
+    CPArray         outputPortTypes     @accessors;
+    
+    CPString        description         @accessors;
+    CPString        category            @accessors;
+    
+    BOOL            isEnabled           @accessors;
+    BOOL            isInteractive       @accessors;
 
-    CPImage     sourceListIcon  @accessors;
+    CPImage         sourceListIcon      @accessors;
 }
 
 - (id)init
@@ -42,16 +45,16 @@ JOBSETTING_TYPE_UUIDCLASSIFIER = @"uuid_classifier";
     return shortName;
 }
 
+
 + (CPArray)remoteProperties
 {
     return [
         ['pk', 'url'],
         ['jobName', 'job_name'],
         ['settings', 'settings'],
+        ['inputPortTypes', 'input_port_types'],
+        ['outputPortTypes', 'output_port_types'],
         ['description', 'description'],
-        ['inputTypes', 'input_types'],
-        ['outputTypes', 'output_types'],
-        ['category', 'category'],
         ['isEnabled', 'enabled'],
         ['isInteractive', 'interactive']
     ];
@@ -65,7 +68,8 @@ JOBSETTING_TYPE_UUIDCLASSIFIER = @"uuid_classifier";
     }
     else
     {
-        return [[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/jobs/";
+        return @"/jobs/";
     }
 }
+
 @end

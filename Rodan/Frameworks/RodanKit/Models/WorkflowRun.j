@@ -1,7 +1,7 @@
 @import <Ratatosk/WLRemoteObject.j>
 @import "RunJob.j"
 @import "User.j"
-@import "Page.j"
+@import "Resource.j"
 
 @global RUNJOB_STATUS_FAILED
 @global RUNJOB_STATUS_NOTRUNNING
@@ -20,13 +20,14 @@
     CPString    uuid        @accessors;
     CPNumber    run         @accessors;
     CPString    workflowURL @accessors;
-    CPDate      created     @accessors;
     CPString    runCreator  @accessors;
-    CPDate      updated     @accessors;
     BOOL        testRun     @accessors;
     CPString    testPageID  @accessors;
-    CPArray     pages       @accessors;
+    CPArray     resources   @accessors;
     BOOL        cancelled   @accessors;
+
+    CPDate      created     @accessors;
+    CPDate      updated     @accessors;
 }
 
 + (CPArray)remoteProperties
@@ -35,7 +36,7 @@
         ['pk', 'url'],
         ['uuid', 'uuid'],
         ['workflowURL', 'workflow'],
-        ['pages', 'pages', [WLForeignObjectsTransformer forObjectClass:Page]],
+        // ['resources', 'resources', [WLForeignObjectsTransformer forObjectClass:Resource]],
         ['runCreator', 'creator', [WLForeignObjectTransformer forObjectClass:User]],
         ['run', 'run'],
         ['created', 'created', [[WLDateTransformer alloc] init], true],

@@ -13,6 +13,12 @@
     CPArray     inputPixels     @accessors;
     CPArray     outputPixels    @accessors;
     CPString    jobDescription  @accessors;
+
+    CPArray     inputPorts      @accessors;
+    CPArray     outputPorts     @accessors;
+
+    CPDate      created         @accessors;
+    CPDate      updated         @accessors;
 }
 
 + (CPArray)remoteProperties
@@ -28,6 +34,10 @@
         ['inputPixels', 'input_pixel_types'],
         ['outputPixels', 'output_pixel_types'],
         ['jobType', 'job_type'],
+        ['inputPorts', 'input_ports'],
+        ['outputPorts', 'output_ports'],
+        ['created', 'created'],
+        ['updated', 'updated']
     ];
 }
 

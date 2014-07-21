@@ -1,6 +1,6 @@
 @import <Ratatosk/WLRemoteObject.j>
 @import "Result.j"
-@import "Page.j"
+@import "Resource.j"
 @import "../Transformers/JobArgumentsTransformer.j"
 @import "../Transformers/RunJobSettingsTransformer.j"
 
@@ -14,21 +14,30 @@ RUNJOB_STATUS_CANCELLED = 9;
 
 @implementation RunJob : WLRemoteObject
 {
-    CPString             pk                @accessors;
-    CPString             jobName           @accessors;
-    CPNumber             sequence          @accessors;
-    CPNumber             status            @accessors;
-    BOOL                 needsInput        @accessors;
-    CPString             workflowName      @accessors;
-    CPMutableDictionary  jobSettings       @accessors;
-    CPArray              jobSettingsArray  @accessors;
-    CPArray              result            @accessors;
+    CPString            pk                  @accessors;
+    CPString            uuid                @accessors;
+    CPString            jobName             @accessors;
+    CPString            workflowName        @accessors;
+    CPString            workflowRun         @accessors;
+    CPString            workflowJob         @accessors;
+
+    CPArray             inputs              @accessors;
+    CPArray             outputs             @accessors;
+
+    CPNumber            sequence            @accessors;
+    CPArray             result              @accessors;
+    CPMutableDictionary jobSettings         @accessors;
+    CPArray             jobSettingsArray    @accessors;
+    
+    BOOL                needsInput          @accessors;
+    CPNumber            status              @accessors;
+
     // this uses a simplified page object instead of the full one via Ratatosk. It's just the page name and url.
-    JSObject             page              @accessors;
-    CPDate               created           @accessors;
-    CPDate               updated           @accessors;
-    CPString             errorSummary      @accessors;
-    CPString             errorDetails      @accessors;
+    CPArray             resources           @accessors; //need to change to resource? 
+    CPDate              created             @accessors;
+    CPDate              updated             @accessors;
+    CPString            errorSummary        @accessors;
+    CPString            errorDetails        @accessors;
 }
 
 + (CPArray)remoteProperties
@@ -44,7 +53,7 @@ RUNJOB_STATUS_CANCELLED = 9;
         ['jobSettings', 'job_settings', [[RunJobSettingsTransformer alloc] init]],
         ['jobSettingsArray', 'job_settings', [[JobArgumentsTransformer alloc] init]],
         ['result', 'result', [WLForeignObjectsTransformer forObjectClass:Result]],
-        ['page', 'page', [WLForeignObjectTransformer forObjectClass:Page]],
+        ['resources', 'resources'],
         ['created', 'created', [[WLDateTransformer alloc] init], true],
         ['updated', 'updated', [[WLDateTransformer alloc] init], true],
         ['errorSummary', 'error_summary'],

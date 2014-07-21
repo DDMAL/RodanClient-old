@@ -2,15 +2,19 @@
 
 @implementation User : WLRemoteObject
 {
-    CPString    pk          @accessors;
-    CPString    username    @accessors;
-    CPString    firstName   @accessors;
-    CPString    lastName    @accessors;
-    CPArray     groups      @accessors;
-    BOOL        isActive    @accessors;
-    BOOL        isStaff     @accessors;
-    BOOL        isSuperuser @accessors;
-    CPString    email       @accessors;
+    CPString    pk              @accessors;
+    CPString    username        @accessors;
+    CPString    firstName       @accessors;
+    CPString    lastName        @accessors;
+    CPArray     groups          @accessors;
+    BOOL        isActive        @accessors;
+    BOOL        isStaff         @accessors;
+    BOOL        isSuperuser     @accessors;
+    CPString    email           @accessors;
+
+    CPArray     projects        @accessors;
+    CPArray     workflows       @accessors;
+    CPArray     workflowRuns    @accessors;
 }
 
 + (CPArray)remoteProperties
@@ -24,7 +28,10 @@
         ['isStaff', 'is_staff'],
         ['isSuperuser', 'is_superuser'],
         ['email', 'email'],
-        ['groups', 'groups']
+        ['groups', 'groups'],
+        ['projects', 'projects'],
+        ['workflows', 'workflows'],
+        ['workflowRuns', 'workflow_runs']
     ];
 }
 

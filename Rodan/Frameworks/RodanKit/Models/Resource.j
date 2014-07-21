@@ -1,7 +1,7 @@
 @import <Ratatosk/WLRemoteTransformers.j>
 @import "User.j"
 
-@implementation Page : WLRemoteObject
+@implementation Resource : WLRemoteObject
 {
     CPString    pk                  @accessors;
     CPString    uuid                @accessors;
