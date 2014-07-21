@@ -1,5 +1,5 @@
 @import "InputPort.j"
-@import "RunJob."
+@import "RunJob.j"
 @import "Resource.j"
 
 
