@@ -56,6 +56,7 @@ JOBSETTING_TYPE_UUIDCLASSIFIER = @"uuid_classifier";
         ['outputPortTypes', 'output_port_types'],
         ['description', 'description'],
         ['isEnabled', 'enabled'],
+        ['category', 'category'],
         ['isInteractive', 'interactive']
     ];
 }

@@ -101,7 +101,7 @@ activeProject = nil;  // URI to the currently open project
     @outlet     CPMenu                      switchWorkspaceMenu;
     @outlet     CPMenuItem                  rodanMenuItem;
     @outlet     AuthenticationController    authenticationController;
-    @outlet     JobController               jobController;
+    @outlet     JobController               jobController @accessors(readonly);
     @outlet     PageController              pageController;
     @outlet     ProjectController           projectController;
     @outlet     UploadButton                imageUploadButton;
