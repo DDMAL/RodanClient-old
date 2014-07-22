@@ -49,14 +49,9 @@
 RodanDidLoadProjectNotification = @"RodanDidLoadProjectNotification";
 RodanDidCloseProjectNotification = @"RodanDidCloseProjectNotification";
 RodanShouldLoadProjectNotification = @"RodanShouldLoadProjectNotification";
-RodanDidLoadProjectsNotification = @"RodanDidLoadProjectsNotification";
 RodanDidLoadJobsNotification = @"RodanDidLoadJobsNotification";
-RodanJobTreeNeedsRefresh = @"RodanJobTreeNeedsRefresh";
-RodanDidLoadWorkflowsNotification = @"RodanDidLoadWorkflowsNotification";
+RodanDidLoadProjectsNotification = @"RodanDidLoadProjectsNotification";
 RodanDidLoadWorkflowNotification = @"RodanDidLoadWorkflowNotification";
-RodanDidRefreshWorkflowsNotification = @"RodanDidRefreshWorkflowsNotification";
-RodanRemoveJobFromWorkflowNotification = @"RodanRemoveJobFromWorkflowNotification";
-RodanWorkflowTreeNeedsRefresh = @"RodanWorkflowTreeNeedsRefresh";
 RodanMustLogInNotification = @"RodanMustLogInNotification";
 RodanDidLogInNotification = @"RodanDidLogInNotification";
 RodanCannotLogInNotification = @"RodanCannotLogInNotification";
@@ -90,7 +85,6 @@ activeProject = nil;  // URI to the currently open project
     @outlet     CPView                      managePagesView;
     @outlet     CPView                      chooseWorkflowView;
     @outlet     CPObject                    menuItemsController;
-    @outlet     CPArrayController           projectArrayController;
     @outlet     CPToolbarItem               statusToolbarItem;
     @outlet     CPToolbarItem               pagesToolbarItem;
     @outlet     CPToolbarItem               workflowResultsToolbarItem;
@@ -111,7 +105,6 @@ activeProject = nil;  // URI to the currently open project
     CPScrollView    contentScrollView @accessors(readonly);
     CPView          contentView;
     CPBundle        theBundle;
-    CPCookie        CSRFToken;
     CPString        projectName;
 
 }
@@ -153,11 +146,8 @@ activeProject = nil;  // URI to the currently open project
     // Initialize authentication control.
     [authenticationController checkIsAuthenticated];
 
-    CSRFToken = [[CPCookie alloc] initWithName:@"csrftoken"];
-
     [theWindow setFullPlatformWindow:YES];
 
-    //[imageUploadButton setValue:[CSRFToken value] forParameter:@"csrfmiddlewaretoken"]
     [imageUploadButton setBordered:YES];
     [imageUploadButton setFileKey:@"files"];
     [imageUploadButton allowsMultipleFiles:YES];
@@ -169,10 +159,7 @@ activeProject = nil;  // URI to the currently open project
     _theWindowBounds = [contentView bounds];
     var center = [CPNotificationCenter defaultCenter];
 
-    // [center addObserver:self selector:@selector(didOpenProject:) name:RodanDidLoadProjectNotification object:nil];
     [center addObserver:self selector:@selector(didLoadProject:) name:RodanDidLoadProjectNotification object:nil];
-    // [center addObserver:self selector:@selector(showProjectsChooser:) name:RodanDidLoadProjectsNotification object:nil];
-    // [center addObserver:self selector:@selector(didCloseProject:) name:RodanDidCloseProjectNotification object:nil];
     [center addObserver:self selector:@selector(didLogIn:) name:RodanDidLogInNotification object:nil];
     [center addObserver:self selector:@selector(mustLogIn:) name:RodanMustLogInNotification object:nil];
     [center addObserver:self selector:@selector(cannotLogIn:) name:RodanCannotLogInNotification object:nil];
@@ -181,18 +168,14 @@ activeProject = nil;  // URI to the currently open project
 
     [theToolbar setVisible:NO];
 
-    var statusToolbarIcon = [[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"toolbar-status.png"] size:CGSizeMake(32.0, 32.0)],
-        pagesToolbarIcon = [[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"toolbar-images.png"] size:CGSizeMake(40.0, 32.0)],
+    var pagesToolbarIcon = [[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"toolbar-images.png"] size:CGSizeMake(40.0, 32.0)],
         workflowResultsToolbarIcon = [[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"toolbar-workflows.png"] size:CGSizeMake(32.0, 32.0)],
         jobsToolbarIcon = [[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"toolbar-jobs.png"] size:CGSizeMake(32.0, 32.0)],
-        usersToolbarIcon = [[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"toolbar-users.png"] size:CGSizeMake(46.0, 32.0)],
         backgroundTexture = [[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"workflow-backgroundTexture.png"] size:CGSizeMake(200.0, 200.0)];
 
-    [statusToolbarItem setImage:statusToolbarIcon];
     [pagesToolbarItem setImage:pagesToolbarIcon];
     [workflowResultsToolbarItem setImage:workflowResultsToolbarIcon];
     [jobsToolbarItem setImage:jobsToolbarIcon];
-    [usersToolbarItem setImage:usersToolbarIcon];
 
     [chooseWorkflowView setBackgroundColor:[CPColor colorWithPatternImage:backgroundTexture]];
 
@@ -301,18 +284,6 @@ activeProject = nil;  // URI to the currently open project
 
 #pragma mark -
 #pragma mark Switch Workspaces
-
-- (IBAction)switchWorkspaceToProjectStatus:(id)aSender
-{
-    [RKNotificationTimer clearTimedNotification];
-
-    [menuItemsController reset];
-    [menuItemsController setStatusIsActive:YES];
-
-    [projectStatusView setAutoresizingMask:CPViewWidthSizable];
-    [projectStatusView setFrame:[contentScrollView bounds]];
-    [contentScrollView setDocumentView:projectStatusView];
-}
 
 - (IBAction)switchWorkspaceToManagePages:(id)aSender
 {
