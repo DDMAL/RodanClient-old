@@ -233,12 +233,7 @@
 						<int key="NSMnemonicLoc">2147483647</int>
 						<reference key="NSOnImage" ref="35465992"/>
 						<reference key="NSMixedImage" ref="502551668"/>
-						<string key="NSAction">submenuAction:</string>
-						<reference key="NSTarget" ref="578120930"/>
-						<object class="NSMenu" key="NSSubmenu" id="578120930">
-							<string key="NSTitle">Plug-ins</string>
-							<array class="NSMutableArray" key="NSMenuItems"/>
-						</object>
+						<reference key="NSTarget"/>
 					</object>
 				</array>
 				<string key="NSName">_NSMainMenu</string>
@@ -485,11 +480,9 @@
 				<nil key="NSUserInterfaceItemIdentifier"/>
 				<string key="NSWindowContentMinSize">{1024, 600}</string>
 				<object class="NSView" key="NSWindowView" id="669824870">
-					<reference key="NSNextResponder"/>
+					<nil key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<string key="NSFrameSize">{1024, 600}</string>
-					<reference key="NSSuperview"/>
-					<reference key="NSWindow"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
 				<string key="NSMinSize">{1024, 678}</string>
@@ -5991,11 +5984,11 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">plugInsMenu</string>
+						<string key="label">plugInsMenuItem</string>
 						<reference key="source" ref="635946545"/>
-						<reference key="destination" ref="578120930"/>
+						<reference key="destination" ref="455148069"/>
 					</object>
-					<string key="id">8ip-j1-LkR</string>
+					<string key="id">LBp-av-p0N</string>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
@@ -11412,17 +11405,9 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 					<object class="IBObjectRecord">
 						<string key="id">bgc-hR-5CV</string>
 						<reference key="object" ref="455148069"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="578120930"/>
-						</array>
+						<array class="NSMutableArray" key="children"/>
 						<reference key="parent" ref="649796088"/>
 						<string key="objectName">Menu Item - Plug-ins</string>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">eNG-2T-m3x</string>
-						<reference key="object" ref="578120930"/>
-						<array class="NSMutableArray" key="children"/>
-						<reference key="parent" ref="455148069"/>
 					</object>
 				</array>
 			</object>
@@ -11899,7 +11884,6 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 				<string key="81.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="83.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="bgc-hR-5CV.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="eNG-2T-m3x.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="maB-YZ-Jun.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="zoR-Ji-ioT.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
@@ -11910,14 +11894,6 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<object class="IBPartialClassDescription">
-					<string key="className">AbstractController</string>
-					<string key="superclassName">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/AbstractController.h</string>
-					</object>
-				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">AppController</string>
 					<string key="superclassName">NSObject</string>
@@ -11962,7 +11938,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 						<string key="menuItemsController">NSObject</string>
 						<string key="pageController">PageController</string>
 						<string key="pagesToolbarItem">NSToolbarItem</string>
-						<string key="plugInsMenu">NSMenu</string>
+						<string key="plugInsMenuItem">NSMenuItem</string>
 						<string key="projectArrayController">NSArrayController</string>
 						<string key="projectController">ProjectController</string>
 						<string key="projectStatusView">NSView</string>
@@ -12022,9 +11998,9 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 							<string key="name">pagesToolbarItem</string>
 							<string key="candidateClassName">NSToolbarItem</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="plugInsMenu">
-							<string key="name">plugInsMenu</string>
-							<string key="candidateClassName">NSMenu</string>
+						<object class="IBToOneOutletInfo" key="plugInsMenuItem">
+							<string key="name">plugInsMenuItem</string>
+							<string key="candidateClassName">NSMenuItem</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="projectArrayController">
 							<string key="name">projectArrayController</string>
@@ -12342,33 +12318,6 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/InteractiveJobsController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">JobController</string>
-					<string key="superclassName">AbstractController</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="_menuCategory">NSMenu</string>
-						<string key="_menuIsInteractive">NSMenu</string>
-						<string key="jobArrayController">NSArrayController</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="_menuCategory">
-							<string key="name">_menuCategory</string>
-							<string key="candidateClassName">NSMenu</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_menuIsInteractive">
-							<string key="name">_menuIsInteractive</string>
-							<string key="candidateClassName">NSMenu</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="jobArrayController">
-							<string key="name">jobArrayController</string>
-							<string key="candidateClassName">NSArrayController</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/JobController.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

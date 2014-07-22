@@ -8,6 +8,7 @@ var instance = nil;
 @implementation PlugInsController : AbstractController
 {
     CPMenu          _menu;
+    CPMenuItem      _menuItem;
     CPDictionary    _bundleMap;
 }
 
@@ -42,9 +43,13 @@ var instance = nil;
     }
 }
 
-+ (void)setMenu:(CPMenu)aMenu
++ (void)setMenuItem:(CPMenuItem)aMenuItem
 {
-    [PlugInsController _getInstance]._menu = aMenu;
+    [PlugInsController _getInstance]._menuItem = aMenuItem;
+    [[PlugInsController _getInstance]._menuItem setTarget:[PlugInsController _getInstance]._menu];
+    [[PlugInsController _getInstance]._menuItem setAction:@selector(submenuAction:)];
+    [[PlugInsController _getInstance]._menuItem setSubmenu:[PlugInsController _getInstance]._menu];
+    [[PlugInsController _getInstance]._menuItem setEnabled:NO];
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -82,6 +87,7 @@ var instance = nil;
     if (self = [super init])
     {
         _bundleMap = [[CPDictionary alloc] init];
+        _menu = [[CPMenu alloc] init];
     }
     return self;
 }
@@ -93,6 +99,7 @@ var instance = nil;
                           keyEquivalent:""];
     [menuItem setTarget:self];
     [_bundleMap setValue:aBundle forKey:menuItem];
+    [_menuItem setEnabled:YES];
     CPLog("bundle '" + [aBundle objectForInfoDictionaryKey:"CPBundleName"] + "' added to menu");
 }
 @end

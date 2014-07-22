@@ -97,16 +97,15 @@ activeProject = nil;  // URI to the currently open project
     @outlet     CPToolbarItem               jobsToolbarItem;
     @outlet     CPToolbarItem               usersToolbarItem;
     @outlet     CPButtonBar                 workflowAddRemoveBar;
-    @outlet     CPMenu                      plugInsMenu;
     @outlet     CPMenu                      switchWorkspaceMenu;
     @outlet     CPMenuItem                  rodanMenuItem;
+    @outlet     CPMenuItem                  plugInsMenuItem;
     @outlet     AuthenticationController    authenticationController;
     @outlet     JobController               jobController;
     @outlet     PageController              pageController;
     @outlet     ProjectController           projectController;
     @outlet     UploadButton                imageUploadButton;
     @outlet     WorkflowController          workflowController;
-
 
     CGRect          _theWindowBounds;
     CPScrollView    contentScrollView @accessors(readonly);
@@ -208,7 +207,7 @@ activeProject = nil;  // URI to the currently open project
     [contentView setSubviews:[contentScrollView]];
 
     // Load plugins.
-    [PlugInsController setMenu:plugInsMenu];
+    [PlugInsController setMenuItem:plugInsMenuItem];
     [PlugInsController loadPlugIns];
 }
 
