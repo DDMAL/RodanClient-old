@@ -78,17 +78,14 @@ activeProject = nil;  // URI to the currently open project
 {
     @outlet     CPWindow                    theWindow;
     @outlet     TNToolbar                   theToolbar  @accessors(readonly);
-    @outlet     CPView                      projectStatusView;
     @outlet     CPView                      loginWaitScreenView;
     @outlet     CPView                      workflowResultsView;
     @outlet     CPView                      interactiveJobsView;
     @outlet     CPView                      managePagesView;
     @outlet     CPView                      chooseWorkflowView;
-    @outlet     CPToolbarItem               statusToolbarItem;
     @outlet     CPToolbarItem               pagesToolbarItem;
     @outlet     CPToolbarItem               workflowResultsToolbarItem;
     @outlet     CPToolbarItem               jobsToolbarItem;
-    @outlet     CPToolbarItem               usersToolbarItem;
     @outlet     CPButtonBar                 workflowAddRemoveBar;
     @outlet     CPMenu                      switchWorkspaceMenu;
     @outlet     CPMenuItem                  rodanMenuItem;
@@ -101,7 +98,6 @@ activeProject = nil;  // URI to the currently open project
     @outlet     WorkflowController          workflowController;
     @outlet     WorkspaceController         workspaceController;
 
-    CGRect          _theWindowBounds;
     CPScrollView    contentScrollView @accessors(readonly);
     CPView          contentView;
     CPBundle        theBundle;
@@ -155,8 +151,7 @@ activeProject = nil;  // URI to the currently open project
     [imageUploadButton setURL:@"/pages/"];
 
     theBundle = [CPBundle mainBundle],
-    contentView = [theWindow contentView],
-    _theWindowBounds = [contentView bounds];
+    contentView = [theWindow contentView];
     var center = [CPNotificationCenter defaultCenter];
 
     [center addObserver:self selector:@selector(didLoadProject:) name:RodanDidLoadProjectNotification object:nil];
@@ -278,8 +273,6 @@ activeProject = nil;  // URI to the currently open project
     [CPMenu setMenuBarVisible:YES];
     [theToolbar setVisible:YES];
 
-    [contentScrollView setDocumentView:projectStatusView];
-    [projectStatusView setAutoresizingMask:CPViewWidthSizable];
-    [projectStatusView setFrame:[contentScrollView bounds]];
+    [contentScrollView setDocumentView:nil];
 }
 @end
