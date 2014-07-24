@@ -35,6 +35,7 @@
 @import "Controllers/PlugInsController.j"
 @import "Controllers/ProjectController.j"
 @import "Controllers/ResultsPackageController.j"
+@import "Controllers/WorkspaceController.j"
 @import "Frameworks/RodanKit/Controllers/WorkflowController.j"
 @import "Delegates/ResultsViewPagesDelegate.j"
 @import "Delegates/ResultsViewResultsDelegate.j"
@@ -100,6 +101,7 @@ activeProject = nil;  // URI to the currently open project
     @outlet     ProjectController           projectController;
     @outlet     UploadButton                imageUploadButton;
     @outlet     WorkflowController          workflowController;
+    @outlet     WorkspaceController         workspaceController;
 
     CGRect          _theWindowBounds;
     CPScrollView    contentScrollView @accessors(readonly);
@@ -188,6 +190,8 @@ activeProject = nil;  // URI to the currently open project
     [contentScrollView setAutohidesScrollers:YES];
 
     [contentView setSubviews:[contentScrollView]];
+
+    [workspaceController setContentScrollView:contentScrollView];
 
     // Load plugins.
     [PlugInsController setMenuItem:plugInsMenuItem];
@@ -281,54 +285,6 @@ activeProject = nil;  // URI to the currently open project
     [projectStatusView setFrame:[contentScrollView bounds]];
 }
 
-
-#pragma mark -
-#pragma mark Switch Workspaces
-
-- (IBAction)switchWorkspaceToManagePages:(id)aSender
-{
-    [RKNotificationTimer clearTimedNotification];
-
-    [menuItemsController reset];
-    [menuItemsController setPagesIsActive:YES];
-
-    [managePagesView setAutoresizingMask:CPViewWidthSizable];
-    [managePagesView setFrame:[contentScrollView bounds]];
-    [contentScrollView setDocumentView:managePagesView];
-
-    [[CPNotificationCenter defaultCenter] postNotificationName:RodanHasFocusPagesViewNotification
-                                          object:nil];
-}
-
-- (IBAction)switchWorkspaceToWorkflowResults:(id)aSender
-{
-    [RKNotificationTimer clearTimedNotification];
-
-    [menuItemsController reset];
-    [menuItemsController setResultsIsActive:YES];
-
-    [workflowResultsView setAutoresizingMask:CPViewWidthSizable];
-    [workflowResultsView setFrame:[contentScrollView bounds]];
-    [contentScrollView setDocumentView:workflowResultsView];
-
-    [[CPNotificationCenter defaultCenter] postNotificationName:RodanHasFocusWorkflowResultsViewNotification
-                                          object:nil];
-}
-
-- (IBAction)switchWorkspaceToInteractiveJobs:(id)aSender
-{
-    [RKNotificationTimer clearTimedNotification];
-
-    [menuItemsController reset];
-    [menuItemsController setJobsIsActive:YES];
-
-    [interactiveJobsView setAutoresizingMask:CPViewWidthSizable];
-    [interactiveJobsView setFrame:[contentScrollView bounds]];
-    [contentScrollView setDocumentView:interactiveJobsView];
-
-    [[CPNotificationCenter defaultCenter] postNotificationName:RodanHasFocusInteractiveJobsViewNotification
-                                          object:nil];
-}
 - (void)observerDebug:(id)aNotification
 {
     CPLog("Notification was Posted: " + [aNotification name]);
