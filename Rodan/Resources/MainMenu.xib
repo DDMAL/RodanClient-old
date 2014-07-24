@@ -5529,9 +5529,6 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 			<object class="NSCustomObject" id="220014610">
 				<string key="NSClassName">LoadActiveProjectDelegate</string>
 			</object>
-			<object class="NSCustomObject" id="229336941">
-				<string key="NSClassName">MenuItemsController</string>
-			</object>
 			<object class="NSCustomObject" id="26872806">
 				<string key="NSClassName">PageController</string>
 			</object>
@@ -5559,7 +5556,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 			<object class="NSCustomObject" id="337352550">
 				<string key="NSClassName">WorkflowController</string>
 			</object>
-			<object class="NSCustomObject" id="399083149">
+			<object class="NSCustomObject" id="135599934">
 				<string key="NSClassName">WorkspaceController</string>
 			</object>
 			<object class="NSArrayController" id="125739767">
@@ -5850,14 +5847,6 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">menuItemsController</string>
-						<reference key="source" ref="635946545"/>
-						<reference key="destination" ref="229336941"/>
-					</object>
-					<string key="id">3865</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">interactiveJobsView</string>
 						<reference key="source" ref="635946545"/>
 						<reference key="destination" ref="1063407440"/>
@@ -5892,7 +5881,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">workspaceController</string>
 						<reference key="source" ref="635946545"/>
-						<reference key="destination" ref="399083149"/>
+						<reference key="destination" ref="135599934"/>
 					</object>
 					<string key="id">YYp-ob-c1d</string>
 				</object>
@@ -6354,52 +6343,12 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 					<string key="id">3293</string>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">enabled: designerIsActive</string>
-						<reference key="source" ref="325847317"/>
-						<reference key="destination" ref="229336941"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="325847317"/>
-							<reference key="NSDestination" ref="229336941"/>
-							<string key="NSLabel">enabled: designerIsActive</string>
-							<string key="NSBinding">enabled</string>
-							<string key="NSKeyPath">designerIsActive</string>
-							<object class="NSDictionary" key="NSOptions">
-								<string key="NS.key.0">NSValueTransformerName</string>
-								<string key="NS.object.0">NSIsNotNil</string>
-							</object>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<string key="id">3869</string>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">makeKeyAndOrderFront:</string>
 						<reference key="source" ref="852149341"/>
 						<reference key="destination" ref="407825512"/>
 					</object>
 					<string key="id">3605</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">enabled: designerIsActive</string>
-						<reference key="source" ref="407825512"/>
-						<reference key="destination" ref="229336941"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="407825512"/>
-							<reference key="NSDestination" ref="229336941"/>
-							<string key="NSLabel">enabled: designerIsActive</string>
-							<string key="NSBinding">enabled</string>
-							<string key="NSKeyPath">designerIsActive</string>
-							<object class="NSDictionary" key="NSOptions">
-								<string key="NS.key.0">NSValueTransformerName</string>
-								<string key="NS.object.0">NSIsNotNil</string>
-							</object>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<string key="id">3872</string>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -8337,7 +8286,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">interactiveJobsView</string>
-						<reference key="source" ref="399083149"/>
+						<reference key="source" ref="135599934"/>
 						<reference key="destination" ref="1063407440"/>
 					</object>
 					<string key="id">I5l-Ck-hKx</string>
@@ -8345,7 +8294,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">managePagesView</string>
-						<reference key="source" ref="399083149"/>
+						<reference key="source" ref="135599934"/>
 						<reference key="destination" ref="137411687"/>
 					</object>
 					<string key="id">wU6-I9-Iw0</string>
@@ -8353,23 +8302,15 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">workflowResultsView</string>
-						<reference key="source" ref="399083149"/>
+						<reference key="source" ref="135599934"/>
 						<reference key="destination" ref="80257360"/>
 					</object>
 					<string key="id">3vd-O2-UXd</string>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">menuItemsController</string>
-						<reference key="source" ref="399083149"/>
-						<reference key="destination" ref="229336941"/>
-					</object>
-					<string key="id">4VX-va-prP</string>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">switchWorkspaceToManagePages:</string>
-						<reference key="source" ref="399083149"/>
+						<reference key="source" ref="135599934"/>
 						<reference key="destination" ref="176124319"/>
 					</object>
 					<string key="id">qqG-Ey-ynQ</string>
@@ -8377,7 +8318,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">switchWorkspaceToInteractiveJobs:</string>
-						<reference key="source" ref="399083149"/>
+						<reference key="source" ref="135599934"/>
 						<reference key="destination" ref="920870344"/>
 					</object>
 					<string key="id">hxO-W0-uZx</string>
@@ -8385,7 +8326,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">switchWorkspaceToWorkflowResults:</string>
-						<reference key="source" ref="399083149"/>
+						<reference key="source" ref="135599934"/>
 						<reference key="destination" ref="475205574"/>
 					</object>
 					<string key="id">jdk-lz-62R</string>
@@ -8393,7 +8334,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">switchWorkspaceToManagePages:</string>
-						<reference key="source" ref="399083149"/>
+						<reference key="source" ref="135599934"/>
 						<reference key="destination" ref="1032991924"/>
 					</object>
 					<string key="id">G7i-ov-aLK</string>
@@ -8401,7 +8342,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">switchWorkspaceToWorkflowResults:</string>
-						<reference key="source" ref="399083149"/>
+						<reference key="source" ref="135599934"/>
 						<reference key="destination" ref="103925040"/>
 					</object>
 					<string key="id">R30-YQ-zaC</string>
@@ -8409,7 +8350,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">switchWorkspaceToInteractiveJobs:</string>
-						<reference key="source" ref="399083149"/>
+						<reference key="source" ref="135599934"/>
 						<reference key="destination" ref="268167294"/>
 					</object>
 					<string key="id">Icu-Is-Jp8</string>
@@ -9294,12 +9235,6 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 						<reference key="object" ref="413465052"/>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">Results View - Runs Delegate</string>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">3864</string>
-						<reference key="object" ref="229336941"/>
-						<reference key="parent" ref="0"/>
-						<string key="objectName">Menu Items Controller</string>
 					</object>
 					<object class="IBObjectRecord">
 						<string key="id">3877</string>
@@ -11385,7 +11320,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 					</object>
 					<object class="IBObjectRecord">
 						<string key="id">ndj-BX-Kky</string>
-						<reference key="object" ref="399083149"/>
+						<reference key="object" ref="135599934"/>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">Workspace Controller</string>
 					</object>
@@ -11604,7 +11539,6 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 				<string key="3844.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="3852.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="3853.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="3864.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="3877.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="3885.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="3886.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -11894,7 +11828,6 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 						<string key="jobsToolbarItem">NSToolbarItem</string>
 						<string key="loginWaitScreenView">NSView</string>
 						<string key="managePagesView">NSView</string>
-						<string key="menuItemsController">NSObject</string>
 						<string key="pageController">PageController</string>
 						<string key="pagesToolbarItem">NSToolbarItem</string>
 						<string key="plugInsMenuItem">NSMenuItem</string>
@@ -11944,10 +11877,6 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 						<object class="IBToOneOutletInfo" key="managePagesView">
 							<string key="name">managePagesView</string>
 							<string key="candidateClassName">NSView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="menuItemsController">
-							<string key="name">menuItemsController</string>
-							<string key="candidateClassName">NSObject</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="pageController">
 							<string key="name">pageController</string>
@@ -12299,14 +12228,6 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/LoadActiveProjectDelegate.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">MenuItemsController</string>
-					<string key="superclassName">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/MenuItemsController.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -12808,7 +12729,6 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="interactiveJobsView">NSView</string>
 						<string key="managePagesView">NSView</string>
-						<string key="menuItemsController">NSObject</string>
 						<string key="workflowResultsView">NSView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -12819,10 +12739,6 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 						<object class="IBToOneOutletInfo" key="managePagesView">
 							<string key="name">managePagesView</string>
 							<string key="candidateClassName">NSView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="menuItemsController">
-							<string key="name">menuItemsController</string>
-							<string key="candidateClassName">NSObject</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="workflowResultsView">
 							<string key="name">workflowResultsView</string>

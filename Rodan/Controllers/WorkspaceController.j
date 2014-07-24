@@ -7,7 +7,6 @@
     @outlet     CPView          interactiveJobsView;
     @outlet     CPView          managePagesView;
     @outlet     CPView          workflowResultsView;
-    @outlet     CPObject        menuItemsController;
                 CPScrollView    _contentScrollView @accessors(property=contentScrollView);
 }
 
@@ -22,8 +21,6 @@
 - (@action)switchWorkspaceToManagePages:(id)aSender
 {
     [RKNotificationTimer clearTimedNotification];
-    [menuItemsController reset];
-    [menuItemsController setPagesIsActive:YES];
     [managePagesView setAutoresizingMask:CPViewWidthSizable];
     [managePagesView setFrame:[_contentScrollView bounds]];
     [_contentScrollView setDocumentView:managePagesView];
@@ -34,8 +31,6 @@
 - (@action)switchWorkspaceToWorkflowResults:(id)aSender
 {
     [RKNotificationTimer clearTimedNotification];
-    [menuItemsController reset];
-    [menuItemsController setResultsIsActive:YES];
     [workflowResultsView setAutoresizingMask:CPViewWidthSizable];
     [workflowResultsView setFrame:[_contentScrollView bounds]];
     [_contentScrollView setDocumentView:workflowResultsView];
@@ -46,8 +41,6 @@
 - (@action)switchWorkspaceToInteractiveJobs:(id)aSender
 {
     [RKNotificationTimer clearTimedNotification];
-    [menuItemsController reset];
-    [menuItemsController setJobsIsActive:YES];
     [interactiveJobsView setAutoresizingMask:CPViewWidthSizable];
     [interactiveJobsView setFrame:[_contentScrollView bounds]];
     [_contentScrollView setDocumentView:interactiveJobsView];

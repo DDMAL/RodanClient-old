@@ -30,7 +30,6 @@
 
 @import "Categories/CPButtonBar+PopupButtons.j"
 @import "Controllers/AuthenticationController.j"
-@import "Controllers/MenuItemsController.j"
 @import "Controllers/PageController.j"
 @import "Controllers/PlugInsController.j"
 @import "Controllers/ProjectController.j"
@@ -85,7 +84,6 @@ activeProject = nil;  // URI to the currently open project
     @outlet     CPView                      interactiveJobsView;
     @outlet     CPView                      managePagesView;
     @outlet     CPView                      chooseWorkflowView;
-    @outlet     CPObject                    menuItemsController;
     @outlet     CPToolbarItem               statusToolbarItem;
     @outlet     CPToolbarItem               pagesToolbarItem;
     @outlet     CPToolbarItem               workflowResultsToolbarItem;
