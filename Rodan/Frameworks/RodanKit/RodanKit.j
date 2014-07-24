@@ -6,9 +6,17 @@
 @import "Controllers/JobController.j"
 
 // Models
+@import "Models/Connection.j"
+@import "Models/Input.j"
+@import "Models/InputPort.j"
+@import "Models/InputPortType.j"
 @import "Models/Job.j"
+@import "Models/Output.j"
+@import "Models/OutputPort.j"
+@import "Models/OutputPortType.j"
 @import "Models/Page.j"
 @import "Models/Project.j"
+@import "Models/Resource.j"
 @import "Models/Result.j"
 @import "Models/ResultsPackage.j"
 @import "Models/RunJob.j"
