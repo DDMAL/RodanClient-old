@@ -282,9 +282,4 @@ activeProject = nil;  // URI to the currently open project
     [projectStatusView setAutoresizingMask:CPViewWidthSizable];
     [projectStatusView setFrame:[contentScrollView bounds]];
 }
-
-- (void)observerDebug:(id)aNotification
-{
-    CPLog("Notification was Posted: " + [aNotification name]);
-}
 @end
