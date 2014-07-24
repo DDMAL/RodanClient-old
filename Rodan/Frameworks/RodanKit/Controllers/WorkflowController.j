@@ -1,7 +1,7 @@
 @import <Foundation/CPObject.j>
 @import <RodanKit/Models/Workflow.j>
 @import <RodanKit/Tools/RKNotificationTimer.j>
-@import "../Delegates/ResultsViewWorkflowsDelegate.j"
+@import "../../../Delegates/ResultsViewWorkflowsDelegate.j"
 
 @global activeProject
 @global activeUser
