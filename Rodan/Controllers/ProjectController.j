@@ -3,8 +3,8 @@
 @import <RodanKit/Models/Project.j>
 @import "../AppController.j"
 
+@global RodanHasFocusProjectListViewNotification
 @global RodanShouldLoadProjectNotification
-@global RodanDidLoadProjectsNotification
 @global RodanDidLoadProjectNotification
 @global RodanDidCloseProjectNotification
 @global activeUser
@@ -23,6 +23,7 @@
     @outlet     WorkflowController          workflowController;
     @outlet     CPArrayController           workflowArrayController;
     @outlet     JobController               jobController;
+    @outlet     WorkspaceController         workspaceController;
 }
 
 - (void)awakeFromCib
@@ -33,8 +34,13 @@
                                           object:nil];
 
     [[CPNotificationCenter defaultCenter] addObserver:self
-                                          selector:@selector(showProjectsChooser:)
-                                          name:RodanDidLoadProjectsNotification
+                                          selector:@selector(receiveHasFocusEvent:)
+                                          name:RodanHasFocusProjectListViewNotification
+                                          object:nil];
+
+    [[CPNotificationCenter defaultCenter] addObserver:self
+                                          selector:@selector(didLoadProject:)
+                                          name:RodanDidLoadProjectNotification
                                           object:nil];
 
     [[CPNotificationCenter defaultCenter] addObserver:self
@@ -66,9 +72,6 @@
 {
     var p = [MinimalProject objectsFromJson:[anAction result]];
     [projectArrayController addObjects:p];
-
-    [[CPNotificationCenter defaultCenter] postNotificationName:RodanDidLoadProjectsNotification
-                                          object:nil];
 }
 
 - (@action)newProject:(id)aSender
@@ -139,6 +142,13 @@
     [projectArrayController setContent:nil];
 }
 
+- (void)receiveHasFocusEvent:(CPNotification)aNotification
+{
+    [self emptyProjectArrayController];
+    [self fetchProjects];
+    [self showProjectsChooser:nil];
+}
+
 #pragma mark -
 #pragma mark Project Opening and Closing
 
@@ -164,31 +174,24 @@
                   withKeyPath:@"selectedObjects.@count"
                   options:nil]
 
-    [selectProjectView setFrame:[[[CPApp delegate] contentScrollView] bounds]];
-    [selectProjectView setAutoresizingMask:CPViewWidthSizable];
-    [[[CPApp delegate] contentScrollView] setDocumentView:selectProjectView];
+    [workspaceController setView:selectProjectView];
 }
 
 - (void)didCloseProject:(CPNotification)aNotification
 {
-    // perform some cleanup
-    [self emptyProjectArrayController];
-    [pageController emptyPageArrayController];
-    [workflowController emptyWorkflowArrayController];
-
-    [[[CPApp delegate] theToolbar] setVisible:NO];
-    [CPMenu setMenuBarVisible:NO];
-
-    // this should fire off a request to reload the projects and then show the
-    // project chooser once they have returned.
-    [self fetchProjects];
-    [jobController fetchJobs]
+    [self showProjectsChooser:nil];
 }
 
 - (IBAction)closeProject:(id)aSender
 {
     [[CPNotificationCenter defaultCenter] postNotificationName:RodanDidCloseProjectNotification
                                           object:nil];
+}
+
+- (void)didLoadProject:(CPNotification)aNotification
+{
+    console.log("TODO: inform the workspace controller what we want to show");
+    [workspaceController clearView];
 }
 @end
 

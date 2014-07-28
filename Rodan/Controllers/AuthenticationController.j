@@ -9,19 +9,22 @@
 
 @import <AppKit/AppKit.j>
 @import <Ratatosk/Ratatosk.j>
-@import <RodanKit/Models/User.j>
 
 @global RodanMustLogInNotification
 @global RodanCannotLogInNotification
 @global RodanDidLogInNotification
 @global RodanDidLogOutNotification
 
+activeUser = nil;
+
 @implementation AuthenticationController : AbstractController
 {
+    @outlet     CPView            authenticationWaitScreen;
     @outlet     CPTextField       usernameField;
     @outlet     CPSecureTextField passwordField;
     @outlet     CPButton          submitButton;
     @outlet     CPWindow          logInWindow;
+    @outlet     WorkspaceController workspaceController;
                 CPString          _authenticationType;
                 CPString          _urlLogout;
                 CPString          _urlLogin;
@@ -66,6 +69,7 @@
 
 - (void)checkIsAuthenticated
 {
+    [workspaceController setView:authenticationWaitScreen];
     var request = [CPURLRequest requestWithURL:_urlCheckIsAuthenticated];
     [request setHTTPMethod:@"GET"];
     var conn = [CPURLConnection connectionWithRequest:request delegate:self withCredentials:YES];
@@ -87,11 +91,6 @@
     [self _logIn];
 }
 
-- (void)logOut
-{
-    [self _logOut];
-}
-
 ///////////////////////////////////////////////////////////////////////////////
 // Public Action Methods
 ///////////////////////////////////////////////////////////////////////////////
@@ -99,6 +98,11 @@
 - (@action)closeSheet:(id)aSender
 {
     [CPApp endSheet:logInWindow returnCode:[aSender tag]];
+}
+
+- (@action)logOut:(id)aSender
+{
+    [self _logOut];
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -125,7 +129,8 @@
             [connection cancel];
             [[CPNotificationCenter defaultCenter] postNotificationName:RodanMustLogInNotification
                                                   object:nil];
-            [connection cancel];
+            [workspaceController clearView];
+            [self runLogInSheet];
             break;
 
         case 403:
@@ -153,9 +158,9 @@
         }
         else
         {
-            var user = [[User alloc] initWithJson:data];
+            activeUser = [[User alloc] initWithJson:data];
             [[CPNotificationCenter defaultCenter] postNotificationName:RodanDidLogInNotification
-                                                  object:user];
+                                                  object:activeUser];
         }
     }
 }
@@ -188,11 +193,14 @@
 
 - (void)_logOut
 {
+    activeUser = nil;
     var request = [CPURLRequest requestWithURL:_urlLogout];
     request = [self _addAuthenticationHeaders:request];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPMethod:@"POST"];
     var conn = [CPURLConnection connectionWithRequest:request delegate:self withCredentials:YES];
+    [[CPNotificationCenter defaultCenter] postNotificationName:RodanDidLogOutNotification
+                                          object:nil];
 }
 
 - (void)_addAuthenticationHeaders:(CPURLRequest)aRequest

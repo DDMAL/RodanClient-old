@@ -3,53 +3,63 @@
  */
  @import "../PlugIns.j"
 
-var instance = nil;
-
 @implementation PlugInsController : AbstractController
 {
-    CPMenu          _menu;
-    CPMenuItem      _menuItem;
-    CPDictionary    _bundleMap;
+    @outlet CPMenuItem          menuItem;
+    @outlet WorkspaceController workspaceController;
+            CPMenu              _menu;
+            CPDictionary        _bundleMap;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// Public Static Methods
+// Public Methods
 ///////////////////////////////////////////////////////////////////////////////
-+ (void)loadPlugIns
+#pragma mark Public Methods
+- (id)init
+{
+    if (self = [super init])
+    {
+        _bundleMap = [[CPDictionary alloc] init];
+        _menu = [[CPMenu alloc] init];
+    }
+    return self;
+}
+
+- (void)awakeFromCib
+{
+    [menuItem setTarget:_menu];
+    [menuItem setAction:@selector(submenuAction:)];
+    [menuItem setSubmenu:_menu];
+    [menuItem setEnabled:NO];
+}
+
+- (void)loadPlugIns
 {
     var bundleString = [[CPBundle mainBundle] objectForInfoDictionaryKey:"PlugIns"];
     if (bundleString != nil)
     {
         var pluginStringArray = [bundleString componentsSeparatedByString:","],
-            enumerator = [pluginStringArray objectEnumerator];
+            enumerator = [pluginStringArray objectEnumerator],
+            pluginString = nil;
         while (pluginString = [enumerator nextObject])
         {
-            [PlugInsController loadPlugIn:pluginString];
+            [self loadPlugIn:pluginString];
         }
     }
 }
 
-+ (void)loadPlugIn:(CPString)aString
+- (void)loadPlugIn:(CPString)aString
 {
     var bundle = [CPBundle bundleWithPath:"PlugIns/" + aString];
     if (bundle != nil)
     {
         CPLog("bundle '" + [bundle objectForInfoDictionaryKey:"CPBundleName"] + "' found");
-        [[PlugInsController _getInstance] _addBundle:bundle];
+        [self _addBundle:bundle];
     }
     else
     {
         CPLog("bundle '" + [bundle objectForInfoDictionaryKey:"CPBundleName"] + "' NOT found");
     }
-}
-
-+ (void)setMenuItem:(CPMenuItem)aMenuItem
-{
-    [PlugInsController _getInstance]._menuItem = aMenuItem;
-    [[PlugInsController _getInstance]._menuItem setTarget:[PlugInsController _getInstance]._menu];
-    [[PlugInsController _getInstance]._menuItem setAction:@selector(submenuAction:)];
-    [[PlugInsController _getInstance]._menuItem setSubmenu:[PlugInsController _getInstance]._menu];
-    [[PlugInsController _getInstance]._menuItem setEnabled:NO];
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -62,44 +72,22 @@ var instance = nil;
         sharedApplication = [CPApplication sharedApplication];
     var controller = [[CPViewController alloc] initWithCibName:[bundle objectForInfoDictionaryKey:"CPCibName"]
                                                bundle:bundle];
-    [[sharedApplication mainWindow] setContentView:[controller view]];
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// Private Static Methods
-///////////////////////////////////////////////////////////////////////////////
-#pragma mark Private Static Methods
-+ (PlugInsController)_getInstance
-{
-    if (instance == nil)
-    {
-        instance = [[PlugInsController alloc] init];
-    }
-    return instance;
+    [RKNotificationTimer clearTimedNotification];
+    [workspaceController setView:[controller view]];
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 // Private Methods
 ///////////////////////////////////////////////////////////////////////////////
 #pragma mark Private Methods
-- (id)init
-{
-    if (self = [super init])
-    {
-        _bundleMap = [[CPDictionary alloc] init];
-        _menu = [[CPMenu alloc] init];
-    }
-    return self;
-}
-
 - (void)_addBundle:(CPBundle)aBundle
 {
-    var menuItem = [_menu addItemWithTitle:[aBundle objectForInfoDictionaryKey:"CPBundleName"]
+    var newMenuItem = [_menu addItemWithTitle:[aBundle objectForInfoDictionaryKey:"CPBundleName"]
                           action:@selector(selectedPlugIn:)
                           keyEquivalent:""];
-    [menuItem setTarget:self];
-    [_bundleMap setValue:aBundle forKey:menuItem];
-    [_menuItem setEnabled:YES];
+    [newMenuItem setTarget:self];
+    [_bundleMap setValue:aBundle forKey:newMenuItem];
+    [menuItem setEnabled:YES];
     CPLog("bundle '" + [aBundle objectForInfoDictionaryKey:"CPBundleName"] + "' added to menu");
 }
 @end

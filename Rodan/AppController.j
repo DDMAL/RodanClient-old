@@ -50,7 +50,6 @@ RodanDidLoadProjectNotification = @"RodanDidLoadProjectNotification";
 RodanDidCloseProjectNotification = @"RodanDidCloseProjectNotification";
 RodanShouldLoadProjectNotification = @"RodanShouldLoadProjectNotification";
 RodanDidLoadJobsNotification = @"RodanDidLoadJobsNotification";
-RodanDidLoadProjectsNotification = @"RodanDidLoadProjectsNotification";
 RodanDidLoadWorkflowNotification = @"RodanDidLoadWorkflowNotification";
 RodanMustLogInNotification = @"RodanMustLogInNotification";
 RodanDidLogInNotification = @"RodanDidLogInNotification";
@@ -67,18 +66,18 @@ RodanShouldLoadWorkflowPageResultsNotification = @"RodanShouldLoadWorkflowPageRe
 RodanShouldLoadRunJobsNotification = @"RodanShouldLoadRunJobsNotification";
 RodanWorkflowResultsTimerNotification = @"RodanWorkflowResultsTimerNotification";
 RodanShouldLoadWorkflowResultsPackagesNotification = @"RodanShouldLoadWorkflowResultsPackagesNotification";
+
+// Focus events.
 RodanHasFocusInteractiveJobsViewNotification = @"RodanHasFocusInteractiveJobsViewNotification";
 RodanHasFocusWorkflowResultsViewNotification = @"RodanHasFocusWorkflowResultsViewNotification";
 RodanHasFocusPagesViewNotification = @"RodanHasFocusPagesViewNotification";
+RodanHasFocusProjectListViewNotification = @"RodanHasFocusProjectListViewNotification";
 
-activeUser = nil;     // URI to the currently logged-in user
 activeProject = nil;  // URI to the currently open project
 
 @implementation AppController : CPObject
 {
-    @outlet     CPWindow                    theWindow;
     @outlet     TNToolbar                   theToolbar  @accessors(readonly);
-    @outlet     CPView                      loginWaitScreenView;
     @outlet     CPView                      workflowResultsView;
     @outlet     CPView                      interactiveJobsView;
     @outlet     CPView                      managePagesView;
@@ -88,7 +87,7 @@ activeProject = nil;  // URI to the currently open project
     @outlet     CPToolbarItem               jobsToolbarItem;
     @outlet     CPButtonBar                 workflowAddRemoveBar;
     @outlet     CPMenu                      switchWorkspaceMenu;
-    @outlet     CPMenuItem                  rodanMenuItem;
+    @outlet     PlugInsController           plugInsController;
     @outlet     CPMenuItem                  plugInsMenuItem;
     @outlet     AuthenticationController    authenticationController;
     @outlet     JobController               jobController @accessors(readonly);
@@ -98,10 +97,7 @@ activeProject = nil;  // URI to the currently open project
     @outlet     WorkflowController          workflowController;
     @outlet     WorkspaceController         workspaceController;
 
-    CPScrollView    contentScrollView @accessors(readonly);
-    CPView          contentView;
-    CPBundle        theBundle;
-    CPString        projectName;
+    CPString    projectName;
 
 }
 
@@ -138,11 +134,7 @@ activeProject = nil;  // URI to the currently open project
 - (void)awakeFromCib
 {
     CPLogRegister(CPLogConsole);
-
-    // Initialize authentication control.
-    [authenticationController checkIsAuthenticated];
-
-    [theWindow setFullPlatformWindow:YES];
+    [self _registerMessageListening];
 
     [imageUploadButton setBordered:YES];
     [imageUploadButton setFileKey:@"files"];
@@ -150,129 +142,42 @@ activeProject = nil;  // URI to the currently open project
     [imageUploadButton setDelegate:pageController];
     [imageUploadButton setURL:@"/pages/"];
 
-    theBundle = [CPBundle mainBundle],
-    contentView = [theWindow contentView];
-    var center = [CPNotificationCenter defaultCenter];
-
-    [center addObserver:self selector:@selector(didLoadProject:) name:RodanDidLoadProjectNotification object:nil];
-    [center addObserver:self selector:@selector(didLogIn:) name:RodanDidLogInNotification object:nil];
-    [center addObserver:self selector:@selector(mustLogIn:) name:RodanMustLogInNotification object:nil];
-    [center addObserver:self selector:@selector(cannotLogIn:) name:RodanCannotLogInNotification object:nil];
-    [center addObserver:self selector:@selector(cannotLogIn:) name:RodanLogInErrorNotification object:nil];
-    [center addObserver:self selector:@selector(didLogOut:) name:RodanDidLogOutNotification object:nil];
-
     [theToolbar setVisible:NO];
-
-    var pagesToolbarIcon = [[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"toolbar-images.png"] size:CGSizeMake(40.0, 32.0)],
-        workflowResultsToolbarIcon = [[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"toolbar-workflows.png"] size:CGSizeMake(32.0, 32.0)],
-        jobsToolbarIcon = [[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"toolbar-jobs.png"] size:CGSizeMake(32.0, 32.0)],
-        backgroundTexture = [[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"workflow-backgroundTexture.png"] size:CGSizeMake(200.0, 200.0)];
-
+    var pagesToolbarIcon = [[CPImage alloc] initWithContentsOfFile:[[CPBundle mainBundle] pathForResource:@"toolbar-images.png"] size:CGSizeMake(40.0, 32.0)],
+        workflowResultsToolbarIcon = [[CPImage alloc] initWithContentsOfFile:[[CPBundle mainBundle] pathForResource:@"toolbar-workflows.png"] size:CGSizeMake(32.0, 32.0)],
+        jobsToolbarIcon = [[CPImage alloc] initWithContentsOfFile:[[CPBundle mainBundle] pathForResource:@"toolbar-jobs.png"] size:CGSizeMake(32.0, 32.0)],
+        backgroundTexture = [[CPImage alloc] initWithContentsOfFile:[[CPBundle mainBundle] pathForResource:@"workflow-backgroundTexture.png"] size:CGSizeMake(200.0, 200.0)];
     [pagesToolbarItem setImage:pagesToolbarIcon];
     [workflowResultsToolbarItem setImage:workflowResultsToolbarIcon];
     [jobsToolbarItem setImage:jobsToolbarIcon];
 
     [chooseWorkflowView setBackgroundColor:[CPColor colorWithPatternImage:backgroundTexture]];
-
-    [contentView setAutoresizingMask:CPViewWidthSizable | CPViewHeightSizable];
-
-    contentScrollView = [[CPScrollView alloc] initWithFrame:[contentView bounds]];
-    [contentScrollView setAutoresizingMask:CPViewWidthSizable | CPViewHeightSizable];
-    [contentScrollView setHasHorizontalScroller:YES];
-    [contentScrollView setHasVerticalScroller:YES];
-    [contentScrollView setAutohidesScrollers:YES];
-
-    [contentView setSubviews:[contentScrollView]];
-
-    [workspaceController setContentScrollView:contentScrollView];
-
-    // Load plugins.
-    [PlugInsController setMenuItem:plugInsMenuItem];
-    [PlugInsController loadPlugIns];
 }
-
 
 - (void)applicationDidFinishLaunching:(CPNotification)aNotification
 {
-    // This will catch a user and display a dialog if they try to leave the page. This
-    // is to avoid any inadvertent forward/back behaviour if, e.g., they're scrolling in a table.
-    window.onbeforeunload = function()
-    {
-        return "This will terminate the Application. Are you sure you want to leave?";
-    }
-
-    [CPMenu setMenuBarVisible:NO];
-    var menubarIcon = [[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"menubar-icon.png"] size:CGSizeMake(16.0, 16.0)];
-    [rodanMenuItem setImage:menubarIcon];
-
-    [loginWaitScreenView setFrame:[contentScrollView bounds]];
-    [loginWaitScreenView setAutoresizingMask:CPViewWidthSizable];
-    [contentScrollView setDocumentView:loginWaitScreenView];
-}
-
-- (void)mustLogIn:(id)aNotification
-{
-    var blankView = [[CPView alloc] init];
-    [contentScrollView setDocumentView:blankView];
-    [authenticationController runLogInSheet];
-}
-
-- (void)cannotLogIn:(id)aNotification
-{
-    // display an alert that they cannot log in
-    var alert = [[CPAlert alloc] init];
-    [alert setTitle:@"Cannot Log In"];
-    [alert setDelegate:self];
-    [alert setMessageText:@"You cannot log in"];
-    [alert setInformativeText:@"Please check your username and password. If you are still having difficulties, please contact an administrator."];
-    [alert setShowsHelp:YES];
-    [alert setAlertStyle:CPCriticalAlertStyle];
-    [alert addButtonWithTitle:"Ok"];
-    [alert runModal];
-}
-
-- (void)alertDidEnd:(CPAlert)alert returnCode:(int)returnCode
-{
-    /*
-        The cannotLogIn alert has ended, informing the user they should try again. This will
-        redirect them back to the login sheet.
-    */
-    [[CPNotificationCenter defaultCenter] postNotificationName:RodanMustLogInNotification
-                                          object:nil];
+    [plugInsController loadPlugIns];
+    [authenticationController checkIsAuthenticated];
 }
 
 - (void)didLogIn:(id)aNotification
 {
-    activeUser = [aNotification object];
-    [projectController fetchProjects];
-    [jobController fetchJobs];
+    [workspaceController switchWorkspaceToProjects:nil];
 }
 
 - (void)didLogOut:(id)aNotification
 {
-    [projectController emptyProjectArrayController];
-    [CPMenu setMenuBarVisible:NO];
-    [theToolbar setVisible:NO];
-
-    /*
-        Once the user has logged out, redirect the screen to the login sheet.
-    */
-    [[CPNotificationCenter defaultCenter] postNotificationName:RodanMustLogInNotification
-                                          object:nil];
+    [workspaceController clearView];
+    [authenticationController checkIsAuthenticated];
 }
 
-- (@action)logOut:(id)aSender
+///////////////////////////////////////////////////////////////////////////////
+// Private Methods
+///////////////////////////////////////////////////////////////////////////////
+#pragma mark Private Methods
+- (void)_registerMessageListening
 {
-    [authenticationController logOut];
-}
-
-- (void)didLoadProject:(CPNotification)aNotification
-{
-    [theWindow setTitle:@"Rodan &mdash; " + [activeProject projectName]];
-
-    [CPMenu setMenuBarVisible:YES];
-    [theToolbar setVisible:YES];
-
-    [contentScrollView setDocumentView:nil];
+    [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(didLogIn:) name:RodanDidLogInNotification object:nil];
+    [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(didLogOut:) name:RodanDidLogOutNotification object:nil];
 }
 @end
