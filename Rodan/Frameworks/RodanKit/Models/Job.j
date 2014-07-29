@@ -8,6 +8,7 @@ JOBSETTING_TYPE_UUIDCLASSIFIER = @"uuid_classifier";
 {
     CPString        pk                  @accessors;
     CPString        jobName             @accessors;
+    CPString        shortJobName        @accessors;
     CPArray         settings            @accessors;
     
     CPArray         inputPortTypes      @accessors;
@@ -28,6 +29,8 @@ JOBSETTING_TYPE_UUIDCLASSIFIER = @"uuid_classifier";
     {
         sourceListIcon = [[CPImage alloc] initWithContentsOfFile:[[CPBundle mainBundle] pathForResource:@"job-sourcelist-icon.png"]
                                   size:CGSizeMake(16.0, 16.0)];
+
+        shortJobName = [self shortJobName];
 
     }
     return self;
