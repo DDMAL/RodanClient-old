@@ -13,7 +13,7 @@ var _LOADINTERVAL = 5.0,
 /**
  * General interactive jobs controller.
  */
-@implementation InteractiveJobsController : CPObject
+@implementation InteractiveJobsController : AbstractController
 {
     @outlet CPTableView                 interactiveJobsTableView;
     @outlet CPArrayController           interactiveJobsArrayController  @accessors(readonly);

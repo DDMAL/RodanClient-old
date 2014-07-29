@@ -30,7 +30,6 @@
     [menuItem setTarget:_menu];
     [menuItem setAction:@selector(submenuAction:)];
     [menuItem setSubmenu:_menu];
-    [menuItem setEnabled:NO];
 }
 
 - (void)loadPlugIns
@@ -87,7 +86,6 @@
                           keyEquivalent:""];
     [newMenuItem setTarget:self];
     [_bundleMap setValue:aBundle forKey:newMenuItem];
-    [menuItem setEnabled:YES];
     CPLog("bundle '" + [aBundle objectForInfoDictionaryKey:"CPBundleName"] + "' added to menu");
 }
 @end

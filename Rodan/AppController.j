@@ -73,32 +73,15 @@ RodanHasFocusWorkflowResultsViewNotification = @"RodanHasFocusWorkflowResultsVie
 RodanHasFocusPagesViewNotification = @"RodanHasFocusPagesViewNotification";
 RodanHasFocusProjectListViewNotification = @"RodanHasFocusProjectListViewNotification";
 
-activeProject = nil;  // URI to the currently open project
-
-@implementation AppController : CPObject
+@implementation AppController : AbstractController
 {
-    @outlet     TNToolbar                   theToolbar  @accessors(readonly);
-    @outlet     CPView                      workflowResultsView;
-    @outlet     CPView                      interactiveJobsView;
-    @outlet     CPView                      managePagesView;
-    @outlet     CPView                      chooseWorkflowView;
-    @outlet     CPToolbarItem               pagesToolbarItem;
-    @outlet     CPToolbarItem               workflowResultsToolbarItem;
-    @outlet     CPToolbarItem               jobsToolbarItem;
-    @outlet     CPButtonBar                 workflowAddRemoveBar;
-    @outlet     CPMenu                      switchWorkspaceMenu;
     @outlet     PlugInsController           plugInsController;
-    @outlet     CPMenuItem                  plugInsMenuItem;
     @outlet     AuthenticationController    authenticationController;
-    @outlet     JobController               jobController @accessors(readonly);
+    @outlet     JobController               jobController;
     @outlet     PageController              pageController;
     @outlet     ProjectController           projectController;
-    @outlet     UploadButton                imageUploadButton;
     @outlet     WorkflowController          workflowController;
     @outlet     WorkspaceController         workspaceController;
-
-    CPString    projectName;
-
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -135,23 +118,6 @@ activeProject = nil;  // URI to the currently open project
 {
     CPLogRegister(CPLogConsole);
     [self _registerMessageListening];
-
-    [imageUploadButton setBordered:YES];
-    [imageUploadButton setFileKey:@"files"];
-    [imageUploadButton allowsMultipleFiles:YES];
-    [imageUploadButton setDelegate:pageController];
-    [imageUploadButton setURL:@"/pages/"];
-
-    [theToolbar setVisible:NO];
-    var pagesToolbarIcon = [[CPImage alloc] initWithContentsOfFile:[[CPBundle mainBundle] pathForResource:@"toolbar-images.png"] size:CGSizeMake(40.0, 32.0)],
-        workflowResultsToolbarIcon = [[CPImage alloc] initWithContentsOfFile:[[CPBundle mainBundle] pathForResource:@"toolbar-workflows.png"] size:CGSizeMake(32.0, 32.0)],
-        jobsToolbarIcon = [[CPImage alloc] initWithContentsOfFile:[[CPBundle mainBundle] pathForResource:@"toolbar-jobs.png"] size:CGSizeMake(32.0, 32.0)],
-        backgroundTexture = [[CPImage alloc] initWithContentsOfFile:[[CPBundle mainBundle] pathForResource:@"workflow-backgroundTexture.png"] size:CGSizeMake(200.0, 200.0)];
-    [pagesToolbarItem setImage:pagesToolbarIcon];
-    [workflowResultsToolbarItem setImage:workflowResultsToolbarIcon];
-    [jobsToolbarItem setImage:jobsToolbarIcon];
-
-    [chooseWorkflowView setBackgroundColor:[CPColor colorWithPatternImage:backgroundTexture]];
 }
 
 - (void)applicationDidFinishLaunching:(CPNotification)aNotification

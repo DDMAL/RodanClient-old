@@ -8,7 +8,8 @@
 @global RodanDidLoadProjectNotification
 @global RodanDidCloseProjectNotification
 @global activeUser
-@global activeProject
+
+activeProject = nil;  // URI to the currently open project
 
 @implementation ProjectController : AbstractController
 {

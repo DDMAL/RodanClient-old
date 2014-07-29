@@ -13,6 +13,7 @@
  */
 @implementation PageController : AbstractController
 {
+    @outlet     CPMenuItem          menuItem;
     @outlet     UploadButton        imageUploadButton;
     @outlet     CPImageView         imageView;
     @outlet     CPArrayController   pageArrayController;
@@ -57,6 +58,11 @@
 - (void)uploadButton:(UploadButton)button didChangeSelection:(CPArray)selection
 {
     var nextPageOrder = [[pageArrayController contentArray] valueForKeyPath:@"@max.pageOrder"] + 1;
+    [imageUploadButton setBordered:YES];
+    [imageUploadButton setFileKey:@"files"];
+    [imageUploadButton allowsMultipleFiles:YES];
+    [imageUploadButton setDelegate:self];
+    [imageUploadButton setURL:@"/pages/"];
     [imageUploadButton setValue:[activeProject pk] forParameter:@"project"];
     [imageUploadButton setValue:nextPageOrder forParameter:@"page_order"];
 

@@ -25,7 +25,7 @@
 
 @global activeProject
 
-@implementation UploadWindowController : CPObject
+@implementation UploadWindowController : AbstractController
 {
     @outlet CPWindow cappuccinoWindow;
     @outlet UploadButton chooseFileButton;
