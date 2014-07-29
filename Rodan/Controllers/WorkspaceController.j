@@ -64,6 +64,12 @@
     [_contentScrollView setDocumentView:aView];
 }
 
+- (void)setView:(CPView)aView withToolbar:(CPToolbar)aToolbar
+{
+    [self setView:aView];
+    [mainWindow setToolbar:aToolbar];
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // Public Action Methods
 ///////////////////////////////////////////////////////////////////////////////
@@ -110,6 +116,9 @@
     [rodanMenuItem setEnabled:YES];
     [projectMenuItem setEnabled:NO];
     [plugInsMenuItem setEnabled:YES];
+    [pagesToolbarItem setEnabled:NO];
+    [workflowResultsToolbarItem setEnabled:NO];
+    [jobsToolbarItem setEnabled:NO];
 }
 
 - (void)handleProjectLoadNotification:(id)aNotification
@@ -118,6 +127,9 @@
     [rodanMenuItem setEnabled:YES];
     [projectMenuItem setEnabled:YES];
     [plugInsMenuItem setEnabled:YES];
+    [pagesToolbarItem setEnabled:YES];
+    [workflowResultsToolbarItem setEnabled:YES];
+    [jobsToolbarItem setEnabled:YES];
 }
 
 - (void)handleProjectCloseNotification:(id)aNotification
@@ -126,6 +138,9 @@
     [rodanMenuItem setEnabled:YES];
     [projectMenuItem setEnabled:NO];
     [plugInsMenuItem setEnabled:YES];
+    [pagesToolbarItem setEnabled:NO];
+    [workflowResultsToolbarItem setEnabled:NO];
+    [jobsToolbarItem setEnabled:NO];
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -148,13 +163,16 @@
 
 - (void)_initializeToolbar
 {
-    [mainToolbar setVisible:NO];
+    [mainToolbar setVisible:YES];
     var pagesToolbarIcon = [[CPImage alloc] initWithContentsOfFile:[[CPBundle mainBundle] pathForResource:@"toolbar-images.png"] size:CGSizeMake(40.0, 32.0)],
         workflowResultsToolbarIcon = [[CPImage alloc] initWithContentsOfFile:[[CPBundle mainBundle] pathForResource:@"toolbar-workflows.png"] size:CGSizeMake(32.0, 32.0)],
         jobsToolbarIcon = [[CPImage alloc] initWithContentsOfFile:[[CPBundle mainBundle] pathForResource:@"toolbar-jobs.png"] size:CGSizeMake(32.0, 32.0)];
     [pagesToolbarItem setImage:pagesToolbarIcon];
     [workflowResultsToolbarItem setImage:workflowResultsToolbarIcon];
     [jobsToolbarItem setImage:jobsToolbarIcon];
+    [pagesToolbarItem setEnabled:NO];
+    [workflowResultsToolbarItem setEnabled:NO];
+    [jobsToolbarItem setEnabled:NO];
 }
 
 - (void)_initializeMainMenu

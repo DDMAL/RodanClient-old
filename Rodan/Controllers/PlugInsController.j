@@ -68,11 +68,12 @@
 - (@action)selectedPlugIn:(id)aSender
 {
     var bundle = [_bundleMap objectForKey:aSender],
-        sharedApplication = [CPApplication sharedApplication];
-    var controller = [[CPViewController alloc] initWithCibName:[bundle objectForInfoDictionaryKey:"CPCibName"]
-                                               bundle:bundle];
+        sharedApplication = [CPApplication sharedApplication],
+        principalClass = [bundle principalClass];
+    var controller = [[principalClass alloc] initWithCibName:[bundle objectForInfoDictionaryKey:"CPCibName"]
+                                             bundle:bundle];
     [RKNotificationTimer clearTimedNotification];
-    [workspaceController setView:[controller view]];
+    [workspaceController setView:[controller view] withToolbar:[controller toolbar]];
 }
 
 ///////////////////////////////////////////////////////////////////////////////
