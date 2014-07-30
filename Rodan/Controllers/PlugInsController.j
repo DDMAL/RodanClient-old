@@ -78,7 +78,7 @@
     [RKNotificationTimer clearTimedNotification];
 
     // Load.  Check for toolbar.
-    if ([controller respondsToSelector:toolbar])
+    if ([controller respondsToSelector:@selector(toolbar)])
     {
         [workspaceController setView:[controller view] withToolbar:[controller toolbar]];
     }
