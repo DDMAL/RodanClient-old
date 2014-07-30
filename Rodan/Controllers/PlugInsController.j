@@ -67,13 +67,25 @@
 #pragma mark Public Delegate Methods
 - (@action)selectedPlugIn:(id)aSender
 {
+    // Get bundle info.
     var bundle = [_bundleMap objectForKey:aSender],
         sharedApplication = [CPApplication sharedApplication],
         principalClass = [bundle principalClass];
     var controller = [[principalClass alloc] initWithCibName:[bundle objectForInfoDictionaryKey:"CPCibName"]
                                              bundle:bundle];
+
+    // Clear all timers.
     [RKNotificationTimer clearTimedNotification];
-    [workspaceController setView:[controller view] withToolbar:[controller toolbar]];
+
+    // Load.  Check for toolbar.
+    if ([controller respondsToSelector:toolbar])
+    {
+        [workspaceController setView:[controller view] withToolbar:[controller toolbar]];
+    }
+    else
+    {
+        [workspaceController setView:[controller view]];
+    }
 }
 
 ///////////////////////////////////////////////////////////////////////////////
