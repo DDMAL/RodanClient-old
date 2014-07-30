@@ -2,7 +2,7 @@
 @import "../Frameworks/RodanKit/Controllers/WorkflowController.j"
 
 @global activeProject
-@global RodanShouldLoadWorkflowsNotification
+@global RodanRequestWorkflowsNotification
 @global RodanShouldLoadWorkflowRunsNotification
 
 @class WorkflowController
@@ -37,7 +37,7 @@
     _selectionFlag = NO;
     [[CPNotificationCenter defaultCenter] addObserver:self
                                           selector:@selector(handleShouldLoadWorkflowsNotification:)
-                                          name:RodanShouldLoadWorkflowsNotification
+                                          name:RodanRequestWorkflowsNotification
                                           object:nil];
     return self;
 }

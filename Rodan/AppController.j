@@ -61,11 +61,16 @@ RodanShouldLoadWorkflowRunsNotification = @"RodanShouldLoadWorkflowRunsNotificat
 RodanShouldLoadWorkflowPagesNotification = @"RodanShouldLoadWorkflowPagesNotification";
 RodanShouldLoadWorkflowRunsJobsNotification = @"RodanShouldLoadWorkflowRunsJobsNotification";
 RodanShouldLoadPagesNotification = @"RodanShouldLoadPagesNotification";
-RodanShouldLoadWorkflowsNotification = @"RodanShouldLoadWorkflowsNotification";
 RodanShouldLoadWorkflowPageResultsNotification = @"RodanShouldLoadWorkflowPageResultsNotification";
 RodanShouldLoadRunJobsNotification = @"RodanShouldLoadRunJobsNotification";
 RodanWorkflowResultsTimerNotification = @"RodanWorkflowResultsTimerNotification";
 RodanShouldLoadWorkflowResultsPackagesNotification = @"RodanShouldLoadWorkflowResultsPackagesNotification";
+
+
+//Request Events
+RodanRequestWorkflowsNotification = @"RodanRequestWorkflowsNotification";
+
+
 
 // Focus events.
 RodanHasFocusInteractiveJobsViewNotification = @"RodanHasFocusInteractiveJobsViewNotification";
