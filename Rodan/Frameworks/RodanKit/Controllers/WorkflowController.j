@@ -7,7 +7,7 @@
 @global activeUser
 @global RodanWorkflowResultsTimerNotification
 @global RodanHasFocusWorkflowResultsViewNotification
-@global RodanShouldLoadWorkflowsNotification
+@global RodanRequestWorkflowsNotification
 @global RodanShouldLoadWorkflowRunsNotification
 @global RodanShouldLoadWorkflowPagesNotification
 @global RodanShouldLoadRunJobsNotification
@@ -63,11 +63,42 @@ var activeWorkflow = nil,
                                           selector:@selector(handleTimerNotification:)
                                           name:RodanWorkflowResultsTimerNotification
                                           object:nil];
+
+    [[CPNotificationCenter defaultCenter] addObserver:self
+                                          selector:@selector(receiveRequestWorkflowsNotification:)
+                                          name:RodanRequestWorkflowsNotification
+                                          object:nil];
 }
+///////////////////////////////////////////////////////////////////////////////////////////
+//Public Delegate Methods
+///////////////////////////////////////////////////////////////////////////////////////////
+
+- (void)remoteActionDidFinish:(WLRemoteAction)anAction 
+{
+    if ([anAction result])
+    {
+        var workflow = [Workflow objectsFromJson:[anAction result]];
+        [workflowArrayController setContent:workflow];
+        [[CPNotification defaultCenter] postNotificationName:RodanDidLoadWorkflowsNotification
+                                                      object:[anAction result]];
+    }
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 // Public Methods
 ////////////////////////////////////////////////////////////////////////////////////////////
+
+- (void)fetchWorkflows
+{
+    [WLRemoteAction schedule:WLRemoteActionGetType
+                        path:[self serverHost] + "/workflows/?project=" + [activeProject pk]
+                        delegate:self
+                        message:"Loading Jobs"
+                        withCredentials:YES];
+}
+
+
 - (void)removeWorkflow:(id)aSender
 {
     if ([workflowArrayController selectedObjects])
@@ -129,6 +160,12 @@ var activeWorkflow = nil,
     return nil;
 }
 
+
+- (void)receiveRequestWorkflowsNotification:(CPNotification)aNotification
+{
+
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////
 // Action Methods
 ////////////////////////////////////////////////////////////////////////////////////////////
@@ -176,7 +213,7 @@ var activeWorkflow = nil,
 
 - (void)handleTimerNotification:(CPNotification)aNotification
 {
-    [[CPNotificationCenter defaultCenter] postNotificationName:RodanShouldLoadWorkflowsNotification
+    [[CPNotificationCenter defaultCenter] postNotificationName:RodanRequestWorkflowsNotification
                                           object:nil];
     [[CPNotificationCenter defaultCenter] postNotificationName:RodanShouldLoadWorkflowRunsNotification
                                           object:nil];

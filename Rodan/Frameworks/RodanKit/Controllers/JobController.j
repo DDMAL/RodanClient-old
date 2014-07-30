@@ -7,7 +7,7 @@
  */
 @implementation JobController : AbstractController
 {
-    @outlet CPArrayController   jobArrayController;
+    @outlet CPArrayController   jobArrayController @accessors(readonly);
     @outlet CPMenu              _menuIsInteractive;
     @outlet CPMenu              _menuCategory;
             CPMenuItem          _menuItemIsInteractiveAll;
