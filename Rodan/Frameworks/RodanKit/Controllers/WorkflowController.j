@@ -22,7 +22,7 @@ var activeWorkflow = nil,
  * General workflow controller that exists with the Workflow Results View.
  * It's purpose is to do a lot of reload handling.
  */
-@implementation WorkflowController : AbstractController
+@implementation WorkflowController : RKController
 {
     @outlet     CPArrayController               workflowArrayController;
     @outlet     CPArrayController               workflowPagesArrayController;

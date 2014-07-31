@@ -10,7 +10,7 @@ activeProject = nil;  // URI to the currently open project
 var _MESSAGE_PROJECTLOAD = "_MESSAGE_PROJECTLOAD",
     _MESSAGE_PROJECTSLOAD = "_MESSAGE_PROJECTSLOAD";
 
-@implementation ProjectController : AbstractController
+@implementation ProjectController : RKController
 {
     @outlet CPMenuItem                  workspaceMenuItem;
     @outlet CPArrayController           projectArrayController;

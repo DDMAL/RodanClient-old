@@ -9,7 +9,7 @@
 @global RodanHasFocusPagesViewNotification;
 @global RodanHasFocusProjectListViewNotification;
 
-@implementation WorkspaceController : AbstractController
+@implementation WorkspaceController : RKController
 {
     @outlet     CPView          interactiveJobsView;
     @outlet     CPView          managePagesView;

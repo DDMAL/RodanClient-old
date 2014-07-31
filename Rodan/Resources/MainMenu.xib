@@ -11336,7 +11336,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">AuthenticationController</string>
-					<string key="superclassName">AbstractController</string>
+					<string key="superclassName">RKController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="closeSheet:">id</string>
 						<string key="logOut:">id</string>
@@ -11581,7 +11581,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">InteractiveJobsController</string>
-					<string key="superclassName">AbstractController</string>
+					<string key="superclassName">RKController</string>
 					<object class="NSMutableDictionary" key="actions">
 						<string key="NS.key.0">displayInteractiveJobWindow:</string>
 						<string key="NS.object.0">id</string>
@@ -11638,7 +11638,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">PageController</string>
-					<string key="superclassName">AbstractController</string>
+					<string key="superclassName">RKController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="removePage:">id</string>
 						<string key="viewOriginal:">id</string>
@@ -11692,7 +11692,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">PlugInsController</string>
-					<string key="superclassName">AbstractController</string>
+					<string key="superclassName">RKController</string>
 					<object class="NSMutableDictionary" key="actions">
 						<string key="NS.key.0">selectedPlugIn:</string>
 						<string key="NS.object.0">id</string>
@@ -11725,7 +11725,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">ProjectController</string>
-					<string key="superclassName">AbstractController</string>
+					<string key="superclassName">RKController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="closeProject:">id</string>
 						<string key="newProject:">id</string>
@@ -11786,7 +11786,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">ResultsPackageController</string>
-					<string key="superclassName">AbstractController</string>
+					<string key="superclassName">RKController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="closeCreateResultsPackageWindow:">id</string>
 						<string key="handleCreatePackageRequest:">id</string>
@@ -12064,7 +12064,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">UploadWindowController</string>
-					<string key="superclassName">AbstractController</string>
+					<string key="superclassName">RKController</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="arrayController">NSArrayController</string>
 						<string key="cappuccinoWindow">NSWindow</string>
@@ -12111,7 +12111,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">WorkspaceController</string>
-					<string key="superclassName">AbstractController</string>
+					<string key="superclassName">RKController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="switchWorkspaceToInteractiveJobs:">id</string>
 						<string key="switchWorkspaceToManagePages:">id</string>

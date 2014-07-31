@@ -11,7 +11,7 @@
 /**
  * Handles control of all Page-related tasks.
  */
-@implementation PageController : AbstractController
+@implementation PageController : RKController
 {
     @outlet     CPMenuItem          menuItem;
     @outlet     UploadButton        imageUploadButton;

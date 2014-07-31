@@ -3,7 +3,7 @@
  */
  @import "../PlugIns.j"
 
-@implementation PlugInsController : AbstractController
+@implementation PlugInsController : RKController
 {
     @outlet CPMenuItem          menuItem;
     @outlet WorkspaceController workspaceController;

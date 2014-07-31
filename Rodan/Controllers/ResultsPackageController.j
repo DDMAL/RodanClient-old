@@ -12,7 +12,7 @@
 var RADIOTAG_ALL = 1,
     RADIOTAG_SELECTED = 0;
 
-@implementation ResultsPackageController : AbstractController
+@implementation ResultsPackageController : RKController
 {
     @outlet ResultsViewRunsDelegate _runsDelegate;
     @outlet CPArrayController       _jobsArrayController;

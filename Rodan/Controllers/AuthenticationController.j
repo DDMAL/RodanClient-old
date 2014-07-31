@@ -15,7 +15,7 @@
 
 activeUser = nil;
 
-@implementation AuthenticationController : AbstractController
+@implementation AuthenticationController : RKController
 {
     @outlet     CPMenuItem          plugInMenuItem;
     @outlet     CPMenuItem          projectMenuItem;

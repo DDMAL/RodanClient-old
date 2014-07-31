@@ -46,7 +46,7 @@
 @import "Transformers/ResultsDisplayTransformer.j"
 @import "Transformers/ResultThumbnailTransformer.j"
 
-@implementation AppController : AbstractController
+@implementation AppController : RKController
 {
     @outlet     PlugInsController           plugInsController;
     @outlet     AuthenticationController    authenticationController;
