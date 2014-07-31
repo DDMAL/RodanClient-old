@@ -129,11 +129,13 @@ RodanHasFocusProjectListViewNotification = @"RodanHasFocusProjectListViewNotific
 
 - (void)didLogIn:(id)aNotification
 {
+    [RKNotificationTimer clearTimedNotification];
     [workspaceController clearView];
 }
 
 - (void)didLogOut:(id)aNotification
 {
+    [RKNotificationTimer clearTimedNotification];
     [workspaceController clearView];
     [authenticationController checkIsAuthenticated];
 }

@@ -8028,6 +8028,14 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 					</object>
 					<string key="id">iMB-1s-5Iz</string>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">plugInMenuItem</string>
+						<reference key="source" ref="233722402"/>
+						<reference key="destination" ref="455148069"/>
+					</object>
+					<string key="id">JRL-n4-dNd</string>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -11347,6 +11355,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 						<string key="authenticationWaitScreen">NSView</string>
 						<string key="logInWindow">NSWindow</string>
 						<string key="passwordField">NSSecureTextField</string>
+						<string key="plugInMenuItem">NSMenuItem</string>
 						<string key="projectMenuItem">NSMenuItem</string>
 						<string key="submitButton">NSButton</string>
 						<string key="usernameField">NSTextField</string>
@@ -11364,6 +11373,10 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 						<object class="IBToOneOutletInfo" key="passwordField">
 							<string key="name">passwordField</string>
 							<string key="candidateClassName">NSSecureTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="plugInMenuItem">
+							<string key="name">plugInMenuItem</string>
+							<string key="candidateClassName">NSMenuItem</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="projectMenuItem">
 							<string key="name">projectMenuItem</string>

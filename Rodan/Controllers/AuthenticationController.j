@@ -19,6 +19,7 @@ activeUser = nil;
 
 @implementation AuthenticationController : AbstractController
 {
+    @outlet     CPMenuItem          plugInMenuItem;
     @outlet     CPMenuItem          projectMenuItem;
     @outlet     CPView              authenticationWaitScreen;
     @outlet     CPTextField         usernameField;
@@ -112,6 +113,7 @@ activeUser = nil;
 #pragma mark Public Delegate Methods
 - (void)connection:(CPURLConnection)connection didFailWithError:(id)error
 {
+    [plugInMenuItem setEnabled:NO];
     [projectMenuItem setEnabled:NO];
     [connection cancel];
     CPLog("Failed with Error");
@@ -119,6 +121,7 @@ activeUser = nil;
 
 - (void)connection:(CPURLConnection)connection didReceiveResponse:(CPURLResponse)response
 {
+    [plugInMenuItem setEnabled:NO];
     [projectMenuItem setEnabled:NO];
     CPLog("received a status code of " + [response statusCode]);
 
@@ -155,6 +158,7 @@ activeUser = nil;
 
         if (data.hasOwnProperty('token'))
         {
+            [plugInMenuItem setEnabled:YES];
             [projectMenuItem setEnabled:YES];
             _authenticationToken = "Token " + data.token;
             [[CPNotificationCenter defaultCenter] postNotificationName:RodanDidLogInNotification
@@ -162,6 +166,7 @@ activeUser = nil;
         }
         else if (data.hasOwnProperty('user'))
         {
+            [plugInMenuItem setEnabled:YES];
             [projectMenuItem setEnabled:YES];
             activeUser = [[User alloc] initWithJson:data];
             [[CPNotificationCenter defaultCenter] postNotificationName:RodanDidLogInNotification

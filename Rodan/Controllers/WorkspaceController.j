@@ -51,6 +51,7 @@
 
 - (void)clearView
 {
+    [mainWindow setToolbar:nil];
     [_contentScrollView setDocumentView:_blankView];
 }
 
