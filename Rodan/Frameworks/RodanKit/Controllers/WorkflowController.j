@@ -88,6 +88,21 @@ var activeWorkflow = nil,
 }
 
 
+- (void)removeWorkflow:(CPIndexSet)anIndexSet
+{
+    [workflowArrayController setSelectedObjects:anIndexSet];
+    if ([workflowArrayController selectedObjects])
+    {
+        var alert = [CPAlert alertWithMessageText:@"You are about to permanently delete this workflow"
+                             defaultButton:@"Delete"
+                             alternateButton:@"Cancel"
+                             otherButton:nil
+                             informativeTextWithFormat:nil];
+        [alert setDelegate:self];
+        [alert runModal];
+    }
+}
+
 - (void)removeWorkflow
 {
     if ([workflowArrayController selectedObjects])
