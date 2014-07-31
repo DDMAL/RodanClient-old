@@ -4,7 +4,7 @@
 @import <RodanKit/Tools/RKNotificationTimer.j>
 
 @global RodanHasFocusInteractiveJobsViewNotification
-@global RodanShouldLoadInteractiveJobsNotification
+@global RodanRequestInteractiveJobsNotification
 @global activeProject
 
 var _LOADINTERVAL = 5.0,
@@ -13,7 +13,7 @@ var _LOADINTERVAL = 5.0,
 /**
  * General interactive jobs controller.
  */
-@implementation InteractiveJobsController : AbstractController
+@implementation InteractiveJobsController : RKController
 {
     @outlet CPTableView                 interactiveJobsTableView;
     @outlet CPArrayController           interactiveJobsArrayController  @accessors(readonly);
@@ -25,7 +25,7 @@ var _LOADINTERVAL = 5.0,
     // Register self to listen for interactive job array loading (and success).
     [[CPNotificationCenter defaultCenter] addObserver:self
                                           selector:@selector(shouldLoad:)
-                                          name:RodanShouldLoadInteractiveJobsNotification
+                                          name:RodanRequestInteractiveJobsNotification
                                           object:nil];
     [[CPNotificationCenter defaultCenter] addObserver:self
                                           selector:@selector(receiveHasFocusEvent:)
@@ -36,7 +36,7 @@ var _LOADINTERVAL = 5.0,
 - (void)receiveHasFocusEvent:(CPNotification)aNotification
 {
     [RKNotificationTimer setTimedNotification:_LOADINTERVAL
-                         notification:RodanShouldLoadInteractiveJobsNotification];
+                         notification:RodanRequestInteractiveJobsNotification];
 }
 
 /**

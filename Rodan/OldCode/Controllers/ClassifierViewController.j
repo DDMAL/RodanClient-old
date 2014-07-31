@@ -8,7 +8,7 @@
 @import "../Controllers/ClassifierController.j"
 @import "../Controllers/ClassifierSettingsController.j"
 
-@global RodanShouldLoadClassifierNotification
+@global RodanRequestClassifierNotification
 @global RodanHasFocusClassifierViewNotification
 
 @implementation ClassifierViewController : CPViewController
@@ -89,7 +89,7 @@
 - (void)workRunJob:(RunJob)aRunJob  // Called by InteractiveJobs controller
 {
     runJob = aRunJob;
-    [[CPNotificationCenter defaultCenter] postNotificationName:RodanShouldLoadClassifierNotification
+    [[CPNotificationCenter defaultCenter] postNotificationName:RodanRequestClassifierNotification
                                           object:nil];
 }
 

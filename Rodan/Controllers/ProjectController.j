@@ -1,52 +1,54 @@
-@import <AppKit/AppKit.j>
-@import <Ratatosk/Ratatosk.j>
-@import <RodanKit/Models/Project.j>
-@import "../AppController.j"
+/**
+    This class handles loading/unloading projects.
+**/
 
 @global RodanHasFocusProjectListViewNotification
-@global RodanShouldLoadProjectNotification
-@global RodanDidLoadProjectNotification
-@global RodanDidCloseProjectNotification
 @global activeUser
 
 activeProject = nil;  // URI to the currently open project
 
-@implementation ProjectController : AbstractController
-{
-    @outlet     CPArrayController           projectArrayController;
-                CPValueTransformer          projectCountTransformer;
-    @outlet     LoadActiveProjectDelegate   activeProjectDelegate;
-    @outlet     CPButtonBar                 projectAddRemoveButtonBar;
-    @outlet     CPView                      selectProjectView;
+var _MESSAGE_PROJECTLOAD = "_MESSAGE_PROJECTLOAD",
+    _MESSAGE_PROJECTSLOAD = "_MESSAGE_PROJECTSLOAD";
 
-    @outlet     PageController              pageController;
-    @outlet     CPArrayController           pageArrayController;
-    @outlet     WorkflowController          workflowController;
-    @outlet     CPArrayController           workflowArrayController;
-    @outlet     JobController               jobController;
-    @outlet     WorkspaceController         workspaceController;
+@implementation ProjectController : RKController
+{
+    @outlet CPMenuItem                  workspaceMenuItem;
+    @outlet CPArrayController           projectArrayController;
+    @outlet CPButtonBar                 projectAddRemoveButtonBar;
+    @outlet CPView                      selectProjectView;
+    @outlet WorkspaceController         workspaceController;
+            CPValueTransformer          projectCountTransformer;
 }
 
+///////////////////////////////////////////////////////////////////////////////
+// Public Methods
+///////////////////////////////////////////////////////////////////////////////
+#pragma mark Public Methods
 - (void)awakeFromCib
 {
-    [[CPNotificationCenter defaultCenter] addObserver:self
-                                          selector:@selector(shouldLoadProject:)
-                                          name:RodanShouldLoadProjectNotification
-                                          object:nil];
+    var addButton = [CPButtonBar plusPopupButton],
+        removeButton = [CPButtonBar minusButton],
+        addProjectTitle = @"Add Project...";
+
+    [addButton addItemsWithTitles:[addProjectTitle]];
+    [projectAddRemoveButtonBar setButtons:[addButton, removeButton]];
+
+    var addProjectItem = [addButton itemWithTitle:addProjectTitle];
+
+    [addProjectItem setAction:@selector(newProject:)];
+    [addProjectItem setTarget:self];
+
+    [removeButton setAction:@selector(shouldDeleteProjects:)];
+    [removeButton setTarget:self];
+
+    [removeButton bind:@"enabled"
+                  toObject:projectArrayController
+                  withKeyPath:@"selectedObjects.@count"
+                  options:nil]
 
     [[CPNotificationCenter defaultCenter] addObserver:self
                                           selector:@selector(receiveHasFocusEvent:)
                                           name:RodanHasFocusProjectListViewNotification
-                                          object:nil];
-
-    [[CPNotificationCenter defaultCenter] addObserver:self
-                                          selector:@selector(didLoadProject:)
-                                          name:RodanDidLoadProjectNotification
-                                          object:nil];
-
-    [[CPNotificationCenter defaultCenter] addObserver:self
-                                          selector:@selector(didCloseProject:)
-                                          name:RodanDidCloseProjectNotification
                                           object:nil];
 
     var backgroundTexture = [[CPImage alloc] initWithContentsOfFile:[[CPBundle mainBundle] pathForResource:@"workflow-backgroundTexture.png"]
@@ -65,22 +67,32 @@ activeProject = nil;  // URI to the currently open project
     [WLRemoteAction schedule:WLRemoteActionGetType
                     path:[self serverHost] + "/projects/"
                     delegate:self
-                    message:"Loading projects"
+                    message:_MESSAGE_PROJECTSLOAD
                     withCredentials:YES];
 }
 
-- (void)remoteActionDidFinish:(WLRemoteAction)anAction
+- (void)remoteActionDidFinish:(WLRemoteAction)aAction
 {
-    var p = [MinimalProject objectsFromJson:[anAction result]];
-    [projectArrayController addObjects:p];
+    switch ([aAction message])
+    {
+        case _MESSAGE_PROJECTLOAD:
+            [WLRemoteObject setDirtProof:YES];
+            activeProject = [[Project alloc] initWithJson:[aAction result]];
+            [WLRemoteObject setDirtProof:NO];
+            [workspaceMenuItem setEnabled:YES];
+            [workspaceController clearView];
+            break;
+
+        case _MESSAGE_PROJECTSLOAD:
+            var p = [MinimalProject objectsFromJson:[aAction result]];
+            [projectArrayController addObjects:p];
+            break;
+
+        default:
+            break;
+    }
 }
 
-- (@action)newProject:(id)aSender
-{
-    var newProject = [[MinimalProject alloc] initWithCreator:[activeUser pk]];
-    [projectArrayController addObject:newProject];
-    [newProject ensureCreated];
-}
 
 - (@action)shouldDeleteProjects:(id)aSender
 {
@@ -121,23 +133,6 @@ activeProject = nil;  // URI to the currently open project
     [selectedObjects makeObjectsPerformSelector:@selector(ensureDeleted)];
 }
 
-- (void)shouldLoadProject:(CPNotification)aNotification
-{
-    [WLRemoteAction schedule:WLRemoteActionGetType
-                    path:[[aNotification object] pk]
-                    delegate:activeProjectDelegate
-                    message:"Loading Project"
-                    withCredentials:YES];
-}
-
-- (IBAction)openProject:(id)aSender
-{
-    var selectedProject = [[projectArrayController selectedObjects] objectAtIndex:0];
-
-    [[CPNotificationCenter defaultCenter] postNotificationName:RodanShouldLoadProjectNotification
-                                          object:selectedProject];
-}
-
 - (void)emptyProjectArrayController
 {
     [projectArrayController setContent:nil];
@@ -150,66 +145,51 @@ activeProject = nil;  // URI to the currently open project
     [self showProjectsChooser:nil];
 }
 
-#pragma mark -
-#pragma mark Project Opening and Closing
-
 - (void)showProjectsChooser:(id)aNotification
 {
-    var addButton = [CPButtonBar plusPopupButton],
-        removeButton = [CPButtonBar minusButton],
-        addProjectTitle = @"Add Project...";
-
-    [addButton addItemsWithTitles:[addProjectTitle]];
-    [projectAddRemoveButtonBar setButtons:[addButton, removeButton]];
-
-    var addProjectItem = [addButton itemWithTitle:addProjectTitle];
-
-    [addProjectItem setAction:@selector(newProject:)];
-    [addProjectItem setTarget:self];
-
-    [removeButton setAction:@selector(shouldDeleteProjects:)];
-    [removeButton setTarget:self];
-
-    [removeButton bind:@"enabled"
-                  toObject:projectArrayController
-                  withKeyPath:@"selectedObjects.@count"
-                  options:nil]
-
     [workspaceController setView:selectProjectView];
 }
 
 - (void)didCloseProject:(CPNotification)aNotification
 {
-    [self showProjectsChooser:nil];
 }
 
 - (IBAction)closeProject:(id)aSender
 {
-    [[CPNotificationCenter defaultCenter] postNotificationName:RodanDidCloseProjectNotification
-                                          object:nil];
+    [workspaceMenuItem setEnabled:NO];
+    [self showProjectsChooser:nil];
 }
 
 - (void)didLoadProject:(CPNotification)aNotification
 {
-    console.log("TODO: inform the workspace controller what we want to show");
+    [workspaceMenuItem setEnabled:YES];
     [workspaceController clearView];
 }
-@end
 
-
-@implementation LoadActiveProjectDelegate : CPObject
+///////////////////////////////////////////////////////////////////////////////
+// Public Action Methods
+///////////////////////////////////////////////////////////////////////////////
+#pragma mark Public Action Methods
+- (IBAction)openProject:(id)aSender
 {
-    @outlet     CPArrayController       pageArrayController;
-    @outlet     CPArrayController       workflowArrayController;
+    [workspaceMenuItem setEnabled:YES];
+    var selectedProject = [[projectArrayController selectedObjects] objectAtIndex:0];
+    [WLRemoteAction schedule:WLRemoteActionGetType
+                    path:[selectedProject pk]
+                    delegate:self
+                    message:_MESSAGE_PROJECTLOAD
+                    withCredentials:YES];
 }
 
-- (void)remoteActionDidFinish:(WLRemoteAction)anAction
+- (@action)newProject:(id)aSender
 {
-    [WLRemoteObject setDirtProof:YES];
-    activeProject = [[Project alloc] initWithJson:[anAction result]];
-    [WLRemoteObject setDirtProof:NO];
-    [[CPNotificationCenter defaultCenter] postNotificationName:RodanDidLoadProjectNotification
-                                          object:nil];
-
+    var newProject = [[MinimalProject alloc] initWithCreator:[activeUser pk]];
+    [projectArrayController addObject:newProject];
+    [newProject ensureCreated];
 }
+
+///////////////////////////////////////////////////////////////////////////////
+// Private Methods
+///////////////////////////////////////////////////////////////////////////////
+#pragma mark Private Methods
 @end

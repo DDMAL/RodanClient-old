@@ -10,27 +10,27 @@
 @import <AppKit/AppKit.j>
 @import <Ratatosk/Ratatosk.j>
 
-@global RodanMustLogInNotification
-@global RodanCannotLogInNotification
 @global RodanDidLogInNotification
 @global RodanDidLogOutNotification
 
 activeUser = nil;
 
-@implementation AuthenticationController : AbstractController
+@implementation AuthenticationController : RKController
 {
-    @outlet     CPView            authenticationWaitScreen;
-    @outlet     CPTextField       usernameField;
-    @outlet     CPSecureTextField passwordField;
-    @outlet     CPButton          submitButton;
-    @outlet     CPWindow          logInWindow;
+    @outlet     CPMenuItem          plugInMenuItem;
+    @outlet     CPMenuItem          projectMenuItem;
+    @outlet     CPView              authenticationWaitScreen;
+    @outlet     CPTextField         usernameField;
+    @outlet     CPSecureTextField   passwordField;
+    @outlet     CPButton            submitButton;
+    @outlet     CPWindow            logInWindow;
     @outlet     WorkspaceController workspaceController;
-                CPString          _authenticationType;
-                CPString          _urlLogout;
-                CPString          _urlLogin;
-                CPString          _urlCheckIsAuthenticated;
-                CPCookie          _CSRFToken;
-                CPString          _authenticationToken;
+                CPString            _authenticationType;
+                CPString            _urlLogout;
+                CPString            _urlLogin;
+                CPString            _urlCheckIsAuthenticated;
+                CPCookie            _CSRFToken;
+                CPString            _authenticationToken;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -111,32 +111,32 @@ activeUser = nil;
 #pragma mark Public Delegate Methods
 - (void)connection:(CPURLConnection)connection didFailWithError:(id)error
 {
+    [plugInMenuItem setEnabled:NO];
+    [projectMenuItem setEnabled:NO];
+    [connection cancel];
     CPLog("Failed with Error");
 }
 
 - (void)connection:(CPURLConnection)connection didReceiveResponse:(CPURLResponse)response
 {
+    [plugInMenuItem setEnabled:NO];
+    [projectMenuItem setEnabled:NO];
     CPLog("received a status code of " + [response statusCode]);
 
     switch ([response statusCode])
     {
         case 400:
-            [self _runAlert:[response statusCode] withMessage:"bad request"];
             [connection cancel];
+            [self _runAlert:[response statusCode] withMessage:"bad request"];
             break;
 
         case 401:
             [connection cancel];
-            [[CPNotificationCenter defaultCenter] postNotificationName:RodanMustLogInNotification
-                                                  object:nil];
-            [workspaceController clearView];
             [self runLogInSheet];
             break;
 
         case 403:
-            [[CPNotificationCenter defaultCenter] postNotificationName:RodanCannotLogInNotification
-                                                  object:nil];
-            [connection cancel]
+            [connection cancel];
             break;
 
         default:
@@ -152,12 +152,16 @@ activeUser = nil;
 
         if (data.hasOwnProperty('token'))
         {
+            [plugInMenuItem setEnabled:YES];
+            [projectMenuItem setEnabled:YES];
             _authenticationToken = "Token " + data.token;
             [[CPNotificationCenter defaultCenter] postNotificationName:RodanDidLogInNotification
                                                   object:nil];
         }
-        else
+        else if (data.hasOwnProperty('user'))
         {
+            [plugInMenuItem setEnabled:YES];
+            [projectMenuItem setEnabled:YES];
             activeUser = [[User alloc] initWithJson:data];
             [[CPNotificationCenter defaultCenter] postNotificationName:RodanDidLogInNotification
                                                   object:activeUser];

@@ -5,7 +5,7 @@
 /**
  * This class handles Job-related functionality.  It is its own delegate.
  */
-@implementation JobController : AbstractController
+@implementation JobController : RKController
 {
     @outlet CPArrayController   jobArrayController @accessors(readonly);
     @outlet CPMenu              _menuIsInteractive;

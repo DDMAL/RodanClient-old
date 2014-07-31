@@ -4,15 +4,12 @@
     whatever else is showing.
 **/
 
-@global RodanDidCloseProjectNotification;
-@global RodanDidLoadProjectNotification;
-@global RodanDidLogInNotification;
 @global RodanHasFocusInteractiveJobsViewNotification;
 @global RodanHasFocusWorkflowResultsViewNotification;
 @global RodanHasFocusPagesViewNotification;
 @global RodanHasFocusProjectListViewNotification;
 
-@implementation WorkspaceController : AbstractController
+@implementation WorkspaceController : RKController
 {
     @outlet     CPView          interactiveJobsView;
     @outlet     CPView          managePagesView;
@@ -25,8 +22,6 @@
     @outlet     CPToolbarItem   workflowResultsToolbarItem;
     @outlet     CPToolbarItem   jobsToolbarItem;
 
-    @outlet     CPMenuItem      rodanMenuItem;
-    @outlet     CPMenuItem      projectMenuItem;
     @outlet     CPMenuItem      workspaceMenuItem;
     @outlet     CPMenuItem      plugInsMenuItem;
 
@@ -44,8 +39,7 @@
     _blankView = [[CPView alloc] init];
     [self _initializeContentView];
     [self _initializeToolbar];
-    [self _initializeMainMenu];
-    [self _initializeNotificationSubscriptions];
+    [self setMenuEnabled:NO];
     window.onbeforeunload = function()
     {
         return "This will terminate the Application. Are you sure you want to leave?";
@@ -54,6 +48,7 @@
 
 - (void)clearView
 {
+    [mainWindow setToolbar:nil];
     [_contentScrollView setDocumentView:_blankView];
 }
 
@@ -68,6 +63,12 @@
 {
     [self setView:aView];
     [mainWindow setToolbar:aToolbar];
+}
+
+- (void)setMenuEnabled:(BOOL)aEnable
+{
+    [workspaceMenuItem setEnabled:aEnable];
+    [plugInsMenuItem setEnabled:aEnable];
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -110,38 +111,6 @@
 // Public Delegate Methods
 ///////////////////////////////////////////////////////////////////////////////
 #pragma mark Public Delegate Methods
-- (void)handleLogInNotification:(id)aNotification
-{
-    [workspaceMenuItem setEnabled:NO];
-    [rodanMenuItem setEnabled:YES];
-    [projectMenuItem setEnabled:NO];
-    [plugInsMenuItem setEnabled:YES];
-    [pagesToolbarItem setEnabled:NO];
-    [workflowResultsToolbarItem setEnabled:NO];
-    [jobsToolbarItem setEnabled:NO];
-}
-
-- (void)handleProjectLoadNotification:(id)aNotification
-{
-    [workspaceMenuItem setEnabled:YES];
-    [rodanMenuItem setEnabled:YES];
-    [projectMenuItem setEnabled:YES];
-    [plugInsMenuItem setEnabled:YES];
-    [pagesToolbarItem setEnabled:YES];
-    [workflowResultsToolbarItem setEnabled:YES];
-    [jobsToolbarItem setEnabled:YES];
-}
-
-- (void)handleProjectCloseNotification:(id)aNotification
-{
-    [workspaceMenuItem setEnabled:NO];
-    [rodanMenuItem setEnabled:YES];
-    [projectMenuItem setEnabled:NO];
-    [plugInsMenuItem setEnabled:YES];
-    [pagesToolbarItem setEnabled:NO];
-    [workflowResultsToolbarItem setEnabled:NO];
-    [jobsToolbarItem setEnabled:NO];
-}
 
 ///////////////////////////////////////////////////////////////////////////////
 // Private Methods
@@ -163,7 +132,7 @@
 
 - (void)_initializeToolbar
 {
-    [mainToolbar setVisible:YES];
+    [mainToolbar setVisible:NO];
     var pagesToolbarIcon = [[CPImage alloc] initWithContentsOfFile:[[CPBundle mainBundle] pathForResource:@"toolbar-images.png"] size:CGSizeMake(40.0, 32.0)],
         workflowResultsToolbarIcon = [[CPImage alloc] initWithContentsOfFile:[[CPBundle mainBundle] pathForResource:@"toolbar-workflows.png"] size:CGSizeMake(32.0, 32.0)],
         jobsToolbarIcon = [[CPImage alloc] initWithContentsOfFile:[[CPBundle mainBundle] pathForResource:@"toolbar-jobs.png"] size:CGSizeMake(32.0, 32.0)];
@@ -173,29 +142,5 @@
     [pagesToolbarItem setEnabled:NO];
     [workflowResultsToolbarItem setEnabled:NO];
     [jobsToolbarItem setEnabled:NO];
-}
-
-- (void)_initializeMainMenu
-{
-    [workspaceMenuItem setEnabled:NO];
-    [rodanMenuItem setEnabled:NO];
-    [projectMenuItem setEnabled:NO];
-    [plugInsMenuItem setEnabled:NO];
-}
-
-- (void)_initializeNotificationSubscriptions
-{
-    [[CPNotificationCenter defaultCenter] addObserver:self
-                                          selector:@selector(handleLogInNotification:)
-                                          name:RodanDidLogInNotification
-                                          object:nil];
-    [[CPNotificationCenter defaultCenter] addObserver:self
-                                          selector:@selector(handleProjectLoadNotification:)
-                                          name:RodanDidLoadProjectNotification
-                                          object:nil];
-    [[CPNotificationCenter defaultCenter] addObserver:self
-                                          selector:@selector(handleProjectCloseNotification:)
-                                          name:RodanDidCloseProjectNotification
-                                          object:nil];
 }
 @end

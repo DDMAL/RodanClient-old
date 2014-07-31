@@ -4,9 +4,9 @@ var refreshRate = nil,
     serverHost = nil;
 
 /**
- * Base "abstract" controller for convenience.
+ * Base RodanKit controller for convenience.
  */
-@implementation AbstractController : CPObject
+@implementation RKController : CPObject
 {
     CPString    _serverHost    @accessors(property=serverHost);
     CPNumber    _refreshRate   @accessors(property=refreshRate);

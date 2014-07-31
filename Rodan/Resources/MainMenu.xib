@@ -117,7 +117,7 @@
 							<array class="NSMutableArray" key="NSMenuItems">
 								<object class="NSMenuItem" id="776162233">
 									<reference key="NSMenu" ref="720053764"/>
-									<string key="NSTitle">Close Project</string>
+									<string key="NSTitle">Select Project</string>
 									<string key="NSKeyEquiv">w</string>
 									<int key="NSKeyEquivModMask">1048576</int>
 									<int key="NSMnemonicLoc">2147483647</int>
@@ -264,11 +264,9 @@
 							<string key="NSToolbarItemPaletteLabel"/>
 							<nil key="NSToolbarItemToolTip"/>
 							<object class="NSBox" key="NSToolbarItemView" id="626107247">
-								<reference key="NSNextResponder"/>
+								<nil key="NSNextResponder"/>
 								<int key="NSvFlags">12</int>
 								<string key="NSFrame">{{1, 14}, {5, 96}}</string>
-								<reference key="NSSuperview"/>
-								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<string key="NSOffsets">{0, 0}</string>
 								<object class="NSTextFieldCell" key="NSTitleCell">
@@ -373,7 +371,7 @@
 						<reference ref="268167294"/>
 						<reference ref="386065890"/>
 					</array>
-					<array class="NSMutableArray" key="NSToolbarIBDefaultItems">
+					<array key="NSToolbarIBDefaultItems">
 						<reference ref="1032991924"/>
 						<reference ref="268167294"/>
 						<reference ref="103925040"/>
@@ -383,12 +381,9 @@
 				<nil key="NSUserInterfaceItemIdentifier"/>
 				<string key="NSWindowContentMinSize">{1024, 600}</string>
 				<object class="NSView" key="NSWindowView" id="669824870">
-					<reference key="NSNextResponder"/>
+					<nil key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<string key="NSFrameSize">{1024, 600}</string>
-					<reference key="NSSuperview"/>
-					<reference key="NSWindow"/>
-					<reference key="NSNextKeyView"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
 				<string key="NSMinSize">{1024, 678}</string>
@@ -422,7 +417,7 @@
 											<array class="NSMutableArray" key="NSSubviews"/>
 											<string key="NSFrameSize">{480, 192}</string>
 											<reference key="NSSuperview" ref="599736035"/>
-											<reference key="NSNextKeyView" ref="904487523"/>
+											<reference key="NSNextKeyView" ref="1067126581"/>
 											<string key="NSReuseIdentifierKey">_NS:13</string>
 											<bool key="NSEnabled">YES</bool>
 											<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
@@ -602,14 +597,13 @@
 							</array>
 							<string key="NSFrame">{{-1, 61}, {482, 210}}</string>
 							<reference key="NSSuperview" ref="884937666"/>
-							<reference key="NSNextKeyView" ref="1067126581"/>
+							<reference key="NSNextKeyView" ref="599736035"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<int key="NSsFlags">133682</int>
 							<reference key="NSVScroller" ref="904487523"/>
 							<reference key="NSHScroller" ref="1073153823"/>
 							<reference key="NSContentView" ref="599736035"/>
 							<reference key="NSHeaderClipView" ref="1067126581"/>
-							<reference key="NSCornerView" ref="75607705"/>
 							<bytes key="NSScrollAmts">QSAAAEEgAABBmAAAQZgAAA</bytes>
 							<double key="NSMinMagnification">0.25</double>
 							<double key="NSMaxMagnification">4</double>
@@ -2462,7 +2456,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 										<int key="NSvFlags">256</int>
 										<string key="NSFrameSize">{571, 292}</string>
 										<reference key="NSSuperview" ref="317854177"/>
-										<reference key="NSNextKeyView" ref="1020125188"/>
+										<reference key="NSNextKeyView" ref="422209719"/>
 										<string key="NSReuseIdentifierKey">_NS:13</string>
 										<bool key="NSEnabled">YES</bool>
 										<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
@@ -2689,14 +2683,13 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 						</array>
 						<string key="NSFrame">{{20, 61}, {573, 310}}</string>
 						<reference key="NSSuperview" ref="137411687"/>
-						<reference key="NSNextKeyView" ref="422209719"/>
+						<reference key="NSNextKeyView" ref="317854177"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<int key="NSsFlags">133682</int>
 						<reference key="NSVScroller" ref="1020125188"/>
 						<reference key="NSHScroller" ref="705341862"/>
 						<reference key="NSContentView" ref="317854177"/>
 						<reference key="NSHeaderClipView" ref="422209719"/>
-						<reference key="NSCornerView" ref="300619090"/>
 						<bytes key="NSScrollAmts">QSAAAEEgAABBmAAAQZgAAA</bytes>
 						<double key="NSMinMagnification">0.25</double>
 						<double key="NSMaxMagnification">4</double>
@@ -3599,7 +3592,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 																		<array class="NSMutableArray" key="NSSubviews"/>
 																		<string key="NSFrameSize">{186, 450}</string>
 																		<reference key="NSSuperview" ref="477465320"/>
-																		<reference key="NSNextKeyView" ref="968796411"/>
+																		<reference key="NSNextKeyView" ref="274304451"/>
 																		<string key="NSReuseIdentifierKey">_NS:13</string>
 																		<bool key="NSEnabled">YES</bool>
 																		<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
@@ -3717,14 +3710,13 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 														</array>
 														<string key="NSFrameSize">{188, 468}</string>
 														<reference key="NSSuperview" ref="691359185"/>
-														<reference key="NSNextKeyView" ref="274304451"/>
+														<reference key="NSNextKeyView" ref="477465320"/>
 														<string key="NSReuseIdentifierKey">_NS:9</string>
 														<int key="NSsFlags">133682</int>
 														<reference key="NSVScroller" ref="968796411"/>
 														<reference key="NSHScroller" ref="105853089"/>
 														<reference key="NSContentView" ref="477465320"/>
 														<reference key="NSHeaderClipView" ref="274304451"/>
-														<reference key="NSCornerView" ref="129581436"/>
 														<bytes key="NSScrollAmts">QSAAAEEgAABBsAAAQbAAAA</bytes>
 														<double key="NSMinMagnification">0.25</double>
 														<double key="NSMaxMagnification">4</double>
@@ -3756,7 +3748,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 																		<array class="NSMutableArray" key="NSSubviews"/>
 																		<string key="NSFrameSize">{168, 450}</string>
 																		<reference key="NSSuperview" ref="895104405"/>
-																		<reference key="NSNextKeyView" ref="987522255"/>
+																		<reference key="NSNextKeyView" ref="91715136"/>
 																		<string key="NSReuseIdentifierKey">_NS:13</string>
 																		<bool key="NSEnabled">YES</bool>
 																		<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
@@ -3877,14 +3869,13 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 														</array>
 														<string key="NSFrameSize">{170, 468}</string>
 														<reference key="NSSuperview" ref="54953760"/>
-														<reference key="NSNextKeyView" ref="91715136"/>
+														<reference key="NSNextKeyView" ref="895104405"/>
 														<string key="NSReuseIdentifierKey">_NS:9</string>
 														<int key="NSsFlags">133682</int>
 														<reference key="NSVScroller" ref="987522255"/>
 														<reference key="NSHScroller" ref="105271866"/>
 														<reference key="NSContentView" ref="895104405"/>
 														<reference key="NSHeaderClipView" ref="91715136"/>
-														<reference key="NSCornerView" ref="667505445"/>
 														<bytes key="NSScrollAmts">QSAAAEEgAABBsAAAQbAAAA</bytes>
 														<double key="NSMinMagnification">0.25</double>
 														<double key="NSMaxMagnification">4</double>
@@ -3916,7 +3907,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 																		<array class="NSMutableArray" key="NSSubviews"/>
 																		<string key="NSFrameSize">{158, 450}</string>
 																		<reference key="NSSuperview" ref="190400943"/>
-																		<reference key="NSNextKeyView" ref="209971206"/>
+																		<reference key="NSNextKeyView" ref="640630055"/>
 																		<string key="NSReuseIdentifierKey">_NS:13</string>
 																		<bool key="NSEnabled">YES</bool>
 																		<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
@@ -4037,14 +4028,13 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 														</array>
 														<string key="NSFrameSize">{160, 468}</string>
 														<reference key="NSSuperview" ref="724785187"/>
-														<reference key="NSNextKeyView" ref="640630055"/>
+														<reference key="NSNextKeyView" ref="190400943"/>
 														<string key="NSReuseIdentifierKey">_NS:9</string>
 														<int key="NSsFlags">133682</int>
 														<reference key="NSVScroller" ref="209971206"/>
 														<reference key="NSHScroller" ref="24934617"/>
 														<reference key="NSContentView" ref="190400943"/>
 														<reference key="NSHeaderClipView" ref="640630055"/>
-														<reference key="NSCornerView" ref="672020104"/>
 														<bytes key="NSScrollAmts">QSAAAEEgAABBsAAAQbAAAA</bytes>
 														<double key="NSMinMagnification">0.25</double>
 														<double key="NSMaxMagnification">4</double>
@@ -4560,7 +4550,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 																								<array class="NSMutableArray" key="NSSubviews"/>
 																								<string key="NSFrameSize">{464, 114}</string>
 																								<reference key="NSSuperview" ref="3441706"/>
-																								<reference key="NSNextKeyView" ref="836716573"/>
+																								<reference key="NSNextKeyView" ref="1006610342"/>
 																								<string key="NSReuseIdentifierKey">_NS:13</string>
 																								<bool key="NSEnabled">YES</bool>
 																								<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
@@ -4803,14 +4793,13 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 																				</array>
 																				<string key="NSFrame">{{20, 20}, {466, 132}}</string>
 																				<reference key="NSSuperview" ref="610059261"/>
-																				<reference key="NSNextKeyView" ref="1006610342"/>
+																				<reference key="NSNextKeyView" ref="3441706"/>
 																				<string key="NSReuseIdentifierKey">_NS:9</string>
 																				<int key="NSsFlags">133682</int>
 																				<reference key="NSVScroller" ref="1006610342"/>
 																				<reference key="NSHScroller" ref="836716573"/>
 																				<reference key="NSContentView" ref="3441706"/>
 																				<reference key="NSHeaderClipView" ref="1026975737"/>
-																				<reference key="NSCornerView" ref="1054448232"/>
 																				<bytes key="NSScrollAmts">QSAAAEEgAABBmAAAQZgAAA</bytes>
 																				<double key="NSMinMagnification">0.25</double>
 																				<double key="NSMaxMagnification">4</double>
@@ -4819,7 +4808,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 																		</array>
 																		<string key="NSFrameSize">{506, 466}</string>
 																		<reference key="NSSuperview" ref="137777423"/>
-																		<reference key="NSNextKeyView" ref="77041042"/>
+																		<reference key="NSNextKeyView" ref="114324777"/>
 																		<string key="NSReuseIdentifierKey">_NS:13</string>
 																	</object>
 																</array>
@@ -4860,7 +4849,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 														</array>
 														<string key="NSFrameSize">{508, 468}</string>
 														<reference key="NSSuperview" ref="369495863"/>
-														<reference key="NSNextKeyView" ref="114324777"/>
+														<reference key="NSNextKeyView" ref="137777423"/>
 														<string key="NSReuseIdentifierKey">_NS:9</string>
 														<int key="NSsFlags">133650</int>
 														<reference key="NSVScroller" ref="384045353"/>
@@ -4920,7 +4909,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 																		<array class="NSMutableArray" key="NSSubviews"/>
 																		<string key="NSFrameSize">{592, 373}</string>
 																		<reference key="NSSuperview" ref="5021310"/>
-																		<reference key="NSNextKeyView" ref="224530736"/>
+																		<reference key="NSNextKeyView" ref="380884633"/>
 																		<string key="NSReuseIdentifierKey">_NS:13</string>
 																		<bool key="NSEnabled">YES</bool>
 																		<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
@@ -5067,14 +5056,13 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 														</array>
 														<string key="NSFrameSize">{594, 391}</string>
 														<reference key="NSSuperview" ref="175808490"/>
-														<reference key="NSNextKeyView" ref="380884633"/>
+														<reference key="NSNextKeyView" ref="5021310"/>
 														<string key="NSReuseIdentifierKey">_NS:9</string>
 														<int key="NSsFlags">133682</int>
 														<reference key="NSVScroller" ref="976517857"/>
 														<reference key="NSHScroller" ref="920118505"/>
 														<reference key="NSContentView" ref="5021310"/>
 														<reference key="NSHeaderClipView" ref="380884633"/>
-														<reference key="NSCornerView" ref="616054677"/>
 														<bytes key="NSScrollAmts">QSAAAEEgAABDXAAAQ1wAAA</bytes>
 														<double key="NSMinMagnification">0.25</double>
 														<double key="NSMaxMagnification">4</double>
@@ -5274,9 +5262,6 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 			</object>
 			<object class="NSCustomObject" id="360552222">
 				<string key="NSClassName">JobController</string>
-			</object>
-			<object class="NSCustomObject" id="220014610">
-				<string key="NSClassName">LoadActiveProjectDelegate</string>
 			</object>
 			<object class="NSCustomObject" id="26872806">
 				<string key="NSClassName">PageController</string>
@@ -5733,30 +5718,6 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">activeProjectDelegate</string>
-						<reference key="source" ref="827363419"/>
-						<reference key="destination" ref="220014610"/>
-					</object>
-					<string key="id">3701</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">pageArrayController</string>
-						<reference key="source" ref="827363419"/>
-						<reference key="destination" ref="520243968"/>
-					</object>
-					<string key="id">3703</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">pageController</string>
-						<reference key="source" ref="827363419"/>
-						<reference key="destination" ref="26872806"/>
-					</object>
-					<string key="id">3704</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">projectAddRemoveButtonBar</string>
 						<reference key="source" ref="827363419"/>
 						<reference key="destination" ref="799487720"/>
@@ -5773,35 +5734,19 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">workflowArrayController</string>
-						<reference key="source" ref="827363419"/>
-						<reference key="destination" ref="864290469"/>
-					</object>
-					<string key="id">3707</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">jobController</string>
-						<reference key="source" ref="827363419"/>
-						<reference key="destination" ref="360552222"/>
-					</object>
-					<string key="id">3709</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">closeProject:</string>
-						<reference key="source" ref="827363419"/>
-						<reference key="destination" ref="776162233"/>
-					</object>
-					<string key="id">3710</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">workspaceController</string>
 						<reference key="source" ref="827363419"/>
 						<reference key="destination" ref="135599934"/>
 					</object>
 					<string key="id">9R5-Ah-pE1</string>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">workspaceMenuItem</string>
+						<reference key="source" ref="827363419"/>
+						<reference key="destination" ref="668722442"/>
+					</object>
+					<string key="id">CdL-PY-cuD</string>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -5941,22 +5886,6 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 						</object>
 					</object>
 					<string key="id">3293</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">pageArrayController</string>
-						<reference key="source" ref="220014610"/>
-						<reference key="destination" ref="520243968"/>
-					</object>
-					<string key="id">3711</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">workflowArrayController</string>
-						<reference key="source" ref="220014610"/>
-						<reference key="destination" ref="864290469"/>
-					</object>
-					<string key="id">3712</string>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -7997,27 +7926,19 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">projectMenuItem</string>
-						<reference key="source" ref="135599934"/>
-						<reference key="destination" ref="379814623"/>
-					</object>
-					<string key="id">6cY-Qi-NuO</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">rodanMenuItem</string>
-						<reference key="source" ref="135599934"/>
-						<reference key="destination" ref="694149608"/>
-					</object>
-					<string key="id">Z31-Og-Idf</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">plugInsMenuItem</string>
 						<reference key="source" ref="135599934"/>
 						<reference key="destination" ref="455148069"/>
 					</object>
 					<string key="id">y4y-Jr-xLe</string>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">switchWorkspaceToProjects:</string>
+						<reference key="source" ref="135599934"/>
+						<reference key="destination" ref="776162233"/>
+					</object>
+					<string key="id">E6X-ik-tqq</string>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -8098,6 +8019,22 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 						<reference key="destination" ref="135599934"/>
 					</object>
 					<string key="id">OvY-Fl-Sha</string>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">projectMenuItem</string>
+						<reference key="source" ref="233722402"/>
+						<reference key="destination" ref="379814623"/>
+					</object>
+					<string key="id">iMB-1s-5Iz</string>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">plugInMenuItem</string>
+						<reference key="source" ref="233722402"/>
+						<reference key="destination" ref="455148069"/>
+					</object>
+					<string key="id">JRL-n4-dNd</string>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -8818,12 +8755,6 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 						<string key="id">3642</string>
 						<reference key="object" ref="598169295"/>
 						<reference key="parent" ref="3852065"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">3700</string>
-						<reference key="object" ref="220014610"/>
-						<reference key="parent" ref="0"/>
-						<string key="objectName">Load Active Project Delegate</string>
 					</object>
 					<object class="IBObjectRecord">
 						<string key="id">3756</string>
@@ -11042,7 +10973,6 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 				<string key="3640.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="3641.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="3642.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="3700.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="3719.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="3720.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="3721.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -11406,7 +11336,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">AuthenticationController</string>
-					<string key="superclassName">AbstractController</string>
+					<string key="superclassName">RKController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="closeSheet:">id</string>
 						<string key="logOut:">id</string>
@@ -11425,6 +11355,8 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 						<string key="authenticationWaitScreen">NSView</string>
 						<string key="logInWindow">NSWindow</string>
 						<string key="passwordField">NSSecureTextField</string>
+						<string key="plugInMenuItem">NSMenuItem</string>
+						<string key="projectMenuItem">NSMenuItem</string>
 						<string key="submitButton">NSButton</string>
 						<string key="usernameField">NSTextField</string>
 						<string key="workspaceController">WorkspaceController</string>
@@ -11441,6 +11373,14 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 						<object class="IBToOneOutletInfo" key="passwordField">
 							<string key="name">passwordField</string>
 							<string key="candidateClassName">NSSecureTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="plugInMenuItem">
+							<string key="name">plugInMenuItem</string>
+							<string key="candidateClassName">NSMenuItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="projectMenuItem">
+							<string key="name">projectMenuItem</string>
+							<string key="candidateClassName">NSMenuItem</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="submitButton">
 							<string key="name">submitButton</string>
@@ -11641,7 +11581,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">InteractiveJobsController</string>
-					<string key="superclassName">AbstractController</string>
+					<string key="superclassName">RKController</string>
 					<object class="NSMutableDictionary" key="actions">
 						<string key="NS.key.0">displayInteractiveJobWindow:</string>
 						<string key="NS.object.0">id</string>
@@ -11678,28 +11618,6 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">LoadActiveProjectDelegate</string>
-					<string key="superclassName">NSObject</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="pageArrayController">NSArrayController</string>
-						<string key="workflowArrayController">NSArrayController</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="pageArrayController">
-							<string key="name">pageArrayController</string>
-							<string key="candidateClassName">NSArrayController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="workflowArrayController">
-							<string key="name">workflowArrayController</string>
-							<string key="candidateClassName">NSArrayController</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/LoadActiveProjectDelegate.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
 					<string key="className">OpenClassifierTableViewDelegate</string>
 					<string key="superclassName">NSObject</string>
 					<object class="NSMutableDictionary" key="outlets">
@@ -11720,7 +11638,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">PageController</string>
-					<string key="superclassName">AbstractController</string>
+					<string key="superclassName">RKController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="removePage:">id</string>
 						<string key="viewOriginal:">id</string>
@@ -11774,7 +11692,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">PlugInsController</string>
-					<string key="superclassName">AbstractController</string>
+					<string key="superclassName">RKController</string>
 					<object class="NSMutableDictionary" key="actions">
 						<string key="NS.key.0">selectedPlugIn:</string>
 						<string key="NS.object.0">id</string>
@@ -11807,7 +11725,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">ProjectController</string>
-					<string key="superclassName">AbstractController</string>
+					<string key="superclassName">RKController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="closeProject:">id</string>
 						<string key="newProject:">id</string>
@@ -11833,34 +11751,13 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="activeProjectDelegate">LoadActiveProjectDelegate</string>
-						<string key="jobController">JobController</string>
-						<string key="pageArrayController">NSArrayController</string>
-						<string key="pageController">PageController</string>
 						<string key="projectAddRemoveButtonBar">CPButtonBar</string>
 						<string key="projectArrayController">NSArrayController</string>
 						<string key="selectProjectView">NSView</string>
-						<string key="workflowArrayController">NSArrayController</string>
-						<string key="workflowController">WorkflowController</string>
 						<string key="workspaceController">WorkspaceController</string>
+						<string key="workspaceMenuItem">NSMenuItem</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="activeProjectDelegate">
-							<string key="name">activeProjectDelegate</string>
-							<string key="candidateClassName">LoadActiveProjectDelegate</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="jobController">
-							<string key="name">jobController</string>
-							<string key="candidateClassName">JobController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="pageArrayController">
-							<string key="name">pageArrayController</string>
-							<string key="candidateClassName">NSArrayController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="pageController">
-							<string key="name">pageController</string>
-							<string key="candidateClassName">PageController</string>
-						</object>
 						<object class="IBToOneOutletInfo" key="projectAddRemoveButtonBar">
 							<string key="name">projectAddRemoveButtonBar</string>
 							<string key="candidateClassName">CPButtonBar</string>
@@ -11873,17 +11770,13 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 							<string key="name">selectProjectView</string>
 							<string key="candidateClassName">NSView</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="workflowArrayController">
-							<string key="name">workflowArrayController</string>
-							<string key="candidateClassName">NSArrayController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="workflowController">
-							<string key="name">workflowController</string>
-							<string key="candidateClassName">WorkflowController</string>
-						</object>
 						<object class="IBToOneOutletInfo" key="workspaceController">
 							<string key="name">workspaceController</string>
 							<string key="candidateClassName">WorkspaceController</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="workspaceMenuItem">
+							<string key="name">workspaceMenuItem</string>
+							<string key="candidateClassName">NSMenuItem</string>
 						</object>
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
@@ -11893,7 +11786,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">ResultsPackageController</string>
-					<string key="superclassName">AbstractController</string>
+					<string key="superclassName">RKController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="closeCreateResultsPackageWindow:">id</string>
 						<string key="handleCreatePackageRequest:">id</string>
@@ -12171,7 +12064,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">UploadWindowController</string>
-					<string key="superclassName">AbstractController</string>
+					<string key="superclassName">RKController</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="arrayController">NSArrayController</string>
 						<string key="cappuccinoWindow">NSWindow</string>
@@ -12218,7 +12111,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">WorkspaceController</string>
-					<string key="superclassName">AbstractController</string>
+					<string key="superclassName">RKController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="switchWorkspaceToInteractiveJobs:">id</string>
 						<string key="switchWorkspaceToManagePages:">id</string>
@@ -12252,8 +12145,6 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 						<string key="pagesToolbarItem">NSToolbarItem</string>
 						<string key="plugInsMenuItem">NSMenuItem</string>
 						<string key="projectListView">NSView</string>
-						<string key="projectMenuItem">NSMenuItem</string>
-						<string key="rodanMenuItem">NSMenuItem</string>
 						<string key="workflowResultsToolbarItem">NSToolbarItem</string>
 						<string key="workflowResultsView">NSView</string>
 						<string key="workspaceMenuItem">NSMenuItem</string>
@@ -12290,14 +12181,6 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 						<object class="IBToOneOutletInfo" key="projectListView">
 							<string key="name">projectListView</string>
 							<string key="candidateClassName">NSView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="projectMenuItem">
-							<string key="name">projectMenuItem</string>
-							<string key="candidateClassName">NSMenuItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="rodanMenuItem">
-							<string key="name">rodanMenuItem</string>
-							<string key="candidateClassName">NSMenuItem</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="workflowResultsToolbarItem">
 							<string key="name">workflowResultsToolbarItem</string>

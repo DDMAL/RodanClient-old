@@ -25,7 +25,7 @@
 
 @global activeProject
 
-@implementation UploadWindowController : AbstractController
+@implementation UploadWindowController : RKController
 {
     @outlet CPWindow cappuccinoWindow;
     @outlet UploadButton chooseFileButton;

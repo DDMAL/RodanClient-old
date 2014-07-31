@@ -8,12 +8,12 @@
 @global RodanWorkflowResultsTimerNotification
 @global RodanHasFocusWorkflowResultsViewNotification
 @global RodanRequestWorkflowsNotification
-@global RodanShouldLoadWorkflowRunsNotification
-@global RodanShouldLoadWorkflowPagesNotification
-@global RodanShouldLoadRunJobsNotification
-@global RodanShouldLoadWorkflowPageResultsNotification
-@global RodanShouldLoadWorkflowResultsPackagesNotification
-@global RodanShouldLoadWorkflowRunsJobsNotification
+@global RodanRequestWorkflowRunsNotification
+@global RodanRequestWorkflowPagesNotification
+@global RodanRequestRunJobsNotification
+@global RodanRequestWorkflowPageResultsNotification
+@global RodanRequestWorkflowResultsPackagesNotification
+@global RodanRequestWorkflowRunsJobsNotification
 
 var activeWorkflow = nil,
     _msLOADINTERVAL = 5.0;
@@ -22,7 +22,7 @@ var activeWorkflow = nil,
  * General workflow controller that exists with the Workflow Results View.
  * It's purpose is to do a lot of reload handling.
  */
-@implementation WorkflowController : AbstractController
+@implementation WorkflowController : RKController
 {
     @outlet     CPArrayController               workflowArrayController;
     @outlet     CPArrayController               workflowPagesArrayController;
@@ -219,17 +219,17 @@ var activeWorkflow = nil,
 {
     [[CPNotificationCenter defaultCenter] postNotificationName:RodanRequestWorkflowsNotification
                                           object:nil];
-    [[CPNotificationCenter defaultCenter] postNotificationName:RodanShouldLoadWorkflowRunsNotification
+    [[CPNotificationCenter defaultCenter] postNotificationName:RodanRequestWorkflowRunsNotification
                                           object:nil];
-    [[CPNotificationCenter defaultCenter] postNotificationName:RodanShouldLoadWorkflowPagesNotification
+    [[CPNotificationCenter defaultCenter] postNotificationName:RodanRequestWorkflowPagesNotification
                                           object:nil];
-    [[CPNotificationCenter defaultCenter] postNotificationName:RodanShouldLoadRunJobsNotification
+    [[CPNotificationCenter defaultCenter] postNotificationName:RodanRequestRunJobsNotification
                                           object:nil];
-    [[CPNotificationCenter defaultCenter] postNotificationName:RodanShouldLoadWorkflowPageResultsNotification
+    [[CPNotificationCenter defaultCenter] postNotificationName:RodanRequestWorkflowPageResultsNotification
                                           object:nil];
-    [[CPNotificationCenter defaultCenter] postNotificationName:RodanShouldLoadWorkflowResultsPackagesNotification
+    [[CPNotificationCenter defaultCenter] postNotificationName:RodanRequestWorkflowResultsPackagesNotification
                                           object:nil];
-    [[CPNotificationCenter defaultCenter] postNotificationName:RodanShouldLoadWorkflowRunsJobsNotification
+    [[CPNotificationCenter defaultCenter] postNotificationName:RodanRequestWorkflowRunsJobsNotification
                                           object:nil];
 }
 
