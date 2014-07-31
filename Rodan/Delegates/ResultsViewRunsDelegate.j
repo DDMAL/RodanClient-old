@@ -3,8 +3,8 @@
 @import "../Delegates/ResultsViewPagesDelegate.j"
 
 
-@global RodanShouldLoadWorkflowRunsNotification
-@global RodanShouldLoadWorkflowPagesNotification
+@global RodanRequestWorkflowRunsNotification
+@global RodanRequestWorkflowPagesNotification
 
 /**
  * Runs status delegate that handles the "runs" view.
@@ -29,7 +29,7 @@
     {
         [[CPNotificationCenter defaultCenter] addObserver:self
                                               selector:@selector(handleShouldLoadNotification:)
-                                              name:RodanShouldLoadWorkflowRunsNotification
+                                              name:RodanRequestWorkflowRunsNotification
                                               object:nil];
     }
     _selectionFlag = NO;
@@ -78,7 +78,7 @@
 {
     _currentlySelectedWorkflowRun = [[_runsArrayController contentArray] objectAtIndex:rowIndex];
     [_resultsViewPagesDelegate reset];
-    [[CPNotificationCenter defaultCenter] postNotificationName:RodanShouldLoadWorkflowPagesNotification
+    [[CPNotificationCenter defaultCenter] postNotificationName:RodanRequestWorkflowPagesNotification
                                           object:_currentlySelectedWorkflowRun];
     _selectionFlag = YES;
     return YES;

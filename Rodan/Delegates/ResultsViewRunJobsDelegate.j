@@ -1,6 +1,6 @@
 @import <Foundation/CPObject.j>
 
-@global RodanShouldLoadRunJobsNotification
+@global RodanRequestRunJobsNotification
 
 /**
  * Delegate to handle the run jobs table in the Results view.
@@ -29,7 +29,7 @@
     {
         [[CPNotificationCenter defaultCenter] addObserver:self
                                               selector:@selector(handleShouldLoadNotification:)
-                                              name:RodanShouldLoadRunJobsNotification
+                                              name:RodanRequestRunJobsNotification
                                               object:nil];
     }
 

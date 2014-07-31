@@ -10,8 +10,6 @@
 @import <AppKit/AppKit.j>
 @import <Ratatosk/Ratatosk.j>
 
-@global RodanMustLogInNotification
-@global RodanCannotLogInNotification
 @global RodanDidLogInNotification
 @global RodanDidLogOutNotification
 
@@ -134,15 +132,11 @@ activeUser = nil;
 
         case 401:
             [connection cancel];
-            [[CPNotificationCenter defaultCenter] postNotificationName:RodanMustLogInNotification
-                                                  object:nil];
             [self runLogInSheet];
             break;
 
         case 403:
             [connection cancel];
-            [[CPNotificationCenter defaultCenter] postNotificationName:RodanCannotLogInNotification
-                                                  object:nil];
             break;
 
         default:

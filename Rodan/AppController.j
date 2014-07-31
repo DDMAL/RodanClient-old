@@ -46,34 +46,6 @@
 @import "Transformers/ResultsDisplayTransformer.j"
 @import "Transformers/ResultThumbnailTransformer.j"
 
-RodanDidLoadProjectNotification = @"RodanDidLoadProjectNotification";
-RodanDidCloseProjectNotification = @"RodanDidCloseProjectNotification";
-RodanDidLoadJobsNotification = @"RodanDidLoadJobsNotification";
-RodanDidLoadWorkflowNotification = @"RodanDidLoadWorkflowNotification";
-RodanMustLogInNotification = @"RodanMustLogInNotification";
-RodanDidLogInNotification = @"RodanDidLogInNotification";
-RodanCannotLogInNotification = @"RodanCannotLogInNotification";
-RodanLogInErrorNotification = @"RodanLogInErrorNotification";
-RodanDidLogOutNotification = @"RodanDidLogOutNotification";
-RodanShouldLoadInteractiveJobsNotification = @"RodanShouldLoadInteractiveJobsNotification";
-RodanShouldLoadWorkflowRunsNotification = @"RodanShouldLoadWorkflowRunsNotification";
-RodanShouldLoadWorkflowPagesNotification = @"RodanShouldLoadWorkflowPagesNotification";
-RodanShouldLoadWorkflowRunsJobsNotification = @"RodanShouldLoadWorkflowRunsJobsNotification";
-RodanShouldLoadPagesNotification = @"RodanShouldLoadPagesNotification";
-RodanShouldLoadWorkflowPageResultsNotification = @"RodanShouldLoadWorkflowPageResultsNotification";
-RodanShouldLoadRunJobsNotification = @"RodanShouldLoadRunJobsNotification";
-RodanWorkflowResultsTimerNotification = @"RodanWorkflowResultsTimerNotification";
-RodanShouldLoadWorkflowResultsPackagesNotification = @"RodanShouldLoadWorkflowResultsPackagesNotification";
-
-//Request Events
-RodanRequestWorkflowsNotification = @"RodanRequestWorkflowsNotification";
-
-// Focus events.
-RodanHasFocusInteractiveJobsViewNotification = @"RodanHasFocusInteractiveJobsViewNotification";
-RodanHasFocusWorkflowResultsViewNotification = @"RodanHasFocusWorkflowResultsViewNotification";
-RodanHasFocusPagesViewNotification = @"RodanHasFocusPagesViewNotification";
-RodanHasFocusProjectListViewNotification = @"RodanHasFocusProjectListViewNotification";
-
 @implementation AppController : AbstractController
 {
     @outlet     PlugInsController           plugInsController;

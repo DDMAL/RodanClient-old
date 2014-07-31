@@ -3,7 +3,7 @@
 
 @global activeProject
 @global RodanRequestWorkflowsNotification
-@global RodanShouldLoadWorkflowRunsNotification
+@global RodanRequestWorkflowRunsNotification
 
 @class WorkflowController
 
@@ -84,7 +84,7 @@
     _currentlySelectedWorkflow = [[_workflowArrayController contentArray] objectAtIndex:rowIndex];
     [WorkflowController setActiveWorkflow:_currentlySelectedWorkflow];
     [_resultsViewRunsDelegate reset];
-    [[CPNotificationCenter defaultCenter] postNotificationName:RodanShouldLoadWorkflowRunsNotification
+    [[CPNotificationCenter defaultCenter] postNotificationName:RodanRequestWorkflowRunsNotification
                                           object:[_currentlySelectedWorkflow uuid]];
     _selectionFlag = YES;
     return YES;

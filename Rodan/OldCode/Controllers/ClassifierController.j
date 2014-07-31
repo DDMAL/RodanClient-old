@@ -291,7 +291,7 @@
     [pageImageController setContent:null];
     [theRunJob setNeedsInput:false];
     [theRunJob ensureSaved];
-    // [[CPNotificationCenter defaultCenter] postNotificationName:RodanShouldLoadInteractiveJobsNotification
+    // [[CPNotificationCenter defaultCenter] postNotificationName:RodanRequestInteractiveJobsNotification
     //                                       object:nil];  // TODO: Find another way to change the view...
                                                            // this is a data loading notification
 }

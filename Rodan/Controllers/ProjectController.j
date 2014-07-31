@@ -3,8 +3,6 @@
 **/
 
 @global RodanHasFocusProjectListViewNotification
-@global RodanDidLoadProjectNotification
-@global RodanDidCloseProjectNotification
 @global activeUser
 
 activeProject = nil;  // URI to the currently open project
@@ -53,16 +51,6 @@ var _MESSAGE_PROJECTLOAD = "_MESSAGE_PROJECTLOAD",
                                           name:RodanHasFocusProjectListViewNotification
                                           object:nil];
 
-    [[CPNotificationCenter defaultCenter] addObserver:self
-                                          selector:@selector(didLoadProject:)
-                                          name:RodanDidLoadProjectNotification
-                                          object:nil];
-
-    [[CPNotificationCenter defaultCenter] addObserver:self
-                                          selector:@selector(didCloseProject:)
-                                          name:RodanDidCloseProjectNotification
-                                          object:nil];
-
     var backgroundTexture = [[CPImage alloc] initWithContentsOfFile:[[CPBundle mainBundle] pathForResource:@"workflow-backgroundTexture.png"]
                                              size:CGSizeMake(200.0, 200.0)];
 
@@ -91,8 +79,8 @@ var _MESSAGE_PROJECTLOAD = "_MESSAGE_PROJECTLOAD",
             [WLRemoteObject setDirtProof:YES];
             activeProject = [[Project alloc] initWithJson:[aAction result]];
             [WLRemoteObject setDirtProof:NO];
-            [[CPNotificationCenter defaultCenter] postNotificationName:RodanDidLoadProjectNotification
-                                                  object:nil];
+            [workspaceMenuItem setEnabled:YES];
+            [workspaceController clearView];
             break;
 
         case _MESSAGE_PROJECTSLOAD:
@@ -164,14 +152,12 @@ var _MESSAGE_PROJECTLOAD = "_MESSAGE_PROJECTLOAD",
 
 - (void)didCloseProject:(CPNotification)aNotification
 {
-    [self showProjectsChooser:nil];
 }
 
 - (IBAction)closeProject:(id)aSender
 {
     [workspaceMenuItem setEnabled:NO];
-    [[CPNotificationCenter defaultCenter] postNotificationName:RodanDidCloseProjectNotification
-                                          object:nil];
+    [self showProjectsChooser:nil];
 }
 
 - (void)didLoadProject:(CPNotification)aNotification

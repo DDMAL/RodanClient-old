@@ -4,9 +4,6 @@
     whatever else is showing.
 **/
 
-@global RodanDidCloseProjectNotification;
-@global RodanDidLoadProjectNotification;
-@global RodanDidLogInNotification;
 @global RodanHasFocusInteractiveJobsViewNotification;
 @global RodanHasFocusWorkflowResultsViewNotification;
 @global RodanHasFocusPagesViewNotification;

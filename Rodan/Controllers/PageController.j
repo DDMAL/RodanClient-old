@@ -6,7 +6,7 @@
 
 @global activeProject
 @global RodanHasFocusPagesViewNotification
-@global RodanShouldLoadPagesNotification
+@global RodanRequestPagesNotification
 
 /**
  * Handles control of all Page-related tasks.
@@ -32,7 +32,7 @@
                                           object:nil];
     [[CPNotificationCenter defaultCenter] addObserver:self
                                           selector:@selector(handleShouldLoadNotification:)
-                                          name:RodanShouldLoadPagesNotification
+                                          name:RodanRequestPagesNotification
                                           object:nil];
 }
 
@@ -96,7 +96,7 @@
 - (void)receiveHasFocusEvent:(CPNotification)aNotification
 {
     [RKNotificationTimer setTimedNotification:[self refreshRate]
-                         notification:RodanShouldLoadPagesNotification];
+                         notification:RodanRequestPagesNotification];
 }
 
 - (void)handleShouldLoadNotification:(CPNotification)aNotification

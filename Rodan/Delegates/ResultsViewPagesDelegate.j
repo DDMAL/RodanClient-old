@@ -2,9 +2,9 @@
 @import "../Delegates/ResultsViewResultsDelegate.j"
 @import "../Delegates/ResultsViewRunJobsDelegate.j"
 
-@global RodanShouldLoadWorkflowPagesNotification
-@global RodanShouldLoadRunJobsNotification
-@global RodanShouldLoadWorkflowPageResultsNotification
+@global RodanRequestWorkflowPagesNotification
+@global RodanRequestRunJobsNotification
+@global RodanRequestWorkflowPageResultsNotification
 
 /**
  * Delegate to handle the pages table in the Results view.
@@ -29,7 +29,7 @@
     {
         [[CPNotificationCenter defaultCenter] addObserver:self
                                               selector:@selector(handleShouldLoadNotification:)
-                                              name:RodanShouldLoadWorkflowPagesNotification
+                                              name:RodanRequestWorkflowPagesNotification
                                               object:nil];
     }
     _selectionFlag = NO;
@@ -66,9 +66,9 @@
     var objectToPass = [[CPObject alloc] init];
     objectToPass.page = _currentlySelectedPage;
     objectToPass.workflowRun = _associatedWorkflowRun;
-    [[CPNotificationCenter defaultCenter] postNotificationName:RodanShouldLoadRunJobsNotification
+    [[CPNotificationCenter defaultCenter] postNotificationName:RodanRequestRunJobsNotification
                                           object:objectToPass];
-    [[CPNotificationCenter defaultCenter] postNotificationName:RodanShouldLoadWorkflowPageResultsNotification
+    [[CPNotificationCenter defaultCenter] postNotificationName:RodanRequestWorkflowPageResultsNotification
                                           object:objectToPass];
     _selectionFlag = YES;
     return YES;

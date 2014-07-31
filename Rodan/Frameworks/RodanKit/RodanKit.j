@@ -1,6 +1,32 @@
 
 @import <Foundation/CPObject.j>
 
+// Timer events.
+RodanWorkflowResultsTimerNotification = @"RodanWorkflowResultsTimerNotification";
+
+// Load success events.
+RodanDidLoadJobsNotification = @"RodanDidLoadJobsNotification";
+RodanDidLoadWorkflowNotification = @"RodanDidLoadWorkflowNotification";
+RodanDidLogInNotification = @"RodanDidLogInNotification";
+RodanDidLogOutNotification = @"RodanDidLogOutNotification";
+
+// Request events.
+RodanRequestWorkflowsNotification = @"RodanRequestWorkflowsNotification";
+RodanRequestInteractiveJobsNotification = @"RodanRequestInteractiveJobsNotification";
+RodanRequestWorkflowRunsNotification = @"RodanRequestWorkflowRunsNotification";
+RodanRequestWorkflowPagesNotification = @"RodanRequestWorkflowPagesNotification";
+RodanRequestWorkflowRunsJobsNotification = @"RodanRequestWorkflowRunsJobsNotification";
+RodanRequestPagesNotification = @"RodanRequestPagesNotification";
+RodanRequestWorkflowPageResultsNotification = @"RodanRequestWorkflowPageResultsNotification";
+RodanRequestRunJobsNotification = @"RodanRequestRunJobsNotification";
+RodanRequestWorkflowResultsPackagesNotification = @"RodanRequestWorkflowResultsPackagesNotification";
+
+// Focus events.
+RodanHasFocusInteractiveJobsViewNotification = @"RodanHasFocusInteractiveJobsViewNotification";
+RodanHasFocusWorkflowResultsViewNotification = @"RodanHasFocusWorkflowResultsViewNotification";
+RodanHasFocusPagesViewNotification = @"RodanHasFocusPagesViewNotification";
+RodanHasFocusProjectListViewNotification = @"RodanHasFocusProjectListViewNotification";
+
 // Controllers
 @import "Controllers/AbstractController.j"
 @import "Controllers/WorkflowController.j"

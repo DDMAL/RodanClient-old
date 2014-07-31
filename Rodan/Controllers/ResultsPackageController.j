@@ -4,8 +4,8 @@
 @import <RodanKit/Models/WorkflowRun.j>
 @import "../AppController.j"
 
-@global RodanShouldLoadWorkflowResultsPackagesNotification
-@global RodanShouldLoadWorkflowRunsJobsNotification
+@global RodanRequestWorkflowResultsPackagesNotification
+@global RodanRequestWorkflowRunsJobsNotification
 @global activeUser
 @global activeProject
 
@@ -35,11 +35,11 @@ var RADIOTAG_ALL = 1,
     {
         [[CPNotificationCenter defaultCenter] addObserver:self
                                               selector:@selector(handleShouldLoadWorkflowResultsPackagesNotification:)
-                                              name:RodanShouldLoadWorkflowResultsPackagesNotification
+                                              name:RodanRequestWorkflowResultsPackagesNotification
                                               object:nil];
         [[CPNotificationCenter defaultCenter] addObserver:self
                                               selector:@selector(handleShouldLoadWorkfowRunsJobsNotification:)
-                                              name:RodanShouldLoadWorkflowRunsJobsNotification
+                                              name:RodanRequestWorkflowRunsJobsNotification
                                               object:nil];
     }
 
@@ -173,11 +173,11 @@ var RADIOTAG_ALL = 1,
     {
         switch ([aAction message])
         {
-            case RodanShouldLoadWorkflowResultsPackagesNotification:
+            case RodanRequestWorkflowResultsPackagesNotification:
                 [self _processRemoteActionResultPackages:aAction];
                 break;
 
-            case  RodanShouldLoadWorkflowRunsJobsNotification:
+            case  RodanRequestWorkflowRunsJobsNotification:
                 [self _processRemoteActionWorkflowJobs:aAction];
                 break;
 
@@ -205,7 +205,7 @@ var RADIOTAG_ALL = 1,
     [WLRemoteAction schedule:WLRemoteActionGetType
                     path:[[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/resultspackages/" + getParameters
                     delegate:self
-                    message:RodanShouldLoadWorkflowResultsPackagesNotification
+                    message:RodanRequestWorkflowResultsPackagesNotification
                     withCredentials:YES];
 }
 - (void)_requestJobs:(WorkflowRun)aWorkflowRun
@@ -214,7 +214,7 @@ var RADIOTAG_ALL = 1,
     [WLRemoteAction schedule:WLRemoteActionGetType
                     path:[[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/jobs/" + getParameters
                     delegate:self
-                    message:RodanShouldLoadWorkflowRunsJobsNotification
+                    message:RodanRequestWorkflowRunsJobsNotification
                     withCredentials:YES];
 }
 

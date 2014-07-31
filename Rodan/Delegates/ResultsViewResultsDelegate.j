@@ -1,6 +1,6 @@
 @import <Foundation/CPObject.j>
 
-@global RodanShouldLoadWorkflowPageResultsNotification
+@global RodanRequestWorkflowPageResultsNotification
 
 /**
  * Delegate to handle the results table in the Results view.
@@ -23,7 +23,7 @@
     {
         [[CPNotificationCenter defaultCenter] addObserver:self
                                               selector:@selector(handleShouldLoadNotification:)
-                                              name:RodanShouldLoadWorkflowPageResultsNotification
+                                              name:RodanRequestWorkflowPageResultsNotification
                                               object:nil];
     }
 
