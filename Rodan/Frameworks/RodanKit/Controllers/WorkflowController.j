@@ -103,6 +103,20 @@ var activeWorkflow = nil,
     }
 }
 
+- (void)removeWorkflow
+{
+    if ([workflowArrayController selectedObjects])
+    {
+        var alert = [CPAlert alertWithMessageText:@"You are about to permanently delete this workflow"
+                             defaultButton:@"Delete"
+                             alternateButton:@"Cancel"
+                             otherButton:nil
+                             informativeTextWithFormat:nil];
+        [alert setDelegate:self];
+        [alert runModal];
+    }
+}
+
 - (void)newWorkflow
 {
     var wflow = [[Workflow alloc] init];
