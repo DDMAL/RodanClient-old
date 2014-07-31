@@ -28,7 +28,6 @@ RodanHasFocusPagesViewNotification = @"RodanHasFocusPagesViewNotification";
 RodanHasFocusProjectListViewNotification = @"RodanHasFocusProjectListViewNotification";
 
 // Controllers
-@import "Controllers/AbstractController.j"
 @import "Controllers/JobController.j"
 @import "Controllers/RKController.j"
 @import "Controllers/WorkflowController.j"

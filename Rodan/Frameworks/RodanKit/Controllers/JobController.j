@@ -1,4 +1,5 @@
-@import <RodanKit/Models/Job.j>
+@import "../Models/Job.j"
+@import "RKController.j"
 
 @global RodanDidLoadJobsNotification
 
