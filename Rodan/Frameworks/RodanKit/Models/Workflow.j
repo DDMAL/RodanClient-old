@@ -17,6 +17,7 @@
     BOOL        hasStarted      @accessors;
     CPString    workflowCreator @accessors;
     CPImage     sourceListIcon  @accessors;
+    BOOL        isValid         @accessors;
 
     CPDate      created         @accessors;
     CPDate      updated         @accessors;
@@ -52,7 +53,8 @@
         ['hasStarted',      'has_started'     ],
         ['workflowCreator', 'creator'         ],
         ['created', 'created', [[WLDateTransformer alloc] init], true],
-        ['updated', 'updated', [[WLDateTransformer alloc] init], true]
+        ['updated', 'updated', [[WLDateTransformer alloc] init], true],
+        ['isValid', 'valid']
     ];
 }
 
