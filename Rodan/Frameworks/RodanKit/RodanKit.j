@@ -7,6 +7,7 @@ RodanWorkflowResultsTimerNotification = @"RodanWorkflowResultsTimerNotification"
 // Load success events.
 RodanDidLoadJobsNotification = @"RodanDidLoadJobsNotification";
 RodanDidLoadWorkflowNotification = @"RodanDidLoadWorkflowNotification";
+RodanDidLoadWorkflowsNotification = @"RodanDidLoadWorkflowsNotification";
 RodanDidLogInNotification = @"RodanDidLogInNotification";
 RodanDidLogOutNotification = @"RodanDidLogOutNotification";
 

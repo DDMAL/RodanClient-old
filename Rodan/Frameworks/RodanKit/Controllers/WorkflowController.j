@@ -5,6 +5,7 @@
 
 @global activeProject
 @global activeUser
+@global RodanDidLoadWorkflowsNotification
 @global RodanWorkflowResultsTimerNotification
 @global RodanHasFocusWorkflowResultsViewNotification
 @global RodanRequestWorkflowsNotification
