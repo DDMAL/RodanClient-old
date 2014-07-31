@@ -88,8 +88,9 @@ var activeWorkflow = nil,
 }
 
 
-- (void)removeWorkflow
+- (void)removeWorkflow:(CPIndexSet)anIndexSet
 {
+    [workflowArrayController setSelectedObjects:anIndexSet];
     if ([workflowArrayController selectedObjects])
     {
         var alert = [CPAlert alertWithMessageText:@"You are about to permanently delete this workflow"
