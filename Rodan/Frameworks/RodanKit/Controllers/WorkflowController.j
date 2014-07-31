@@ -22,7 +22,7 @@ var activeWorkflow = nil,
  * General workflow controller that exists with the Workflow Results View.
  * It's purpose is to do a lot of reload handling.
  */
-@implementation WorkflowController : CPObject
+@implementation WorkflowController : AbstractController
 {
     @outlet     CPArrayController               workflowArrayController;
     @outlet     CPArrayController               workflowPagesArrayController;
@@ -35,30 +35,19 @@ var activeWorkflow = nil,
 ////////////////////////////////////////////////////////////////////////////////////////////
 - (void)awakeFromCib
 {
-    var addButton = [CPButtonBar plusPopupButton],
-        removeButton = [CPButtonBar minusButton],
-        addWorkflowTitle = @"Add Workflow...";
+    var addWorkflowTitle = @"Add Workflow...";
 
-    [addButton addItemsWithTitles:[addWorkflowTitle]];
-    [workflowAddRemoveBar setButtons:[addButton, removeButton]];
-
-    var addWorkflowItem = [addButton itemWithTitle:addWorkflowTitle];
-
-    [addWorkflowItem setAction:@selector(newWorkflow:)];
-    [addWorkflowItem setTarget:self];
-    [removeButton setAction:@selector(removeWorkflow:)];
-    [removeButton setTarget:self];
-
-    [removeButton bind:@"enabled"
-                  toObject:workflowArrayController
-                  withKeyPath:@"selectedObjects.@count"
-                  options:nil];
+    // [removeButton bind:@"enabled"
+    //               toObject:workflowArrayController
+    //               withKeyPath:@"selectedObjects.@count"
+    //               options:nil];
 
     // Subscriptions for self.
     [[CPNotificationCenter defaultCenter] addObserver:self
                                           selector:@selector(receiveHasFocusEvent:)
                                           name:RodanHasFocusWorkflowResultsViewNotification
                                           object:nil];
+    
     [[CPNotificationCenter defaultCenter] addObserver:self
                                           selector:@selector(handleTimerNotification:)
                                           name:RodanWorkflowResultsTimerNotification
@@ -79,7 +68,7 @@ var activeWorkflow = nil,
     {
         var workflow = [Workflow objectsFromJson:[anAction result]];
         [workflowArrayController setContent:workflow];
-        [[CPNotification defaultCenter] postNotificationName:RodanDidLoadWorkflowsNotification
+        [[CPNotificationCenter defaultCenter] postNotificationName:RodanDidLoadWorkflowsNotification
                                                       object:[anAction result]];
     }
 }
@@ -92,14 +81,14 @@ var activeWorkflow = nil,
 - (void)fetchWorkflows
 {
     [WLRemoteAction schedule:WLRemoteActionGetType
-                        path:[self serverHost] + "/workflows/?project=" + [activeProject pk]
-                        delegate:self
-                        message:"Loading Jobs"
-                        withCredentials:YES];
+                    path:[self serverHost] + "/workflows/?project=" + [activeProject uuid]
+                    delegate:self
+                    message:"Loading Workflows"
+                    withCredentials:YES];
 }
 
 
-- (void)removeWorkflow:(id)aSender
+- (void)removeWorkflow
 {
     if ([workflowArrayController selectedObjects])
     {
@@ -113,7 +102,7 @@ var activeWorkflow = nil,
     }
 }
 
-- (void)newWorkflow:(id)aSender
+- (void)newWorkflow
 {
     var wflow = [[Workflow alloc] init];
     [wflow setProjectURL:[activeProject pk]];
@@ -163,7 +152,7 @@ var activeWorkflow = nil,
 
 - (void)receiveRequestWorkflowsNotification:(CPNotification)aNotification
 {
-
+    [self fetchWorkflows];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////
