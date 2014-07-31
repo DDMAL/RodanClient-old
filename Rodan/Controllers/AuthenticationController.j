@@ -19,18 +19,18 @@ activeUser = nil;
 
 @implementation AuthenticationController : AbstractController
 {
-    @outlet     CPView            authenticationWaitScreen;
-    @outlet     CPTextField       usernameField;
-    @outlet     CPSecureTextField passwordField;
-    @outlet     CPButton          submitButton;
-    @outlet     CPWindow          logInWindow;
+    @outlet     CPView              authenticationWaitScreen;
+    @outlet     CPTextField         usernameField;
+    @outlet     CPSecureTextField   passwordField;
+    @outlet     CPButton            submitButton;
+    @outlet     CPWindow            logInWindow;
     @outlet     WorkspaceController workspaceController;
-                CPString          _authenticationType;
-                CPString          _urlLogout;
-                CPString          _urlLogin;
-                CPString          _urlCheckIsAuthenticated;
-                CPCookie          _CSRFToken;
-                CPString          _authenticationToken;
+                CPString            _authenticationType;
+                CPString            _urlLogout;
+                CPString            _urlLogin;
+                CPString            _urlCheckIsAuthenticated;
+                CPCookie            _CSRFToken;
+                CPString            _authenticationToken;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -111,6 +111,7 @@ activeUser = nil;
 #pragma mark Public Delegate Methods
 - (void)connection:(CPURLConnection)connection didFailWithError:(id)error
 {
+    [connection cancel];
     CPLog("Failed with Error");
 }
 
@@ -121,22 +122,21 @@ activeUser = nil;
     switch ([response statusCode])
     {
         case 400:
-            [self _runAlert:[response statusCode] withMessage:"bad request"];
             [connection cancel];
+            [self _runAlert:[response statusCode] withMessage:"bad request"];
             break;
 
         case 401:
             [connection cancel];
             [[CPNotificationCenter defaultCenter] postNotificationName:RodanMustLogInNotification
                                                   object:nil];
-            [workspaceController clearView];
             [self runLogInSheet];
             break;
 
         case 403:
+            [connection cancel];
             [[CPNotificationCenter defaultCenter] postNotificationName:RodanCannotLogInNotification
                                                   object:nil];
-            [connection cancel]
             break;
 
         default:
@@ -156,7 +156,7 @@ activeUser = nil;
             [[CPNotificationCenter defaultCenter] postNotificationName:RodanDidLogInNotification
                                                   object:nil];
         }
-        else
+        else if (data.hasOwnProperty('user'))
         {
             activeUser = [[User alloc] initWithJson:data];
             [[CPNotificationCenter defaultCenter] postNotificationName:RodanDidLogInNotification

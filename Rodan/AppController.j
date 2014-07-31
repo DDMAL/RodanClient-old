@@ -48,7 +48,6 @@
 
 RodanDidLoadProjectNotification = @"RodanDidLoadProjectNotification";
 RodanDidCloseProjectNotification = @"RodanDidCloseProjectNotification";
-RodanShouldLoadProjectNotification = @"RodanShouldLoadProjectNotification";
 RodanDidLoadJobsNotification = @"RodanDidLoadJobsNotification";
 RodanDidLoadWorkflowNotification = @"RodanDidLoadWorkflowNotification";
 RodanMustLogInNotification = @"RodanMustLogInNotification";
@@ -66,11 +65,8 @@ RodanShouldLoadRunJobsNotification = @"RodanShouldLoadRunJobsNotification";
 RodanWorkflowResultsTimerNotification = @"RodanWorkflowResultsTimerNotification";
 RodanShouldLoadWorkflowResultsPackagesNotification = @"RodanShouldLoadWorkflowResultsPackagesNotification";
 
-
 //Request Events
 RodanRequestWorkflowsNotification = @"RodanRequestWorkflowsNotification";
-
-
 
 // Focus events.
 RodanHasFocusInteractiveJobsViewNotification = @"RodanHasFocusInteractiveJobsViewNotification";
@@ -133,7 +129,7 @@ RodanHasFocusProjectListViewNotification = @"RodanHasFocusProjectListViewNotific
 
 - (void)didLogIn:(id)aNotification
 {
-    [workspaceController switchWorkspaceToProjects:nil];
+    [workspaceController clearView];
 }
 
 - (void)didLogOut:(id)aNotification

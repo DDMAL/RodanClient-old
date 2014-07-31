@@ -69,7 +69,6 @@
 {
     // Get bundle info.
     var bundle = [_bundleMap objectForKey:aSender],
-        sharedApplication = [CPApplication sharedApplication],
         principalClass = [bundle principalClass];
     var controller = [[principalClass alloc] initWithCibName:[bundle objectForInfoDictionaryKey:"CPCibName"]
                                              bundle:bundle];
@@ -84,7 +83,7 @@
     }
     else
     {
-        [workspaceController setView:[controller view]];
+        [workspaceController setView:[controller view] withToolbar:nil];
     }
 }
 

@@ -4,7 +4,6 @@
 @import "../AppController.j"
 
 @global RodanHasFocusProjectListViewNotification
-@global RodanShouldLoadProjectNotification
 @global RodanDidLoadProjectNotification
 @global RodanDidCloseProjectNotification
 @global activeUser
@@ -13,27 +12,22 @@ activeProject = nil;  // URI to the currently open project
 
 @implementation ProjectController : AbstractController
 {
-    @outlet     CPArrayController           projectArrayController;
-                CPValueTransformer          projectCountTransformer;
-    @outlet     LoadActiveProjectDelegate   activeProjectDelegate;
-    @outlet     CPButtonBar                 projectAddRemoveButtonBar;
-    @outlet     CPView                      selectProjectView;
-
-    @outlet     PageController              pageController;
-    @outlet     CPArrayController           pageArrayController;
-    @outlet     WorkflowController          workflowController;
-    @outlet     CPArrayController           workflowArrayController;
-    @outlet     JobController               jobController;
-    @outlet     WorkspaceController         workspaceController;
+    @outlet CPMenuItem                  workspaceMenuItem;
+    @outlet CPArrayController           projectArrayController;
+    @outlet LoadActiveProjectDelegate   activeProjectDelegate;
+    @outlet CPButtonBar                 projectAddRemoveButtonBar;
+    @outlet CPView                      selectProjectView;
+    @outlet PageController              pageController;
+    @outlet CPArrayController           pageArrayController;
+    @outlet WorkflowController          workflowController;
+    @outlet CPArrayController           workflowArrayController;
+    @outlet JobController               jobController;
+    @outlet WorkspaceController         workspaceController;
+            CPValueTransformer          projectCountTransformer;
 }
 
 - (void)awakeFromCib
 {
-    [[CPNotificationCenter defaultCenter] addObserver:self
-                                          selector:@selector(shouldLoadProject:)
-                                          name:RodanShouldLoadProjectNotification
-                                          object:nil];
-
     [[CPNotificationCenter defaultCenter] addObserver:self
                                           selector:@selector(receiveHasFocusEvent:)
                                           name:RodanHasFocusProjectListViewNotification
@@ -121,21 +115,15 @@ activeProject = nil;  // URI to the currently open project
     [selectedObjects makeObjectsPerformSelector:@selector(ensureDeleted)];
 }
 
-- (void)shouldLoadProject:(CPNotification)aNotification
+- (IBAction)openProject:(id)aSender
 {
+    [workspaceMenuItem setEnabled:YES];
+    var selectedProject = [[projectArrayController selectedObjects] objectAtIndex:0];
     [WLRemoteAction schedule:WLRemoteActionGetType
-                    path:[[aNotification object] pk]
+                    path:[selectedProject pk]
                     delegate:activeProjectDelegate
                     message:"Loading Project"
                     withCredentials:YES];
-}
-
-- (IBAction)openProject:(id)aSender
-{
-    var selectedProject = [[projectArrayController selectedObjects] objectAtIndex:0];
-
-    [[CPNotificationCenter defaultCenter] postNotificationName:RodanShouldLoadProjectNotification
-                                          object:selectedProject];
 }
 
 - (void)emptyProjectArrayController
@@ -185,13 +173,14 @@ activeProject = nil;  // URI to the currently open project
 
 - (IBAction)closeProject:(id)aSender
 {
+    [workspaceMenuItem setEnabled:NO];
     [[CPNotificationCenter defaultCenter] postNotificationName:RodanDidCloseProjectNotification
                                           object:nil];
 }
 
 - (void)didLoadProject:(CPNotification)aNotification
 {
-    console.log("TODO: inform the workspace controller what we want to show");
+    [workspaceMenuItem setEnabled:YES];
     [workspaceController clearView];
 }
 @end
