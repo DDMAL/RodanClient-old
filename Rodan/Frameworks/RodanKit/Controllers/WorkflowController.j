@@ -15,8 +15,14 @@
 @global RodanRequestWorkflowResultsPackagesNotification
 @global RodanRequestWorkflowRunsJobsNotification
 
+RodanDidLoadWorkflowNotification = @"RodanDidLoadWorkflowNotification";
+RodanDidLoadWorkflowsNotification = @"RodanDidLoadWorkflowsNotification";
+
 var activeWorkflow = nil,
-    _msLOADINTERVAL = 5.0;
+    _msLOADINTERVAL = 5.0,
+
+    _MESSAGE_WORKFLOW_LOAD = "Loading Workflow",
+    _MESSAGE_WORKFLOWS_LOAD = "Loading Workflows";
 
 /**
  * General workflow controller that exists with the Workflow Results View.
@@ -28,6 +34,8 @@ var activeWorkflow = nil,
     @outlet     CPArrayController               workflowPagesArrayController;
     @outlet     CPButtonBar                     workflowAddRemoveBar;
     @outlet     ResultsViewWorkflowsDelegate    resultsViewWorkflowsDelegate;
+
+    @outlet     Workflow                        currentWorkflow;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////
@@ -66,10 +74,21 @@ var activeWorkflow = nil,
 {
     if ([anAction result])
     {
-        var workflow = [Workflow objectsFromJson:[anAction result]];
-        [workflowArrayController setContent:workflow];
-        [[CPNotificationCenter defaultCenter] postNotificationName:RodanDidLoadWorkflowsNotification
+        switch ([anAction message])
+        {
+            case _MESSAGE_WORKFLOWS_LOAD:
+                var workflow = [Workflow objectsFromJson:[anAction result]];
+                [workflowArrayController setContent:workflow];
+                [[CPNotificationCenter defaultCenter] postNotificationName:RodanDidLoadWorkflowsNotification
                                                       object:[anAction result]];
+                break;
+
+            case _MESSAGE_WORKFLOW_LOAD:
+                currentWorkflow =  [self updateWorkflowWithJson:[anAction result]];
+                [[CPNotificationCenter defaultCenter] postNotificationName:RodanDidLoadWorkflowNotification
+                                                      object:nil];
+                break;
+        }
     }
 }
 
@@ -87,6 +106,16 @@ var activeWorkflow = nil,
                     withCredentials:YES];
 }
 
+
+- (void)fetchWorkflow:(CPUInteger)anIndex
+{
+    var uuid = [[[workflowArrayController contentArray] objectAtIndex:anIndex] uuid];
+    [WLRemoteAction schedule:WLRemoteActionGetType
+                    path:[self serverHost] + "/workflow/" + uuid + "/"
+                    delegate:self
+                    message:"Loading Workflow"
+                    withCredentials:YES]; 
+}
 
 - (void)removeWorkflow:(CPIndexSet)anIndexSet
 {
