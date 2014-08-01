@@ -7,8 +7,8 @@
     CPString        pk                 @accessors;
     CPString        uuid                @accessors;
 
-    WorkflowJob     workflowJob         @accessors;
-    OutputPortType  outputPortType      @accessors;
+    CPString        workflowJob         @accessors;
+    CPString        outputPortType      @accessors;
     CPString        label                @accessors;
 
 }
@@ -18,9 +18,9 @@
     return [
         ['pk', 'url'],
         ['uuid', 'uuid'],
-        ['workflowJob', 'workflowJob', [WLForeignObjectTransformer forObjectClass:WorkflowJob]],
+        ['workflowJob', 'workflowJob'],
         ['label', 'label'],
-        ['outputPortType', 'output_port_type', [WLForeignObjectTransformer forObjectClass:OutputPortType]]
+        ['outputPortType', 'output_port_type']
     ];
 }
 
