@@ -186,8 +186,8 @@ var activeWorkflow = nil,
                                           object:nil];
     [[CPNotificationCenter defaultCenter] postNotificationName:RodanShouldLoadWorkflowPageResultsNotification
                                           object:nil];
-    [[CPNotificationCenter defaultCenter] postNotificationName:RodanShouldLoadWorkflowResultsPackagesNotification
-                                          object:nil];
+//    [[CPNotificationCenter defaultCenter] postNotificationName:RodanShouldLoadWorkflowResultsPackagesNotification
+  //                                        object:nil];
     [[CPNotificationCenter defaultCenter] postNotificationName:RodanShouldLoadWorkflowRunsJobsNotification
                                           object:nil];
 }

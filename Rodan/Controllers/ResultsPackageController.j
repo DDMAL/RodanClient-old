@@ -1,8 +1,10 @@
 @import <Foundation/CPObject.j>
+@import <RodanKit/RodanKit.j>
 @import "../Models/ResultsPackage.j"
 @import "../Models/WorkflowRun.j"
 @import "../Models/Job.j"
 
+@global RodanHasFocusWorkflowResultsViewNotification
 @global RodanShouldLoadWorkflowResultsPackagesNotification
 @global RodanShouldLoadWorkflowRunsJobsNotification
 
@@ -37,10 +39,6 @@ var RADIOTAG_ALL = 1,
                                               selector:@selector(handleShouldLoadWorkflowResultsPackagesNotification:)
                                               name:RodanShouldLoadWorkflowResultsPackagesNotification
                                               object:nil];
-        [[CPNotificationCenter defaultCenter] addObserver:self
-                                              selector:@selector(handleShouldLoadWorkfowRunsJobsNotification:)
-                                              name:RodanShouldLoadWorkflowRunsJobsNotification
-                                              object:nil];
     }
 
     return self;
@@ -58,9 +56,14 @@ var RADIOTAG_ALL = 1,
  */
 - (@action)openCreateResultsPackageWindow:(id)aSender
 {
+    [RKNotificationTimer clearTimedNotification];
     [_resultsPackagesArrayController setContent: nil];
     [_jobsArrayController setContent: nil];
     [self handleShouldLoadWorkflowResultsPackagesNotification:nil];
+    if ([_runsDelegate currentlySelectedWorkflowRun] != nil)
+    {
+        [self _requestJobs:[_runsDelegate currentlySelectedWorkflowRun]];
+    }
     [CPApp beginSheet:_createResultsPackageWindow
            modalForWindow:[CPApp mainWindow]
            modalDelegate:self
@@ -72,7 +75,10 @@ var RADIOTAG_ALL = 1,
  */
 - (@action)closeCreateResultsPackageWindow:(id)aSender
 {
+    // Inform the WorkflowController that it has focus, and close our sheet.
     [CPApp endSheet:_createResultsPackageWindow returnCode:[aSender tag]];
+    [[CPNotificationCenter defaultCenter] postNotificationName:RodanHasFocusWorkflowResultsViewNotification
+                                          object:nil];
 }
 
 /**
@@ -153,14 +159,6 @@ var RADIOTAG_ALL = 1,
     if ([_runsDelegate currentlySelectedWorkflowRun] != nil)
     {
         [self _requestResultsPackages:[_runsDelegate currentlySelectedWorkflowRun]];
-    }
-}
-
-- (void)handleShouldLoadWorkfowRunsJobsNotification:(id)aSender
-{
-    if ([_runsDelegate currentlySelectedWorkflowRun] != nil)
-    {
-        [self _requestJobs:[_runsDelegate currentlySelectedWorkflowRun]];
     }
 }
 
