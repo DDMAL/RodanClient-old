@@ -6,9 +6,9 @@
 {
     CPString        pk             @accessors;
     CPString        uuid            @accessors;
-    InputPortType   inputPortType   @accessors;
+    CPString        inputPortType   @accessors;
     CPString        label           @accessors;
-    WorkflowJob     workflowJob     @accessors;
+    CPString        workflowJob     @accessors;
 }
 
 + (CPArray)remoteProperties
@@ -16,9 +16,9 @@
     return [
         ['pk', 'url'],
         ['uuid', 'uuid'],
-        ['InputPortType', 'input_port_type', [WLForeignObjectTransformer forObjectClass:InputPortType]],
+        ['inputPortType', 'input_port_type'],
         ['label', 'label'],
-        ['workflowJob', 'workflow_job', [WLForeignObjectTransformer forObjectClass:WorkflowJob]]
+        ['workflowJob', 'workflow_job']
     ];
 }
 
@@ -31,7 +31,7 @@
     }
     else
     {
-        return @"/inputport/";
+        return @"/inputports/";
     }
 }
 

@@ -33,7 +33,7 @@
     }
     else
     {
-        return @"/outputport/";
+        return @"/outputports/";
     }
 }
 
