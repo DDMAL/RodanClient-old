@@ -57,17 +57,19 @@ var RADIOTAG_ALL = 1,
 - (@action)openCreateResultsPackageWindow:(id)aSender
 {
     [RKNotificationTimer clearTimedNotification];
-    [_resultsPackagesArrayController setContent: nil];
-    [_jobsArrayController setContent: nil];
-    [self handleShouldLoadWorkflowResultsPackagesNotification:nil];
-    if ([_runsDelegate currentlySelectedWorkflowRun] != nil)
-    {
-        [self _requestJobs:[_runsDelegate currentlySelectedWorkflowRun]];
-    }
     [CPApp beginSheet:_createResultsPackageWindow
            modalForWindow:[CPApp mainWindow]
            modalDelegate:self
            didEndSelector:@selector(didEndSheet:returnCode:contextInfo:) contextInfo:nil];
+    [_resultsPackagesArrayController setContent: nil];
+    [_jobsArrayController setContent: nil];
+    //[self handleShouldLoadWorkflowResultsPackagesNotification:nil];
+    [RKNotificationTimer setTimedNotification:5
+                         notification:RodanShouldLoadWorkflowResultsPackagesNotification];
+    if ([_runsDelegate currentlySelectedWorkflowRun] != nil)
+    {
+        [self _requestJobs:[_runsDelegate currentlySelectedWorkflowRun]];
+    }
 }
 
 /**
