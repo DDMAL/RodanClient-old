@@ -19,10 +19,11 @@
 #pragma mark Public Methods
 - (id)init
 {
-	if (self = [super init])
-	{
-		[self setDelegate:self];
-	}
+    if (self = [super init])
+    {
+        [self setDelegate:self];
+    }
+    return self;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
