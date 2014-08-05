@@ -4,6 +4,11 @@
 // Timer events.
 RodanWorkflowResultsTimerNotification = @"RodanWorkflowResultsTimerNotification";
 
+// Model messages (via WLRemoteObject delegate).
+RodanModelCreatedNotification = @"RodanModelCreatedNotification";
+RodanModelDeletedNotification = @"RodanModelDeletedNotification";
+RodanModelLoadedNotification = @"RodanModelLoadedNotification";
+
 // Load success events.
 RodanDidLoadJobsNotification = @"RodanDidLoadJobsNotification";
 RodanDidLoadWorkflowNotification = @"RodanDidLoadWorkflowNotification";

@@ -1,7 +1,11 @@
 @import <Ratatosk/WLRemoteObject.j>
 
+@global RodanModelCreatedNotification
+@global RodanModelDeletedNotification
+@global RodanModelLoadedNotification
+
 /**
- * Base RodanKit controller for convenience.
+ * Base RodanKit model for convenience.
  */
 @implementation RKModel : WLRemoteObject
 {
@@ -9,4 +13,37 @@
     CPString    uuid    @accessors;
 }
 
+///////////////////////////////////////////////////////////////////////////////
+// Public Methods
+///////////////////////////////////////////////////////////////////////////////
+#pragma mark Public Methods
+- (id)init
+{
+	if (self = [super init])
+	{
+		[self setDelegate:self];
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Public Delegate Methods
+///////////////////////////////////////////////////////////////////////////////
+#pragma mark Public Delegate Methods
+- (void)remoteObjectWasCreated:(WLRemoteObject)aRemoteObject
+{
+    [[CPNotificationCenter defaultCenter] postNotificationName:RodanModelCreatedNotification
+                                          object:aRemoteObject];
+}
+
+- (void)remoteObjectWasDeleted:(WLRemoteObject)aRemoteObject
+{
+    [[CPNotificationCenter defaultCenter] postNotificationName:RodanModelDeletedNotification
+                                          object:aRemoteObject];
+}
+
+- (void)remoteObjectWasLoaded:(WLRemoteObject)aRemoteObject
+{
+    [[CPNotificationCenter defaultCenter] postNotificationName:RodanModelLoadedNotification
+                                          object:aRemoteObject];
+}
 @end
