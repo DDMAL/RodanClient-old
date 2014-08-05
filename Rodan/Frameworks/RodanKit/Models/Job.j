@@ -1,12 +1,13 @@
+@import "RKModel.j"
+
 JOBSETTING_TYPE_INT = @"int",
 JOBSETTING_TYPE_REAL = @"real",
 JOBSETTING_TYPE_UUIDWORKFLOWJOB = @"uuid_workflowjob",
 JOBSETTING_TYPE_CHOICE = @"choice",
 JOBSETTING_TYPE_UUIDCLASSIFIER = @"uuid_classifier";
 
-@implementation Job : WLRemoteObject
+@implementation Job : RKModel
 {
-    CPString        pk                  @accessors;
     CPString        jobName             @accessors;
     CPString        shortJobName        @accessors;
     CPArray         settings            @accessors;

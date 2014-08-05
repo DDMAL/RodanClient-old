@@ -1,11 +1,7 @@
+@import "RKModel.j"
 
-
-
-@implementation InputPortType : WLRemoteObject
+@implementation InputPortType : RKModel
 {
-    CPString        pk             @accessors;
-    CPString        uuid            @accessors;
-
     CPString        job             @accessors;
     CPString        name            @accessors;
     CPInteger       minimum         @accessors;
@@ -25,7 +21,6 @@
         ['resourceType', 'resource_type']
     ];
 }
-
 
 - (CPString)remotePath
 {

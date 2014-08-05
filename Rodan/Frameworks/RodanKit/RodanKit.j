@@ -4,6 +4,11 @@
 // Timer events.
 RodanWorkflowResultsTimerNotification = @"RodanWorkflowResultsTimerNotification";
 
+// Model messages (via WLRemoteObject delegate).
+RodanModelCreatedNotification = @"RodanModelCreatedNotification";
+RodanModelDeletedNotification = @"RodanModelDeletedNotification";
+RodanModelLoadedNotification = @"RodanModelLoadedNotification";
+
 // Load success events.
 RodanDidLoadJobsNotification = @"RodanDidLoadJobsNotification";
 RodanDidLoadWorkflowNotification = @"RodanDidLoadWorkflowNotification";
@@ -47,6 +52,7 @@ RodanHasFocusProjectListViewNotification = @"RodanHasFocusProjectListViewNotific
 @import "Models/Resource.j"
 @import "Models/Result.j"
 @import "Models/ResultsPackage.j"
+@import "Models/RKModel.j"
 @import "Models/RunJob.j"
 @import "Models/TreeNode.j"
 @import "Models/User.j"

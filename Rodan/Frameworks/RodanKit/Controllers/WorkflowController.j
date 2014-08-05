@@ -1,4 +1,5 @@
 @import <Foundation/CPObject.j>
+@import "../Controllers/RKController.j"
 @import "../Models/Workflow.j"
 @import "../Tools/RKNotificationTimer.j"
 @import "../../../Delegates/ResultsViewWorkflowsDelegate.j"

@@ -1,10 +1,10 @@
 @import <Ratatosk/WLRemoteTransformers.j>
+@import "RKModel.j"
 // @import "Page.j"
 @import "WorkflowRun.j"
 
-@implementation ResultsPackage : WLRemoteObject
+@implementation ResultsPackage : RKModel
 {
-    CPString    pk                  @accessors;
     CPString    downloadUrl         @accessors;
     CPString    name                @accessors;
     CPArray     pageUrls            @accessors;

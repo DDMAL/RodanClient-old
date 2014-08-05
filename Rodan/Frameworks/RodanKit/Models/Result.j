@@ -1,9 +1,9 @@
 @import <Ratatosk/WLRemoteTransformers.j>
+@import "RKModel.j"
 @import "RunJob.j"
 
-@implementation Result : WLRemoteObject
+@implementation Result : RKModel
 {
-    CPString    pk              @accessors;
     CPString    resultURL       @accessors;
     CPString    runJobName      @accessors;
     CPString    mediumThumbURL  @accessors;

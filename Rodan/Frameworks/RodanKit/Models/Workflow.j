@@ -1,12 +1,11 @@
+@import "RKModel.j"
 @import "WorkflowJob.j"
 @import "WorkflowRun.j"
 @import "Job.j"
 // @import "Page.j"
 
-@implementation Workflow : WLRemoteObject
+@implementation Workflow : RKModel
 {
-    CPString    pk              @accessors;
-    CPString    uuid            @accessors;
     CPString    workflowName    @accessors;
     CPString    projectURL      @accessors;
     CPNumber    runs            @accessors;

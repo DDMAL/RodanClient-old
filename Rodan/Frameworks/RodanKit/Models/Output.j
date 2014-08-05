@@ -1,15 +1,10 @@
+@import "RKModel.j"
 @import "Resource.j"
 @import "OutputPort.j"
 @import "RunJob.j"
 
-
-
-
-@implementation Output : WLRemoteObject
+@implementation Output : RKModel
 {
-    CPString        pk             @accessors;
-    CPString        uuid            @accessors;
-
     OutputPort      outputPort      @accessors;
     RunJob          runJob          @accessors;
     Resource        resource        @accessors;

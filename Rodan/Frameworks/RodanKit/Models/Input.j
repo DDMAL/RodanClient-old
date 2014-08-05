@@ -1,12 +1,10 @@
+@import "RKModel.j"
 @import "InputPort.j"
-@import "RunJob.j"
 @import "Resource.j"
+@import "RunJob.j"
 
-
-@implementation Input : WLRemoteObject
+@implementation Input : RKModel
 {
-    CPString        pk         @accessors;
-    CPString        uuid        @accessors;
     InputPort       inputPort   @accessors;
     RunJob          runJob      @accessors;
     Resource        resource    @accessors;
@@ -22,7 +20,6 @@
         ['resource', 'resource', [WLForeignObjectTransformer forObjectClass:Resource]]
     ];
 }
-
 
 - (CPString)remotePath
 {

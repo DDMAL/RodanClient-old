@@ -1,8 +1,8 @@
 @import <Ratatosk/WLRemoteObject.j>
+@import "RKModel.j"
 
-@implementation User : WLRemoteObject
+@implementation User : RKModel
 {
-    CPString    pk              @accessors;
     CPString    username        @accessors;
     CPString    firstName       @accessors;
     CPString    lastName        @accessors;

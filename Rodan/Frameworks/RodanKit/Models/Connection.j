@@ -1,13 +1,11 @@
+@import "RKModel.j"
 @import "InputPort.j"
-@import "WorkflowJob.j"
 @import "OutputPort.j"
 @import "Workflow.j"
+@import "WorkflowJob.j"
 
-
-@implementation Connection : WLRemoteObject
+@implementation Connection : RKModel
 {
-    CPString        pk                  @accessors;
-    CPString        uuid                @accessors;
     InputPort       inputPort           @accessors; //input Port index or actual model
     WorkflowJob     inputWorkflowJob    @accessors;
 
@@ -30,7 +28,6 @@
         ['workflow', 'workflow', [WLForeignObjectTransformer forObjectClass:Workflow]]
     ];
 }
-
 
 - (CPString)remotePath
 {
