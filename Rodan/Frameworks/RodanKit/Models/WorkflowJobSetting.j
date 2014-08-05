@@ -1,3 +1,5 @@
+@import "RKModel.j"
+
 @implementation WorkflowJobSetting : CPObject
 {
     CPNumber    settingDefault @accessors;

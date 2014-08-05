@@ -1,4 +1,5 @@
 @import <Ratatosk/WLRemoteObject.j>
+@import "RKModel.j"
 @import "RunJob.j"
 @import "User.j"
 @import "Resource.j"
@@ -14,10 +15,8 @@
 /**
  * WorkflowRun model.
  */
-@implementation WorkflowRun : WLRemoteObject
+@implementation WorkflowRun : RKModel
 {
-    CPString    pk          @accessors;
-    CPString    uuid        @accessors;
     CPNumber    run         @accessors;
     CPString    workflowURL @accessors;
     CPString    runCreator  @accessors;

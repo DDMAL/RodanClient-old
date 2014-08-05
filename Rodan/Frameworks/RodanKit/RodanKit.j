@@ -47,6 +47,7 @@ RodanHasFocusProjectListViewNotification = @"RodanHasFocusProjectListViewNotific
 @import "Models/Resource.j"
 @import "Models/Result.j"
 @import "Models/ResultsPackage.j"
+@import "Models/RKModel.j"
 @import "Models/RunJob.j"
 @import "Models/TreeNode.j"
 @import "Models/User.j"

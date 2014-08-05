@@ -1,12 +1,10 @@
+@import "RKModel.j"
 @import "OutputPortType.j"
 @import "WorkflowJob.j"
 
 
-@implementation OutputPort : WLRemoteObject
+@implementation OutputPort : RKModel
 {
-    CPString        pk                 @accessors;
-    CPString        uuid                @accessors;
-
     CPString        workflowJob         @accessors;
     CPString        outputPortType      @accessors;
     CPString        label                @accessors;

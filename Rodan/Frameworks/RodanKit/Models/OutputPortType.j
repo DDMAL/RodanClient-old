@@ -1,9 +1,7 @@
+@import "RKModel.j"
 
-@implementation OutputPortType : WLRemoteObject
+@implementation OutputPortType : RKModel
 {
-    CPString        pk             @accessors;
-    CPString        uuid            @accessors;
-
     CPString        job             @accessors;
     CPString        name            @accessors;
     CPInteger       minimum         @accessors;

@@ -1,11 +1,9 @@
 @import <Ratatosk/WLRemoteTransformers.j>
+@import "RKModel.j"
 @import "User.j"
 
-@implementation Resource : WLRemoteObject
+@implementation Resource : RKModel
 {
-    CPString    pk                  @accessors;
-    CPString    uuid                @accessors;
-    
     CPString    projectURI          @accessors;
     CPString    name                @accessors;
     CPString    resourceFile        @accessors;

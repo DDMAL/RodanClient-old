@@ -1,13 +1,12 @@
 @import <Ratatosk/WLRemoteTransformers.j>
+@import "RKModel.j"
 @import "User.j"
 // @import "Page.j"
 @import "Workflow.j"
 
 /* a full representation of a project, including arrays for the pages and workflows */
-@implementation Project : WLRemoteObject
+@implementation Project : RKModel
 {
-    CPString    uuid                @accessors;
-    CPString    pk                  @accessors;
     CPString    projectName         @accessors;
     CPString    projectCreator      @accessors;
     CPString    projectDescription  @accessors;

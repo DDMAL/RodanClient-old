@@ -1,9 +1,9 @@
+@import "RKModel.j"
 @import "../Transformers/JobArgumentsTransformer.j"
 
 // A WorkflowJob is an instantiation of a Job in a Workflow
-@implementation WorkflowJob : WLRemoteObject
+@implementation WorkflowJob : RKModel
 {
-    CPString    pk              @accessors;
     CPString    workflow        @accessors;
     CPString    jobName         @accessors;
     CPString    job             @accessors;

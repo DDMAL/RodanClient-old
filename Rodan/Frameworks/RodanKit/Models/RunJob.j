@@ -1,4 +1,5 @@
 @import <Ratatosk/WLRemoteObject.j>
+@import "RKModel.j"
 @import "Result.j"
 @import "Resource.j"
 @import "../Transformers/JobArgumentsTransformer.j"
@@ -12,10 +13,8 @@ RUNJOB_STATUS_RUNONCEWAITING = 3,
 RUNJOB_STATUS_HASFINISHED = 4,
 RUNJOB_STATUS_CANCELLED = 9;
 
-@implementation RunJob : WLRemoteObject
+@implementation RunJob : RKModel
 {
-    CPString            pk                  @accessors;
-    CPString            uuid                @accessors;
     CPString            jobName             @accessors;
     CPString            workflowName        @accessors;
     CPString            workflowRun         @accessors;
