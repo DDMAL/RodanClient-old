@@ -5,6 +5,7 @@
 
 @implementation Output : RKModel
 {
+    CPString        pk              @accessors;
     OutputPort      outputPort      @accessors;
     RunJob          runJob          @accessors;
     Resource        resource        @accessors;

@@ -6,6 +6,7 @@
 
 @implementation Workflow : RKModel
 {
+    CPString    pk              @accessors;
     CPString    workflowName    @accessors;
     CPString    projectURL      @accessors;
     CPNumber    runs            @accessors;

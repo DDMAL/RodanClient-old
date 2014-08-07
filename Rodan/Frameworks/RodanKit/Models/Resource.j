@@ -4,6 +4,7 @@
 
 @implementation Resource : RKModel
 {
+    CPString    pk                  @accessors;
     CPString    projectURI          @accessors;
     CPString    name                @accessors;
     CPString    resourceFile        @accessors;

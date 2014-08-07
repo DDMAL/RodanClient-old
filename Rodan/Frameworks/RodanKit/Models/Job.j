@@ -8,6 +8,7 @@ JOBSETTING_TYPE_UUIDCLASSIFIER = @"uuid_classifier";
 
 @implementation Job : RKModel
 {
+    CPString        pk                  @accessors;
     CPString        jobName             @accessors;
     CPString        shortJobName        @accessors;
     CPArray         settings            @accessors;

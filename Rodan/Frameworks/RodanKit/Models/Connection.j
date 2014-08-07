@@ -3,9 +3,12 @@
 @import "OutputPort.j"
 @import "Workflow.j"
 @import "WorkflowJob.j"
+@import <Ratatosk/WLRemoteTransformers.j>
+
 
 @implementation Connection : RKModel
 {
+    CPString        pk                  @accessors;
     InputPort       inputPort           @accessors; //input Port index or actual model
     WorkflowJob     inputWorkflowJob    @accessors;
 
@@ -37,7 +40,7 @@
     }
     else
     {
-        return [[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/connection/";
+        return [[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/connections/";
     }
 }
 

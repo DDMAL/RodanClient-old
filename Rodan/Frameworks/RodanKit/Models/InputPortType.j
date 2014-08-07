@@ -2,6 +2,7 @@
 
 @implementation InputPortType : RKModel
 {
+    CPString        pk              @accessors;
     CPString        job             @accessors;
     CPString        name            @accessors;
     CPInteger       minimum         @accessors;
