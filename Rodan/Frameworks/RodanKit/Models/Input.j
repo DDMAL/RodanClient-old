@@ -29,7 +29,7 @@
     }
     else
     {
-        return @"/input/";
+        return [[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/input/";
     }
 }
 

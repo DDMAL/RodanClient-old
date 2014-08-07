@@ -30,7 +30,7 @@
     }
     else
     {
-        return @"/output/";
+        return [[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/output/";
     }
 }
 

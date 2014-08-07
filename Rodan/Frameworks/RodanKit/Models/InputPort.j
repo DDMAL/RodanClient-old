@@ -31,7 +31,7 @@
     }
     else
     {
-        return @"/inputports/";
+        return [[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/inputports/";
     }
 }
 

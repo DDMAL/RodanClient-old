@@ -37,7 +37,7 @@
     }
     else
     {
-        return @"/connection/";
+        return [[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/connection/";
     }
 }
 
