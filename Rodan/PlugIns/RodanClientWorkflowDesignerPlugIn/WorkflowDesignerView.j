@@ -280,8 +280,8 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         outputPortTypes = [job outputPortTypes];
 
         //populate dictionary to later create I/O ports for corresponding wkJob
-        [creatingWorkflowJobIOTypes setObject:inputPortTypes forKey:@"input_port_types"];
-        [creatingWorkflowJobIOTypes setObject:outputPortTypes forKey:@"output_port_types"];
+    [creatingWorkflowJobIOTypes setObject:inputPortTypes forKey:@"input_port_types"];
+    [creatingWorkflowJobIOTypes setObject:outputPortTypes forKey:@"output_port_types"];
 
     if (job.isInteractive)
         jobType = 1;
@@ -291,18 +291,17 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     if (isCurrentSelection) //ensure currentWorkflow has been selected
     {
         //create workflowJob on server
-        var wkObject =
-        {
-            "workflow": [currentWorkflow pk],
-            "job": [job pk],
-            "uuid": "",
-            "job_name": [job jobName],
-            "job_type": jobType,
-            "job_description": [job description],
-            "job_settings": [job settings]
-        };
+        var wkObject = {
+                        "workflow": [currentWorkflow pk],
+                        "job": [job pk],
+                        "uuid": "",
+                        "job_name": [job jobName],
+                        "job_type": jobType,
+                        "job_description": [job description],
+                        "job_settings": [job settings]
+                        },
 
-        var workflowJobObject = [[WorkflowJob alloc] initWithJson:wkObject];
+            workflowJobObject = [[WorkflowJob alloc] initWithJson:wkObject];
         [workflowJobObject ensureCreated];
 
         creatingWorkflowJobIndex = currentDraggingIndex; //to later create I/O ports for workflowJob (asynchronous)
@@ -705,13 +704,13 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 - (void)receiveInputEntered:(CPNotification)aNotification
 {
      var info = [aNotification userInfo],
-        anEvent = [info objectForKey:"event"],
-        mouseLocation = [self convertPoint:[anEvent locationInWindow] fromView:nil],
-        inputType = [info objectForKey:"input_type"],
+         anEvent = [info objectForKey:"event"],
+         mouseLocation = [self convertPoint:[anEvent locationInWindow] fromView:nil],
+         inputType = [info objectForKey:"input_type"],
 
-        workflowNumber = [info objectForKey:"workflow_number"],
-        inputNumber = [info objectForKey:"input_number"];
-    // console.log("Entered Output");
+         workflowNumber = [info objectForKey:"workflow_number"],
+         inputNumber = [info objectForKey:"input_number"];
+
 
     [inputPortView setHidden:NO];
     [inputPortView setFrameOrigin:CGPointMake(mouseLocation.x - 175, mouseLocation.y)];
@@ -840,9 +839,9 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
                             "workflow_job":[workflowJobObject pk],
                             "output_port_type":outputPortTypes[i].url,
                             "label":""
-            };
+                            },
 
-            var outputPortObject = [[OutputPort alloc] initWithJson:oPortObject];
+                outputPortObject = [[OutputPort alloc] initWithJson:oPortObject];
             [outputPortObject ensureCreated];
             [workflowJobs[creatingWorkflowJobIndex].outputPorts[counter] setOPort:outputPortObject];
             counter++;
@@ -856,7 +855,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     var counter = 0,
         inputPortTypes = [creatingWorkflowJobIOTypes objectForKey:@"input_port_types"],
         inputLoop = [inputPortTypes count];
-    
+
     //create input ports (minimum required) for workflowJob
     for (var i = 0; i < inputLoop; i++)
     {
@@ -867,9 +866,9 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
                             "workflow_job":[workflowJobObject pk],
                             "input_port_type":inputPortTypes[i].url,
                             "label":""
-            };
+                            },
 
-            var inputPortObject = [[InputPort alloc] initWithJson:iPortObject];
+                inputPortObject = [[InputPort alloc] initWithJson:iPortObject];
             [workflowJobs[creatingWorkflowJobIndex].inputPorts[counter] setIPort:inputPortObject];
             [inputPortObject ensureCreated];
             counter++;
@@ -904,17 +903,14 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 - (void)createConnectionModelFromInputPort:(InputPort)anInputPort inputWorkflowJob:(WorkflowJob)iWorkflowJob outputPort:(OutputPort)anOutputPort outputWorkflowJob:(WorkflowJob)oWorkflowJob linkIndex:(CPInteger)aLinkRef
 {
     //create connection model on server
-    var connection = {
-                    "input_port":[anInputPort pk],
-                    "input_workflow_job":[iWorkflowJob pk],
-                    "output_port":[anOutputPort pk],
-                    "output_workflow_job":[oWorkflowJob pk],
-                    "workflow":[currentWorkflow pk],
-    };
+    var connection = {"input_port":[anInputPort pk],
+                      "input_workflow_job":[iWorkflowJob pk],
+                      "output_port":[anOutputPort pk],
+                      "output_workflow_job":[oWorkflowJob pk],
+                      "workflow":[currentWorkflow pk]},
 
-    var connectionObject = [[Connection alloc] initWithJson:connection];
+        connectionObject = [[Connection alloc] initWithJson:connection];
     [connectionArrayController insertObject:connectionObject atArrangedObjectIndex:aLinkRef];
-    console.log(connectionObject);
 
     [connectionObject ensureCreated];
 }
@@ -960,7 +956,10 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
             aFrame.size.height = 20.0;
             aFrame.size.width = 20.0;
 
-            if (CPRectContainsPoint(aFrame, mouseLocation) && (workflowJobs[i].inputPorts[j].isUsed == false))
+            var bool1 = CGRectContainsPoint(aFrame, mouseLocation),
+                bool2 = (workflowJobs[i].inputPorts[j].isUsed == false);
+
+            if (bool1 && bool2)
             {
                 currentInputHover[0] = i;
                 currentInputHover[1] = j;

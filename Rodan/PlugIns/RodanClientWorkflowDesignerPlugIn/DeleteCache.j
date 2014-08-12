@@ -8,13 +8,13 @@
 @import <RodanKit/Models/OutputPort.j>
 @import <RodanKit/Models/InputPort.j>
 
-@implementation DeleteCache : CPObject 
+@implementation DeleteCache : CPObject
 {
     CPArrayController     connectionsToDelete     @accessors;
 
 }
 
-- (id)init 
+- (id)init
 {
     self = [super init];
 
@@ -24,15 +24,15 @@
 }
 
 
-- (CPInteger)_hasConnection:(Connection)aConnection 
+- (CPInteger)_hasConnection:(Connection)aConnection
 {
     var i,
         loopCount = [[connectionsToDelete contentArray] count],
         contentArray = [connectionsToDelete contentArray];
 
-    for (i = 0; i < loopCount; i++) 
+    for (i = 0; i < loopCount; i++)
     {
-        if (aConnection == contentArray[i]) 
+        if (aConnection == contentArray[i])
             return i; //return index at which it exists
     };
 
@@ -43,14 +43,14 @@
 - (BOOL)shouldDeleteConnection:(Connection)aConnection
 {
     var connectionExists = [self _hasConnection:aConnection];
-    
+
     if (connectionExists != -1)
     {
         console.log([aConnection pk]);
         [aConnection ensureDeleted]; //remove from server
         [connectionsToDelete removeObjectAtArrangedObjectIndex:connectionExists];
     }
-    
+
     else {
         return false;
     }
