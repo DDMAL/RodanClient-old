@@ -31,7 +31,7 @@
     }
     else
     {
-        return [[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/outputporttype/";
+        return [[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/outputporttypes/";
     }
 }
 

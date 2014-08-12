@@ -16,7 +16,7 @@
     return [
         ['pk', 'url'],
         ['uuid', 'uuid'],
-        ['workflowJob', 'workflowJob'],
+        ['workflowJob', 'workflow_job'],
         ['label', 'label'],
         ['outputPortType', 'output_port_type']
     ];
@@ -31,7 +31,7 @@
     }
     else
     {
-        return [[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/outputport/";
+        return [[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/outputports/";
     }
 }
 
