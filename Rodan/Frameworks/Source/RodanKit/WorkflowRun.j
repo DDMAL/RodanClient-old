@@ -1,0 +1,113 @@
+@import "../../Ratatosk/WLRemoteTransformers.j"
+@import "RKModel.j"
+@import "RunJob.j"
+@import "User.j"
+@import "Resource.j"
+
+@global RUNJOB_STATUS_FAILED
+@global RUNJOB_STATUS_NOTRUNNING
+@global RUNJOB_STATUS_RUNNING
+@global RUNJOB_STATUS_WAITINGFORINPUT
+@global RUNJOB_STATUS_RUNONCEWAITING
+@global RUNJOB_STATUS_HASFINISHED
+@global RUNJOB_STATUS_CANCELLED
+
+/**
+ * WorkflowRun model.
+ */
+@implementation WorkflowRun : RKModel
+{
+    CPNumber    run         @accessors;
+    CPString    workflowURL @accessors;
+    CPString    runCreator  @accessors;
+    BOOL        testRun     @accessors;
+    CPString    testPageID  @accessors;
+    CPArray     resources   @accessors;
+    BOOL        cancelled   @accessors;
+
+    CPDate      created     @accessors;
+    CPDate      updated     @accessors;
+}
+
++ (CPArray)remoteProperties
+{
+    return [
+        ['pk', 'url'],
+        ['uuid', 'uuid'],
+        ['workflowURL', 'workflow'],
+        // ['resources', 'resources', [WLForeignObjectsTransformer forObjectClass:Resource]],
+        ['runCreator', 'creator', [WLForeignObjectTransformer forObjectClass:User]],
+        ['run', 'run'],
+        ['created', 'created', [[WLDateTransformer alloc] init], true],
+        ['updated', 'updated', [[WLDateTransformer alloc] init], true],
+        ['testRun', 'test_run'],
+        ['cancelled', 'cancelled']
+    ];
+}
+
+/**
+ * This modifies the request path so that we can launch a test run.
+ */
+- (CPString)postPath
+{
+    var pathComponents = @"";
+    if (testRun)
+        pathComponents = "?test=true&page_id=" + testPageID;
+    return [self remotePath] + pathComponents;
+}
+
+/**
+ * Returns the remote path.
+ */
+- (CPString)remotePath
+{
+    if ([self pk])
+    {
+        return [self pk]
+    }
+    else
+    {
+        return [[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/workflowruns/";
+    }
+}
+
+/* This modifies the request path so that we can launch a test run */
+- (CPString)postPath
+{
+    var pathComponents = @"";
+    if (testRun)
+        pathComponents = "?test=true&page_id=" + testPageID;
+    return [self remotePath] + pathComponents;
+}
+
+/**
+ * We override WLRemoteObject::isEqual to make sure that other WLRemoteObjects that have this class as a member (e.g. Workflow)
+ * don't just look at the PK and class (which is what isEqual does by default).
+ *
+ * We can create a custom list of fields that override WLRemoteObject equality, but for now it's just the 'updated' member.
+ */
+- (BOOL)isEqual:(id)aObject
+{
+    if ([super isEqual:aObject])
+    {
+        if ([self updated] === [aObject updated])
+        {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+/**
+ * Override for WLRemoteLink::remoteActionDidFail.
+ * We need to cancel the action.
+ */
+- (void)remoteActionDidFail:(WLRemoteAction)aAction
+{
+    if (aAction != nil)
+    {
+        [aAction cancel];
+    }
+}
+
+@end
