@@ -1,8 +1,7 @@
 @import <AppKit/AppKit.j>
 @import <FileUpload/FileUpload.j>
 @import <Ratatosk/Ratatosk.j>
-@import <RodanKit/Models/Page.j>
-@import <RodanKit/Tools/RKNotificationTimer.j>
+@import <RodanKit/RKNotificationTimer.j>
 
 @global activeProject
 @global RodanHasFocusPagesViewNotification

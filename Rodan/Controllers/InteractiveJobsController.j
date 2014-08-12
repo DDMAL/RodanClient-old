@@ -1,7 +1,7 @@
 @import <Foundation/CPTimer.j>
-@import <RodanKit/Models/RunJob.j>
-@import <RodanKit/Tools/RKInteractiveJob.j>
-@import <RodanKit/Tools/RKNotificationTimer.j>
+@import <RodanKit/RunJob.j>
+@import <RodanKit/RKInteractiveJob.j>
+@import <RodanKit/RKNotificationTimer.j>
 
 @global RodanHasFocusInteractiveJobsViewNotification
 @global RodanRequestInteractiveJobsNotification

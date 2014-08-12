@@ -1,4 +1,4 @@
-@import <RodanKit/Models/Result.j>
+@import <RodanKit/Result.j>
 
 @implementation ResultThumbnailTransformer : CPValueTransformer
 {

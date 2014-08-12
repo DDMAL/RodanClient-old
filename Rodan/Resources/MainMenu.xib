@@ -7781,14 +7781,6 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 					<string key="id">HEn-YM-JJV</string>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">resultsViewWorkflowsDelegate</string>
-						<reference key="source" ref="337352550"/>
-						<reference key="destination" ref="591716932"/>
-					</object>
-					<string key="id">Usc-dd-5sz</string>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">runWorkflow:</string>
 						<reference key="source" ref="337352550"/>
@@ -11289,7 +11281,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
 					<string key="className">AppController</string>
-					<string key="superclassName">AbstractController</string>
+					<string key="superclassName">RKController</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="authenticationController">AuthenticationController</string>
 						<string key="jobController">JobController</string>
@@ -11618,6 +11610,33 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
+					<string key="className">JobController</string>
+					<string key="superclassName">RKController</string>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="_menuCategory">NSMenu</string>
+						<string key="_menuIsInteractive">NSMenu</string>
+						<string key="jobArrayController">NSArrayController</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="_menuCategory">
+							<string key="name">_menuCategory</string>
+							<string key="candidateClassName">NSMenu</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_menuIsInteractive">
+							<string key="name">_menuIsInteractive</string>
+							<string key="candidateClassName">NSMenu</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="jobArrayController">
+							<string key="name">jobArrayController</string>
+							<string key="candidateClassName">NSArrayController</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/JobController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
 					<string key="className">OpenClassifierTableViewDelegate</string>
 					<string key="superclassName">NSObject</string>
 					<object class="NSMutableDictionary" key="outlets">
@@ -11782,6 +11801,22 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/ProjectController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">RKController</string>
+					<string key="superclassName">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/RKController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">RKModel</string>
+					<string key="superclassName">WLRemoteObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/RKModel.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -12107,6 +12142,60 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/UploadWindowController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">Workflow</string>
+					<string key="superclassName">RKModel</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/Workflow.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">WorkflowController</string>
+					<string key="superclassName">RKController</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="runWorkflow:">id</string>
+						<string key="testWorkflow:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="runWorkflow:">
+							<string key="name">runWorkflow:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="testWorkflow:">
+							<string key="name">testWorkflow:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="currentWorkflow">Workflow</string>
+						<string key="workflowAddRemoveBar">CPButtonBar</string>
+						<string key="workflowArrayController">NSArrayController</string>
+						<string key="workflowPagesArrayController">NSArrayController</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="currentWorkflow">
+							<string key="name">currentWorkflow</string>
+							<string key="candidateClassName">Workflow</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="workflowAddRemoveBar">
+							<string key="name">workflowAddRemoveBar</string>
+							<string key="candidateClassName">CPButtonBar</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="workflowArrayController">
+							<string key="name">workflowArrayController</string>
+							<string key="candidateClassName">NSArrayController</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="workflowPagesArrayController">
+							<string key="name">workflowPagesArrayController</string>
+							<string key="candidateClassName">NSArrayController</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/WorkflowController.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

@@ -35,7 +35,6 @@
 @import "Controllers/ProjectController.j"
 @import "Controllers/ResultsPackageController.j"
 @import "Controllers/WorkspaceController.j"
-@import "Frameworks/RodanKit/Controllers/WorkflowController.j"
 @import "Delegates/ResultsViewPagesDelegate.j"
 @import "Delegates/ResultsViewResultsDelegate.j"
 @import "Delegates/ResultsViewRunsDelegate.j"

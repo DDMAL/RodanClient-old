@@ -1,5 +1,4 @@
 @import <Foundation/CPObject.j>
-@import "../Frameworks/RodanKit/Controllers/WorkflowController.j"
 
 @global activeProject
 @global RodanRequestWorkflowsNotification
