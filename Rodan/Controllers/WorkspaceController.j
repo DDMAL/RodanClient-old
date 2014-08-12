@@ -78,7 +78,7 @@
 - (@action)switchWorkspaceToManagePages:(id)aSender
 {
     [RKNotificationTimer clearTimedNotification];
-    [self setView:managePagesView];
+    [self setView:managePagesView withToolbar:nil];
     [[CPNotificationCenter defaultCenter] postNotificationName:RodanHasFocusPagesViewNotification
                                           object:nil];
 }
@@ -86,7 +86,7 @@
 - (@action)switchWorkspaceToWorkflowResults:(id)aSender
 {
     [RKNotificationTimer clearTimedNotification];
-    [self setView:workflowResultsView];
+    [self setView:workflowResultsView withToolbar:nil];
     [[CPNotificationCenter defaultCenter] postNotificationName:RodanHasFocusWorkflowResultsViewNotification
                                           object:nil];
 }
@@ -94,7 +94,7 @@
 - (@action)switchWorkspaceToInteractiveJobs:(id)aSender
 {
     [RKNotificationTimer clearTimedNotification];
-    [self setView:interactiveJobsView];
+    [self setView:interactiveJobsView withToolbar:nil];
     [[CPNotificationCenter defaultCenter] postNotificationName:RodanHasFocusInteractiveJobsViewNotification
                                           object:nil];
 }
@@ -102,7 +102,7 @@
 - (@action)switchWorkspaceToProjects:(id)aSender
 {
     [RKNotificationTimer clearTimedNotification];
-    [self setView:projectListView];
+    [self setView:projectListView withToolbar:nil];
     [[CPNotificationCenter defaultCenter] postNotificationName:RodanHasFocusProjectListViewNotification
                                           object:nil];
 }
