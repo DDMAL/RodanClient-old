@@ -18,7 +18,7 @@ JOBSETTING_TYPE_UUIDCLASSIFIER = @"uuid_classifier";
 
     CPString        description         @accessors;
     CPString        category            @accessors;
-    
+
 
     BOOL            isEnabled           @accessors;
     BOOL            isInteractive       @accessors;

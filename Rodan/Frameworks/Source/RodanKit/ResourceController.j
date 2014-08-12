@@ -25,7 +25,7 @@ _MESSAGE_RESOURCES_LOAD = "_MESSAGE_RESOURCES_LOAD";
 // Public Delegate Methods
 ///////////////////////////////////////////////////////////////////////////////
 #pragma mark Public Delegate Methods
-- (void)remoteActionDidFinish:(WLRemoteAction)anAction 
+- (void)remoteActionDidFinish:(WLRemoteAction)anAction
 {
     if ([anAction result])
     {
