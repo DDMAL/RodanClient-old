@@ -1,7 +1,7 @@
 @import <Foundation/CPObject.j>
 
 //import models
-@import <RodanKit/Models/OutputPort.j>
+@import <RodanKit/OutputPort.j>
 
 //output default size
 var DEFAULT_SIZE = 10.0;

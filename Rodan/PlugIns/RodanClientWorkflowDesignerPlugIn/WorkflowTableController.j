@@ -1,8 +1,8 @@
 @import <Foundation/Foundation.j>
 @import <AppKit/AppKit.j>
 
-@import <RodanKit/Controllers/WorkflowController.j>
-@import <RodanKit/Models/Workflow.j>
+@import <RodanKit/WorkflowController.j>
+@import <RodanKit/Workflow.j>
 
 
 @global RodanDidLoadWorkflowsNotification

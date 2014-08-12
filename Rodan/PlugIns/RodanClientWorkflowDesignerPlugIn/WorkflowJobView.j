@@ -4,7 +4,7 @@
 @import "InputPortView.j"
 @import "OutputPortView.j"
 @import <RodanKit/RodanKit.j>
-@import <RodanKit/Models/WorkflowJob.j>
+@import <RodanKit/WorkflowJob.j>
 
 var PORT_SIZE = 8.5,
     LENGTH = 40.0,

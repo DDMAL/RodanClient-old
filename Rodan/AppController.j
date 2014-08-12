@@ -30,7 +30,6 @@
 
 @import "Categories/CPButtonBar+PopupButtons.j"
 @import "Controllers/AuthenticationController.j"
-@import "Controllers/PageController.j"
 @import "Controllers/PlugInsController.j"
 @import "Controllers/ProjectController.j"
 @import "Controllers/ResultsPackageController.j"
@@ -50,8 +49,8 @@
     @outlet     PlugInsController           plugInsController;
     @outlet     AuthenticationController    authenticationController;
     @outlet     JobController               jobController;
-    @outlet     PageController              pageController;
     @outlet     ProjectController           projectController;
+    @outlet     ResourceController          resourceController;
     @outlet     WorkflowController          workflowController;
     @outlet     WorkspaceController         workspaceController;
 }

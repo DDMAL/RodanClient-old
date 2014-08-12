@@ -1,3 +1,5 @@
+@import <AppKit/CPButton.j>
+@import "../../FileUpload/FileUpload.j"
 @import "RKController.j"
 @import "Resource.j"
 
@@ -11,6 +13,8 @@ _MESSAGE_RESOURCES_LOAD = "_MESSAGE_RESOURCES_LOAD";
 @implementation ResourceController : RKController
 {
     @outlet CPArrayController   arrayController;
+    @outlet CPImageView         imageView;
+    @outlet UploadButton        resourceUploadButton;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -46,6 +50,13 @@ _MESSAGE_RESOURCES_LOAD = "_MESSAGE_RESOURCES_LOAD";
     {
         window.open([[selectedObjects objectAtIndex:0] pageImage], "_blank");
     }*/
+}
+
+- (@action)removeResource:(id)aSender
+{
+    var selectedObjects = [arrayController selectedObjects];
+    [selectedObjects makeObjectsPerformSelector:@selector(ensureDeleted)];
+    [self handleShouldLoadNotification:null];
 }
 
 ///////////////////////////////////////////////////////////////////////////////

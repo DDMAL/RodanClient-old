@@ -4,10 +4,10 @@
 @import "Link.j"
 @import "OutputPortView.j"
 @import "ResourceList.j"
-@import <RodanKit/Controllers/WorkflowController.j>
-@import <RodanKit/Models/WorkflowJob.j> //to create JSON workflowJob model
-@import <RodanKit/Models/Workflow.j>
-@import <RodanKit/Models/Connection.j>
+@import <RodanKit/WorkflowController.j>
+@import <RodanKit/WorkflowJob.j> //to create JSON workflowJob model
+@import <RodanKit/Workflow.j>
+@import <RodanKit/Connection.j>
 
 @import "DeleteCache.j"
 

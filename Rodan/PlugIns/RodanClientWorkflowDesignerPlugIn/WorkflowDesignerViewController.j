@@ -10,15 +10,15 @@
 @import "WorkflowTableController.j"
 
 //import controllers to access database
-@import <RodanKit/Controllers/JobController.j>
+@import <RodanKit/JobController.j>
 @import "../../Delegates/LoadActiveWorkflowDelegate.j"
 
 //need to create delegate class
 @import "WorkflowDesignerDelegate.j"
-@import <RodanKit/Models/Resource.j>
-@import <RodanKit/Models/WorkflowJobSetting.j>
+@import <RodanKit/Resource.j>
+@import <RodanKit/WorkflowJobSetting.j>
 
-@import <RodanKit/Models/Job.j>
+@import <RodanKit/Job.j>
 
 @global activeUser
 @global RodanHasFocusWorkflowDesignerViewNotification

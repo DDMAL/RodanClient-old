@@ -1,6 +1,6 @@
 @import <Foundation/Foundation.j>
 @import <AppKit/AppKit.j>
-@import "../../Frameworks/RodanKit/Controllers/JobController.j"
+@import <RodanKit/JobController.j>
 
 @global RodanDidLoadJobsNotification
 

@@ -12,13 +12,13 @@
 @implementation WorkspaceController : RKController
 {
     @outlet     CPView          interactiveJobsView;
-    @outlet     CPView          managePagesView;
+    @outlet     CPView          manageResourcesView;
     @outlet     CPView          workflowResultsView;
     @outlet     CPView          projectListView;
     @outlet     CPWindow        mainWindow;
 
     @outlet     TNToolbar       mainToolbar;
-    @outlet     CPToolbarItem   pagesToolbarItem;
+    @outlet     CPToolbarItem   resourcesToolbarItem;
     @outlet     CPToolbarItem   workflowResultsToolbarItem;
     @outlet     CPToolbarItem   jobsToolbarItem;
 
@@ -75,10 +75,10 @@
 // Public Action Methods
 ///////////////////////////////////////////////////////////////////////////////
 #pragma mark Public Action Methods
-- (@action)switchWorkspaceToManagePages:(id)aSender
+- (@action)switchWorkspaceToManageResources:(id)aSender
 {
     [RKNotificationTimer clearTimedNotification];
-    [self setView:managePagesView withToolbar:nil];
+    [self setView:manageResourcesView withToolbar:nil];
     [[CPNotificationCenter defaultCenter] postNotificationName:RodanHasFocusPagesViewNotification
                                           object:nil];
 }
@@ -136,10 +136,10 @@
     var pagesToolbarIcon = [[CPImage alloc] initWithContentsOfFile:[[CPBundle mainBundle] pathForResource:@"toolbar-images.png"] size:CGSizeMake(40.0, 32.0)],
         workflowResultsToolbarIcon = [[CPImage alloc] initWithContentsOfFile:[[CPBundle mainBundle] pathForResource:@"toolbar-workflows.png"] size:CGSizeMake(32.0, 32.0)],
         jobsToolbarIcon = [[CPImage alloc] initWithContentsOfFile:[[CPBundle mainBundle] pathForResource:@"toolbar-jobs.png"] size:CGSizeMake(32.0, 32.0)];
-    [pagesToolbarItem setImage:pagesToolbarIcon];
+    [resourcesToolbarItem setImage:pagesToolbarIcon];
     [workflowResultsToolbarItem setImage:workflowResultsToolbarIcon];
     [jobsToolbarItem setImage:jobsToolbarIcon];
-    [pagesToolbarItem setEnabled:NO];
+    [resourcesToolbarItem setEnabled:NO];
     [workflowResultsToolbarItem setEnabled:NO];
     [jobsToolbarItem setEnabled:NO];
 }

@@ -1,5 +1,5 @@
 @import <Foundation/CPObject.j>
-@import <RodanKit/Models/InputPort.j>
+@import <RodanKit/InputPort.j>
 
 var DEFAULT_SIZE = 10.0;
 

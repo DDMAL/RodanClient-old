@@ -2,11 +2,11 @@
 
 //import models
 @import <RodanKit/RodanKit.j>
-@import <RodanKit/Models/Connection.j>
-@import <RodanKit/Models/Workflow.j>
-@import <RodanKit/Models/WorkflowJob.j>
-@import <RodanKit/Models/OutputPort.j>
-@import <RodanKit/Models/InputPort.j>
+@import <RodanKit/Connection.j>
+@import <RodanKit/Workflow.j>
+@import <RodanKit/WorkflowJob.j>
+@import <RodanKit/OutputPort.j>
+@import <RodanKit/InputPort.j>
 
 @implementation DeleteCache : CPObject
 {
