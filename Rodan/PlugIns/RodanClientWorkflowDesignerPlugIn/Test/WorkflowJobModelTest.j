@@ -19,7 +19,7 @@
     WorkflowJob         workflowJobTestObject       @accessors;
 }
 
-- (void)setUp 
+- (void)setUp
 {
     //init. WorkflowJob Model object w/ JSONObject
     workflowJobTestObject = [[WorkflowJob alloc] initWithJson:jsonTest];
@@ -38,16 +38,16 @@
     [self assert:[workflowJobTestObject job] equals:jsonTest.job message:"job"];
     [self assert:[workflowJobTestObject sequence] equals:jsonTest.sequence message:"sequence"];
     [self assert:[workflowJobTestObject jobSettings] equals:jsonTest.job_settings message:"jobSettings"];
-    [self assert:[workflowJobTestObject inputPixels] equals:jsonTest.input_pixel_types message:"inputPixels"];  
+    [self assert:[workflowJobTestObject inputPixels] equals:jsonTest.input_pixel_types message:"inputPixels"];
     [self assert:[workflowJobTestObject outputPixels] equals:jsonTest.output_pixel_types message:"outputPixels"];
     [self assert:[workflowJobTestObject jobType] equals:jsonTest.job_type message:"jobType"];
 }
 
 - (void)testRemotePath
-{    
+{
     var returnValue;
     returnValue = [workflowJobTestObject remotePath];
-    if (returnValue != "/workflowjobs/") 
+    if (returnValue != "/workflowjobs/")
     {
         [self assert:[workflowJobTestObject pk] equals:returnValue];
     }
@@ -59,7 +59,7 @@
     //yet to implement in WorkflowJobModelTest.j
 }
 
-- (void)testShortJobName 
+- (void)testShortJobName
 {
     var returnValue = [workflowJobTestObject shortJobName];
     [self assert:@"To Greyscale" equals:returnValue];

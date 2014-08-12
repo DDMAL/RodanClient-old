@@ -27,7 +27,7 @@
     User         userTestObject         @accessors;
 }
 
-- (void)setUp 
+- (void)setUp
 {
     //init. Page Model object w/ JSONObject
     pageTestObject = [[Page alloc] initWithJson:jsonTest];
@@ -51,16 +51,16 @@
     [self assert:[pageTestObject mediumThumbURL] equals:jsonTest.medium_thumb_url message:"mediumThumbURL"];
     [self assert:[pageTestObject largeThumbURL] equals:jsonTest.large_thumb_url message:"largeThumbURL"];
     [self assertTrue:[[pageTestObject created] isEqualToDate:jsonTest.created] message:"created"];
-    [self assertTrue:[[pageTestObject updated] isEqualToDate:jsonTest.updated] message:"updated"];        
+    [self assertTrue:[[pageTestObject updated] isEqualToDate:jsonTest.updated] message:"updated"];
     [self assert:[pageTestObject creator] equals:userTestObject message:"creator"];
     [self assert:[pageTestObject processed] equals:jsonTest.processed message:"processed"];
 }
 
 - (void)testRemotePath
-{    
+{
     var returnValue;
     returnValue = [pageTestObject remotePath];
-    if (returnValue != "/pages/") 
+    if (returnValue != "/pages/")
     {
         [self assert:[pageTestObject pk] equals:returnValue];
     }

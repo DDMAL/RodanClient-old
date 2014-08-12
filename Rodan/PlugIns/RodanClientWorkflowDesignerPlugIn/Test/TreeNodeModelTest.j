@@ -17,7 +17,7 @@ var anIcon = [[CPImage alloc] initWithContentsOfFile:[[CPBundle mainBundle] path
     CPImage             anIcon;
 }
 
-- (void)setUp 
+- (void)setUp
 {
     //init. TreeNode Model object
     treeNodeTestObject = [[TreeNode alloc] init];

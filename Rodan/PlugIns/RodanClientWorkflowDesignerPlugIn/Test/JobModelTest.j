@@ -17,7 +17,7 @@
 
 }
 
-- (void)setUp 
+- (void)setUp
 {
     //init. Job Model object w/ JSONObject
     jobTestObject = [[Job alloc] initWithJson:jsonTest];
@@ -25,7 +25,7 @@
     [self assertNotNull:jobTestObject];
 }
 
-- (void)testShortJobName 
+- (void)testShortJobName
 {
     var returnValue = [jobTestObject shortJobName];
     [self assert:@"Wiener2 Filter" equals:returnValue];
@@ -48,10 +48,10 @@
 }
 
 - (void)testRemotePath
-{    
+{
     var returnValue;
     returnValue = [jobTestObject remotePath];
-    if (returnValue != "/jobs/") 
+    if (returnValue != "/jobs/")
     {
         [self assert:[jobTestObject pk] equals:returnValue];
     }

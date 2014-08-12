@@ -15,7 +15,7 @@
     Workflow         workflowTestObject       @accessors;
 }
 
-- (void)setUp 
+- (void)setUp
 {
     //init. Workflow Model object w/ JSONObject
     workflowTestObject = [[Workflow alloc] initWithJson:jsonTest];
@@ -34,17 +34,17 @@
     [self assert:[workflowTestObject projectURL] equals:jsonTest.project message:"projectURL"];
     // [self assert:[workflowTestObject workflowJobs] equals:jsonTest.workflow_jobs message:"workflowJobs"];
     // [self assert:[workflowTestObject workflowRuns] equals:jsonTest.workflow_runs message:"workflowRuns"];
-    // [self assert:[workflowTestObject pages] equals:jsonTest.pages message:"pages"];  
+    // [self assert:[workflowTestObject pages] equals:jsonTest.pages message:"pages"];
     // [self assert:[workflowTestObject description] equals:jsonTest.description message:"description"];
     // [self assert:[workflowTestObject hasStarted] equals:jsonTest.has_started message:"hasStarted"];
-    [self assert:[workflowTestObject workflowCreator] equals:jsonTest.creator message:"workflowCreator"];  
+    [self assert:[workflowTestObject workflowCreator] equals:jsonTest.creator message:"workflowCreator"];
 }
 
 - (void)testRemotePath
-{    
+{
     var returnValue;
     returnValue = [workflowTestObject remotePath];
-    if (returnValue != "/workflows/") 
+    if (returnValue != "/workflows/")
     {
         [self assert:[workflowTestObject pk] equals:returnValue];
     }
@@ -53,7 +53,7 @@
 
 - (void)testAddPage
 {
-   //not yet implemented in Workflow.j 
+   //not yet implemented in Workflow.j
 }
 
 - (void)testAddpages

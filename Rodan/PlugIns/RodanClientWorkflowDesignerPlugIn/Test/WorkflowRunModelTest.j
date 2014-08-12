@@ -15,7 +15,7 @@
     WorkflowRun         workflowRunTestObject       @accessors;
 }
 
-- (void)setUp 
+- (void)setUp
 {
     //init. WorkflowRun Model object w/ JSONObject
     workflowRunTestObject = [[WorkflowRun alloc] initWithJson:jsonTest];
@@ -35,15 +35,15 @@
     [self assert:[workflowRunTestObject run] equals:jsonTest.run message:"run"];
     [self assertTrue:[[workflowRunTestObject created] isEqualToDate:jsonTest.created] message:"created"];
     [self assertTrue:[[workflowRunTestObject updated] isEqualToDate:jsonTest.updated] message:"updated"];
-    [self assert:[workflowRunTestObject testRun] equals:jsonTest.test_run message:"testRun"];  
+    [self assert:[workflowRunTestObject testRun] equals:jsonTest.test_run message:"testRun"];
     [self assert:[workflowRunTestObject cancelled] equals:jsonTest.cancelled message:"cancelled"];
 }
 
 - (void)testRemotePath
-{    
+{
     var returnValue;
     returnValue = [workflowRunTestObject remotePath];
-    if (returnValue != "/workflowruns/") 
+    if (returnValue != "/workflowruns/")
     {
         [self assert:[workflowRunTestObject pk] equals:returnValue];
     }
@@ -57,7 +57,7 @@
     [self assert:returnValue equals:jsonTest.url];
 }
 
-- (void)testIsEqual 
+- (void)testIsEqual
 {
     //yet to implement in WorkflowRunModelTest.j
 }

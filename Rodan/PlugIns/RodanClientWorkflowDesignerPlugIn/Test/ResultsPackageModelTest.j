@@ -19,7 +19,7 @@
     ResultsPackage         resultPackageTestObject       @accessors;
 }
 
-- (void)setUp 
+- (void)setUp
 {
     //init. ResultsPackage Model object w/ JSONObject
     resultPackageTestObject = [[ResultsPackage alloc] initWithJson:jsonTest];
@@ -44,10 +44,10 @@
 }
 
 - (void)testRemotePath
-{    
+{
     var returnValue;
     returnValue = [resultPackageTestObject remotePath];
-    if (returnValue != "/resultspackages/") 
+    if (returnValue != "/resultspackages/")
     {
         [self assert:[resultPackageTestObject pk] equals:returnValue];
     }

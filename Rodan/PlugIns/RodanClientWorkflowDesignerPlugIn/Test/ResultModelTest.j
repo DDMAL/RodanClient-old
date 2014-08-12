@@ -19,7 +19,7 @@
     Result         resultTestObject       @accessors;
 }
 
-- (void)setUp 
+- (void)setUp
 {
     //init. Result Model object w/ JSONObject
     resultTestObject = [[Result alloc] initWithJson:jsonTest];
@@ -40,14 +40,14 @@
     [self assert:[resultTestObject result] equals:jsonTest.result message:"result"]
     [self assertTrue:[[resultTestObject created] isEqualToDate:jsonTest.created] message:"created"];
     [self assertTrue:[[resultTestObject updated] isEqualToDate:jsonTest.updated] message:"updated"];
-    [self assert:[resultTestObject processed] equals:jsonTest.processed message:"processed"];  
+    [self assert:[resultTestObject processed] equals:jsonTest.processed message:"processed"];
 }
 
 - (void)testRemotePath
-{    
+{
     var returnValue;
     returnValue = [resultTestObject remotePath];
-    if (returnValue != "/results/") 
+    if (returnValue != "/results/")
     {
         [self assert:[resultTestObject pk] equals:returnValue];
     }

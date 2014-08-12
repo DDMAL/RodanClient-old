@@ -11,9 +11,9 @@ var aSetting = {"default":5,"has_default":true,"rng":[-1048576,1048576],"name":"
 
 }
 
-- (void)setUp 
+- (void)setUp
 {
-    
+
 }
 
 

@@ -19,7 +19,7 @@
     User            userTestObject          @accessors;
 }
 
-- (void)setUp 
+- (void)setUp
 {
     //init. Project Model object w/ JSONObject
     projectTestObject = [[Project alloc] initWithJson:jsonTest];
@@ -54,14 +54,14 @@
     [self assert:[projectTestObject projectDescription] equals:jsonTest.description message:"projectDescription"];
     [self assert:[projectTestObject projectCreator] equals:jsonTest.creator message:"projectCreator"];
     [self assertTrue:[[projectTestObject created] isEqualToDate:jsonTest.created] message:"created"];
-    [self assertTrue:[[projectTestObject updated] isEqualToDate:jsonTest.updated] message:"updated"];  
+    [self assertTrue:[[projectTestObject updated] isEqualToDate:jsonTest.updated] message:"updated"];
 }
 
 - (void)testRemotePath
-{    
+{
     var returnValue;
     returnValue = [projectTestObject remotePath];
-    if (returnValue != "/projects/") 
+    if (returnValue != "/projects/")
     {
         [self assert:[projectTestObject pk] equals:returnValue];
     }
@@ -79,7 +79,7 @@
     Page                    pageTestObject                  @accessors;
 }
 
-- (void)setUp 
+- (void)setUp
 {
     //init. MinimalProject Model object w/ JSONObject
     minimalProjectTestObject = [[MinimalProject alloc] initWithJson:jsonTest];
@@ -91,7 +91,7 @@
 }
 
 
-//No mapped projectOwner Field in JSONObject 
+//No mapped projectOwner Field in JSONObject
 // - (void)testInitWithCreator
 // {
 //     // projectTestObject2 = [[MinimalProject alloc] iniWithCreator:userTestObject];
@@ -106,14 +106,14 @@
     [self assert:[minimalProjectTestObject projectDescription] equals:jsonTest.description message:"projectDescription"];
     [self assert:[minimalProjectTestObject projectCreator] equals:jsonTest.creator message:"projectCreator"];
     [self assertTrue:[[minimalProjectTestObject created] isEqualToDate:jsonTest.created] message:"created"];
-    [self assertTrue:[[minimalProjectTestObject updated] isEqualToDate:jsonTest.updated] message:"updated"];  
+    [self assertTrue:[[minimalProjectTestObject updated] isEqualToDate:jsonTest.updated] message:"updated"];
 }
 
 - (void)testRemotePath
-{    
+{
     var returnValue;
     returnValue = [minimalProjectTestObject remotePath];
-    if (returnValue != "/projects/") 
+    if (returnValue != "/projects/")
     {
         [self assert:[minimalProjectTestObject pk] equals:returnValue];
     }

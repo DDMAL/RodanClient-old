@@ -34,7 +34,7 @@
     JobArgumentsTransformer         jobTransformerTest;
 }
 
-- (void)setUp 
+- (void)setUp
 {
     //init. RunJob Model object w/ JSONObject
     runJobTestObject = [[RunJob alloc] initWithJson:jsonTest];
@@ -56,7 +56,7 @@
     [self assert:[runJobTestObject needsInput] equals:jsonTest.needs_input message:"needsInput"];
     [self assert:[runJobTestObject workflowName] equals:jsonTest.workflow_name message:"workflowName"];
     [self assert:[runJobTestObject jobSettings] equals:[runJobTransformerTest transformedValue:jsonTest.job_settings] message:"jobSettings"];
-   
+
     // [self assert:[runJobTestObject jobSettingsArray] equals:[jobTransformerTest transformedValue:jsonTest.job_settings] message:"jobSettingsArray"];
 
     [self assert:[runJobTestObject result] equals:jsonTest.result message:"result"];
@@ -69,7 +69,7 @@
 - (void)testGetUUID
 {
     var returnValue = [runJobTestObject getUUID];
-    if (returnValue != nil) 
+    if (returnValue != nil)
     {
         [self assert:returnValue equals:"f7b757537b0d460cb301e6b7e2328832"];
     }
@@ -86,7 +86,7 @@
 {
     var returnValue;
     returnValue = [runJobTestObject remotePath];
-    if (returnValue != "/runjobs/") 
+    if (returnValue != "/runjobs/")
     {
         [self assert:[runJobTestObject pk] equals:returnValue];
     }
@@ -96,7 +96,7 @@
 {
     var returnValue = [runJobTestObject canRunInteractive];
     //jsonTest status is equal to 0, therefore should return false
-    [self assert:returnValue equals:false]; 
+    [self assert:returnValue equals:false];
 }
 
 @end
