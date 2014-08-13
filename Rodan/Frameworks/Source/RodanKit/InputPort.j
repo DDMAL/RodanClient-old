@@ -1,6 +1,4 @@
 @import "RKModel.j"
-@import "InputPortType.j"
-@import "WorkflowJob.j"
 
 @implementation InputPort : RKModel
 {

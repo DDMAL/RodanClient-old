@@ -50,7 +50,7 @@ RodanRequestInteractiveJobsNotification = @"RodanRequestInteractiveJobsNotificat
 RodanRequestWorkflowRunsNotification = @"RodanRequestWorkflowRunsNotification";
 RodanRequestWorkflowPagesNotification = @"RodanRequestWorkflowPagesNotification";
 RodanRequestWorkflowRunsJobsNotification = @"RodanRequestWorkflowRunsJobsNotification";
-RodanRequestPagesNotification = @"RodanRequestPagesNotification";
+RodanRequestResourcesNotification = @"RodanRequestResourcesNotification";
 RodanRequestWorkflowPageResultsNotification = @"RodanRequestWorkflowPageResultsNotification";
 RodanRequestRunJobsNotification = @"RodanRequestRunJobsNotification";
 RodanRequestWorkflowResultsPackagesNotification = @"RodanRequestWorkflowResultsPackagesNotification";
@@ -58,7 +58,7 @@ RodanRequestWorkflowResultsPackagesNotification = @"RodanRequestWorkflowResultsP
 // Focus events.
 RodanHasFocusInteractiveJobsViewNotification = @"RodanHasFocusInteractiveJobsViewNotification";
 RodanHasFocusWorkflowResultsViewNotification = @"RodanHasFocusWorkflowResultsViewNotification";
-RodanHasFocusPagesViewNotification = @"RodanHasFocusPagesViewNotification";
+RodanHasFocusResourcesViewNotification = @"RodanHasFocusResourcesViewNotification";
 RodanHasFocusProjectListViewNotification = @"RodanHasFocusProjectListViewNotification";
 
 @import "RodanKitClass.j"

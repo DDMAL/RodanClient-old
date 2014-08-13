@@ -6,7 +6,7 @@
 
 @global RodanHasFocusInteractiveJobsViewNotification;
 @global RodanHasFocusWorkflowResultsViewNotification;
-@global RodanHasFocusPagesViewNotification;
+@global RodanHasFocusResourcesViewNotification;
 @global RodanHasFocusProjectListViewNotification;
 
 @implementation WorkspaceController : RKController
@@ -79,7 +79,7 @@
 {
     [RKNotificationTimer clearTimedNotification];
     [self setView:manageResourcesView withToolbar:nil];
-    [[CPNotificationCenter defaultCenter] postNotificationName:RodanHasFocusPagesViewNotification
+    [[CPNotificationCenter defaultCenter] postNotificationName:RodanHasFocusResourcesViewNotification
                                           object:nil];
 }
 

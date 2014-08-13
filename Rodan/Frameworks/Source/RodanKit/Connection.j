@@ -1,12 +1,7 @@
 @import "RKModel.j"
-@import "InputPort.j"
-@import "OutputPort.j"
-@import "Workflow.j"
-@import "WorkflowJob.j"
 
 @implementation Connection : RKModel
 {
-    CPString        pk                  @accessors;
     CPString        inputPort           @accessors;
     CPString        inputWorkflowJob    @accessors;
 

@@ -2,8 +2,11 @@
 @import "../../FileUpload/FileUpload.j"
 @import "RKController.j"
 @import "Resource.j"
+@import "RKNotificationTimer.j"
 
 @global activeProject
+@global RodanHasFocusResourcesViewNotification
+@global RodanRequestResourcesNotification
 
 _MESSAGE_RESOURCES_LOAD = "_MESSAGE_RESOURCES_LOAD";
 
@@ -23,6 +26,15 @@ _MESSAGE_RESOURCES_LOAD = "_MESSAGE_RESOURCES_LOAD";
 #pragma mark Public Methods
 - (void)awakeFromCib
 {
+    // Subscriptions for self.
+    [[CPNotificationCenter defaultCenter] addObserver:self
+                                          selector:@selector(receiveHasFocusEvent:)
+                                          name:RodanHasFocusResourcesViewNotification
+                                          object:nil];
+    [[CPNotificationCenter defaultCenter] addObserver:self
+                                          selector:@selector(handleShouldLoadNotification:)
+                                          name:RodanRequestResourcesNotification
+                                          object:nil];
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -44,12 +56,11 @@ _MESSAGE_RESOURCES_LOAD = "_MESSAGE_RESOURCES_LOAD";
 
 - (@action)viewOriginal:(id)aSender
 {
-    console.log("view original");
- /*   var selectedObjects = [pageArrayController selectedObjects];
+    var selectedObjects = [arrayController selectedObjects];
     if ([selectedObjects count] == 1)
     {
-        window.open([[selectedObjects objectAtIndex:0] pageImage], "_blank");
-    }*/
+        window.open([[selectedObjects objectAtIndex:0] resourceFile], "_blank");
+    }
 }
 
 - (@action)removeResource:(id)aSender
@@ -57,6 +68,17 @@ _MESSAGE_RESOURCES_LOAD = "_MESSAGE_RESOURCES_LOAD";
     var selectedObjects = [arrayController selectedObjects];
     [selectedObjects makeObjectsPerformSelector:@selector(ensureDeleted)];
     [self handleShouldLoadNotification:null];
+}
+
+- (void)receiveHasFocusEvent:(CPNotification)aNotification
+{
+    [RKNotificationTimer setTimedNotification:[self refreshRate]
+                         notification:RodanRequestResourcesNotification];
+}
+
+- (void)handleShouldLoadNotification:(CPNotification)aNotification
+{
+    [self _sendLoadRequest];
 }
 
 ///////////////////////////////////////////////////////////////////////////////
