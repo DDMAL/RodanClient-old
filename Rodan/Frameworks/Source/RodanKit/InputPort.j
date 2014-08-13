@@ -12,6 +12,8 @@
 + (CPArray)remoteProperties
 {
     return [
+        ['pk', 'url'],
+        ['uuid', 'uuid'],
         ['inputPortType', 'input_port_type'],
         ['label', 'label'],
         ['workflowJob', 'workflow_job']
