@@ -150,7 +150,7 @@ activeUser = nil;
     {
         var data = JSON.parse(data);
 
-        if (data.hasOwnProperty('token'))
+        if (data.hasOwnProperty('token') && _authenticationType == "token")
         {
             [plugInMenuItem setEnabled:YES];
             [projectMenuItem setEnabled:YES];
@@ -158,13 +158,17 @@ activeUser = nil;
             [[CPNotificationCenter defaultCenter] postNotificationName:RodanDidLogInNotification
                                                   object:nil];
         }
-        else if (data.hasOwnProperty('user'))
+        else if (data.hasOwnProperty('user') && _authenticationType == "session")
         {
             [plugInMenuItem setEnabled:YES];
             [projectMenuItem setEnabled:YES];
             activeUser = [[User alloc] initWithJson:data];
             [[CPNotificationCenter defaultCenter] postNotificationName:RodanDidLogInNotification
                                                   object:activeUser];
+        }
+        else
+        {
+            [self _runAlert:@"You are logged in to the server, but on a different client. Please logout from that client and try again."];
         }
     }
 }
@@ -241,6 +245,16 @@ activeUser = nil;
     [alert setMessageText:error];
     [alert setAlertStyle:CPWarningAlertStyle];
     [alert addButtonWithTitle:@"Try Again"];
+    [alert runModal];
+}
+
+- (void)_runAlert:(CPString)aMessage
+{
+    var error = "Error : " + aMessage;
+    alert = [[CPAlert alloc] init];
+    [alert setMessageText:error];
+    [alert setAlertStyle:CPWarningAlertStyle];
+    [alert addButtonWithTitle:@"OK"];
     [alert runModal];
 }
 @end
