@@ -64,6 +64,7 @@ RodanHasFocusProjectListViewNotification = @"RodanHasFocusProjectListViewNotific
 @import "RodanKitClass.j"
 
 // Controllers
+@import "AuthenticationController.j"
 @import "JobController.j"
 @import "ResourceController.j"
 @import "RKController.j"
