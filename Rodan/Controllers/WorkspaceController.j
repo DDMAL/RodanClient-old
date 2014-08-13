@@ -17,7 +17,7 @@
     @outlet     CPView          projectListView;
     @outlet     CPWindow        mainWindow;
 
-    @outlet     TNToolbar       mainToolbar;
+    @outlet     CPToolbar       mainToolbar;
     @outlet     CPToolbarItem   resourcesToolbarItem;
     @outlet     CPToolbarItem   workflowResultsToolbarItem;
     @outlet     CPToolbarItem   jobsToolbarItem;

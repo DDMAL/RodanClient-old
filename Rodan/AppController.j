@@ -26,7 +26,6 @@
 @import <Foundation/CPObject.j>
 @import <Ratatosk/Ratatosk.j>
 @import <RodanKit/RodanKit.j>
-@import <TNKit/TNKit.j>
 
 @import "Categories/CPButtonBar+PopupButtons.j"
 @import "Controllers/AuthenticationController.j"

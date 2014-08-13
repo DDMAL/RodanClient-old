@@ -380,9 +380,12 @@
 				<nil key="NSUserInterfaceItemIdentifier"/>
 				<string key="NSWindowContentMinSize">{1024, 600}</string>
 				<object class="NSView" key="NSWindowView" id="669824870">
-					<nil key="NSNextResponder"/>
+					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<string key="NSFrameSize">{1024, 600}</string>
+					<reference key="NSSuperview"/>
+					<reference key="NSWindow"/>
+					<reference key="NSNextKeyView"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
 				<string key="NSMinSize">{1024, 678}</string>
@@ -2269,7 +2272,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 												<bool key="NSIsEditable">YES</bool>
 												<reference key="NSTableView" ref="570359875"/>
 											</object>
-											<object class="NSTableColumn" id="110115320">
+											<object class="NSTableColumn" id="122246404">
 												<double key="NSWidth">64</double>
 												<double key="NSMinWidth">10</double>
 												<double key="NSMaxWidth">3.4028234663852886e+38</double>
@@ -2281,7 +2284,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 													<reference key="NSBackgroundColor" ref="48871462"/>
 													<reference key="NSTextColor" ref="812465131"/>
 												</object>
-												<object class="NSTextFieldCell" key="NSDataCell" id="663087829">
+												<object class="NSTextFieldCell" key="NSDataCell" id="694322554">
 													<int key="NSCellFlags">337641536</int>
 													<int key="NSCellFlags2">2048</int>
 													<string key="NSContents">Text Cell</string>
@@ -7315,10 +7318,10 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">value: arrangedObjects.resourceType</string>
-						<reference key="source" ref="110115320"/>
+						<reference key="source" ref="122246404"/>
 						<reference key="destination" ref="307637092"/>
 						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="110115320"/>
+							<reference key="NSSource" ref="122246404"/>
 							<reference key="NSDestination" ref="307637092"/>
 							<string key="NSLabel">value: arrangedObjects.resourceType</string>
 							<string key="NSBinding">value</string>
@@ -9048,7 +9051,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 						<array class="NSMutableArray" key="children">
 							<reference ref="356817580"/>
 							<reference ref="261215648"/>
-							<reference ref="110115320"/>
+							<reference ref="122246404"/>
 						</array>
 						<reference key="parent" ref="936684405"/>
 					</object>
@@ -10202,17 +10205,17 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 					</object>
 					<object class="IBObjectRecord">
 						<string key="id">kcN-u3-Cf1</string>
-						<reference key="object" ref="110115320"/>
+						<reference key="object" ref="122246404"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="663087829"/>
+							<reference ref="694322554"/>
 						</array>
 						<reference key="parent" ref="570359875"/>
 						<string key="objectName">Table Column - Type</string>
 					</object>
 					<object class="IBObjectRecord">
 						<string key="id">32V-I5-3CG</string>
-						<reference key="object" ref="663087829"/>
-						<reference key="parent" ref="110115320"/>
+						<reference key="object" ref="694322554"/>
+						<reference key="parent" ref="122246404"/>
 					</object>
 				</array>
 			</object>
@@ -10227,7 +10230,7 @@ y7bMNcy1zTXNtc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp2
 				<boolean value="YES" key="1236.NSWindowTemplate.visibleAtLaunch"/>
 				<string key="1236.userInterfaceItemIdentifier">theWindow</string>
 				<string key="1237.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="1324.CustomClassName">TNToolbar</string>
+				<string key="1324.CustomClassName">CPToolbar</string>
 				<string key="1324.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1325.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1328.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
