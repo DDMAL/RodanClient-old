@@ -464,17 +464,20 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
                 links[k].inputRef = currentInputHover[1];
                 links[k].isUsed = YES;
 
+                var outPort;
+
                 if (workflowNumber != -1) //workflowJob and not resourceList
                 {
                     [links[k] makeConnectPointAtCurrentPoint:workflowJobs[workflowNumber].outputPorts[outputNumber].outputStart controlPoint1:workflowJobs[workflowNumber].outputPorts[outputNumber].outputStart controlPoint2:workflowJobs[workflowNumber].outputPorts[outputNumber].outputStart endPoint:workflowJobs[currentInputHover[0]].inputPorts[currentInputHover[1]].inputEnd];
                     workflowJobs[workflowNumber].outputPorts[outputNumber].linkRef = k;
                     workflowJobs[workflowNumber].outputPorts[outputNumber].isUsed = YES;
-                    var outPort = workflowJobs[workflowNumber].outputPorts[outputNumber];
+                    outPort = workflowJobs[workflowNumber].outputPorts[outputNumber];
                 }
                 else //resourceList
                 {
                     [links[k] makeConnectPointAtCurrentPoint:resourceLists[resourceListNumber].outputPorts[outputNumber].outputStart controlPoint1:resourceLists[resourceListNumber].outputPorts[outputNumber].outputStart controlPoint2:resourceLists[resourceListNumber].outputPorts[outputNumber].outputStart endPoint:workflowJobs[currentInputHover[0]].inputPorts[currentInputHover[1]].inputEnd];
                     resourceLists[resourceListNumber].outputPorts[outputNumber].linkRef = k;
+                    outPort = resourceLists[resourceListNumber].outputPorts[outputNumber];
                 }
 
                 workflowJobs[currentInputHover[0]].inputPorts[currentInputHover[1]].linkRef = k;
@@ -794,7 +797,6 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
             break;
 
         case Connection:
-            console.log("HELLO");
             console.log(createdObject);
             console.log([createdObject pk]);
             [cacheToDelete shouldDeleteConnection:createdObject];
@@ -808,7 +810,6 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
             break;
 
         case Workflow:
-            console.log(createdObject);
 
         default:
             // console.log("Default");
@@ -861,14 +862,15 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     {
         for (var j = 0; j < inputPortTypes[i].minimum; j++)
         {
+            console.log(inputPortTypes[i].url);
             var iPortObject = {
-                            "uuid": "",
                             "workflow_job":[workflowJobObject pk],
                             "input_port_type":inputPortTypes[i].url,
                             "label":""
                             },
 
                 inputPortObject = [[InputPort alloc] initWithJson:iPortObject];
+
             [workflowJobs[creatingWorkflowJobIndex].inputPorts[counter] setIPort:inputPortObject];
             [inputPortObject ensureCreated];
             counter++;
