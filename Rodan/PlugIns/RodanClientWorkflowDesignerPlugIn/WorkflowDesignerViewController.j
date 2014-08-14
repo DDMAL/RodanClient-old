@@ -91,62 +91,6 @@ var _msLOADINTERVAL = 5.0;
     @outlet             CPTableView             settingsView            @accessors;
     @outlet             CPView                  settingsViewBase        @accessors;
 
-
-    //NOTE VIEWS FOR VIEW BASED TABLES
-    // @outlet             CPView                  jobA                    @accessors;
-    // @outlet             CPView                  jobB                    @accessors;
-    // @outlet             CPView                  jobC                    @accessors;
-    // @outlet             CPView                  jobD                    @accessors;
-    // @outlet             CPView                  jobE                    @accessors;
-    // @outlet             CPView                  jobF                    @accessors;
-    // @outlet             CPView                  jobG                    @accessors;
-    // @outlet             CPView                  jobH                    @accessors;
-    // @outlet             CPView                  jobI                    @accessors;
-
-    // //images for nested views of jobs
-    // @outlet             CPImageView             imageA;
-    // @outlet             CPImageView             imageB;
-    // @outlet             CPImageView             imageC;
-    // @outlet             CPImageView             imageD;
-    // @outlet             CPImageView             imageE;
-    // @outlet             CPImageView             imageF;
-    // @outlet             CPImageView             imageG;
-    // @outlet             CPImageView             imageH;
-    // @outlet             CPImageView             imageI;
-
-    // //images for view based table view for jobs
-    // @outlet             CPImageView             imageA2;
-    // @outlet             CPImageView             imageB2;
-    // @outlet             CPImageView             imageC2;
-    // @outlet             CPImageView             imageD2;
-    // @outlet             CPImageView             imageE2;
-    // @outlet             CPImageView             imageF2;
-    // @outlet             CPImageView             imageG2;
-    // @outlet             CPImageView             imageH2;
-    // @outlet             CPImageView             imageI2;
-
-    //resources for view based table view
-    // @outlet             CPView                  pageA                    @accessors;
-    // @outlet             CPView                  pageB                    @accessors;
-    // @outlet             CPView                  pageC                    @accessors;
-    // @outlet             CPView                  pageD                    @accessors;
-    // @outlet             CPView                  pageE                    @accessors;
-    // @outlet             CPView                  pageF                    @accessors;
-    // @outlet             CPView                  pageG                    @accessors;
-    // @outlet             CPView                  pageH                    @accessors;
-    // @outlet             CPView                  pageI                    @accessors;
-
-    //imagefor views
-    // @outlet             CPImageView             pageImageA;
-    // @outlet             CPImageView             pageImageB;
-    // @outlet             CPImageView             pageImageC;
-    // @outlet             CPImageView             pageImageD;
-    // @outlet             CPImageView             pageImageE;
-    // @outlet             CPImageView             pageImageF;
-    // @outlet             CPImageView             pageImageG;
-    // @outlet             CPImageView             pageImageH;
-    // @outlet             CPImageView             pageImageI;
-
     @outlet             CPPanel                 attributesPanel;
     @outlet             CPTableHeaderView       attributesTableHeader;
     @outlet             CPOutlineView           attributesOutlineView;
@@ -328,93 +272,9 @@ var _msLOADINTERVAL = 5.0;
     [rightUpperScrollView setBackgroundColor:[CPColor colorWithHexString:"8492A1"]];
     [rightUpperScrollView setDocumentView:rightUpperView];
 
-    // var scrollBounds = [jobScrollView bounds];
-
-    // [jobsView setFrame:CGRectMake(scrollBounds.origin.x, scrollBounds.origin.y + 10.0, scrollBounds.size.x, [jobsView bounds].size.y)];
-
     [jobScrollView setBackgroundColor:[CPColor colorWithHexString:"8492A1"]];
-    // [jobScrollView setDocumentView:jobsView];
-
-
-
-    // var image1 = [[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"contrast.png"] size:CGSizeMake(32.0, 32.0)],
-    //     image2 = [[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"crop.png"] size:CGSizeMake(32.0, 32.0)],
-    //     image3 = [[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"expand.png"] size:CGSizeMake(32.0, 32.0)],
-    //     image4 = [[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"expand2.png"] size:CGSizeMake(32.0, 32.0)],
-    //     image5 = [[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"image.png"] size:CGSizeMake(32.0, 32.0)],
-    //     image6 = [[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"libreoffice.png"] size:CGSizeMake(32.0, 32.0)],
-    //     image7 = [[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"music.png"] size:CGSizeMake(32.0, 32.0)],
-    //     image8 = [[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"pen.png"] size:CGSizeMake(32.0, 32.0)],
-    //     image9 = [[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"table.png"] size:CGSizeMake(32.0, 32.0)];
-
-    // [imageA setImage:image1];
-    // [imageB setImage:image2];
-    // [imageC setImage:image3];
-    // [imageD setImage:image4];
-    // [imageE setImage:image5];
-    // [imageF setImage:image6];
-    // [imageG setImage:image7];
-    // [imageH setImage:image8];
-    // [imageI setImage:image9];
-
-    // [imageA2 setImage:image1];
-    // [imageB2 setImage:image2];
-    // [imageC2 setImage:image3];
-    // [imageD2 setImage:image4];
-    // [imageE2 setImage:image5];
-    // [imageF2 setImage:image6];
-    // [imageG2 setImage:image7];
-    // [imageH2 setImage:image8];
-    // [imageI2 setImage:image9];
-
-    // [jobA setIdentifier:"JOBA"];
-
-    // jobsViewArray = [[CPArray alloc] init]; //used to keep track of jobs. could use controller ?
-    // jobsViewArray[0] = jobA;
-    // jobsViewArray[1] = jobB;
-    // jobsViewArray[2] = jobC;
-    // jobsViewArray[3] = jobD;
-    // jobsViewArray[4] = jobE;
-    // jobsViewArray[5] = jobF;
-    // jobsViewArray[6] = jobG;
-    // jobsViewArray[7] = jobH;
-    // jobsViewArray[8] = jobI;
-
-    // for (var i = 0; i < [jobsViewArray count]; i++)
-    // {
-    //     [jobsViewArray[i] setBackgroundColor:[CPColor colorWithHexString:"A6A6A6"]];
-    // };
 
     [leftScrollView setBackgroundColor:[CPColor colorWithHexString:"8492A1"]];
-    // [leftScrollView setDocumentView:runsView];
-  // [leftScrollView setDocumentView:pagesView];
-
-    // [pageImageA setImage:[[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"file.png"] size:CGSizeMake(32.0, 32.0)]];
-    // [pageImageB setImage:[[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"file.png"] size:CGSizeMake(32.0, 32.0)]];
-    // [pageImageC setImage:[[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"file.png"] size:CGSizeMake(32.0, 32.0)]];
-    // [pageImageD setImage:[[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"file.png"] size:CGSizeMake(32.0, 32.0)]];
-    // [pageImageE setImage:[[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"file.png"] size:CGSizeMake(32.0, 32.0)]];
-    // [pageImageF setImage:[[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"file.png"] size:CGSizeMake(32.0, 32.0)]];
-    // [pageImageG setImage:[[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"file.png"] size:CGSizeMake(32.0, 32.0)]];
-    // [pageImageH setImage:[[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"file.png"] size:CGSizeMake(32.0, 32.0)]];
-    // [pageImageI setImage:[[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"file.png"] size:CGSizeMake(32.0, 32.0)]];
-
-    // pagesViewArray = [[CPArray alloc] init];
-    // pagesViewArray[0] = pageA;
-    // pagesViewArray[0] = pageB;
-    // pagesViewArray[0] = pageC;
-    // pagesViewArray[0] = pageD;
-    // pagesViewArray[0] = pageE;
-    // pagesViewArray[0] = pageF;
-    // pagesViewArray[0] = pageG;
-    // pagesViewArray[0] = pageH;
-    // pagesViewArray[0] = pageI;
-
-    // for (var i = 0; i < [pagesViewArray count]; i++)
-    // {
-    //     [pagesViewArray[i] setBackgroundColor:[CPColor colorWithHexString:"A6A6A6"]];
-    // };
-
 
     [attributesPanel setBackgroundColor:[CPColor colorWithHexString:"4C4C4C"]];
 
@@ -425,9 +285,6 @@ var _msLOADINTERVAL = 5.0;
 
 //end of awakeFromCib
 }
-
-
-
 
 
 //------------- ICON ACTION BUTTONS ----------------- //
@@ -556,46 +413,4 @@ var _msLOADINTERVAL = 5.0;
 
 
 @end
-
-
-
-
-
-
-
-
-
-
-// @implementation CPArray (MoveIndexes)
-
-// - (void)moveIndexes:(CPIndexSet)indexes toIndex:(int)insertIndex
-// {
-//     var aboveCount = 0,
-//         object,
-//         removeIndex;
-
-//     var index = [indexes lastIndex];
-
-//     while (index != CPNotFound)
-//     {
-//         if (index >= insertIndex)
-//         {
-//             removeIndex = index + aboveCount;
-//             aboveCount ++;
-//         }
-//         else
-//         {
-//             removeIndex = index;
-//             insertIndex --;
-//         }
-
-//         object = [self objectAtIndex:removeIndex];
-//         [self removeObjectAtIndex:removeIndex];
-//         [self insertObject:object atIndex:insertIndex];
-
-//         index = [indexes indexLessThanIndex:index];
-//     }
-// }
-
-// @end
 
