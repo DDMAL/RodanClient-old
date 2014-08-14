@@ -1,7 +1,6 @@
 @import "../../Ratatosk/WLRemoteTransformers.j"
 @import "RKModel.j"
 @import "User.j"
-@import "Page.j"
 @import "Workflow.j"
 
 /* a full representation of a project, including arrays for the pages and workflows */
@@ -42,7 +41,7 @@
         ['projectName', 'name'],
         ['projectDescription', 'description'],
         ['projectCreator', 'creator'],
-        ['pages', 'pages', [WLForeignObjectsTransformer forObjectClass:Page]],
+     //   ['pages', 'pages', [WLForeignObjectsTransformer forObjectClass:Page]],
         ['created', 'created', [[WLDateTransformer alloc] init], true],
         ['updated', 'updated', [[WLDateTransformer alloc] init], true]
     ];

@@ -5,6 +5,7 @@
 @import "WorkflowRun.j"
 @import "Job.j"
 @import "JobArgumentsTransformer.j"
+@import "Resource.j"
 
 @implementation Workflow : RKModel
 {
@@ -13,7 +14,7 @@
     CPNumber    runs            @accessors;
     CPArray     workflowJobs    @accessors;
     CPArray     workflowRuns    @accessors;
-    CPArray     pages           @accessors; //change to resource ?
+    CPArray     Resource        @accessors;
     CPString    description     @accessors;
     BOOL        hasStarted      @accessors;
     CPString    workflowCreator @accessors;
@@ -29,7 +30,7 @@
     if (self = [super init])
     {
         workflowName = @"Untitled";
-        pages = [];
+       // pages = [];
         hasStarted = NO;
 
         sourceListIcon = [[CPImage alloc] initWithContentsOfFile:[[CPBundle mainBundle] pathForResource:@"workflow-sourcelist-icon.png"]
@@ -49,7 +50,7 @@
         ['projectURL',      'project'         ],
         ['workflowJobs',    'workflow_jobs',  [WLForeignObjectsTransformer forObjectClass:WorkflowJob]],
         ['workflowRuns',    'workflow_runs',  [WLForeignObjectsTransformer forObjectClass:WorkflowRun]],
-        ['pages',           'pages',          [WLForeignObjectsTransformer forObjectClass:Page]],   //change to resource?
+        ['resources',       'resources',      [WLForeignObjectsTransformer forObjectClass:Resource]],   //change to resource?
         ['description',     'description'     ],
         ['hasStarted',      'has_started'     ],
         ['workflowCreator', 'creator'         ],
@@ -66,7 +67,7 @@
     else
         return [[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/workflows/";
 }
-
+/*
 - (void)addPage:(id)aPage
 {
     // adds a page to a workflow
@@ -78,7 +79,7 @@
     console.log("Adding pages to workflow");
     // adds lots of pages to a workflow
 }
-
+*/
 - (void)addJob:(id)aJob
 {
     // add a job to a workflow

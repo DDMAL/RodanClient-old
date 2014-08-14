@@ -28,7 +28,6 @@
 @import <RodanKit/RodanKit.j>
 
 @import "Categories/CPButtonBar+PopupButtons.j"
-@import "Controllers/AuthenticationController.j"
 @import "Controllers/PlugInsController.j"
 @import "Controllers/ProjectController.j"
 @import "Controllers/ResultsPackageController.j"
