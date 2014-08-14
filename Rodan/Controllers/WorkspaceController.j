@@ -4,6 +4,8 @@
     whatever else is showing.
 **/
 
+@global RodanDidLogInNotification
+@global RodanDidLogOutNotification
 @global RodanHasFocusInteractiveJobsViewNotification;
 @global RodanHasFocusWorkflowResultsViewNotification;
 @global RodanHasFocusResourcesViewNotification;
@@ -22,6 +24,7 @@
     @outlet     CPToolbarItem   workflowResultsToolbarItem;
     @outlet     CPToolbarItem   jobsToolbarItem;
 
+    @outlet     CPMenuItem      projectsMenuItem;
     @outlet     CPMenuItem      workspaceMenuItem;
     @outlet     CPMenuItem      plugInsMenuItem;
 
@@ -44,6 +47,16 @@
     {
         return "This will terminate the Application. Are you sure you want to leave?";
     }
+
+    // Subscribe to notifications.
+    [[CPNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(_didLogIn:)
+                                                 name:RodanDidLogInNotification
+                                                 object:nil];
+    [[CPNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(_didLogOut:)
+                                                 name:RodanDidLogOutNotification
+                                                 object:nil];
 }
 
 - (void)clearView
@@ -67,6 +80,7 @@
 
 - (void)setMenuEnabled:(BOOL)aEnable
 {
+    [projectsMenuItem setEnabled:aEnable];
     [workspaceMenuItem setEnabled:aEnable];
     [plugInsMenuItem setEnabled:aEnable];
 }
@@ -142,5 +156,17 @@
     [resourcesToolbarItem setEnabled:NO];
     [workflowResultsToolbarItem setEnabled:NO];
     [jobsToolbarItem setEnabled:NO];
+}
+
+- (void)_didLogIn:(id)aNotification
+{
+    [projectsMenuItem setEnabled:YES];
+    [plugInsMenuItem setEnabled:YES];
+}
+
+- (void)_didLogOut:(id)aNotification
+{
+    [projectsMenuItem setEnabled:NO];
+    [plugInsMenuItem setEnabled:NO];
 }
 @end

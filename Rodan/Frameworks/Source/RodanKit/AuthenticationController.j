@@ -3,12 +3,17 @@
  * authentication are supported: "token" and "session" (see Rodan wiki).
  * The type of authentication can be set in the root Info.plist.
  *
+ * This controller also offers the minimum requirements for a UI login
+ * via its outlets.
+ *
  * This also acts as a delegate for WLRemoteLink so it can add the
  * appropriate headers for REST calls.
  */
 
 @import <AppKit/AppKit.j>
-@import <Ratatosk/Ratatosk.j>
+@import "../../Ratatosk/WLRemoteLink.j"
+@import "RKController.j"
+@import "User.j"
 
 @global RodanDidLogInNotification
 @global RodanDidLogOutNotification
@@ -17,14 +22,10 @@ activeUser = nil;
 
 @implementation AuthenticationController : RKController
 {
-    @outlet     CPMenuItem          plugInMenuItem;
-    @outlet     CPMenuItem          projectMenuItem;
-    @outlet     CPView              authenticationWaitScreen;
     @outlet     CPTextField         usernameField;
     @outlet     CPSecureTextField   passwordField;
     @outlet     CPButton            submitButton;
     @outlet     CPWindow            logInWindow;
-    @outlet     WorkspaceController workspaceController;
                 CPString            _authenticationType;
                 CPString            _urlLogout;
                 CPString            _urlLogin;
@@ -69,7 +70,6 @@ activeUser = nil;
 
 - (void)checkIsAuthenticated
 {
-    [workspaceController setView:authenticationWaitScreen];
     var request = [CPURLRequest requestWithURL:_urlCheckIsAuthenticated];
     [request setHTTPMethod:@"GET"];
     var conn = [CPURLConnection connectionWithRequest:request delegate:self withCredentials:YES];
@@ -111,16 +111,12 @@ activeUser = nil;
 #pragma mark Public Delegate Methods
 - (void)connection:(CPURLConnection)connection didFailWithError:(id)error
 {
-    [plugInMenuItem setEnabled:NO];
-    [projectMenuItem setEnabled:NO];
     [connection cancel];
     CPLog("Failed with Error");
 }
 
 - (void)connection:(CPURLConnection)connection didReceiveResponse:(CPURLResponse)response
 {
-    [plugInMenuItem setEnabled:NO];
-    [projectMenuItem setEnabled:NO];
     CPLog("received a status code of " + [response statusCode]);
 
     switch ([response statusCode])
@@ -152,16 +148,12 @@ activeUser = nil;
 
         if (data.hasOwnProperty('token') && _authenticationType == "token")
         {
-            [plugInMenuItem setEnabled:YES];
-            [projectMenuItem setEnabled:YES];
             _authenticationToken = "Token " + data.token;
             [[CPNotificationCenter defaultCenter] postNotificationName:RodanDidLogInNotification
                                                   object:nil];
         }
         else if (data.hasOwnProperty('user') && _authenticationType == "session")
         {
-            [plugInMenuItem setEnabled:YES];
-            [projectMenuItem setEnabled:YES];
             activeUser = [[User alloc] initWithJson:data];
             [[CPNotificationCenter defaultCenter] postNotificationName:RodanDidLogInNotification
                                                   object:activeUser];
