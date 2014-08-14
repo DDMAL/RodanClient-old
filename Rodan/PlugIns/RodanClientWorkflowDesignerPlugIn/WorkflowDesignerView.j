@@ -24,10 +24,11 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     //graphical objects
     @outlet     CPArrayController       workflowJobs                @accessors;
     @outlet     CPArrayController       links                       @accessors;
-    @outlet     CPArray                 resourceLists               @accessors;
+    @outlet     CPArrayController       resourceLists               @accessors;
 
                 CPArray                 linksContentArray           @accessors;
                 CPArray                 workflowJobsContentArray    @accessors;
+                CPArray                 resourceListsContentArray   @accessors;
 
     //views for hovering over I/O ports w/ animations
     @outlet     CPView                  outputPortView              @accessors;
@@ -87,10 +88,11 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
         workflowJobs = [[CPArrayController alloc] init];
         links = [[CPArrayController alloc] init];
-        resourceLists = [[CPArray alloc] init];
+        resourceLists = [[CPArrayController alloc] init];
 
         linksContentArray = [links contentArray];
         workflowJobsContentArray = [workflowJobs contentArray];
+        resourceListsContentArray = [resourceLists contentArray];
 
 
         frame = aFrame;
@@ -451,7 +453,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     if (resourceListNumber == -1) //if not a resourceList
         workflowJobsContentArray[workflowNumber].outputPorts[outputNumber].linksIndex = k;
     else
-        resourceLists[resourceListNumber].outputPorts[outputNumber].linksIndex = k;
+        resourceListsContentArray[resourceListNumber].outputPorts[outputNumber].linksIndex = k;
 
     linksContentArray[k].outputRef = outputNumber;
     console.log("Add Link");
@@ -493,9 +495,9 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
                 }
                 else //resourceList
                 {
-                    [linksContentArray[k] makeConnectPointAtCurrentPoint:resourceLists[resourceListNumber].outputPorts[outputNumber].outputStart controlPoint1:resourceLists[resourceListNumber].outputPorts[outputNumber].outputStart controlPoint2:resourceLists[resourceListNumber].outputPorts[outputNumber].outputStart endPoint:workflowJobsContentArray[currentInputHover[0]].inputPorts[currentInputHover[1]].inputEnd];
-                    resourceLists[resourceListNumber].outputPorts[outputNumber].linkRef = k;
-                    outPort = resourceLists[resourceListNumber].outputPorts[outputNumber];
+                    [linksContentArray[k] makeConnectPointAtCurrentPoint:resourceListsContentArray[resourceListNumber].outputPorts[outputNumber].outputStart controlPoint1:resourceListsContentArray[resourceListNumber].outputPorts[outputNumber].outputStart controlPoint2:resourceListsContentArray[resourceListNumber].outputPorts[outputNumber].outputStart endPoint:workflowJobsContentArray[currentInputHover[0]].inputPorts[currentInputHover[1]].inputEnd];
+                    resourceListsContentArray[resourceListNumber].outputPorts[outputNumber].linkRef = k;
+                    outPort = resourceListsContentArray[resourceListNumber].outputPorts[outputNumber];
                 }
 
                 workflowJobsContentArray[currentInputHover[0]].inputPorts[currentInputHover[1]].linkRef = k;
@@ -547,7 +549,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
             if (resourceListNumber == -1)
                 [linksContentArray[k] makeConnectPointAtCurrentPoint:workflowJobsContentArray[workflowNumber].outputPorts[outputNumber].outputStart controlPoint1:currentMouseLocation controlPoint2:currentMouseLocation endPoint:currentMouseLocation];
             else
-                [linksContentArray[k] makeConnectPointAtCurrentPoint:resourceLists[resourceListNumber].outputPorts[outputNumber].outputStart controlPoint1:currentMouseLocation controlPoint2:currentMouseLocation endPoint:currentMouseLocation];
+                [linksContentArray[k] makeConnectPointAtCurrentPoint:resourceListsContentArray[resourceListNumber].outputPorts[outputNumber].outputStart controlPoint1:currentMouseLocation controlPoint2:currentMouseLocation endPoint:currentMouseLocation];
         }
     };
     //refresh and display views
@@ -672,19 +674,19 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         currentMouseLocation = [self convertPoint:[anEvent locationInWindow] fromView:nil],
         resourceListRef = [info objectForKey:"resource_list_position"];
 
-    [resourceLists[resourceListRef] setCenter:currentMouseLocation];
+    [resourceListsContentArray[resourceListRef] setCenter:currentMouseLocation];
 
     //adjust output ports position
-    var origin = [resourceLists[resourceListRef] frameOrigin],
-        outputLoop = [resourceLists[resourceListRef] outputNum],
+    var origin = [resourceListsContentArray[resourceListRef] frameOrigin],
+        outputLoop = [resourceListsContentArray[resourceListRef] outputNum],
         i;
     for (i = 0; i < outputLoop; i++)
     {
-        var outputLink = resourceLists[resourceListRef].outputPorts[i].linkRef;
+        var outputLink = resourceListsContentArray[resourceListRef].outputPorts[i].linkRef;
 
-        [resourceLists[resourceListRef].outputPorts[i] arrangeOutputPosition:origin iteration:i];
+        [resourceListsContentArray[resourceListRef].outputPorts[i] arrangeOutputPosition:origin iteration:i];
         if (linksContentArray[outputLink] != null)
-            linksContentArray[resourceLists[resourceListRef].outputPorts[i].linkRef].currentPoint = resourceLists[resourceListRef].outputPorts[i].outputStart;
+            linksContentArray[resourceListsContentArray[resourceListRef].outputPorts[i].linkRef].currentPoint = resourceListsContentArray[resourceListRef].outputPorts[i].outputStart;
     };
     [self display];
 }
@@ -784,21 +786,21 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     console.log("New Resource List");
 
     var i;
-    for (i = 0; i < [resourceLists count]; i++)
+    for (i = 0; i < [resourceListsContentArray count]; i++)
     {
-        if (resourceLists[i] == null)
+        if (resourceListsContentArray[i] == null)
             break;
     }
 
-    resourceLists[i] = [[ResourceList alloc] initWithPoint:CGPointMake(100.0, 100.0) size:CGSizeMake(60.0, 60.0) pageNum:2 resourceListRef:i outputNum:1];
-    [resourceLists[i] changeBoxAttributes:2 cornerRadius:5 fillColor:[CPColor colorWithHexString:"333333"] boxType:CPBoxPrimary title:"Resource List A"];
+    resourceListsContentArray[i] = [[ResourceList alloc] initWithPoint:CGPointMake(100.0, 100.0) size:CGSizeMake(60.0, 60.0) pageNum:2 resourceListRef:i outputNum:1];
+    [resourceListsContentArray[i] changeBoxAttributes:2 cornerRadius:5 fillColor:[CPColor colorWithHexString:"333333"] boxType:CPBoxPrimary title:"Resource List A"];
 
-    [self addSubview:resourceLists[i]];
+    [self addSubview:resourceListsContentArray[i]];
 
     var j,
-        resourceLoop = [resourceLists[i].outputPorts count];
+        resourceLoop = [resourceListsContentArray[i].outputPorts count];
     for (j = 0; j < resourceLoop; j++)
-        [self addSubview:resourceLists[i].outputPorts[j]];
+        [self addSubview:resourceListsContentArray[i].outputPorts[j]];
 }
 
 - (void)receiveModelWasCreatedNotification:(CPNotification)aNotification
@@ -1001,18 +1003,18 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
 - (void)removeResourceList:(CPUInteger)aPosition
 {
-    [resourceLists[aPosition] removeFromSuperview];
+    [resourceListsContentArray[aPosition] removeFromSuperview];
 
     //remove O ports from superview
     var i,
-        resourceLoop = [resourceLists[aPosition].outputPorts count];
+        resourceLoop = [resourceListsContentArray[aPosition].outputPorts count];
     for (var i = 0; i < resourceLoop; i++)
     {
-        [resourceLists[aPosition].outputPorts[i] removeFromSuperview];
-        resourceLists[aPosition].outputPorts[i] = null;
+        [resourceListsContentArray[aPosition].outputPorts[i] removeFromSuperview];
+        resourceListsContentArray[aPosition].outputPorts[i] = null;
     };
 
-    resourceLists[aPosition] = null;
+    resourceListsContentArray[aPosition] = null;
 }
 
 
