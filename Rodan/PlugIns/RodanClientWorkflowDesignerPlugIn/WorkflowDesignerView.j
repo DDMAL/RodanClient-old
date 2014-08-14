@@ -21,42 +21,52 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
 @implementation WorkflowDesignerView : CPView
 {
-                CPArray             points                      @accessors;
-                CPArray             workflowJobs                @accessors;
-                CPArray             links                       @accessors;
-                CPArray             resourceLists               @accessors;
+                CPArray                 points                      @accessors;
+    @outlet     CPArray                 workflowJobs                @accessors;
+    @outlet     CPArray                 links                       @accessors;
+    @outlet     CPArray                 resourceLists               @accessors;
 
     //views for hovering over I/O ports w/ animations
-    @outlet     CPView              outputPortView              @accessors;
-    @outlet     CPView              inputPortView               @accessors;
+    @outlet     CPView                  outputPortView              @accessors;
+    @outlet     CPView                  inputPortView               @accessors;
 
-                CPViewAnimation     inputViewAnimation;
-                CPViewAnimation     outputViewAnimation;
+                CPViewAnimation         inputViewAnimation;
+                CPViewAnimation         outputViewAnimation;
 
-                CPArray             currentInputHover; //array, pos. 0 = workflowJob, pos. 1 = inputNumber
+                CPArray                 currentInputHover; //array, pos. 0 = workflowJob, pos. 1 = inputNumber
 
-                CPEvent             mouseDownEvent;
+                CPEvent                 mouseDownEvent;
 
-                CPString            outputTypeText;
-                CPString            inputTypeText;
+                CPString                outputTypeText;
+                CPString                inputTypeText;
 
-                CGRect              frame;
+                CGRect                  frame;
 
                 //dragging helper variables
-                BOOL                isInView;
-                CPInteger           currentDraggingIndex;
+                BOOL                    isInView;
+                CPInteger               currentDraggingIndex;
 
-                CPInteger           creatingWorkflowJobIndex;
-                CPDictionary        creatingWorkflowJobIOTypes;
 
-    @outlet     CPArrayController   jobArrayController;
-    @outlet     CPArrayController   connectionArrayController;
+                //variables to reference graphical <-> server objects
+                CPInteger               creatingWorkflowJobIndex;
+                CPDictionary            creatingWorkflowJobIOTypes;
+                CPInteger               createInputPortsCounter;
+                CPInteger               createOutputPortsCounter;
+                CPInteger               connectionModelReference;
 
-                WorklfowController  workflowController;
-    @outlet     Workflow            currentWorkflow;
-                BOOL                isCurrentSelection;
+    @outlet     CPArrayController       jobArrayController;
+    @outlet     CPArrayController       connectionArrayController;
 
-                DeleteCache         cacheToDelete              @accessors;
+                WorklfowController      workflowController;
+    @outlet     Workflow                currentWorkflow;
+                BOOL                    isCurrentSelection;
+
+                DeleteCache             cacheToDelete               @accessors;
+
+    @outlet     WorkflowJobController   workflowJobController       @accessors;
+    @outlet     OutputPortController    outputPortController        @accessors;
+    @outlet     InputPortController     inputPortController         @accessors;
+    @outlet     ConnectionController    connectionController        @accessors;
 
 
 }
@@ -81,6 +91,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         currentDraggingIndex = -1;
         creatingWorkflowJobIndex = -1;
         creatingWorkflowJobIOTypes = [[CPDictionary alloc] init];
+
         connectionArrayController = [[CPArrayController alloc] init];
 
         cacheToDelete = [[DeleteCache alloc] init];
@@ -617,7 +628,6 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
     currentDraggingIndex = workflowNumber;
     var workflowJob = [workflowJobs[currentDraggingIndex] wkJob];
-    console.log(workflowJob);
 
     //delete workflow and I/O ports on server
     var i, j,
@@ -630,6 +640,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         [workflowJobs[currentDraggingIndex].inputPorts[j].iPort ensureDeleted];
 
     [self removeWorkflowJob];
+    console.log(workflowJob);
     [workflowJob ensureDeleted];
 
 
@@ -789,32 +800,35 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     //test to see the type of object returned
     switch ([createdObject class])
     {
-
         case WorkflowJob:
             [self createOutputPortsForWorkflowJob:createdObject];
             [self createInputPortsForWorkflowJob:createdObject];
             [workflowJobs[creatingWorkflowJobIndex] setWkJob:createdObject];
+            // console.log(createdObject);
             break;
 
         case Connection:
-            console.log(createdObject);
-            console.log([createdObject pk]);
+            [links[connectionModelReference] setConnection:createdObject];
             [cacheToDelete shouldDeleteConnection:createdObject];
+            // console.log(createdObject);
             break;
 
         case InputPort:
+            [workflowJobs[creatingWorkflowJobIndex].inputPorts[createInputPortsCounter] setIPort:createdObject];
+            createInputPortsCounter++;
             // console.log(createdObject);
             break;
+
         case OutputPort:
-            // console.log(createdObject);
+            [workflowJobs[creatingWorkflowJobIndex].outputPorts[createOutputPortsCounter] setOPort:createdObject];
+            createOutputPortsCounter++;
             break;
 
         case Workflow:
 
         default:
-            // console.log("Default");
+            console.log(createdObject);
             break;
-
     }
 }
 
@@ -826,11 +840,13 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 - (void)createOutputPortsForWorkflowJob:(WorkflowJob)workflowJobObject
 {
     var counter = 0,
-        outputPortTypes = [creatingWorkflowJobIOTypes objectForKey:@"output_port_types"];
-    // create output ports (minimum required) for workflowJob
-    var i, j,
+        outputPortTypes = [creatingWorkflowJobIOTypes objectForKey:@"output_port_types"],
+        i, j,
         outputLoop = [outputPortTypes count];
 
+    createOutputPortsCounter = 0;
+
+    // create output ports (minimum required) for workflowJob
     for (i = 0; i < outputLoop; i++)
     {
         for (j = 0; j < outputPortTypes[i].minimum; j++)
@@ -839,12 +855,13 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
                             "uuid": "",
                             "workflow_job":[workflowJobObject pk],
                             "output_port_type":outputPortTypes[i].url,
-                            "label":""
+                            "label":counter
                             },
 
                 outputPortObject = [[OutputPort alloc] initWithJson:oPortObject];
+
             [outputPortObject ensureCreated];
-            [workflowJobs[creatingWorkflowJobIndex].outputPorts[counter] setOPort:outputPortObject];
+            // [workflowJobs[creatingWorkflowJobIndex].outputPorts[counter] setOPort:outputPortObject];
             counter++;
         }
     };
@@ -857,21 +874,22 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         inputPortTypes = [creatingWorkflowJobIOTypes objectForKey:@"input_port_types"],
         inputLoop = [inputPortTypes count];
 
+    createInputPortsCounter = 0;
+
     //create input ports (minimum required) for workflowJob
     for (var i = 0; i < inputLoop; i++)
     {
         for (var j = 0; j < inputPortTypes[i].minimum; j++)
         {
-            console.log(inputPortTypes[i].url);
             var iPortObject = {
                             "workflow_job":[workflowJobObject pk],
                             "input_port_type":inputPortTypes[i].url,
-                            "label":""
+                            "label":counter
                             },
 
                 inputPortObject = [[InputPort alloc] initWithJson:iPortObject];
 
-            [workflowJobs[creatingWorkflowJobIndex].inputPorts[counter] setIPort:inputPortObject];
+            // [workflowJobs[creatingWorkflowJobIndex].inputPorts[counter] setIPort:inputPortObject];
             [inputPortObject ensureCreated];
             counter++;
         }
@@ -912,8 +930,9 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
                       "workflow":[currentWorkflow pk]},
 
         connectionObject = [[Connection alloc] initWithJson:connection];
-    [connectionArrayController insertObject:connectionObject atArrangedObjectIndex:aLinkRef];
 
+    connectionModelReference = aLinkRef;
+    [connectionArrayController insertObject:connectionObject atArrangedObjectIndex:aLinkRef];
     [connectionObject ensureCreated];
 }
 
@@ -928,7 +947,6 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     [connectionArrayController setSelectionIndex:aLinkRef];
     var selectedIndices = [connectionArrayController selectedObjects];
 
-    console.log(selectedIndices[0].pk);
     if ([selectedIndices[0] pk] != null)
         [selectedIndices[0] ensureDeleted]; //delete connection model
 

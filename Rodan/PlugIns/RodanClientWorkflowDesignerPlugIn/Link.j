@@ -1,5 +1,8 @@
 @import <Foundation/CPObject.j>
 
+@import <RodanKit/RodanKit.j>
+@import <RodanKit/Connection.j>
+
 
 
 @implementation Link : CPObject
@@ -18,6 +21,8 @@
     CPUInteger          resourceListRef     @accessors;
 
     BOOL                isUsed              @accessors;
+
+    Connection          connection          @accessors;
 }
 
 - (id)initWithName:(CPString)aName workflowStart:(CPUInteger)wflowStart workflowEnd:(CPUInteger)wflowEnd outputRef:(CPUInteger)oRef inputRef:(CPUInteger)iRef resourceListRef:(CPUInteger)rRef;

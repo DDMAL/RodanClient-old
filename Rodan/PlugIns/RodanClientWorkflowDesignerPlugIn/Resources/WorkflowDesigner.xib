@@ -295,16 +295,22 @@
                 </menuItem>
             </items>
         </menu>
-        <customObject id="5yz-I3-Eff" userLabel="Workflow Designer View" customClass="WorkflowDesignerView">
+        <customObject id="5yz-I3-Eff" userLabel="Workflow Designer View" customClass="WorkflowDesignerView"/>
+        <customObject id="0v4-L3-dUp" userLabel="Controller - WorkflowJob" customClass="WorkflowJobController"/>
+        <customObject id="PQS-wh-f2A" userLabel="Controller - Connection" customClass="ConnectionController"/>
+        <customObject id="1GI-Vz-Lgq" userLabel="Controller - InputPort" customClass="InputPortController"/>
+        <customObject id="e4y-kD-aCr" userLabel="Controller - OutputPort" customClass="OutputPortController"/>
+        <customObject id="gY7-JX-cYJ" userLabel="Controller - Resource" customClass="ResourceController">
             <connections>
-                <outlet property="newResourceListButton" destination="8Co-U6-CDh" id="INX-qm-xzj"/>
+                <outlet property="arrayController" destination="UjB-xI-3Od" id="MFn-Yd-NSa"/>
             </connections>
         </customObject>
+        <arrayController id="UjB-xI-3Od" userLabel="Array Controller - Resource"/>
         <customObject id="SHC-K0-T9Y" userLabel="Workflow Job" customClass="WorkflowJobView"/>
         <customObject id="I5k-Is-SOH" userLabel="Link" customClass="Link"/>
         <customObject id="UPP-QF-ocx" userLabel="Input Port" customClass="InputPort"/>
         <customObject id="2CH-cZ-aXB" userLabel="Output Port" customClass="OutputPort"/>
-        <customObject id="nNE-na-wUQ"/>
+        <objectController id="MPx-KR-YK8"/>
         <customObject id="ak3-Ba-Xe7" userLabel="Jobs Table Controller" customClass="JobsTableController">
             <connections>
                 <outlet property="categoryTableColumn" destination="lAQ-g5-pPj" id="Bni-X0-3E2"/>
@@ -499,7 +505,7 @@
                                                                             </textFieldCell>
                                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                             <connections>
-                                                                                <binding destination="CEt-AX-NZl" name="value" keyPath="arrangedObjects" id="YH8-k0-qXO"/>
+                                                                                <binding destination="UjB-xI-3Od" name="value" keyPath="arrangedObjects.name" id="hdw-sM-pJM"/>
                                                                             </connections>
                                                                         </tableColumn>
                                                                     </tableColumns>
@@ -530,7 +536,7 @@
                                         <autoresizingMask key="autoresizingMask"/>
                                     </scroller>
                                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Bl4-Jg-fTC">
-                                        <rect key="frame" x="322" y="0.0" width="16" height="471"/>
+                                        <rect key="frame" x="323" y="0.0" width="15" height="471"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </scroller>
                                 </scrollView>
@@ -571,7 +577,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="1Uf-dD-68e">
-                        <rect key="frame" x="814" y="1" width="16" height="1030"/>
+                        <rect key="frame" x="815" y="1" width="15" height="1030"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
@@ -633,7 +639,7 @@
                                         <autoresizingMask key="autoresizingMask"/>
                                     </scroller>
                                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="eqO-KM-jkD">
-                                        <rect key="frame" x="571" y="0.0" width="15" height="428"/>
+                                        <rect key="frame" x="570" y="0.0" width="16" height="428"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </scroller>
                                 </scrollView>
@@ -760,7 +766,7 @@
                                         <autoresizingMask key="autoresizingMask"/>
                                     </scroller>
                                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="ZJN-36-VGu">
-                                        <rect key="frame" x="293" y="0.0" width="16" height="487"/>
+                                        <rect key="frame" x="294" y="0.0" width="15" height="487"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </scroller>
                                 </scrollView>
