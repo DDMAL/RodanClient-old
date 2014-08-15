@@ -4,13 +4,14 @@
 @import <RodanKit/OutputPort.j>
 @import "WorkflowJobViewController.j"
 @import "LinkViewController.j"
+@import "ConnectionController.j"
 
 @implementation OutputPortViewController : CPObject
 {
     BOOL                            isUsed                      @accessors;
     CPString                        outputPortType              @accessors;
 
-    WorkflowJobViewController       wkflowJobViewController     @accessors;
+    WorkflowJobViewController       workflowJobViewController   @accessors;
     LinkViewController              linkViewController          @accessors;
     ResourceListViewController      resourceListViewController  @accessors;
 
@@ -18,6 +19,8 @@
     OutputPortView                  outputPortView              @accessors;
 
     OutputPort                      outputPort                  @accessors;
+
+    ConnectionController            connection                  @accessors;
 }
 
 
@@ -30,7 +33,7 @@
         outputPortType = aType;
         isUsed = NO;
 
-        wkflowJobViewController = aWorkflowJobRef;
+        workflowJobViewController = aWorkflowJobRef;
         resourceListViewController = aResourceListRef;
 
     }
