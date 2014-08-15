@@ -117,7 +117,13 @@ var PORT_SIZE = 8.5,
             for (var k = 0; k < [outputPortTypes[i].minimum]; k++)
             {
                 resourceType = [outputPortTypes[i].resourceType];
-                outputPorts[counter] = [[OutputPortView alloc] init:aPoint size:aSize type:resourceType subsection:subsection iteration:counter workflowJobID:refNumber resourceListID:-1];
+                outputPorts[counter] = [[OutputPortView alloc] init:aPoint
+                                                               size:aSize
+                                                               type:resourceType
+                                                         subsection:subsection
+                                                          iteration:counter
+                                                      workflowJobID:refNumber
+                                                     resourceListID:-1];
                 counter++;
             };
         };
