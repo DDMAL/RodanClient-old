@@ -6,7 +6,7 @@ RodanDidLoadConnectionNotification = @"RodanDidLoadConnectionNotification"
 
 @implementation ConnectionController : RKController
 {
-    @outlet     CPArrayController   currentConnectionArrayController;
+    @outlet     CPArrayController   connectionArrayController;
 }
 
 - (void)awakeFromCib
