@@ -13,11 +13,14 @@
     WorkflowJobViewController       wkflowJobViewController     @accessors;
     LinkViewController              linkViewController          @accessors;
 
-    OutputPort                      oPort                       @accessors;
+    //associated view
+    OutputPortView                  outputPortView              @accessors;
+
+    OutputPort                      outputPort                  @accessors;
 }
 
 
-- (id)initWithType:(CPString)aType workflowJobRef:(WorkflowJobViewController)aWorkflowJobRef linkRef:(LinkViewController)aLinkRef
+- (id)initWithType:(CPString)aType workflowJobRef:(WorkflowJobViewController)aWorkflowJobRef
 {
     self = [super init];
 
@@ -27,7 +30,7 @@
         isUsed = NO;
 
         wkflowJobViewController = aWorkflowJobRef;
-        linkViewController = aLinkRef;
+
     }
 
     return self;
