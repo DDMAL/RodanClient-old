@@ -435,20 +435,17 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 {
 
     var info = [aNotification userInfo],
-        workflowNumber = [info objectForKey:"workflow_number"],
-        outputNumber = [info objectForKey:"output_number"],
-        resourceListNumber = [info objectForKey:"resource_list_number"],
         anEvent = [info objectForKey:"event"],
-        k = 0,
-        currentMouseLocation = [self convertPoint:[anEvent locationInWindow] fromView:nil];
+        outputPort = [aNotification object],
+        currentMouseLocation = [self convertPoint:[anEvent locationInWindow] fromView:nil],
+        k = 0;
+
     [outputPortView setHidden:YES];
 
+    var newLink = [[Link alloc] initWithName:"" workflowStart:workflowNumber workflowEnd:-1 outputRef:outputNumber inputRef:-1 resourceListRef:resourceListNumber];
+    [links addObject:newLink];
 
-    while (linksContentArray[k] != null)
-        k++;
-
-    linksContentArray[k] = [[Link alloc] initWithName:"" workflowStart:workflowNumber workflowEnd:-1 outputRef:outputNumber inputRef:-1 resourceListRef:resourceListNumber];
-    [linksContentArray[k] makeConnectPointAtCurrentPoint:currentMouseLocation controlPoint1:0.0 controlPoint2:0.0 endPoint:currentMouseLocation];
+    [newLink makeConnectPointAtCurrentPoint:currentMouseLocation controlPoint1:0.0 controlPoint2:0.0 endPoint:currentMouseLocation];
 
     if (resourceListNumber == -1) //if not a resourceList
         workflowJobsContentArray[workflowNumber].outputPorts[outputNumber].linksIndex = k;
