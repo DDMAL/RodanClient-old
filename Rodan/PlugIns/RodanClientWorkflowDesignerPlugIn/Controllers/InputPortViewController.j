@@ -4,19 +4,22 @@
 @import <RodanKit/InputPort.j>
 @import "WorkflowJobViewController.j"
 @import "LinkViewController.j"
+@import "ConnectionController.j"
 
 @implementation InputPortViewController : CPObject
 {
     BOOL                            isUsed                      @accessors;
     CPString                        inputPortType               @accessors;
 
-    WorkflowJobViewController       WorkflowJobViewController   @accessors;
+    WorkflowJobViewController       workflowJobViewController   @accessors;
     LinkViewController              linkViewController          @accessors;
 
     //associated view
     InputPortView                   inputPortView               @accessors;
 
     InputPort                       inputPort                   @accessors;
+
+    ConnectionController            connection                  @accessors;
 }
 
 - (id)initWithType:(CPString)aType workflowJobRef:(WorkflowJobViewController)aWorkflowJobRef
@@ -28,7 +31,7 @@
         inputPortType = aType;
         isUsed = NO;
 
-        wkflowJobViewController = aWorkflowJobRef;
+        workflowJobViewController = aWorkflowJobRef;
     }
 
     return self;
