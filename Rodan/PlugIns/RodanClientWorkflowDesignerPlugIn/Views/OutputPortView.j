@@ -62,14 +62,17 @@ var DEFAULT_SIZE = 10.0;
         [output setCornerRadius:cornerRadius];
         [output setFillColor:aColor];
         [output setBoxType:type];
-
 }
 
+
+//////////////////////////////////////////////////////
 // ---------------ACTION METHODS ------------------ //
+//////////////////////////////////////////////////////
+
 
 - (void)mouseDown:(CPEvent)anEvent
 {
-    [[CPNotificationCenter defaultCenter] postNotificationName:@"AddLinkToViewNotification" object:nil userInfo:[[CPDictionary alloc] initWithObjects:[workflowJobID, outputID, anEvent, resourceListID] forKeys:[@"workflow_number", @"output_number", @"event", @"resource_list_number"]]];
+    [[CPNotificationCenter defaultCenter] postNotificationName:@"AddLinkToViewNotification" object:outputPortViewController userInfo:[[CPDictionary alloc] initWithObjects:[anEvent] forKeys:[@"event"]]];
     [self setNeedsDisplay:YES];
 }
 
@@ -81,7 +84,7 @@ var DEFAULT_SIZE = 10.0;
 
 - (void)mouseUp:(CPEvent)anEvent
 {
-    [[CPNotificationCenter defaultCenter] postNotificationName:@"ReleaseLinkNotification" object:nil userInfo:[[CPDictionary alloc] initWithObjects:[workflowJobID, outputID, anEvent, resourceListID] forKeys:[@"workflow_number", @"output_number", @"event", @"resource_list_number"]]];
+    [[CPNotificationCenter defaultCenter] postNotificationName:@"ReleaseLinkNotification" object:outputPortViewController userInfo:[[CPDictionary alloc] initWithObjects:[anEvent] forKeys:[@"event"]]];
     [self setNeedsDisplay:YES];
 }
 
