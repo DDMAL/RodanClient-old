@@ -4,6 +4,8 @@
 @import "InputPortViewController.j"
 @import "OutputPortViewController.j"
 @import "../Views/WorkflowJobView.j"
+@import "../Views/OutputPortView.j"
+@import "../View/InputPortView.j"
 
 
 
@@ -137,7 +139,8 @@
         {
             resourceType = outputPortTypes[i].resourceType;
             var outputPortViewController = [[OutputPortViewController alloc] initWithType:resourceType
-                                                                           workflowJobRef:self];
+                                                                           workflowJobRef:self
+                                                                          resourceListRef:nil];
 
             contentArray[counter] = outputPortViewController;
 
@@ -155,8 +158,9 @@
 }
 
 
-- (void)createIOPortsWithPoint:(CGPoint)aPoint
+- (void)createAssociatedViewsAtPoint:(CGPoint)aPoint
 {
+    [self createWorkflowJobViewWithPoint:aPoint];
     [self createInputPorts:aPoint];
     [self createOutputPorts:aPoint];
 
