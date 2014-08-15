@@ -8,15 +8,18 @@
 @implementation InputPortViewController : CPObject
 {
     BOOL                            isUsed                      @accessors;
-    CPString                        inputPortType                   @accessors;
+    CPString                        inputPortType               @accessors;
 
     WorkflowJobViewController       WorkflowJobViewController   @accessors;
     LinkViewController              linkViewController          @accessors;
 
-    InputPort                       iPort                       @accessors;
+    //associated view
+    InputPortView                   inputPortView               @accessors;
+
+    InputPort                       inputPort                   @accessors;
 }
 
-- (id)initWithType:(CPString)aType workflowJobRef:(WorkflowJobViewController)aWorkflowJobRef linkRef:(LinkViewController)aLinkRef
+- (id)initWithType:(CPString)aType workflowJobRef:(WorkflowJobViewController)aWorkflowJobRef
 {
     self = [super init];
 
@@ -26,7 +29,6 @@
         isUsed = NO;
 
         wkflowJobViewController = aWorkflowJobRef;
-        linkViewController = aLinkRef;
     }
 
     return self;
