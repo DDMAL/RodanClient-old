@@ -1,17 +1,19 @@
 @import <Foundation/CPObject.j>
 
-@import "WorkflowJobView.j"
-@import "Link.j"
-@import "OutputPortView.j"
-@import "ResourceList.j"
+@import "../Views/WorkflowJobView.j"
+@import "../Views/OutputPortView.j"
+@import "../Views/ResourceListView.j"
+@import "ResourceListViewController.j"
+@import "ConnectionController.j"
+@import "JobsTableController.j"
+@import "DeleteCacheController.j"
+
+//models/controllers on server end
 @import <RodanKit/WorkflowController.j>
-@import <RodanKit/WorkflowJob.j> //to create JSON workflowJob model
+@import <RodanKit/WorkflowJob.j>
 @import <RodanKit/Workflow.j>
 @import <RodanKit/Connection.j>
 
-@import "DeleteCache.j"
-
-@import "JobsTableController.j"
 
 JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType";
 
@@ -19,32 +21,21 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 @global RodanModelCreatedNotification
 
 
-@implementation WorkflowDesignerView : CPObject
+@implementation DesignerViewController : CPObject
 {
-    //graphical objects
-    @outlet     CPArrayController       workflowJobs                @accessors;
-    @outlet     CPArrayController       links                       @accessors;
+    @outlet     CPArrayController       workflowJob                 @accessors;
+    @outlet     CPArrayController       connections                 @accessors;
     @outlet     CPArrayController       resourceLists               @accessors;
 
-                CPArray                 linksContentArray           @accessors;
+                CPArray                 connectionsContentArray     @accessors;
                 CPArray                 workflowJobsContentArray    @accessors;
                 CPArray                 resourceListsContentArray   @accessors;
 
-    //views for hovering over I/O ports w/ animations
-    @outlet     CPView                  outputPortView              @accessors;
-    @outlet     CPView                  inputPortView               @accessors;
-
-                CPViewAnimation         inputViewAnimation;
-                CPViewAnimation         outputViewAnimation;
-
-                CPArray                 currentInputHover; //array, pos. 0 = workflowJob, pos. 1 = inputNumber
-
+                CPArray                 currentInputHover; //pos. 0 = workflowJob, pos. 1 = inputNumber (for current hover)
                 CPEvent                 mouseDownEvent;
 
                 CPString                outputTypeText;
                 CPString                inputTypeText;
-
-                CGRect                  frame;
 
                 //dragging helper variables
                 BOOL                    isInView;
@@ -61,12 +52,13 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     @outlet     CPArrayController       jobArrayController;
     @outlet     CPArrayController       connectionArrayController;
 
-                WorklfowController      workflowController;
     @outlet     Workflow                currentWorkflow;
                 BOOL                    isCurrentSelection;
 
-                DeleteCache             cacheToDelete               @accessors;
+                DeleteCacheController   deleteCacheController       @accessors;
 
+    //model controllers to fetch (load) the models from server side
+    @outlet     WorkflowController      workflowController          @accessors;
     @outlet     WorkflowJobController   workflowJobController       @accessors;
     @outlet     OutputPortController    outputPortController        @accessors;
     @outlet     InputPortController     inputPortController         @accessors;
@@ -75,22 +67,23 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
 }
 
-- (id)initDesignerWithFrame:(CGRect)aFrame
+- (id)init
 {
-    self = [super initWithFrame:aFrame];
+    self = [super init];
+
     if (self)
     {
-        workflowController = [[CPApplication sharedApplication] delegate].workflowController;
+
         currentWorkflow = workflowController.currentWorkflow;
 
         [self setBackgroundColor:[CPColor colorWithHexString:"E8EBF0"]];
         [self registerForDraggedTypes:[CPArray arrayWithObjects:JobsTableDragAndDropTableViewDataType]];
 
         workflowJobs = [[CPArrayController alloc] init];
-        links = [[CPArrayController alloc] init];
+        connections = [[CPArrayController alloc] init];
         resourceLists = [[CPArrayController alloc] init];
 
-        linksContentArray = [links contentArray];
+        connectionsContentArray = [connections contentArray];
         workflowJobsContentArray = [workflowJobs contentArray];
         resourceListsContentArray = [resourceLists contentArray];
 
@@ -239,19 +232,19 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     return self;
 }
 
-//DRAWING LINKS (LINES)
+//DRAWING connections (LINES)
 - (void)drawRect:(CGRect)aRect
 {
     var i,
-        loopCount = [[links contentArray] count];
+        loopCount = [[connections contentArray] count];
 
     for (i = 0; i < loopCount; i++)
     {
 
-        //draw all links in the link array
-        if (linksContentArray[i] != null)
+        //draw all connections in the link array
+        if (connectionsContentArray[i] != null)
         {
-            linksContentArray[i].pathAToB = [[CPBezierPath alloc] init];
+            connectionsContentArray[i].pathAToB = [[CPBezierPath alloc] init];
 
             var context = [[CPGraphicsContext currentContext] graphicsPort],
                 shadowColor = [CPColor colorWithCalibratedWhite:1 alpha:1];
@@ -261,13 +254,13 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
             CGContextSetShadowWithColor(context, CGSizeMake(1, 1), 0, shadowColor);
             CGContextSetStrokeColor(context, [CPColor blackColor]);
 
-            [linksContentArray[i].pathAToB moveToPoint:linksContentArray[i].currentPoint];
-            [linksContentArray[i].pathAToB setLineWidth:2.0];
+            [connectionsContentArray[i].pathAToB moveToPoint:connectionsContentArray[i].currentPoint];
+            [connectionsContentArray[i].pathAToB setLineWidth:2.0];
 
-            [linksContentArray[i].pathAToB curveToPoint:linksContentArray[i].endPoint controlPoint1:linksContentArray[i].controlPoint1 controlPoint2:linksContentArray[i].controlPoint2];
+            [connectionsContentArray[i].pathAToB curveToPoint:connectionsContentArray[i].endPoint controlPoint1:connectionsContentArray[i].controlPoint1 controlPoint2:connectionsContentArray[i].controlPoint2];
 
 
-            [linksContentArray[i].pathAToB stroke];
+            [connectionsContentArray[i].pathAToB stroke];
             [self setNeedsDisplay:YES];
         }
     };
@@ -443,7 +436,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     [outputPortView setHidden:YES];
 
     var newLink = [[Link alloc] initWithName:"" workflowStart:workflowNumber workflowEnd:-1 outputRef:outputNumber inputRef:-1 resourceListRef:resourceListNumber];
-    [links addObject:newLink];
+    [connections addObject:newLink];
 
     [newLink makeConnectPointAtCurrentPoint:currentMouseLocation controlPoint1:0.0 controlPoint2:0.0 endPoint:currentMouseLocation];
 
@@ -452,7 +445,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     else
         resourceListsContentArray[resourceListNumber].outputPorts[outputNumber].linksIndex = k;
 
-    linksContentArray[k].outputRef = outputNumber;
+    connectionsContentArray[k].outputRef = outputNumber;
     console.log("Add Link");
 }
 
@@ -468,31 +461,31 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         k,
         currentMouseLocation = [self convertPoint:[anEvent locationInWindow] fromView:nil];
 
-    var linkLoop = [[links contentArray] count];
+    var linkLoop = [[connections contentArray] count];
 
     for (k = 0; k < linkLoop; k++)
     {
-        if ((linksContentArray[k] != null) && (linksContentArray[k].workflowStart == workflowNumber) && (linksContentArray[k].resourceListRef == resourceListNumber) && (linksContentArray[k].outputRef == outputNumber))
+        if ((connectionsContentArray[k] != null) && (connectionsContentArray[k].workflowStart == workflowNumber) && (connectionsContentArray[k].resourceListRef == resourceListNumber) && (connectionsContentArray[k].outputRef == outputNumber))
         {
             // -------- CREATE LINK -------- //
             if ([self _isInInputLocation:currentMouseLocation])
             {
-                linksContentArray[k].workflowEnd = currentInputHover[0];
-                linksContentArray[k].inputRef = currentInputHover[1];
-                linksContentArray[k].isUsed = YES;
+                connectionsContentArray[k].workflowEnd = currentInputHover[0];
+                connectionsContentArray[k].inputRef = currentInputHover[1];
+                connectionsContentArray[k].isUsed = YES;
 
                 var outPort;
 
                 if (workflowNumber != -1) //workflowJob and not resourceList
                 {
-                    [linksContentArray[k] makeConnectPointAtCurrentPoint:workflowJobsContentArray[workflowNumber].outputPorts[outputNumber].outputStart controlPoint1:workflowJobsContentArray[workflowNumber].outputPorts[outputNumber].outputStart controlPoint2:workflowJobsContentArray[workflowNumber].outputPorts[outputNumber].outputStart endPoint:workflowJobsContentArray[currentInputHover[0]].inputPorts[currentInputHover[1]].inputEnd];
+                    [connectionsContentArray[k] makeConnectPointAtCurrentPoint:workflowJobsContentArray[workflowNumber].outputPorts[outputNumber].outputStart controlPoint1:workflowJobsContentArray[workflowNumber].outputPorts[outputNumber].outputStart controlPoint2:workflowJobsContentArray[workflowNumber].outputPorts[outputNumber].outputStart endPoint:workflowJobsContentArray[currentInputHover[0]].inputPorts[currentInputHover[1]].inputEnd];
                     workflowJobsContentArray[workflowNumber].outputPorts[outputNumber].linkRef = k;
                     workflowJobsContentArray[workflowNumber].outputPorts[outputNumber].isUsed = YES;
                     outPort = workflowJobsContentArray[workflowNumber].outputPorts[outputNumber];
                 }
                 else //resourceList
                 {
-                    [linksContentArray[k] makeConnectPointAtCurrentPoint:resourceListsContentArray[resourceListNumber].outputPorts[outputNumber].outputStart controlPoint1:resourceListsContentArray[resourceListNumber].outputPorts[outputNumber].outputStart controlPoint2:resourceListsContentArray[resourceListNumber].outputPorts[outputNumber].outputStart endPoint:workflowJobsContentArray[currentInputHover[0]].inputPorts[currentInputHover[1]].inputEnd];
+                    [connectionsContentArray[k] makeConnectPointAtCurrentPoint:resourceListsContentArray[resourceListNumber].outputPorts[outputNumber].outputStart controlPoint1:resourceListsContentArray[resourceListNumber].outputPorts[outputNumber].outputStart controlPoint2:resourceListsContentArray[resourceListNumber].outputPorts[outputNumber].outputStart endPoint:workflowJobsContentArray[currentInputHover[0]].inputPorts[currentInputHover[1]].inputEnd];
                     resourceListsContentArray[resourceListNumber].outputPorts[outputNumber].linkRef = k;
                     outPort = resourceListsContentArray[resourceListNumber].outputPorts[outputNumber];
                 }
@@ -509,8 +502,8 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
             // -------- REMOVE LINK -------- //
             else
             {
-                linksContentArray[k] = null;
-                console.log([linksContentArray count]);
+                connectionsContentArray[k] = null;
+                console.log([connectionsContentArray count]);
                 console.log("Remove Link");
             }
             [self display];
@@ -537,16 +530,16 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         [self deleteConnectionModelAtLink:linkRef workflowRef:workflowNumber];
 
     [outputPortView setHidden:YES];
-    var linkLoop = [[links contentArray] count];
+    var linkLoop = [[connections contentArray] count];
 
     for (k = 0; k < linkLoop; k++)
     {
-        if ((linksContentArray[k] != null) && (linksContentArray[k].workflowStart == workflowNumber) && (linksContentArray[k].resourceListRef == resourceListNumber) && (linksContentArray[k].outputRef == outputNumber))
+        if ((connectionsContentArray[k] != null) && (connectionsContentArray[k].workflowStart == workflowNumber) && (connectionsContentArray[k].resourceListRef == resourceListNumber) && (connectionsContentArray[k].outputRef == outputNumber))
         {
             if (resourceListNumber == -1)
-                [linksContentArray[k] makeConnectPointAtCurrentPoint:workflowJobsContentArray[workflowNumber].outputPorts[outputNumber].outputStart controlPoint1:currentMouseLocation controlPoint2:currentMouseLocation endPoint:currentMouseLocation];
+                [connectionsContentArray[k] makeConnectPointAtCurrentPoint:workflowJobsContentArray[workflowNumber].outputPorts[outputNumber].outputStart controlPoint1:currentMouseLocation controlPoint2:currentMouseLocation endPoint:currentMouseLocation];
             else
-                [linksContentArray[k] makeConnectPointAtCurrentPoint:resourceListsContentArray[resourceListNumber].outputPorts[outputNumber].outputStart controlPoint1:currentMouseLocation controlPoint2:currentMouseLocation endPoint:currentMouseLocation];
+                [connectionsContentArray[k] makeConnectPointAtCurrentPoint:resourceListsContentArray[resourceListNumber].outputPorts[outputNumber].outputStart controlPoint1:currentMouseLocation controlPoint2:currentMouseLocation endPoint:currentMouseLocation];
         }
     };
     //refresh and display views
@@ -596,11 +589,11 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         var outputLink = workflowJobsContentArray[workflowNumber].outputPorts[i].linkRef;
 
         [workflowJobsContentArray[workflowNumber].outputPorts[i] arrangeOutputPosition:origin iteration:i];
-        if (linksContentArray[outputLink] != null)
+        if (connectionsContentArray[outputLink] != null)
         {
-            linksContentArray[workflowJobsContentArray[workflowNumber].outputPorts[i].linkRef].currentPoint = workflowJobsContentArray[workflowNumber].outputPorts[i].outputStart;
-            linksContentArray[workflowJobsContentArray[workflowNumber].outputPorts[i].linkRef].controlPoint1 = workflowJobsContentArray[workflowNumber].outputPorts[i].outputStart;
-            linksContentArray[workflowJobsContentArray[workflowNumber].outputPorts[i].linkRef].controlpoint2 = workflowJobsContentArray[workflowNumber].outputPorts[i].outputStart;
+            connectionsContentArray[workflowJobsContentArray[workflowNumber].outputPorts[i].linkRef].currentPoint = workflowJobsContentArray[workflowNumber].outputPorts[i].outputStart;
+            connectionsContentArray[workflowJobsContentArray[workflowNumber].outputPorts[i].linkRef].controlPoint1 = workflowJobsContentArray[workflowNumber].outputPorts[i].outputStart;
+            connectionsContentArray[workflowJobsContentArray[workflowNumber].outputPorts[i].linkRef].controlpoint2 = workflowJobsContentArray[workflowNumber].outputPorts[i].outputStart;
         }
     };
 
@@ -611,11 +604,11 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         var inputLink = workflowJobsContentArray[workflowNumber].inputPorts[i].linkRef;
 
         [workflowJobsContentArray[workflowNumber].inputPorts[i] arrangeInputPosition:origin iteration:i];
-        if (linksContentArray[inputLink] != null)
+        if (connectionsContentArray[inputLink] != null)
         {
-            linksContentArray[workflowJobsContentArray[workflowNumber].inputPorts[i].linkRef].endPoint = workflowJobsContentArray[workflowNumber].inputPorts[i].inputEnd;
-            linksContentArray[workflowJobsContentArray[workflowNumber].inputPorts[i].linkRef].controlPoint1 = workflowJobsContentArray[workflowNumber].inputPorts[i].inputEnd;
-            linksContentArray[workflowJobsContentArray[workflowNumber].inputPorts[i].linkRef].controlPoint2 = workflowJobsContentArray[workflowNumber].inputPorts[i].inputEnd;
+            connectionsContentArray[workflowJobsContentArray[workflowNumber].inputPorts[i].linkRef].endPoint = workflowJobsContentArray[workflowNumber].inputPorts[i].inputEnd;
+            connectionsContentArray[workflowJobsContentArray[workflowNumber].inputPorts[i].linkRef].controlPoint1 = workflowJobsContentArray[workflowNumber].inputPorts[i].inputEnd;
+            connectionsContentArray[workflowJobsContentArray[workflowNumber].inputPorts[i].linkRef].controlPoint2 = workflowJobsContentArray[workflowNumber].inputPorts[i].inputEnd;
         }
     };
 }
@@ -682,8 +675,8 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         var outputLink = resourceListsContentArray[resourceListRef].outputPorts[i].linkRef;
 
         [resourceListsContentArray[resourceListRef].outputPorts[i] arrangeOutputPosition:origin iteration:i];
-        if (linksContentArray[outputLink] != null)
-            linksContentArray[resourceListsContentArray[resourceListRef].outputPorts[i].linkRef].currentPoint = resourceListsContentArray[resourceListRef].outputPorts[i].outputStart;
+        if (connectionsContentArray[outputLink] != null)
+            connectionsContentArray[resourceListsContentArray[resourceListRef].outputPorts[i].linkRef].currentPoint = resourceListsContentArray[resourceListRef].outputPorts[i].outputStart;
     };
     [self display];
 }
@@ -815,7 +808,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
             break;
 
         case Connection:
-            [linksContentArray[connectionModelReference] setConnection:createdObject];
+            [connectionsContentArray[connectionModelReference] setConnection:createdObject];
             [cacheToDelete shouldDeleteConnection:createdObject];
             // console.log(createdObject);
             break;
@@ -946,9 +939,9 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 - (void)deleteConnectionModelAtLink:(CPInteger)aLinkRef workflowRef:(CPInteger)aWorkflowNumber
 {
 
-    workflowJobsContentArray[linksContentArray[aLinkRef].workflowEnd].inputPorts[linksContentArray[aLinkRef].inputRef].isUsed = false;
-    workflowJobsContentArray[aWorkflowNumber].outputPorts[linksContentArray[aLinkRef].outputRef].isUsed = false;
-    linksContentArray[aLinkRef] = null;
+    workflowJobsContentArray[connectionsContentArray[aLinkRef].workflowEnd].inputPorts[connectionsContentArray[aLinkRef].inputRef].isUsed = false;
+    workflowJobsContentArray[aWorkflowNumber].outputPorts[connectionsContentArray[aLinkRef].outputRef].isUsed = false;
+    connectionsContentArray[aLinkRef] = null;
 
     //delete server connection model
     [connectionArrayController setSelectionIndex:aLinkRef];
