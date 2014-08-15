@@ -295,9 +295,35 @@
                 </menuItem>
             </items>
         </menu>
-        <customObject id="5yz-I3-Eff" userLabel="Workflow Designer View" customClass="WorkflowDesignerView"/>
+        <customObject id="OuJ-uO-o9m" userLabel="Controller - Designer View" customClass="DesignerViewController">
+            <connections>
+                <outlet property="connectionArrayController" destination="S0r-xG-MDP" id="eak-kA-Exb"/>
+                <outlet property="connectionController" destination="PQS-wh-f2A" id="FBp-09-PuQ"/>
+                <outlet property="jobArrayController" destination="ATt-y4-Flf" id="4wX-Zu-C7c"/>
+                <outlet property="workflowArrayController" destination="lIn-Ch-jiL" id="psi-3K-whH"/>
+                <outlet property="workflowController" destination="hDB-5H-J43" id="2sc-B2-Suw"/>
+            </connections>
+        </customObject>
+        <arrayController id="lIn-Ch-jiL" userLabel="Array Controller - Workflow"/>
+        <customObject id="hDB-5H-J43" userLabel="Controller - Workflow" customClass="WorkflowController">
+            <connections>
+                <outlet property="workflowArrayController" destination="lIn-Ch-jiL" id="Z4i-zi-k0l"/>
+            </connections>
+        </customObject>
+        <customObject id="5yz-I3-Eff" userLabel="Workflow Designer View - old" customClass="WorkflowDesignerView"/>
+        <customObject id="F24-JC-oRX" userLabel="Controller - Job" customClass="JobController">
+            <connections>
+                <outlet property="jobArrayController" destination="ATt-y4-Flf" id="UX9-Qs-AvL"/>
+            </connections>
+        </customObject>
+        <arrayController id="ATt-y4-Flf" userLabel="Array Controller - Job"/>
         <customObject id="0v4-L3-dUp" userLabel="Controller - WorkflowJob" customClass="WorkflowJobController"/>
-        <customObject id="PQS-wh-f2A" userLabel="Controller - Connection" customClass="ConnectionController"/>
+        <arrayController id="S0r-xG-MDP" userLabel="Array Controller - Connection"/>
+        <customObject id="PQS-wh-f2A" userLabel="Controller - Connection" customClass="ConnectionController">
+            <connections>
+                <outlet property="connectionArrayController" destination="S0r-xG-MDP" id="7Ci-no-a5h"/>
+            </connections>
+        </customObject>
         <customObject id="1GI-Vz-Lgq" userLabel="Controller - InputPort" customClass="InputPortController"/>
         <customObject id="e4y-kD-aCr" userLabel="Controller - OutputPort" customClass="OutputPortController"/>
         <customObject id="gY7-JX-cYJ" userLabel="Controller - Resource" customClass="ResourceController">
@@ -1874,5 +1900,6 @@
                 <toolbarItem reference="v5a-TL-wmy"/>
             </defaultToolbarItems>
         </toolbar>
+        <customObject id="QV2-mc-9l9"/>
     </objects>
 </document>
