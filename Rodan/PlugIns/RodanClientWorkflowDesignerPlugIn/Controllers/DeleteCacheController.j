@@ -8,7 +8,7 @@
 @import <RodanKit/OutputPort.j>
 @import <RodanKit/InputPort.j>
 
-@implementation DeleteCache : CPObject
+@implementation DeleteCacheController : CPObject
 {
     CPArrayController     connectionsToDelete     @accessors;
 
