@@ -55,8 +55,7 @@ var _msLOADINTERVAL = 5.0;
 
     //jobs View
     @outlet             CPScrollView            jobScrollView           @accessors;
-    @outlet             CPView                  jobsView                @accessors;
-    @outlet             CPArray                 jobsViewArray           @accessors;
+    // @outlet             CPView                  jobsView                @accessors;
 
     @outlet             CPScrollView            leftScrollView          @accessors;
 
