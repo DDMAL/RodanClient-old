@@ -92,7 +92,7 @@ var PORT_SIZE = 8.5,
 - (void)mouseDragged:(CPEvent)anEvent
 {
     console.log("DRAG - WorkflowJob");
-    [[CPNotificationCenter defaultCenter] postNotificationName:@"WorkflowJobViewIsBeingDraggedNotification" object:nil userInfo:[[CPDictionary alloc] initWithObjects:[refNumber, anEvent] forKeys:[@"workflow_number",@"event"]]];
+    [[CPNotificationCenter defaultCenter] postNotificationName:@"WorkflowJobViewIsBeingDraggedNotification" object:workflowJobViewController userInfo:[[CPDictionary alloc] initWithObjects:[anEvent] forKeys:[@"event"]]];
 }
 
 - (void)mouseDown:(CPEvent)anEvent
@@ -101,7 +101,7 @@ var PORT_SIZE = 8.5,
 
     dragLocation = [anEvent locationInWindow];
     mouseDownEvent = anEvent;
-    [[CPNotificationCenter defaultCenter] postNotificationName:@"WorkflowJobIsBeingSelectedNotification" object:nil userInfo:[[CPDictionary alloc] initWithObjects:[refNumber] forKeys:[@"workflow_number"]]];
+    [[CPNotificationCenter defaultCenter] postNotificationName:@"WorkflowJobIsBeingSelectedNotification" object:workflowJobViewController];
 
     //for key down events
     [[self window] makeFirstResponder:self];
@@ -155,7 +155,7 @@ var PORT_SIZE = 8.5,
     var key = [[anEvent charactersIgnoringModifiers] characterAtIndex:0];
     if (key == CPDeleteCharacter)
     {
-        [[CPNotificationCenter defaultCenter] postNotificationName:@"WorkflowJobIsBeingDeletedNotification" object:nil userInfo:[[CPDictionary alloc] initWithObjects:[refNumber] forKeys:[@"workflow_number"]]];
+        [[CPNotificationCenter defaultCenter] postNotificationName:@"WorkflowJobIsBeingDeletedNotification" object:workflowJobViewController];
     }
 }
 // ------------------------------------------------------------ //

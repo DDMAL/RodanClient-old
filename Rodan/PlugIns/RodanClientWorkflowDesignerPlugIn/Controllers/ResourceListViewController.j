@@ -4,6 +4,7 @@
 @import "../Views/OutputPortView.j"
 
 @import "../Views/ResourceListView.j"
+@import "ConnectionViewController.j"
 
 
 @implementation ResourceListViewController : CPObject
@@ -17,6 +18,8 @@
 
     //associated view
     ResourceListView    resourceListView    @accessors;
+
+    ConnectionViewController connection     @accessors;
 
 }
 

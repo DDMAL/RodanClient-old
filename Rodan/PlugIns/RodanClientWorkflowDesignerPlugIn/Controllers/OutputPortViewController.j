@@ -4,7 +4,7 @@
 @import <RodanKit/OutputPort.j>
 @import "WorkflowJobViewController.j"
 @import "LinkViewController.j"
-@import "ConnectionController.j"
+@import "ConnectionViewController.j"
 
 @implementation OutputPortViewController : CPObject
 {

@@ -20,7 +20,7 @@ var DEFAULT_SIZE = CGRectMake(30.0, 30.0);
 }
 
 
-- (id)initWithPoint:(CGPoint)aPoint outputNum:(CPUInteger)aNumber
+- (id)initWithPoint:(CGPoint)aPoint outputNum:(CPUInteger)aNumber resourceListViewController:(ResourceListViewController)aViewController
 {
     var aRect = CGRectMake(aPoint.x, aPoint.y, resourceListSize.height, resourceListSize.width);
     self = [super initWithFrame:aRect];
@@ -29,8 +29,9 @@ var DEFAULT_SIZE = CGRectMake(30.0, 30.0);
     {
         resourceList = [[CPBox alloc] initWithFrame:aRect];
         outputNum = aNumber;
+        resourceListViewController = aViewController;
 
-        [resourceListsContentArray[i] changeBoxAttributes:2 cornerRadius:5 fillColor:[CPColor colorWithHexString:"333333"] boxType:CPBoxPrimary title:"Resource List A"];
+        [self changeBoxAttributes:2 cornerRadius:5 fillColor:[CPColor colorWithHexString:"333333"] boxType:CPBoxPrimary title:"Resource List A"];
 
         [self addSubview:resourceList];
         [self setBounds:aRect];
@@ -79,7 +80,7 @@ var DEFAULT_SIZE = CGRectMake(30.0, 30.0);
 
 - (void)mouseDragged:(CPEvent)anEvent
 {
-    [[CPNotificationCenter defaultCenter] postNotificationName:@"ResourceListViewIsBeingDraggedNotification" object:nil userInfo:[[CPDictionary alloc] initWithObjects:[listRef, anEvent] forKeys:[@"resource_list_position", @"event"]]];
+    [[CPNotificationCenter defaultCenter] postNotificationName:@"ResourceListViewIsBeingDraggedNotification" object:resourceListViewController userInfo:[[CPDictionary alloc] initWithObjects:[anEvent] forKeys:[@"event"]]];
 
 }
 
@@ -120,7 +121,7 @@ var DEFAULT_SIZE = CGRectMake(30.0, 30.0);
 {
     if (returnCode == 1) //second button (YES)
     {
-        [[CPNotificationCenter defaultCenter] postNotificationName:@"ResourceListIsBeingDeletedNotification" object:nil userInfo:[[CPDictionary alloc] initWithObjects:[listRef] forKeys:[@"resource_list_number"]]];
+        [[CPNotificationCenter defaultCenter] postNotificationName:@"ResourceListIsBeingDeletedNotification" object:resourceListViewController];
     }
 }
 

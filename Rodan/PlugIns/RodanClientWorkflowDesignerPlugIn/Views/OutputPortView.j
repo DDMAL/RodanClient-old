@@ -78,7 +78,7 @@ var DEFAULT_SIZE = 10.0;
 
 - (void)mouseDragged:(CPEvent)anEvent
 {
-    [[CPNotificationCenter defaultCenter] postNotificationName:@"LinkIsBeingDraggedNotification" object:nil userInfo:[[CPDictionary alloc] initWithObjects:[workflowJobID, outputID, anEvent, resourceListID, linkRef, isUsed] forKeys:[@"workflow_number", @"output_number", @"event", @"resource_list_number", @"link_ref", @"is_used"]]];
+    [[CPNotificationCenter defaultCenter] postNotificationName:@"LinkIsBeingDraggedNotification" object:outputPortViewController userInfo:[[CPDictionary alloc] initWithObjects:[anEvent] forKeys:[@"event"]]];
     [self setNeedsDisplay:YES];
 }
 
@@ -91,13 +91,13 @@ var DEFAULT_SIZE = 10.0;
 //NOTE: must put more properties into userInof for Entered and Exited to display output port info
 - (void)mouseEntered:(CPEvent)anEvent
 {
-    [[CPNotificationCenter defaultCenter] postNotificationName:@"MouseEnteredOutputNotification" object:nil userInfo:[[CPDictionary alloc] initWithObjects:[workflowJobID, outputID, anEvent, outputPortType] forKeys:[@"workflow_number", @"output_number", @"event", @"output_type"]]];
+    [[CPNotificationCenter defaultCenter] postNotificationName:@"MouseEnteredOutputNotification" object:outputPortViewController userInfo:[[CPDictionary alloc] initWithObjects:[anEvent] forKeys:[@"event"]]];
     [self changeBoxAttributes:0.75 cornerRadius:1.0 fillColor:[CPColor colorWithHexString:"FF9933"] boxType:CPBoxOldStyle];
 }
 
 - (void)mouseExited:(CPEvent)anEvent
 {
-    [[CPNotificationCenter defaultCenter] postNotificationName:@"MouseExitedOutputNotification" object:nil userInfo:[[CPDictionary alloc] initWithObjects:[workflowJobID, outputID, anEvent] forKeys:[@"workflow_number", @"output_number", @"event"]]];
+    [[CPNotificationCenter defaultCenter] postNotificationName:@"MouseExitedOutputNotification" object:outputPortViewController userInfo:[[CPDictionary alloc] initWithObjects:[anEvent] forKeys:[@"event"]]];
     [self changeBoxAttributes:0.75 cornerRadius:1.0 fillColor:[CPColor colorWithHexString:"003366"] boxType:CPBoxOldStyle];
 
 }

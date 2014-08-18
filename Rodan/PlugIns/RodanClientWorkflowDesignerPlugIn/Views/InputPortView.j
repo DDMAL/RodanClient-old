@@ -69,13 +69,13 @@ var DEFAULT_SIZE = 10.0;
 // ------------------- ACTION METHODS ----------------- //
 - (void)mouseEntered:(CPEvent)anEvent
 {
-    [[CPNotificationCenter defaultCenter] postNotificationName:@"MouseEnteredInputNotification" object:nil userInfo:[[CPDictionary alloc] initWithObjects:[workflowJobID, inputID, anEvent, inputType] forKeys:[@"workflow_number", @"input_number", @"event", @"input_type"]]];
+    [[CPNotificationCenter defaultCenter] postNotificationName:@"MouseEnteredInputNotification" object:inputPortViewController userInfo:[[CPDictionary alloc] initWithObjects:[anEvent] forKeys:[@"event"]]];
     [self changeBoxAttributes:0.75 cornerRadius:1.0 fillColor:[CPColor colorWithHexString:"FF9933"] boxType:CPBoxOldStyle];
 }
 
 - (void)mouseExited:(CPEvent)anEvent
 {
-    [[CPNotificationCenter defaultCenter] postNotificationName:@"MouseExitedInputNotification" object:nil userInfo:[[CPDictionary alloc] initWithObjects:[workflowJobID, inputID, anEvent] forKeys:[@"workflow_number", @"input_number", @"event"]]];
+    [[CPNotificationCenter defaultCenter] postNotificationName:@"MouseExitedInputNotification" object:inputPortViewController userInfo:[[CPDictionary alloc] initWithObjects:[anEvent] forKeys:[@"event"]]];
     [self changeBoxAttributes:0.75 cornerRadius:1.0 fillColor:[CPColor colorWithHexString:"FF4D4D"] boxType:CPBoxOldStyle];
 
 }

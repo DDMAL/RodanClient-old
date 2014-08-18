@@ -31,8 +31,12 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
                 CPArray                 resourceListsContentArray   @accessors;
 
     //views for hovering over I/O ports w/ animations
-    @outlet     CPView                  outputPortView              @accessors;
-    @outlet     CPView                  inputPortView               @accessors;
+    @outlet     CPView                  infoOutputPortView              @accessors;
+    @outlet     CPView                  infoInputPortView               @accessors;
+
+
+                CPString                infoOutputTypeText;
+                CPString                infoInputTypeText;
 
                 CPViewAnimation         inputViewAnimation;
                 CPViewAnimation         outputViewAnimation;
@@ -41,8 +45,6 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
                 CPEvent                 mouseDownEvent;
 
-                CPString                outputTypeText;
-                CPString                inputTypeText;
 
                 CGRect                  frame;
 
@@ -521,7 +523,8 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 }
 
 
-- (void)receiveDragLink:(CPNotification)aNotification
+- (void)
+:(CPNotification)aNotification
 {
     var info = [aNotification userInfo],
         workflowNumber = [info objectForKey:"workflow_number"],
