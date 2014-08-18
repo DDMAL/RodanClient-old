@@ -40,18 +40,13 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
                 WorkflowJobViewController currentHoverInputWorkflowJob; //pos. 0 = workflowJob, pos. 1 = inputNumber (for current hover)
                 InputPortViewController   currentHoverInputPort;
 
-                CPEvent                   mouseDownEvent;
-
                 CPString                  outputTypeText;
                 CPString                  inputTypeText;
 
                 //dragging helper variables
                 BOOL                      isInView;
-                CPInteger                 currentDraggingIndex;
 
                 WorkflowJobViewController draggingWorkflowJob;
-
-
 
                 //variables to reference graphical <-> server objects
                 WorkflowJobViewController creatingWorkflowJob;
