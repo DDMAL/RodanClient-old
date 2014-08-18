@@ -93,6 +93,7 @@
     // Next, enumerate through our jobs and get distinct category names.
     var jobArrayEnumerator = [[jobArrayController content] objectEnumerator],
         job = null;
+
     while (job = [jobArrayEnumerator nextObject])
     {
         if ([_menuCategory itemWithTitle:[job category]] === null)
@@ -165,29 +166,27 @@
 - (void)_handleCategoryMenuDidClose:(CPMenu)aMenu
 {
     var highlightedItem = [aMenu highlightedItem];
+
     if ([highlightedItem title] !== "All")
-    {
         _categoryPredicate = [CPPredicate predicateWithFormat:"category like '" + [highlightedItem title] + "'"];
-    }
     else
-    {
         _categoryPredicate = null;
-    }
+
     [self _applyPredicates];
 }
 
 - (void)_applyPredicates
 {
     var predicateArray = [[CPArray alloc] initWithObjects:_isInteractivePredicate, _categoryPredicate];
+
     if (_isInteractivePredicate !== null)
-    {
         predicateArray.push(_isInteractivePredicate);
-    }
+
     if (_categoryPredicate !== null)
-    {
         predicateArray.push(_categoryPredicate);
-    }
+
     var masterPredicate = [CPCompoundPredicate andPredicateWithSubpredicates:predicateArray];
+
     [jobArrayController setFilterPredicate:masterPredicate];
 }
 @end

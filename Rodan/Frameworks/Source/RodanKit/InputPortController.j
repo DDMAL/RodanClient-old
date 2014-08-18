@@ -19,7 +19,9 @@ RodanDidLoadInputPortNotification = @"RodanDidLoadInputPortNotification"
 {
     //fetch inputport response
     var inputPort = [InputPort objectsFromJson:[anAction result]];
+
     [currentInputPortController addObject:inputPort];
+
     [[CPNotificationCenter defaultCenter] postNotificationName:RodanDidLoadInputPortNotification
                                                     object:[anAction result]];
 }
@@ -28,9 +30,9 @@ RodanDidLoadInputPortNotification = @"RodanDidLoadInputPortNotification"
 {
     [WLRemoteAction schedule:WLRemoteActionGetType
                         path:[self serverHost] + "/inputport" + aUUID + "/"
-                        delegate:self
-                         message:"Loading InputPort"
-                 withCredentials:YES];
+                    delegate:self
+                     message:"Loading InputPort"
+             withCredentials:YES];
 }
 
 

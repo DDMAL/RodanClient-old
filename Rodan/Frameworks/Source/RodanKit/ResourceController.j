@@ -31,6 +31,7 @@ _MESSAGE_RESOURCES_LOAD = "_MESSAGE_RESOURCES_LOAD";
                                           selector:@selector(receiveHasFocusEvent:)
                                           name:RodanHasFocusResourcesViewNotification
                                           object:nil];
+
     [[CPNotificationCenter defaultCenter] addObserver:self
                                           selector:@selector(handleShouldLoadNotification:)
                                           name:RodanRequestResourcesNotification
@@ -57,15 +58,16 @@ _MESSAGE_RESOURCES_LOAD = "_MESSAGE_RESOURCES_LOAD";
 - (@action)viewOriginal:(id)aSender
 {
     var selectedObjects = [arrayController selectedObjects];
-    if ([selectedObjects count] == 1)
-    {
+
+    if ([selectedObjects count] === 1)
         window.open([[selectedObjects objectAtIndex:0] resourceFile], "_blank");
-    }
+
 }
 
 - (@action)removeResource:(id)aSender
 {
     var selectedObjects = [arrayController selectedObjects];
+
     [selectedObjects makeObjectsPerformSelector:@selector(ensureDeleted)];
     [self handleShouldLoadNotification:null];
 }

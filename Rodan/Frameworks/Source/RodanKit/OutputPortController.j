@@ -19,7 +19,9 @@ RodanDidLoadOutputPortNotification = @"RodanDidLoadOutputPortNotification"
 {
     //fetch outputPort response
     var outputPort = [OutputPort objectsFromJson:[anAction result]];
+
     [currentOutputPortController addObject:outputPort];
+
     [[CPNotificationCenter defaultCenter] postNotificationName:RodanDidLoadOutputPortNotification
                                                     object:[anAction result]];
 }
@@ -28,9 +30,9 @@ RodanDidLoadOutputPortNotification = @"RodanDidLoadOutputPortNotification"
 {
     [WLRemoteAction schedule:WLRemoteActionGetType
                         path:[self serverHost] + "/outputport" + aUUID + "/"
-                        delegate:self
-                         message:"Loading OutputPort"
-                 withCredentials:YES];
+                    delegate:self
+                     message:"Loading OutputPort"
+             withCredentials:YES];
 }
 
 

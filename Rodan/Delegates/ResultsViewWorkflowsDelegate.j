@@ -33,11 +33,15 @@
 
 - (id)init
 {
-    _selectionFlag = NO;
-    [[CPNotificationCenter defaultCenter] addObserver:self
-                                          selector:@selector(handleShouldLoadWorkflowsNotification:)
-                                          name:RodanRequestWorkflowsNotification
-                                          object:nil];
+    if (self = [super init])
+    {
+        _selectionFlag = NO;
+        [[CPNotificationCenter defaultCenter] addObserver:self
+                                              selector:@selector(handleShouldLoadWorkflowsNotification:)
+                                              name:RodanRequestWorkflowsNotification
+                                              object:nil];
+    }
+
     return self;
 }
 
@@ -83,9 +87,12 @@
     _currentlySelectedWorkflow = [[_workflowArrayController contentArray] objectAtIndex:rowIndex];
     [WorkflowController setActiveWorkflow:_currentlySelectedWorkflow];
     [_resultsViewRunsDelegate reset];
+
     [[CPNotificationCenter defaultCenter] postNotificationName:RodanRequestWorkflowRunsNotification
                                           object:[_currentlySelectedWorkflow uuid]];
+
     _selectionFlag = YES;
+
     return YES;
 }
 

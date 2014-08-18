@@ -24,8 +24,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////
 - (id)init
 {
-    self = [super init];
-    if (self)
+    if (self = [super init])
     {
         [[CPNotificationCenter defaultCenter] addObserver:self
                                               selector:@selector(handleShouldLoadNotification:)
@@ -33,6 +32,7 @@
                                               object:nil];
     }
     _selectionFlag = NO;
+
     return self;
 }
 
@@ -78,8 +78,10 @@
 {
     _currentlySelectedWorkflowRun = [[_runsArrayController contentArray] objectAtIndex:rowIndex];
     [_resultsViewPagesDelegate reset];
+
     [[CPNotificationCenter defaultCenter] postNotificationName:RodanRequestWorkflowPagesNotification
                                           object:_currentlySelectedWorkflowRun];
+
     _selectionFlag = YES;
     return YES;
 }
@@ -98,6 +100,7 @@
     {
         var parameters = @"?workflow=" + _workflowUUID;
         parameters += @"&ordering=created";
+
         [WLRemoteAction schedule:WLRemoteActionGetType
                         path:[[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/workflowruns/" + parameters
                         delegate:self

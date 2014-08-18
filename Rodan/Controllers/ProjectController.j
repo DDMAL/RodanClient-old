@@ -154,7 +154,7 @@ var _MESSAGE_PROJECTLOAD = "_MESSAGE_PROJECTLOAD",
 {
 }
 
-- (IBAction)closeProject:(id)aSender
+- (@action)closeProject:(id)aSender
 {
     [workspaceMenuItem setEnabled:NO];
     [self showProjectsChooser:nil];
@@ -170,10 +170,12 @@ var _MESSAGE_PROJECTLOAD = "_MESSAGE_PROJECTLOAD",
 // Public Action Methods
 ///////////////////////////////////////////////////////////////////////////////
 #pragma mark Public Action Methods
-- (IBAction)openProject:(id)aSender
+- (@action)openProject:(id)aSender
 {
     [workspaceMenuItem setEnabled:YES];
+
     var selectedProject = [[projectArrayController selectedObjects] objectAtIndex:0];
+
     [WLRemoteAction schedule:WLRemoteActionGetType
                     path:[selectedProject pk]
                     delegate:self

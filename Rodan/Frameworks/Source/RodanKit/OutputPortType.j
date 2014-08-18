@@ -26,13 +26,9 @@
 - (CPString)remotePath
 {
     if ([self pk])
-    {
         return [self pk]
-    }
     else
-    {
         return [[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/outputporttypes/";
-    }
 }
 
 @end

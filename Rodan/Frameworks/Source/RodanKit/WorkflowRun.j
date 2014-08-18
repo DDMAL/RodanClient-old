@@ -62,21 +62,19 @@
 - (CPString)remotePath
 {
     if ([self pk])
-    {
         return [self pk]
-    }
     else
-    {
         return [[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/workflowruns/";
-    }
 }
 
 /* This modifies the request path so that we can launch a test run */
 - (CPString)postPath
 {
     var pathComponents = @"";
+
     if (testRun)
         pathComponents = "?test=true&page_id=" + testPageID;
+
     return [self remotePath] + pathComponents;
 }
 
@@ -91,10 +89,9 @@
     if ([super isEqual:aObject])
     {
         if ([self updated] === [aObject updated])
-        {
             return YES;
-        }
     }
+
     return NO;
 }
 
@@ -105,9 +102,7 @@
 - (void)remoteActionDidFail:(WLRemoteAction)aAction
 {
     if (aAction != nil)
-    {
         [aAction cancel];
-    }
 }
 
 @end

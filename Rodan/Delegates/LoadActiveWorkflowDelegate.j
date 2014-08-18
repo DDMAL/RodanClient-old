@@ -13,6 +13,7 @@
 - (void)remoteActionDidFinish:(WLRemoteAction)anAction
 {
     var workflow = [workflowController updateWorkflowWithJson:[anAction result]];
+
     if (workflow !== nil)
     {
         [currentWorkflowArrayController bind:@"contentArray"

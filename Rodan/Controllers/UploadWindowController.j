@@ -63,6 +63,7 @@
 - (void)remoteActionDidFinish:(WLRemoteAction)anAction
 {
     var models = [[arrayController objectClass] objectsFromJson:[anAction result]];
+
     [arrayController setContent:models];
     [nameTextField setStringValue:@""];
     [fileTextField setStringValue:@""];
@@ -179,9 +180,7 @@
     for (; i < count; ++i)
     {
         if (modelName === [array[i] name])
-        {
             return true;
-        }
     }
 
     return false;

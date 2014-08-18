@@ -6,8 +6,8 @@
 
 - (id)initWithFrame:(CGRect)aFrame
 {
-    console.log("RKDiva init with frame");
     var self = [super initWithFrame:aFrame];
+
     if (self)
     {
         [self setFrameLoadDelegate:self];
