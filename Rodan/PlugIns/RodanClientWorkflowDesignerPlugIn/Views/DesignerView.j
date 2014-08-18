@@ -6,7 +6,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
 @implementation DesignerView : CPView
 {
-
+                DesignerViewController  designerViewController          @accessors;
 
     //views for hovering over I/O ports w/ animations
     @outlet     CPView                  infoOutputPortView              @accessors;
@@ -122,22 +122,22 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
 - (void)performDragOperation:(CPDraggingInfo)aSender
 {
-    [[CPNotificationCenter defaultCenter] postNotificationName:@"DesignerViewPerformedDragOperationNotification" object:aSender];
+    [designerViewController hasPerformedDraggingOperation:aSender];
 }
 
 - (void)draggingEntered:(CPDraggingInfo)aSender
 {
-    [[CPNotificationCenter defaultCenter] postNotificationName:@"DesignerViewDraggingEnteredNotification" object:aSender];
+    [designerViewController draggingHasEntered:aSender];
 }
 
 - (void)draggingExited:(CPDraggingInfo)aSender
 {
-    [[CPNotificationCenter defaultCenter] postNotificationName:@"DesignerViewDraggingExitedNotification" object:aSender];
+    [designerViewController draggingHasExited:aSender];
 }
 
 - (void)draggingUpdated:(CPDraggingInfo)aSender
 {
-    [[CPNotificationCenter defaultCenter] postNotificationName:@"DesignerViewDraggingUpdatedNotification" object:aSender];
+    [designerViewController draggingHasUpdated:aSender];
 }
 
 @end
