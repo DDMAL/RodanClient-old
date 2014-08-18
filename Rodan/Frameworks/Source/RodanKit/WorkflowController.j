@@ -112,6 +112,7 @@ var activeWorkflow = nil,
 - (void)fetchWorkflow:(CPUInteger)anIndex
 {
     var uuid = [[[workflowArrayController contentArray] objectAtIndex:anIndex] uuid];
+
     [WLRemoteAction schedule:WLRemoteActionGetType
                     path:[self serverHost] + "/workflow/" + uuid + "/"
                     delegate:self
@@ -122,6 +123,7 @@ var activeWorkflow = nil,
 - (void)removeWorkflow:(CPIndexSet)anIndexSet
 {
     [workflowArrayController setSelectedObjects:anIndexSet];
+
     if ([workflowArrayController selectedObjects])
     {
         var alert = [CPAlert alertWithMessageText:@"You are about to permanently delete this workflow"
@@ -129,6 +131,7 @@ var activeWorkflow = nil,
                              alternateButton:@"Cancel"
                              otherButton:nil
                              informativeTextWithFormat:nil];
+
         [alert setDelegate:self];
         [alert runModal];
     }
@@ -143,6 +146,7 @@ var activeWorkflow = nil,
                              alternateButton:@"Cancel"
                              otherButton:nil
                              informativeTextWithFormat:nil];
+
         [alert setDelegate:self];
         [alert runModal];
     }
@@ -182,6 +186,7 @@ var activeWorkflow = nil,
     // Go through workflow array and update the workflow.
     var workflowEnumerator = [[workflowArrayController arrangedObjects] objectEnumerator],
         workflow = nil;
+
     while (workflow = [workflowEnumerator nextObject])
     {
         if ([workflow pk] === [tempWorkflow pk])
@@ -192,6 +197,7 @@ var activeWorkflow = nil,
             return workflow;
         }
     }
+
     return nil;
 }
 
@@ -210,11 +216,14 @@ var activeWorkflow = nil,
 - (@action)runWorkflow:(id)aSender
 {
     var workflow = [WorkflowController activeWorkflow];
+
     if (workflow != nil)
     {
         [workflow touchWorkflowJobs];
+
         var workflowRunAsJson = {"workflow": [workflow pk], "creator": [activeUser pk]},
             workflowRun = [[WorkflowRun alloc] initWithJson:workflowRunAsJson];
+
         [workflowRun ensureCreated];
     }
 }
@@ -225,6 +234,7 @@ var activeWorkflow = nil,
 - (@action)testWorkflow:(id)aSender
 {
     var workflow = [WorkflowController activeWorkflow];
+
     if (workflow != nil)
     {
         [workflow touchWorkflowJobs];
@@ -250,16 +260,22 @@ var activeWorkflow = nil,
 {
     [[CPNotificationCenter defaultCenter] postNotificationName:RodanRequestWorkflowsNotification
                                           object:nil];
+
     [[CPNotificationCenter defaultCenter] postNotificationName:RodanRequestWorkflowRunsNotification
                                           object:nil];
+
     [[CPNotificationCenter defaultCenter] postNotificationName:RodanRequestWorkflowPagesNotification
                                           object:nil];
+
     [[CPNotificationCenter defaultCenter] postNotificationName:RodanRequestRunJobsNotification
                                           object:nil];
+
     [[CPNotificationCenter defaultCenter] postNotificationName:RodanRequestWorkflowPageResultsNotification
                                           object:nil];
+
     [[CPNotificationCenter defaultCenter] postNotificationName:RodanRequestWorkflowResultsPackagesNotification
                                           object:nil];
+
     [[CPNotificationCenter defaultCenter] postNotificationName:RodanRequestWorkflowRunsJobsNotification
                                           object:nil];
 }

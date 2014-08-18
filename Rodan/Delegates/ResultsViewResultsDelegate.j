@@ -18,8 +18,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////
 - (id)init
 {
-    self = [super init];
-    if (self)
+    if (self = [super init])
     {
         [[CPNotificationCenter defaultCenter] addObserver:self
                                               selector:@selector(handleShouldLoadNotification:)
@@ -68,13 +67,13 @@
  */
 - (void)handleShouldLoadNotification:(CPNotification)aNotification
 {
-    if ([aNotification object] != nil)
+    if ([aNotification object] !== nil)
     {
         _associatedPage = [aNotification object].page,
         _associatedWorkflowRun = [aNotification object].workflowRun;
     }
 
-    if (_associatedPage != nil && _associatedWorkflowRun != nil)
+    if (_associatedPage !== nil && _associatedWorkflowRun !== nil)
     {
         var parameters = @"?workflowrun=" + [_associatedWorkflowRun uuid];
         parameters += @"&page=" + [_associatedPage uuid];
@@ -92,7 +91,7 @@
  */
 - (void)remoteActionDidFinish:(WLRemoteAction)aAction
 {
-    if ([aAction result] && _associatedPage != nil && _associatedWorkflowRun != nil)
+    if ([aAction result] && _associatedPage !== nil && _associatedWorkflowRun !== nil)
     {
         [WLRemoteObject setDirtProof:YES];
         [_resultArrayController setContent: [Result objectsFromJson: [aAction result]]];

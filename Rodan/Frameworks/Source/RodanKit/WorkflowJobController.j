@@ -20,7 +20,9 @@ RodanDidLoadWorkflowJobNotification = @"RodanDidLoadWorkflowJobNotification"
     //fetch workflowjob response
 
     var workflowJob = [WorkflowJob objectsFromJson:[anAction result]];
+
     [currentWorkflowJobsArrayController addObject:workflowJob];
+
     [[CPNotificationCenter defaultCenter] postNotificationName:RodanDidLoadWorkflowJobNotification
                                                         object:[anAction result]];
 }
@@ -29,9 +31,9 @@ RodanDidLoadWorkflowJobNotification = @"RodanDidLoadWorkflowJobNotification"
 {
     [WLRemoteAction schedule:WLRemoteActionGetType
                         path:[self serverHost] + "/workflowjob" + aUUID + "/"
-                        delegate:self
-                         message:"Loading WorkflowJob"
-                 withCredentials:YES];
+                    delegate:self
+                     message:"Loading WorkflowJob"
+             withCredentials:YES];
 }
 
 @end

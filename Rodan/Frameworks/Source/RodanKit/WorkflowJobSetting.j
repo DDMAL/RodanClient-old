@@ -51,13 +51,9 @@
 
     // Determine visibility.
     if ("visibility" in setting)
-    {
         [self setVisibility:setting.visibility];
-    }
     else
-    {
         [self setVisibility:YES];
-    }
 
     if (setting.rng)
         [self setRange:[CPArray arrayWithArray:setting.rng]];

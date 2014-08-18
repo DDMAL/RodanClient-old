@@ -43,6 +43,7 @@
     [self _initializeContentView];
     [self _initializeToolbar];
     [self setMenuEnabled:NO];
+
     window.onbeforeunload = function()
     {
         return "This will terminate the Application. Are you sure you want to leave?";
@@ -89,6 +90,7 @@
 // Public Action Methods
 ///////////////////////////////////////////////////////////////////////////////
 #pragma mark Public Action Methods
+
 - (@action)switchWorkspaceToManageResources:(id)aSender
 {
     [RKNotificationTimer clearTimedNotification];

@@ -70,13 +70,9 @@ JOBSETTING_TYPE_UUIDCLASSIFIER = @"uuid_classifier";
 - (CPString)remotePath
 {
     if ([self pk])
-    {
         return [self pk]
-    }
     else
-    {
         return [[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/jobs/";
-    }
 }
 
 @end

@@ -2,6 +2,7 @@
  * This class handles User-related functionality.
  */
 @import <AppKit/AppKit.j>
+@import <RodanKit/RKController.j>
 
 var RodanClientAdminUserTimerNotification = @"RodanClientAdminUserTimerNotification";
 
@@ -32,10 +33,12 @@ var RodanClientAdminUserTimerNotification = @"RodanClientAdminUserTimerNotificat
 {
     _selectedUser = nil;
     [self _clearSelectedUserInfo];
+
     [[CPNotificationCenter defaultCenter] addObserver:self
                                           selector:@selector(handleTimerNotification:)
                                           name:RodanClientAdminUserTimerNotification
                                           object:nil];
+
     [RKNotificationTimer setTimedNotification:[self refreshRate]
                          notification:RodanClientAdminUserTimerNotification];
 }

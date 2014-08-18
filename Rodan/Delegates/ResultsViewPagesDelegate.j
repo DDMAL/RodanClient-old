@@ -24,8 +24,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////
 - (id)init
 {
-    self = [super init];
-    if (self)
+    if (self = [super init])
     {
         [[CPNotificationCenter defaultCenter] addObserver:self
                                               selector:@selector(handleShouldLoadNotification:)
@@ -33,6 +32,7 @@
                                               object:nil];
     }
     _selectionFlag = NO;
+
     return self;
 }
 
@@ -66,10 +66,13 @@
     var objectToPass = [[CPObject alloc] init];
     objectToPass.page = _currentlySelectedPage;
     objectToPass.workflowRun = _associatedWorkflowRun;
+
     [[CPNotificationCenter defaultCenter] postNotificationName:RodanRequestRunJobsNotification
                                           object:objectToPass];
+
     [[CPNotificationCenter defaultCenter] postNotificationName:RodanRequestWorkflowPageResultsNotification
                                           object:objectToPass];
+
     _selectionFlag = YES;
     return YES;
 }
@@ -80,9 +83,7 @@
 - (void)handleShouldLoadNotification:(CPNotification)aNotification
 {
     if ([aNotification object] != nil)
-    {
         _associatedWorkflowRun = [aNotification object];
-    }
 
     if (_associatedWorkflowRun != nil)
     {

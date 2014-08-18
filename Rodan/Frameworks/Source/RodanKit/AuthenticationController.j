@@ -11,6 +11,7 @@
  */
 
 @import <AppKit/AppKit.j>
+@import <Foundation/CPURL.j>
 @import "../../Ratatosk/WLRemoteLink.j"
 @import "RKController.j"
 @import "User.j"
@@ -43,20 +44,20 @@ activeUser = nil;
     if (self = [super init])
     {
         _authenticationType = [[CPBundle mainBundle] objectForInfoDictionaryKey:"AuthenticationType"];
-        _urlLogout = [self serverHost] + "/auth/logout/";
-        _urlCheckIsAuthenticated = [self serverHost] + "/auth/status/";
+        _urlLogout = [CPURL URLWithString:[self serverHost] + "/auth/logout/"];
+        _urlCheckIsAuthenticated = [CPURL URLWithString:[self serverHost] + "/auth/status/"];
         _CSRFToken = nil;
         _authenticationToken = nil;
 
         switch (_authenticationType)
         {
             case "token":
-                _urlLogin = [self serverHost] + "/auth/token/";
+                _urlLogin = [CPURL URLWithString:[self serverHost] + "/auth/token/"];
                 break;
 
             case "session":
                 _CSRFToken = [[CPCookie alloc] initWithName:@"csrftoken"];
-                _urlLogin = [self serverHost] + "/auth/session/";
+                _urlLogin = [CPURL URLWithString:[self serverHost] + "/auth/session/"];
                 break;
 
             default:
@@ -181,9 +182,9 @@ activeUser = nil;
 - (void)_logIn
 {
     var username = [usernameField objectValue],
-        password = [passwordField objectValue];
-    var request = [CPURLRequest requestWithURL:_urlLogin];
-    request = [self _addAuthenticationHeaders:request];
+        password = [passwordField objectValue],
+        request = [self _addAuthenticationHeaders:request];
+
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"]
     [request setHTTPBody:@"username=" + username + "&password=" + password];
@@ -194,8 +195,8 @@ activeUser = nil;
 - (void)_logOut
 {
     activeUser = nil;
-    var request = [CPURLRequest requestWithURL:_urlLogout];
-    request = [self _addAuthenticationHeaders:request];
+
+    var request = [self _addAuthenticationHeaders:request];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPMethod:@"POST"];
     var conn = [CPURLConnection connectionWithRequest:request delegate:self withCredentials:YES];
@@ -249,4 +250,5 @@ activeUser = nil;
     [alert addButtonWithTitle:@"OK"];
     [alert runModal];
 }
+
 @end

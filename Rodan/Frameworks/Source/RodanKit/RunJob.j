@@ -67,10 +67,10 @@ RUNJOB_STATUS_CANCELLED = 9;
 - (CPString)getUUID
 {
     var runJobUUID = nil;
+
     if ([self pk])
-    {
         runJobUUID = [pk lastPathComponent];
-    }
+
     return runJobUUID;
 }
 

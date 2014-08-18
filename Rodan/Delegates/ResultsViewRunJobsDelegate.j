@@ -57,6 +57,7 @@
 {
     _currentlySelectedRunJob = [[_runJobArrayController contentArray] objectAtIndex:rowIndex];
     [_runJobSettingsArrayController setContent:[_currentlySelectedRunJob jobSettingsArray]];
+
     return YES;
 }
 
@@ -71,11 +72,13 @@
         _associatedWorkflowRun = [aNotification object].workflowRun;
     }
 
-    if (_associatedPage != nil && _associatedWorkflowRun != nil)
+    if (_associatedPage !== nil && _associatedWorkflowRun !== nil)
     {
         var parameters = @"?workflowrun=" + [_associatedWorkflowRun uuid];
+
         parameters += @"&page=" + [_associatedPage uuid];
         parameters += @"&ordering=sequence";
+
         [WLRemoteAction schedule:WLRemoteActionGetType
                         path:[[CPBundle mainBundle] objectForInfoDictionaryKey:"ServerHost"] + @"/runjobs/" + parameters
                         delegate:self
@@ -123,6 +126,7 @@
     [_runJobErrorTextField setStringValue:[runJob errorDetails]];
     [_runJobErrorTextField sizeToFit];
     [_runJobErrorView setFrameSize:[_runJobErrorTextField frameSize]];
+
     [CPApp beginSheet:_runJobErrorDetailsWindow
            modalForWindow:[CPApp mainWindow]
            modalDelegate:self

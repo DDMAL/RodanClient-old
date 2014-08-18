@@ -25,16 +25,16 @@ var _msInstance = nil,
 {
     // Save/check params.
     var intervalSeconds = _SECONDS_DEFAULT;
+
     if (aSeconds >= 0)
-    {
         intervalSeconds = aSeconds;
-    }
 
     // Clear any existing notification timer.
     [RKNotificationTimer clearTimedNotification];
 
     // Create new.
     [RKNotificationTimer _getInstance]._msNotification = aNotification;
+
     [RKNotificationTimer _getInstance]._msTimer = [CPTimer scheduledTimerWithTimeInterval:intervalSeconds
                                                            target:[RKNotificationTimer _getInstance]
                                                            selector:@selector(_receiveTimerEvent:)

@@ -13,12 +13,16 @@
 - (id)initWithFrame:(CGRect)aFrame runJobUUID:(int)aRunJobUUID jobName:(CPString)aJobName
 {
     var self = [super initWithFrame:aFrame];
+
     if (self)
     {
         [self setFrameLoadDelegate:self];
+
         var urlPart = [[CPBundle bundleForClass:[self class]] objectForInfoDictionaryKey:aJobName];
+
         [self setMainFrameURL:@"/interactive/" + urlPart + "?runjob=" + aRunJobUUID];
     }
+
     return self;
 }
 
@@ -41,14 +45,17 @@
 - (id)initWithContentRect:(CGRect)aRect styleMask:(int)aMask runJobUUID:(int)aRunJobUUID jobName:(CPString)aJobName
 {
     var self = [super initWithContentRect:aRect styleMask:aMask];
+
     if (self)
     {
         var urlPart = [[CPBundle bundleForClass:[self class]] objectForInfoDictionaryKey:aJobName];
+
         [self setTitle:urlPart + " - " + aRunJobUUID];
         interactiveJob = [[RKInteractiveJob alloc] initWithFrame:[[self contentView] bounds] runJobUUID:aRunJobUUID jobName:aJobName];
         [interactiveJob setAutoresizingMask:CPViewWidthSizable | CPViewHeightSizable];
         [[self contentView] addSubview:interactiveJob];
     }
+
     return self;
 }
 @end

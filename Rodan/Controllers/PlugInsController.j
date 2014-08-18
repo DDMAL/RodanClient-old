@@ -35,11 +35,13 @@
 - (void)loadPlugIns
 {
     var bundleString = [[CPBundle mainBundle] objectForInfoDictionaryKey:"PlugIns"];
+
     if (bundleString != nil)
     {
         var pluginStringArray = [bundleString componentsSeparatedByString:","],
             enumerator = [pluginStringArray objectEnumerator],
             pluginString = nil;
+
         while (pluginString = [enumerator nextObject])
         {
             [self loadPlugIn:pluginString];
@@ -50,6 +52,7 @@
 - (void)loadPlugIn:(CPString)aString
 {
     var bundle = [CPBundle bundleWithPath:"PlugIns/" + aString];
+
     if (bundle != nil)
     {
         CPLog("bundle '" + [bundle objectForInfoDictionaryKey:"CPBundleName"] + "' found");
@@ -96,8 +99,10 @@
     var newMenuItem = [_menu addItemWithTitle:[aBundle objectForInfoDictionaryKey:"CPBundleName"]
                           action:@selector(selectedPlugIn:)
                           keyEquivalent:""];
+
     [newMenuItem setTarget:self];
     [_bundleMap setValue:aBundle forKey:newMenuItem];
+
     CPLog("bundle '" + [aBundle objectForInfoDictionaryKey:"CPBundleName"] + "' added to menu");
 }
 @end
