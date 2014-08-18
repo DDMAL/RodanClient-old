@@ -7,7 +7,7 @@
 @import "WorkflowJobViewController.j"
 
 
-@implementation ConnectionController : CPObject
+@implementation ConnectionViewController : CPObject
 {
     CPBezierPath                pathAToB                @accessors;
 
