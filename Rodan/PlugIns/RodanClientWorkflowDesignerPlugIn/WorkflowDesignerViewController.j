@@ -48,13 +48,26 @@ var _msLOADINTERVAL = 5.0;
                         CGRect                  viewBounds;
 
     @outlet             CPSplitView             workflowDesignerView    @accessors;
-
-
-    @outlet             CPScrollView            designerView            @accessors;
     @outlet             CPSplitView             leftSideBar             @accessors;
     @outlet             CPSplitView             rightSideBar            @accessors;
+    @outlet             CPScrollView            designerScrollView      @accessors;
+                        DesignerViewController  designerViewController  @accessors;
 
-                        WorkflowDesignerView    workflowDiagram         @accessors;
+    //jobs View
+    @outlet             CPScrollView            jobScrollView           @accessors;
+    @outlet             CPView                  jobsView                @accessors;
+    @outlet             CPArray                 jobsViewArray           @accessors;
+
+    @outlet             CPScrollView            leftScrollView          @accessors;
+
+    @outlet             CPScrollView            rightUpperScrollView    @accessors;
+    @outlet             CPView                  rightUpperView          @accessors;
+    @outlet             CPTableView             settingsView            @accessors;
+    @outlet             CPView                  settingsViewBase        @accessors;
+
+
+    //bundle to access resources (.png files)
+                        CPBundle                theBundle               @accessors;
 
     //toolbar icons (can be moved to separate class?)
     @outlet             CPToolbarItem           leftSideBarIcon         @accessors;
@@ -70,38 +83,11 @@ var _msLOADINTERVAL = 5.0;
     @outlet             CPButton                runsButton              @accessors;
     @outlet             CPButton                saveButton              @accessors;
 
-
-    //bundle to access resources (.png files)
-                        CPBundle                theBundle               @accessors;
-
-    //jobs View
-    @outlet             CPScrollView            jobScrollView           @accessors;
-    @outlet             CPView                  jobsView                @accessors;
-    @outlet             CPArray                 jobsViewArray           @accessors;
-
-    @outlet             CPScrollView            leftScrollView          @accessors;
-
-    @outlet             CPView                  pagesView               @accessors;
-    @outlet             CPArray                 pagesViewArray          @accessors;
-    @outlet             CPView                  runsView                @accessors;
-    @outlet             CPArray                 runsViewArray           @accessors;
-
-    @outlet             CPScrollView            rightUpperScrollView    @accessors;
-    @outlet             CPView                  rightUpperView          @accessors;
-    @outlet             CPTableView             settingsView            @accessors;
-    @outlet             CPView                  settingsViewBase        @accessors;
-
     @outlet             CPPanel                 attributesPanel;
     @outlet             CPTableHeaderView       attributesTableHeader;
     @outlet             CPOutlineView           attributesOutlineView;
     @outlet             CPScrollView            attributesScrollView;
-
-    //attributes panel settings
-    @outlet             CPDictionary            settings;
-
-    //Table View (Resources)
-    @outlet             CPTableView             pagesTableView;
-    @outlet             CPArray                 pagesRowList;
+    @outlet             CPDictionary            attributesSettings;
 
     // ----------------------------------------------------------------- //
     // ------------------- DATABASES AND INFO -------------------------- //
@@ -109,21 +95,7 @@ var _msLOADINTERVAL = 5.0;
 
     @outlet             CPArrayController           workflowArrayController;
     @outlet             CPArrayController           currentWorkflowArrayController;
-
-    @outlet             LoadActiveWorkflowDelegate  loadActiveWorkflowDelegate;
-
     @outlet             CPArrayController           resourceArrayController;
-    @outlet             CPView                      resourceThumbnailView;
-
-
-    @outlet             CPArrayController           runArrayController;
-
-    //tab view - settings + description OR Attributes panel ??
-    @outlet             TNTabView                   workflowJobTabView;
-    @outlet             CPView                      selectedWorkflowJobSettingsTab;
-    @outlet             CPView                      selectedWorkflowJobDescriptionTab;
-
-
 
 }
 
@@ -132,15 +104,6 @@ var _msLOADINTERVAL = 5.0;
     // console.log("Workflow Designer Plugin Successfully launched");
 }
 
-// ---------------------------------------- //
-// ----------- NOTIFICATIONS -------------- //
-
-- (void)receiveRefreshScrollView:(CPNotification)aNotification
-{
-    [[designerView documentView] setNeedsDisplay:YES];
-}
-
-// --------------------------------------------- //
 
 - (void)awakeFromCib
 {
@@ -156,11 +119,7 @@ var _msLOADINTERVAL = 5.0;
 
 
     mainWindow  = [[CPApplication sharedApplication] mainWindow];   //get mainWindow from instance of running application
-
-    //init. Bundle to resources
     theBundle = [CPBundle bundleWithPath:@"PlugIns/RodanClientWorkflowDesignerPlugIn/"];
-    // timeInterval = [[CPTimeInterval alloc] init];
-    // timer = [CPDate dateWithTimeIntervalsSinceNow:timeInterval];
 
     viewBounds = [contentView bounds];
 
@@ -169,17 +128,17 @@ var _msLOADINTERVAL = 5.0;
     [contentView addSubview:workflowDesignerView];
 
 
-    [designerView setFrame:CGRectMake(200.0, 0.0, CGRectGetWidth(viewBounds) - 400.0, CGRectGetHeight(viewBounds))];
-    [designerView setAutoresizingMask:CPViewWidthSizable | CPViewHeightSizable];
-    [designerView setAutoresizesSubviews:YES];
-    [designerView setBackgroundColor:[CPColor colorWithHexString:"999999"]];
+    [designerScrollView setFrame:CGRectMake(200.0, 0.0, CGRectGetWidth(viewBounds) - 400.0, CGRectGetHeight(viewBounds))];
+    [designerScrollView setAutoresizingMask:CPViewWidthSizable | CPViewHeightSizable];
+    [designerScrollView setAutoresizesSubviews:YES];
+    [designerScrollView setBackgroundColor:[CPColor colorWithHexString:"999999"]];
 
 
     //create instance of WorkflowDesignerViewhow did
-    workflowDiagram = [[WorkflowDesignerView alloc] initDesignerWithFrame:CGRectMake(0.0, 0.0, 2000, 2000)];
-    [workflowDiagram setFrame:CGRectMake(0.0, 0.0, 2000, 2000)];        //NOTE -> must autoadjust to size of canvas
-    [workflowDiagram setAutoresizingMask:CPViewWidthSizable | CPViewHeightSizable];
-    [designerView setDocumentView:workflowDiagram];
+    designerViewController = [[WorkflowDesignerView alloc] init];
+    [[designerViewController designerView] setFrame:CGRectMake(0.0, 0.0, 2000, 2000)];        //NOTE -> must autoadjust to size of canvas
+    [[designerViewController designerView] setAutoresizingMask:CPViewWidthSizable | CPViewHeightSizable];
+    [designerScrollView setDocumentView:[designerViewController designerView]]; //scroll view that holds the designerView
 
     //left Side Bar
     [leftSideBar setFrame:CGRectMake(0.0, 0.0, 200.0, CGRectGetHeight(viewBounds))];
@@ -193,22 +152,16 @@ var _msLOADINTERVAL = 5.0;
     [rightSideBar setAutoresizingMask:CPViewHeightSizable | CPViewWidthSizable];
     [rightSideBar setBackgroundColor:[CPColor colorWithHexString:"BDC2C7"]];
     [rightSideBar setDelegate:self];
-    // [rightSideBar splitView:rightSideBar constrainMinCoordinate:2 ofSubviewAt:0];
 
     var leftSideBarImageIcon = [[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"indent-increase.png"] size:CGSizeMake(20.0, 20.0)],
         rightSideBarImageIcon = [[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"indent-decrease.png"] size:CGSizeMake(20.0, 20.0)],
         toolsImageIcon = [[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"wrench.png"] size:CGSizeMake(20.0, 20.0)],
         helpImageIcon = [[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"help.png"] size:CGSizeMake(20.0, 20.0)];
 
-
-
-
     [leftSideBarIcon setImage:leftSideBarImageIcon];
     [rightSideBarIcon setImage:rightSideBarImageIcon];
     [toolsIcon setImage:toolsImageIcon];
     [helpIcon setImage:helpImageIcon];
-
-
 
 
     // connectImage = [[CPImage alloc] initWithContentsOfFile:[theBundle pathForResource:@"connect.png"]];
@@ -286,6 +239,11 @@ var _msLOADINTERVAL = 5.0;
 //end of awakeFromCib
 }
 
+- (void)receiveRefreshScrollView:(CPNotification)aNotification
+{
+    [[designerScrollView documentView] setNeedsDisplay:YES];
+}
+
 
 //------------- ICON ACTION BUTTONS ----------------- //
 // -------------------------------------------------- //
@@ -306,21 +264,21 @@ var _msLOADINTERVAL = 5.0;
     console.log("Tools");
 
     var i,
-        workflowJobsCount = [workflowDiagram.workflowJobs count];
+        workflowJobsCount = [[designerViewController workflowJobs] count];
     for (i = 0 ; i < workflowJobsCount; i++)
     {
-        if ([workflowDiagram.workflowJobs[i] firstResponder])
+        if ([[designerViewController workflowJobs][i] firstResponder])
         {
             //set up attributes panel to link with the selected workflow job
-            [[workflowDiagram.workflowJobs[i] wkJob] jobSettings];
+            [[[designerViewController workflowJobs][i] workflowJob] jobSettings];
             [attributesPanel orderFront:self];
         }
     }
-
 }
 
 - (void)saveAction:(id)aSender
 {
+    //TO DO:
     console.log("save");
 }
 

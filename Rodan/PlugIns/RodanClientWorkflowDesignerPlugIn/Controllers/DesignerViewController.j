@@ -24,64 +24,65 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
 @implementation DesignerViewController : CPObject
 {
+
                 //associated view
-                DesignerView            designerView                @accessors;
+                DesignerView              designerView                @accessors;
 
                 //view array controllers
-    @outlet     CPArrayController       workflowJobs                 @accessors;
-    @outlet     CPArrayController       connections                 @accessors;
-    @outlet     CPArrayController       resourceLists               @accessors;
+    @outlet     CPArrayController         workflowJobs                @accessors;
+    @outlet     CPArrayController         connections                 @accessors;
+    @outlet     CPArrayController         resourceLists               @accessors;
 
-                CPArray                 connectionsContentArray     @accessors;
-                CPArray                 workflowJobsContentArray    @accessors;
-                CPArray                 resourceListsContentArray   @accessors;
+                CPArray                   connectionsContentArray     @accessors;
+                CPArray                   workflowJobsContentArray    @accessors;
+                CPArray                   resourceListsContentArray   @accessors;
 
                 WorkflowJobViewController currentHoverInputWorkflowJob; //pos. 0 = workflowJob, pos. 1 = inputNumber (for current hover)
                 InputPortViewController   currentHoverInputPort;
 
-                CPEvent                 mouseDownEvent;
+                CPEvent                   mouseDownEvent;
 
-                CPString                outputTypeText;
-                CPString                inputTypeText;
+                CPString                  outputTypeText;
+                CPString                  inputTypeText;
 
                 //dragging helper variables
-                BOOL                    isInView;
-                CPInteger               currentDraggingIndex;
+                BOOL                      isInView;
+                CPInteger                 currentDraggingIndex;
 
                 WorkflowJobViewController draggingWorkflowJob;
 
 
 
                 //variables to reference graphical <-> server objects
-                WorkflowJobViewController   creatingWorkflowJob;
-                CPDictionary            creatingWorkflowJobIOTypes;
-                CPInteger               createInputPortsCounter;
-                CPInteger               createOutputPortsCounter;
-                ConnectionViewController    connectionModelReference;
+                WorkflowJobViewController creatingWorkflowJob;
+                CPDictionary              creatingWorkflowJobIOTypes;
+                CPInteger                 createInputPortsCounter;
+                CPInteger                 createOutputPortsCounter;
+                ConnectionViewController  connectionModelReference;
 
-                BOOL                    isCurrentSelection;
+                BOOL                      isCurrentSelection;
 
-                DeleteCacheController   deleteCacheController       @accessors;
+                DeleteCacheController     deleteCacheController       @accessors;
 
     /////////////////////////////////////////////////////////////////////////////
     // ------------------------ SERVER PROPERTIES ---------------------------- //
     /////////////////////////////////////////////////////////////////////////////
 
     //model controllers to fetch (load) the models from server side - connected via .xib file
-    @outlet     WorkflowController      workflowController          @accessors;
-    @outlet     WorkflowJobController   workflowJobController       @accessors;
-    @outlet     OutputPortController    outputPortController        @accessors;
-    @outlet     InputPortController     inputPortController         @accessors;
-    @outlet     ConnectionController    connectionController        @accessors;
-    @outlet     JobController           jobController               @accessors;
+    @outlet     WorkflowController        workflowController          @accessors;
+    @outlet     WorkflowJobController     workflowJobController       @accessors;
+    @outlet     OutputPortController      outputPortController        @accessors;
+    @outlet     InputPortController       inputPortController         @accessors;
+    @outlet     ConnectionController      connectionController        @accessors;
+    @outlet     JobController             jobController               @accessors;
 
     //server model controller properties - connected via .xib file
-    @outlet     Workflow                currentWorkflow             @accessors;
-    @outlet     CPArrayController       workflowArrayController     @accessors;
+    @outlet     Workflow                  currentWorkflow             @accessors;
+    @outlet     CPArrayController         workflowArrayController     @accessors;
 
-    @outlet     CPArrayController       jobArrayController          @accessors;
+    @outlet     CPArrayController         jobArrayController          @accessors;
 
-    @outlet     CPArrayController       connectionArrayController   @accessors;
+    @outlet     CPArrayController         connectionArrayController   @accessors;
 
 }
 
