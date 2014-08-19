@@ -25,17 +25,15 @@
 
 - (id)initWithOutputNumber:(CPUInteger)aNumber outputPortTypes:(CPArray)oPortTypes
 {
-    self = [super init];
-
-    if (self)
+    if (self = [super init])
     {
         outputPorts = [[CPArrayController alloc] init];
         outputPortTypes = [[CPArray alloc] init];
         outputNum = aNumber;
 
         outputPortTypes = oPortTypes;
-
     }
+
     return self;
 }
 
@@ -44,15 +42,13 @@
     resourceListView = [[ResourceListView alloc] initWithPoint:aPoint outputNum:outputNum];
 }
 
-
 - (void)createOutputPortsAtPoint:(CGPoint)aPoint
 {
     var resourceListSize = [resourceListView resourceListSize],
         subsection = resourceListSize.width,
         contentArray = [outputPorts contentArray];
-        i;
 
-    for (i = 0; i < outputNum; i++)
+    for (var i = 0; i < outputNum; i++)
     {
         var outputPortViewController = [[OutputPortViewController alloc] initWithType:outputPortTypes[i]
                                                                        workflowJobRef:nil
@@ -74,6 +70,5 @@
     [self createResourceListViewWithPoint:aPoint];
     [self createOutputPortsAtPoint:aPoint];
 }
-
 
 @end

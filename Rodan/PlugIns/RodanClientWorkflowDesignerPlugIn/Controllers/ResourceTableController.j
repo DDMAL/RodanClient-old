@@ -22,12 +22,8 @@ ResourcesTableDragAndDropTableViewDataType = @"ResourcesTableDragAndDropTableVie
                                     object:nil];
 
     //fetch resources that have been added
-
-
     [resourceTableView setDataSource:self];
     [resourceTableView registerForDraggedTypes:[CPArray arrayWithObjects:ResourcesTableDragAndDropTableViewDataType]];
-
-
 }
 
 - (BOOL)tableView:(CPTableView)aTableView writeRowsWithIndexes:(CPIndexSet)rowIndexes toPasteboard:(CPPasteboard)pasteboard
@@ -43,9 +39,8 @@ ResourcesTableDragAndDropTableViewDataType = @"ResourcesTableDragAndDropTableVie
     var row = [[[aNotification object] selectedRowIndexes] firstIndex];
     console.info(row);
 
-    if (row == -1)
+    if (row === -1)
         console.info(@"Nothing selected");
-
     else
         console.info([CPString stringWithFormat:@"selected: %@", [resourceTableContent objectAtIndex:row]]);
 }

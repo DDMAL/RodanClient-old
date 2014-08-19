@@ -26,9 +26,7 @@
 
 - (id)initWithType:(CPString)aType workflowJobRef:(WorkflowJobViewController)aWorkflowJobRef resourceListRef:(ResourceListViewController)aResourceListRef
 {
-    self = [super init];
-
-    if (self)
+    if (self = [super init])
     {
         outputPortType = aType;
         isUsed = NO;
@@ -40,7 +38,5 @@
 
     return self;
 }
-
-
 
 @end
