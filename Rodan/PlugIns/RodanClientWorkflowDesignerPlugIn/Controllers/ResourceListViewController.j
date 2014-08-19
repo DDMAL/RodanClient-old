@@ -39,7 +39,7 @@
 
 - (void)createResourceListViewWithPoint:(CGPoint)aPoint
 {
-    resourceListView = [[ResourceListView alloc] initWithPoint:aPoint outputNum:outputNum];
+    resourceListView = [[ResourceListView alloc] initWithPoint:aPoint outputNum:outputNum resourceListViewController:self];
 }
 
 - (void)createOutputPortsAtPoint:(CGPoint)aPoint

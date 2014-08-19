@@ -16,7 +16,6 @@ var _msLOADINTERVAL = 3.0;
 
     @outlet             WorkflowController  workflowController;
     @outlet             CPArrayController   workflowArrayController;
-    @outlet             CPArray             workflowContentArray;
 
     @outlet             CPButton            createWorkflow;
     @outlet             CPButton            selectWorkflow;
@@ -31,8 +30,7 @@ var _msLOADINTERVAL = 3.0;
 
 - (void)awakeFromCib
 {
-    workflowController = [[CPApplication sharedApplication] delegate].workflowController;
-    currentWorkflow = [[CPApplication sharedApplication] delegate].workflowController.currentWorkflow;
+
     [selectedWorkflowLabel setStringValue:""];
 
     [workflowsTableView setDataSource:self];
@@ -81,20 +79,19 @@ var _msLOADINTERVAL = 3.0;
 
 - (void)receiveDidLoadWorkflows:(CPNotification)aNotification
 {
-    workflowContentArray = [workflowController.workflowArrayController contentArray];
-    [workflowArrayController setContent:workflowContentArray];
+
 }
 
 - (void)receiveDidLoadWorkflow:(CPNotification)aNotification
 {
-    currentWorkflow = workflowController.currentWorkflow;
+    currentWorkflow = [aNotification object];
     [selectedWorkflowLabel setStringValue:[currentWorkflow workflowName]];
 }
 
 
 - (int)numberOfRowsInTableView:(CPTableView)aTableView
 {
-    [workflowContentArray count];
+    [[workflowArrayController contentArray] count];
 }
 
 - (void)tableViewSelectionDidChange:(CPNotification)aNotification
@@ -106,7 +103,7 @@ var _msLOADINTERVAL = 3.0;
         console.info(@"Nothing selected");
 
     else
-        console.info([CPString stringWithFormat:@"selected: %@", [workflowContentArray objectAtIndex:row].workflowName]);
+        console.info([CPString stringWithFormat:@"selected: %@", [[workflowArrayController contentArray] objectAtIndex:row].workflowName]);
 }
 
 

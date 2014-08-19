@@ -22,7 +22,7 @@ var DEFAULT_SIZE = CGRectMake(30.0, 30.0);
 
 - (id)initWithPoint:(CGPoint)aPoint outputNum:(CPUInteger)aNumber resourceListViewController:(ResourceListViewController)aViewController
 {
-    var aRect = CGRectMake(aPoint.x, aPoint.y, resourceListSize.height, resourceListSize.width);
+    var aRect = CGRectMake(aPoint.x, aPoint.y, DEFAULT_SIZE.height, DEFAULT_SIZE.width);
     self = [super initWithFrame:aRect];
 
     if (self)
@@ -30,6 +30,7 @@ var DEFAULT_SIZE = CGRectMake(30.0, 30.0);
         resourceList = [[CPBox alloc] initWithFrame:aRect];
         outputNum = aNumber;
         resourceListViewController = aViewController;
+        resourceListSize = DEFAULT_SIZE;
 
         [self changeBoxAttributes:2 cornerRadius:5 fillColor:[CPColor colorWithHexString:"333333"] boxType:CPBoxPrimary title:"Resource List A"];
 

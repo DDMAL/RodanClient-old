@@ -12,7 +12,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
     @outlet             JobController               jobController;
     @outlet             CPArrayController           jobArrayController;
-    @outlet             CPArray                     jobContentArray;
+
 }
 
 - (void)awakeFromCib
@@ -22,7 +22,6 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
                                     name:RodanDidLoadJobsNotification
                                     object:nil];
 
-    jobController = [[CPApplication sharedApplication] delegate].jobController;
     [jobController fetchJobs];
 
     [jobsTableView setDataSource:self];
@@ -32,19 +31,17 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
 - (void)receiveDidLoadJobs:(CPNotification)aNotification
 {
-   jobContentArray = [jobController.jobArrayController contentArray];
-   [jobArrayController addObjects:jobContentArray];
+
 }
 
 - (void)tableViewSelectionDidChange:(CPNotification)aNotification
 {
     var row = [[[aNotification object] selectedRowIndexes] firstIndex];
-    console.info(row);
 
     if (row === -1)
         console.info(@"Nothing selected");
     else
-        console.info([CPString stringWithFormat:@"selected: %@", [jobContentArray objectAtIndex:row]]);
+        console.info([CPString stringWithFormat:@"selected: %@", [[jobArrayController contentArray] objectAtIndex:row]]);
 }
 
     //drag & drop implementation for Table View
@@ -58,7 +55,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
 - (int)numberOfRowsInTableView:(CPTableView)aTableView
 {
-    return [jobContentArray count];
+    return [[jobArrayController contentArray] count];
 }
 
 @end

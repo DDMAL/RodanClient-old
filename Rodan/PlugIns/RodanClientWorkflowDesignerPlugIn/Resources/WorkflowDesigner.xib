@@ -10,7 +10,7 @@
                 <outlet property="attributesPanel" destination="1Vd-qI-WKi" id="XdG-Fg-jHE"/>
                 <outlet property="connectButton" destination="XY0-QO-Hi0" id="a23-c8-AxM"/>
                 <outlet property="contentView" destination="dKn-be-xKB" id="c3L-Gc-eBU"/>
-                <outlet property="designerView" destination="fLW-ki-ODv" id="Iz7-dX-08r"/>
+                <outlet property="designerScrollView" destination="fLW-ki-ODv" id="esq-pb-UcF"/>
                 <outlet property="helpIcon" destination="bD0-Gx-Vqh" id="9I3-H7-VgO"/>
                 <outlet property="jobScrollView" destination="YzL-4b-JGo" id="keq-Bl-GpQ"/>
                 <outlet property="leftScrollView" destination="OMN-ro-P4F" id="l5h-ya-bog"/>
@@ -301,8 +301,9 @@
                 <outlet property="connectionController" destination="PQS-wh-f2A" id="FBp-09-PuQ"/>
                 <outlet property="connections" destination="O2n-kO-SNT" id="UvG-Qt-RvV"/>
                 <outlet property="jobArrayController" destination="ATt-y4-Flf" id="4wX-Zu-C7c"/>
+                <outlet property="jobController" destination="F24-JC-oRX" id="SjB-Nw-dZy"/>
                 <outlet property="workflowArrayController" destination="lIn-Ch-jiL" id="psi-3K-whH"/>
-                <outlet property="workflowController" destination="hDB-5H-J43" id="2sc-B2-Suw"/>
+                <outlet property="workflowController" destination="hDB-5H-J43" id="gsb-Jy-4M3"/>
             </connections>
         </customObject>
         <customObject id="q89-eI-67v" userLabel="View - Designer View" customClass="DesignerView">
@@ -335,48 +336,25 @@
         </customObject>
         <customObject id="ak3-Ba-Xe7" userLabel="Table Controller - Jobs" customClass="JobsTableController">
             <connections>
-                <outlet property="categoryTableColumn" destination="lAQ-g5-pPj" id="Bni-X0-3E2"/>
-                <outlet property="interactiveTableColumn" destination="Wee-06-Q03" id="lux-Ds-nUu"/>
-                <outlet property="jobArrayController" destination="ZTs-6L-BZx" id="ke8-V5-cKj"/>
+                <outlet property="jobArrayController" destination="ATt-y4-Flf" id="21m-yS-fcq"/>
+                <outlet property="jobController" destination="F24-JC-oRX" id="UyT-9l-seV"/>
                 <outlet property="jobsTableView" destination="RR5-M6-41x" id="yOU-6c-WzS"/>
             </connections>
         </customObject>
-        <customObject id="AvZ-pw-DnK" userLabel="Table Controller - Resources" customClass="ResourceTableController">
-            <connections>
-                <outlet property="resourceController" destination="CEt-AX-NZl" id="fnj-py-eoR"/>
-            </connections>
-        </customObject>
+        <customObject id="AvZ-pw-DnK" userLabel="Table Controller - Resources" customClass="ResourceTableController"/>
         <customObject id="3xo-xD-qGZ" userLabel="Table Controller - Workflows" customClass="WorkflowTableController">
             <connections>
                 <outlet property="createWorkflow" destination="dNq-2i-Xr3" id="bXd-re-B43"/>
                 <outlet property="removeWorkflow" destination="2ZI-Pd-Ia6" id="y0O-73-DAl"/>
                 <outlet property="selectWorkflow" destination="3sV-BT-xZe" id="rm4-lG-Ioi"/>
                 <outlet property="selectedWorkflowLabel" destination="KCu-0g-9BS" id="cYj-F7-y4o"/>
-                <outlet property="workflowArrayController" destination="lLa-04-ftE" id="8y8-S0-DUo"/>
+                <outlet property="workflowArrayController" destination="lIn-Ch-jiL" id="ck9-ks-dyF"/>
+                <outlet property="workflowController" destination="hDB-5H-J43" id="W74-ql-HZi"/>
                 <outlet property="workflowsTableView" destination="scL-JJ-Blb" id="uVc-8n-N1U"/>
             </connections>
         </customObject>
         <arrayController id="lIn-Ch-jiL" userLabel="Array Controller - Workflow"/>
         <arrayController id="ATt-y4-Flf" userLabel="Array Controller - Job"/>
-        <arrayController id="S0r-xG-MDP" userLabel="Array Controller - Connection"/>
-        <arrayController id="O2n-kO-SNT" userLabel="Array Controller - Connection View"/>
-        <arrayController id="UjB-xI-3Od" userLabel="Array Controller - Resource"/>
-        <arrayController id="ZTs-6L-BZx" userLabel="Array Controller - Jobs Table"/>
-        <arrayController id="CEt-AX-NZl" userLabel="Array Controller - Resources Table"/>
-        <arrayController id="lLa-04-ftE" userLabel="Array Controller - Workflow Table"/>
-        <menu id="45G-nQ-AvH">
-            <items>
-                <menuItem title="Item 1" id="nJ2-ym-KSx">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
-                <menuItem title="Item 2" id="f6Y-42-Ato">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
-                <menuItem title="Item 3" id="7r1-Nh-upL">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
-            </items>
-        </menu>
         <splitView dividerStyle="thin" vertical="YES" id="igf-M9-Ire" userLabel="Split View - WorkflowDesgnerView">
             <rect key="frame" x="0.0" y="0.0" width="1480" height="1032"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -423,7 +401,7 @@
                                                         </textFieldCell>
                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                         <connections>
-                                                            <binding destination="lLa-04-ftE" name="value" keyPath="arrangedObjects.workflowName" id="Jfn-Z5-fxo"/>
+                                                            <binding destination="lIn-Ch-jiL" name="value" keyPath="arrangedObjects.workflowName" id="pZE-Zw-w6d"/>
                                                         </connections>
                                                     </tableColumn>
                                                 </tableColumns>
@@ -722,7 +700,7 @@
                                                                             </textFieldCell>
                                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                                                             <connections>
-                                                                                <binding destination="ZTs-6L-BZx" name="value" keyPath="arrangedObjects.shortJobName" id="x4B-UF-K1R">
+                                                                                <binding destination="ATt-y4-Flf" name="value" keyPath="arrangedObjects.shortJobName" id="2Wf-8C-03i">
                                                                                     <dictionary key="options">
                                                                                         <bool key="NSConditionallySetsEditable" value="YES"/>
                                                                                     </dictionary>
@@ -742,7 +720,7 @@
                                                                             </textFieldCell>
                                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                             <connections>
-                                                                                <binding destination="ZTs-6L-BZx" name="value" keyPath="arrangedObjects.category" id="Odc-V6-rth"/>
+                                                                                <binding destination="ATt-y4-Flf" name="value" keyPath="arrangedObjects.category" id="fMF-YD-3eh"/>
                                                                             </connections>
                                                                         </tableColumn>
                                                                         <tableColumn width="96" minWidth="10" maxWidth="3.4028234663852886e+38" id="Wee-06-Q03">
@@ -758,7 +736,7 @@
                                                                             </textFieldCell>
                                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                             <connections>
-                                                                                <binding destination="ZTs-6L-BZx" name="value" keyPath="arrangedObjects.isInteractive" id="BC6-Cd-GqN"/>
+                                                                                <binding destination="ATt-y4-Flf" name="value" keyPath="arrangedObjects.isInteractive" id="2yk-B2-1M1"/>
                                                                             </connections>
                                                                         </tableColumn>
                                                                     </tableColumns>
@@ -826,6 +804,9 @@
                 <real value="250"/>
             </holdingPriorities>
         </splitView>
+        <arrayController id="S0r-xG-MDP" userLabel="Array Controller - Connection"/>
+        <arrayController id="O2n-kO-SNT" userLabel="Array Controller - Connection View"/>
+        <arrayController id="UjB-xI-3Od" userLabel="Array Controller - Resource"/>
         <customView id="F7m-du-q4Q" userLabel="Custom View - Document Jobs View">
             <rect key="frame" x="0.0" y="0.0" width="284" height="581"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
@@ -1900,6 +1881,18 @@
                 <toolbarItem reference="v5a-TL-wmy"/>
             </defaultToolbarItems>
         </toolbar>
-        <customObject id="QV2-mc-9l9"/>
+        <menu id="45G-nQ-AvH">
+            <items>
+                <menuItem title="Item 1" id="nJ2-ym-KSx">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="Item 2" id="f6Y-42-Ato">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="Item 3" id="7r1-Nh-upL">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+            </items>
+        </menu>
     </objects>
 </document>
