@@ -4,11 +4,7 @@
 
 @global RodanDidLoadJobsNotification
 
-
 JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType";
-
-
-
 
 @implementation JobsTableController : CPObject
 {
@@ -18,8 +14,6 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     @outlet             CPArrayController           jobArrayController;
     @outlet             CPArray                     jobContentArray;
 }
-
-
 
 - (void)awakeFromCib
 {
@@ -47,9 +41,8 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     var row = [[[aNotification object] selectedRowIndexes] firstIndex];
     console.info(row);
 
-    if (row == -1)
+    if (row === -1)
         console.info(@"Nothing selected");
-
     else
         console.info([CPString stringWithFormat:@"selected: %@", [jobContentArray objectAtIndex:row]]);
 }
@@ -67,6 +60,5 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 {
     return [jobContentArray count];
 }
-
 
 @end

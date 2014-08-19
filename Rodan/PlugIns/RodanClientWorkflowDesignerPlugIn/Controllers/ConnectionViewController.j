@@ -31,11 +31,13 @@
     ResourceListViewController  resourceListRef         @accessors;
 }
 
-- (id)initWithName:(CPString)aName outputWorkflowJob:(WorkflowJobViewController)oWorkflowJob inputWorkflowJob:(WorkflowJobViewController)iWorkflowJob outputRef:(OutputPortViewController)oRef inputRef:(InputPortViewController)iRef resourceListRef:(ResourceListViewController)rRef;
+- (id)initWithName:(CPString)aName outputWorkflowJob:(WorkflowJobViewController)oWorkflowJob
+                                    inputWorkflowJob:(WorkflowJobViewController)iWorkflowJob
+                                           outputRef:(OutputPortViewController)oRef
+                                            inputRef:(InputPortViewController)iRef
+                                     resourceListRef:(ResourceListViewController)rRef
 {
-    self = [super init];
-
-    if (self)
+    if (self = [super init])
     {
         endPoint = CGPointMake(0.0, 0.0);
         controlPoint1 = CGPointMake(0.0, 0.0);
@@ -51,20 +53,21 @@
         name = aName;
         isUsed = false;
         pathAToB = [[CPBezierPath alloc] init];
-
     }
+
     return self
 }
 
 
-- (void)makeConnectPointAtCurrentPoint:(CGPoint)currentPt controlPoint1:(CGPoint)ctrlPt1 controlPoint2:(CGPoint)ctrlPt2 endPoint:(CGPoint)endPt
+- (void)makeConnectPointAtCurrentPoint:(CGPoint)currentPt
+                         controlPoint1:(CGPoint)ctrlPt1
+                         controlPoint2:(CGPoint)ctrlPt2
+                              endPoint:(CGPoint)endPt
 {
     startPoint = currentPt
     controlPoint1 = ctrlPt1
     controlPoint2 = ctrlPt2
     endPoint = endPt;
 }
-
-
 
 @end

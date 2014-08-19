@@ -25,17 +25,15 @@
 
 - (id)initWithOutputNumber:(CPUInteger)aNumber outputPortTypes:(CPArray)oPortTypes
 {
-    self = [super init];
-
-    if (self)
+    if (self = [super init])
     {
         outputPorts = [[CPArrayController alloc] init];
         outputPortTypes = [[CPArray alloc] init];
         outputNum = aNumber;
 
         outputPortTypes = oPortTypes;
-
     }
+
     return self;
 }
 
@@ -43,7 +41,6 @@
 {
     resourceListView = [[ResourceListView alloc] initWithPoint:aPoint outputNum:outputNum];
 }
-
 
 - (void)createOutputPortsAtPoint:(CGPoint)aPoint
 {
@@ -73,6 +70,5 @@
     [self createResourceListViewWithPoint:aPoint];
     [self createOutputPortsAtPoint:aPoint];
 }
-
 
 @end

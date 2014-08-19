@@ -29,9 +29,7 @@
 
 - (id)initWithJob:(CPObject)aJob
 {
-    self = [super init];
-
-    if (self)
+    if (self = [super init])
     {
         inputPorts = [[CPArrayController alloc] init];
         outputPorts = [[CPArrayController alloc] init];
@@ -48,25 +46,22 @@
 
         workflowJobType = jobType;
 
-    //NOTE: using minimum for defuault instance
-    var i,
-        inputLoop = [inputPortTypes count],
-        outputLoop = [outputPortTypes count];
+        //NOTE: using minimum for defuault instance
+        var inputLoop = [inputPortTypes count],
+            outputLoop = [outputPortTypes count];
 
-    for (i = 0; i < inputLoop; i++)
-        totalInputNum += inputPortTypes[i].minimum;
+        for (var i = 0; i < inputLoop; i++)
+            totalInputNum += inputPortTypes[i].minimum;
 
-    for (i = 0; i < outputLoop; i++)
-        totalOutputNum += outputPortTypes[i].minimum;
+        for (var j = 0; j < outputLoop; j++)
+            totalOutputNum += outputPortTypes[j].minimum;
 
-    outputPortNumber = totalOutputNum;
-    inputPortNumber = totalInputNum;
-
+        outputPortNumber = totalOutputNum;
+        inputPortNumber = totalInputNum;
     }
+
     return self;
 }
-
-
 // -------------------- LOCAL METHODS --------------------------- //
 
 - (void)createWorkflowJobViewWithPoint:(CGPoint)aPoint
@@ -79,8 +74,6 @@
 
 }
 
-
-
 - (void)createInputPorts:(CGPoint)aPoint
 {
     var inputPortTypes = [associatedJob inputPortTypes],
@@ -90,14 +83,12 @@
         counter = 0,
         resourceType,
         innerLoopCount,
-        contentArray = [inputPorts contentArray],
-        i,
-        k;
+        contentArray = [inputPorts contentArray];
 
-    for (i = 0; i < inputLoop; i++)
+    for (var i = 0; i < inputLoop; i++)
     {
         innerLoopCount = inputPortTypes[i].minimum;
-        for (k = 0; k < innerLoopCount; k++)
+        for (var k = 0; k < innerLoopCount; k++)
         {
             resourceType = inputPortTypes[i].resourceType;
             var inputPortViewController  = [[InputPortViewController alloc] initWithType:resourceType
@@ -116,9 +107,7 @@
             counter++;
         }
     }
-
 }
-
 
 - (void)createOutputPorts:(CGPoint)aPoint
 {
@@ -129,14 +118,12 @@
         counter = 0,
         resourceType,
         innerLoopCount,
-        contentArray = [outputPorts contentArray],
-        i,
-        k;
+        contentArray = [outputPorts contentArray];
 
-    for (i = 0; i < outputLoop; i++)
+    for (var i = 0; i < outputLoop; i++)
     {
         innerLoopCount = outputPortTypes[i].minimum;
-        for (k = 0; k < innerLoopCount; k++)
+        for (var k = 0; k < innerLoopCount; k++)
         {
             resourceType = outputPortTypes[i].resourceType;
             var outputPortViewController = [[OutputPortViewController alloc] initWithType:resourceType
@@ -158,15 +145,11 @@
     }
 }
 
-
 - (void)createAssociatedViewsAtPoint:(CGPoint)aPoint
 {
     [self createWorkflowJobViewWithPoint:aPoint];
     [self createInputPorts:aPoint];
     [self createOutputPorts:aPoint];
-
 }
-
-
 
 @end

@@ -16,9 +16,10 @@
 
 - (id)init
 {
-    self = [super init];
-
-    connectionsToDelete = [[CPArrayController alloc] init];
+    if (self = [super init])
+    {
+        connectionsToDelete = [[CPArrayController alloc] init];
+    }
 
     return self;
 }
@@ -26,11 +27,10 @@
 
 - (CPInteger)_hasConnection:(Connection)aConnection
 {
-    var i,
-        loopCount = [[connectionsToDelete contentArray] count],
+    var loopCount = [[connectionsToDelete contentArray] count],
         contentArray = [connectionsToDelete contentArray];
 
-    for (i = 0; i < loopCount; i++)
+    for (var i = 0; i < loopCount; i++)
     {
         if (aConnection == contentArray[i])
             return i; //return index at which it exists
@@ -50,12 +50,10 @@
         [aConnection ensureDeleted]; //remove from server
         [connectionsToDelete removeObjectAtArrangedObjectIndex:connectionExists];
     }
-
-    else {
+    else
+    {
         return false;
     }
 }
-
-
 
 @end

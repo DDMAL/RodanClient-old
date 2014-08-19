@@ -22,9 +22,7 @@
 
 - (id)initWithType:(CPString)aType workflowJobRef:(WorkflowJobViewController)aWorkflowJobRef
 {
-    self = [super init];
-
-    if (self)
+    if (self = [super init])
     {
         inputPortType = aType;
         isUsed = NO;
@@ -34,7 +32,5 @@
 
     return self;
 }
-
-
 
 @end
