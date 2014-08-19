@@ -14,6 +14,8 @@
 @import <RodanKit/Workflow.j>
 @import <RodanKit/Connection.j>
 @import <RodanKit/ConnectionController.j>
+@import <RodanKit/Job.j>
+@import <RodanKit/JobController.j>
 
 
 JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType";
@@ -263,11 +265,10 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         sourceIndexes = [pboard dataForType:JobsTableDragAndDropTableViewDataType],
         aJob = [content objectAtIndex:[sourceIndexes firstIndex]],
 
-        location = [self convertPoint:[aSender draggingLocation] fromView:nil],
+        location = [designerView convertPoint:[aSender draggingLocation] fromView:nil],
 
         inputPortTypes = [aJob inputPortTypes],
-        outputPortTypes = [aJob outputPortTypes],
-        i;
+        outputPortTypes = [aJob outputPortTypes];
 
     if (aJob !== nil)
     {
@@ -320,7 +321,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
 - (void)receiveDidLoadCurrentWorkflow:(CPNotification)aNotification
 {
-    currentWorkflow = workflowController.currentWorkflow;
+    currentWorkflow = [aNotification object];
     isCurrentSelection = YES;
 }
 
