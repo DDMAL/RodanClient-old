@@ -57,7 +57,7 @@ var activeWorkflow = nil,
                                           selector:@selector(receiveHasFocusEvent:)
                                           name:RodanHasFocusWorkflowResultsViewNotification
                                           object:nil];
-    
+
     [[CPNotificationCenter defaultCenter] addObserver:self
                                           selector:@selector(handleTimerNotification:)
                                           name:RodanWorkflowResultsTimerNotification
@@ -72,7 +72,7 @@ var activeWorkflow = nil,
 //Public Delegate Methods
 ///////////////////////////////////////////////////////////////////////////////////////////
 
-- (void)remoteActionDidFinish:(WLRemoteAction)anAction 
+- (void)remoteActionDidFinish:(WLRemoteAction)anAction
 {
     if ([anAction result])
     {
@@ -88,7 +88,7 @@ var activeWorkflow = nil,
             case _MESSAGE_WORKFLOW_LOAD:
                 currentWorkflow =  [self updateWorkflowWithJson:[anAction result]];
                 [[CPNotificationCenter defaultCenter] postNotificationName:RodanDidLoadWorkflowNotification
-                                                      object:nil];
+                                                      object:currentWorkflow];
                 break;
         }
     }
@@ -117,7 +117,7 @@ var activeWorkflow = nil,
                     path:[self serverHost] + "/workflow/" + uuid + "/"
                     delegate:self
                     message:"Loading Workflow"
-                    withCredentials:YES]; 
+                    withCredentials:YES];
 }
 
 - (void)removeWorkflow:(CPIndexSet)anIndexSet
