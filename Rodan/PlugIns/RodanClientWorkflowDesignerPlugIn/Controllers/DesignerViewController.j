@@ -104,9 +104,6 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
         isInView = NO;
 
-    // ---------------------------------------------------------- //
-    // -------- REGISTER NOTIFICATIONS  ------------------------- //
-
     [[CPNotificationCenter defaultCenter] addObserver:self
                                           selector:@selector(receiveAddLink:)
                                           name:@"AddLinkToViewNotification"
@@ -280,17 +277,16 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
         [workflowJobs addObject:workflowJobViewController];
 
-        var j,
-            outputContentArray = [[workflowJobViewController outputPorts] contentArray],
+        var outputContentArray = [[workflowJobViewController outputPorts] contentArray],
             outputLoop = [outputContentArray count],
             inputContentArray = [[workflowJobViewController inputPorts] contentArray],
             inputLoop = [inputContentArray count];
 
-        for (j = 0; j < outputLoop; j++)
+        for (var j = 0; j < outputLoop; j++)
             [designerView addSubview:[outputContentArray[j] outputPortView]];
 
-        for (j = 0; j < inputLoop; j++)
-            [designerView addSubview:[inputContentArray[j] inputPortView]];
+        for (var k = 0; k < inputLoop; k++)
+            [designerView addSubview:[inputContentArray[k] inputPortView]];
 
         [designerView addSubview:[workflowJobViewController workflowJob]];
         draggingWorkflowJob = workflowJobViewController;
@@ -318,10 +314,6 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 // ---------------------------------------------------------------------- //
 // -------------------------- END DRAGGING METHODS ----------------------- //
 // ---------------------------------------------------------------------- //
-
-
-
-
 // -------------------------------------------------------------------- //
 // ----------------------- NOTIFICATION METHODS ----------------------- //
 // -------------------------------------------------------------------- //
@@ -351,7 +343,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
                                                          inputRef:nil
                                                   resourceListRef:nil];
 
-    [[designerView infoOutputPortView] setHidden:YES]; //hide Oportview from designerVIew
+    [[designerView infoOutputPortView] setHidden:YES]; //hide Oportview from designerView
 
     [connections addObject:newConnection];
 
@@ -436,8 +428,6 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     //refresh and display views
     [designerView display];
     [[CPNotificationCenter defaultCenter] postNotificationName:@"RefreshScrollView" object:nil];
-
-
 }
 
 - (void)receiveWorkflowJobDrag:(CPNotification)aNotification
@@ -475,10 +465,9 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     //adjust output ports position
     var origin = [workflowJobView frameOrigin],
         outputContentArray = [[aWorkflowJobViewController outputPorts] contentArray],
-        outputLoop = [outputContentArray count],
-        i;
+        outputLoop = [outputContentArray count];
 
-    for (i = 0; i < outputLoop; i++)
+    for (var i = 0; i < outputLoop; i++)
     {
         [[outputContentArray[i] outputPortView] arrangeOutputPosition:origin iteration:i];
         var outputConnection = [outputContentArray[i] connection],
@@ -496,7 +485,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     var inputContentArray = [[aWorkflowJobViewController inputPorts] contentArray],
         inputLoop = [inputContentArray count];
 
-    for (i = 0; i < inputLoop; i++)
+    for (var i = 0; i < inputLoop; i++)
     {
         [[inputContentArray[i] inputPortView] arrangeInputPosition:origin iteration:i];
 
@@ -524,13 +513,10 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     var workflowJobViewController = [aNotification object];
 
     draggingWorkflowJob = workflowJobViewController;
-    var workflowJob = [workflowJobViewController workflowJob];
+    var workflowJob = [workflowJobViewController workflowJob],
 
     //delete workflow and I/O ports on server
-    var j,
-        outputLoop = [workflowJobViewController outputPortNumber],
         outputContentArray = [[workflowJobViewController outputPorts] contentArray],
-        inputLoop = [workflowJobViewController inputPortNumber],
         inputContentArray = [[workflowJobViewController inputPorts] contentArray];
 
     [outputContentArray makeObjectsPerformSelector:@selector(ensureDeleted)];
@@ -564,9 +550,9 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     //adjust output ports position
     var origin = [resourceView frameOrigin],
         outputLoop = [resourceListViewController outputNum],
-        outputContentArray = [[resourceListViewController outputPorts] contentArray],
-        i;
-    for (i = 0; i < outputLoop; i++)
+        outputContentArray = [[resourceListViewController outputPorts] contentArray];
+
+    for (var i = 0; i < outputLoop; i++)
     {
         var outputConnection = [resourceListViewController connection];
 
@@ -709,15 +695,17 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 {
     var counter = 0,
         outputPortTypes = [creatingWorkflowJobIOTypes objectForKey:@"output_port_types"],
-        i, j,
-        outputLoop = [outputPortTypes count];
+        outputLoop = [outputPortTypes count],
+        minimumOutputPorts = 0;
 
     createOutputPortsCounter = 0;
 
     // create output ports (minimum required) for workflowJob
-    for (i = 0; i < outputLoop; i++)
+    for (var i = 0; i < outputLoop; i++)
     {
-        for (j = 0; j < outputPortTypes[i].minimum; j++)
+        minimumOutputPorts = outputPortTypes[i].minimum;
+
+        for (var j = 0; j < minimumOutputPorts; j++)
         {
             var oPortObject = {
                             "uuid": "",
@@ -739,14 +727,17 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 {
     var counter = 0,
         inputPortTypes = [creatingWorkflowJobIOTypes objectForKey:@"input_port_types"],
-        inputLoop = [inputPortTypes count];
+        inputLoop = [inputPortTypes count],
+        minimumInputPorts = 0;
 
     createInputPortsCounter = 0;
 
     //create input ports (minimum required) for workflowJob
     for (var i = 0; i < inputLoop; i++)
     {
-        for (var j = 0; j < inputPortTypes[i].minimum; j++)
+        minimumInputPorts = inputPortTypes[i].minimum;
+
+        for (var j = 0; j < minimumInputPorts; j++)
         {
             var iPortObject = {
                             "workflow_job":[workflowJobObject pk],
@@ -768,13 +759,12 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     [[draggingWorkflowJob workflowJobView] removeFromSuperview];
 
     //remove I/O ports from superivew
-    var j, k,
-        outputLoop = [draggingWorkflowJob outputPortNumber],
+    var outputLoop = [draggingWorkflowJob outputPortNumber],
         outputContentArray = [[draggingWorkflowJob outputPorts] contentArray],
         inputLoop = [draggingWorkflowJob inputPortNumber],
         inputContentArray = [[draggingWorkflowJob inputPorts] contentArray];
 
-    for (j = 0; j < outputLoop; j++)
+    for (var j = 0; j < outputLoop; j++)
     {
         var outputView = [outputContentArray[j] outputPortView];
         [outputView removeFromSuperview];
@@ -782,7 +772,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         outputContentArray[j] = nil;
     };
 
-    for (k = 0; k < inputLoop; k++)
+    for (var k = 0; k < inputLoop; k++)
     {
         var inputView = [inputContentArray[k] inputPortView];
         [inputView removeFromSuperview];
@@ -822,21 +812,21 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         [deleteCacheController.connectionsToDelete addObject:[aConnection connection]];
 
     [connectionArrayController deleteConnection:[aConnection connection]]; //remove from server array controller
-    [aConnection = nil];
+    aConnection = nil;
 
     console.info("Connection Deleted");
 }
 
 - (BOOL)_isInInputLocation:(CGPoint)mouseLocation
 {
-    var i,
-        j,
-        k,
-        workflowJobCount = [workflowJobsContentArray count];
+    var workflowJobCount = [workflowJobsContentArray count],
+        inputPortNumber = 0;
 
-    for (i = 0; i < workflowJobCount; i++)
+    for (var i = 0; i < workflowJobCount; i++)
     {
-        for (j = 0; j < [workflowJobsContentArray[i] inputPortNumber]; j++)
+        inputPortNumber = [workflowJobContentArray[i] inputPortNumber];
+
+        for (var j = 0; j < inputPortNumber; j++)
         {
             var inputsContentArray = [[workflowJobsContentArray[i] inputPorts] contentArray],
                 inputPortView = [inputsContentArray[j] inputPortView],
@@ -866,8 +856,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     [[aResourceListViewController resourceListView] removeFromSuperview];
 
     //remove Output ports from superview
-    var i,
-        resourceLoop = [aResourceListViewController outputNum],
+    var resourceLoop = [aResourceListViewController outputNum],
         outputContentArray = [[aResourceListViewController outputPorts] contentArray];
 
     for (var i = 0; i < resourceLoop; i++)
