@@ -27,14 +27,11 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
     // to draw connections
     @outlet     CPArrayController       connections                     @accessors;
-
-
 }
 
 - (id)initWithFrame:(CGRect)aFrame
 {
-    self = [super initWithFrame:aFrame];
-    if (self)
+    if (self = [super initWithFrame:aFrame])
     {
         [self setBackgroundColor:[CPColor colorWithHexString:"E8EBF0"]];
         [self registerForDraggedTypes:[CPArray arrayWithObjects:JobsTableDragAndDropTableViewDataType]];
@@ -73,13 +70,11 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 //DRAWING LINKS (LINES)
 - (void)drawRect:(CGRect)aRect
 {
-    var i,
-        connectionContentArray = [connections contentArray],
+    var connectionContentArray = [connections contentArray],
         loopCount = [connectionContentArray count];
 
-    for (i = 0; i < loopCount; i++)
+    for (var i = 0; i < loopCount; i++)
     {
-
         //draw all links in the link array
         if (connectionContentArray[i] != null)
         {
@@ -98,16 +93,12 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
             [connectionContentArray[i].pathAToB curveToPoint:connectionContentArray[i].endPoint controlPoint1:connectionContentArray[i].controlPoint1 controlPoint2:connectionContentArray[i].controlPoint2];
 
-
             [connectionContentArray[i].pathAToB stroke];
             [self setNeedsDisplay:YES];
         }
     };
 
 }
-
-
-
 
 - (void)mouseDown:(CPEvent)anEvent
 {
