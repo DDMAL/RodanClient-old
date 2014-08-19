@@ -1,34 +1,16 @@
 @import <Foundation/CPObject.j>
-@import <Foundation/CPIndexSet.j>
-@import <Foundation/CPRange.j>
 @import <RodanKit/RodanKit.j>
 
 @import "WorkflowDesignerView.j"
-@import "ToolPanel.j"
 @import "JobsTableController.j"
-@import "OutlineView.j"
 @import "WorkflowTableController.j"
 
 //import controllers to access database
 @import <RodanKit/JobController.j>
-@import "../../Delegates/LoadActiveWorkflowDelegate.j"
 
 //need to create delegate class
-@import "WorkflowDesignerDelegate.j"
 @import <RodanKit/Resource.j>
-@import <RodanKit/WorkflowJobSetting.j>
-
 @import <RodanKit/Job.j>
-
-@global activeUser
-@global RodanHasFocusWorkflowDesignerViewNotification
-@global RodanShouldLoadWorkflowDesignerNotification
-@global RodanShouldLoadPagesNotification
-@global RodanDidLoadWorkflowNotification
-@global RodanRemoveJobFromWorkflowNotification
-@global RodanRequestWorkflowsNotification
-
-@global RodanDidLoadJobsNotification
 
 
 JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType";
@@ -134,7 +116,7 @@ var _msLOADINTERVAL = 5.0;
 
 
     //create instance of WorkflowDesignerViewhow did
-    designerViewController = [[WorkflowDesignerView alloc] init];
+    designerViewController = [[DesignerViewController alloc] init];
     [[designerViewController designerView] setFrame:CGRectMake(0.0, 0.0, 2000, 2000)];        //NOTE -> must autoadjust to size of canvas
     [[designerViewController designerView] setAutoresizingMask:CPViewWidthSizable | CPViewHeightSizable];
     [designerScrollView setDocumentView:[designerViewController designerView]]; //scroll view that holds the designerView
