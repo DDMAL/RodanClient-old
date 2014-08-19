@@ -195,8 +195,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
 - (void)hasPerformedDraggingOperation:(CPDraggingInfo)aSender
 {
-    var aSender = [aNotification object],
-        pboard = [aSender draggingPasteboard],
+    var pboard = [aSender draggingPasteboard],
         content = [jobArrayController arrangedObjects],
         sourceIndexes = [pboard dataForType:JobsTableDragAndDropTableViewDataType],
         job = [content objectAtIndex:[sourceIndexes firstIndex]],
@@ -290,7 +289,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         for (j = 0; j < outputLoop; j++)
             [designerView addSubview:[outputContentArray[j] outputPortView]];
 
-        for (j = 0; j < inputLoop; k++)
+        for (j = 0; j < inputLoop; j++)
             [designerView addSubview:[inputContentArray[j] inputPortView]];
 
         [designerView addSubview:[workflowJobViewController workflowJob]];
@@ -507,7 +506,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         if (inputConnection != nil)
         {
             inputConnection.endPoint = newIPoint;
-            inputConnection.controlPoint1 = newIpoint;
+            inputConnection.controlPoint1 = newIPoint;
             inputConnection.controlPoint2 = newIPoint;
         }
     };
@@ -611,7 +610,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         mouseLocation = [designerView convertPoint:[anEvent locationInWindow] fromView:nil],
         inputPortViewController = [aNotification object],
 
-        inputType = [outputPortViewController inputPortType];
+        inputType = [inputPortViewController inputPortType];
 
     [[designerView infoOutputPortView] setHidden:NO];
     [[designerView infoOutputPortView] setFrameOrigin:CGPointMake(mouseLocation.x - 175.0, mouseLocation.y)];

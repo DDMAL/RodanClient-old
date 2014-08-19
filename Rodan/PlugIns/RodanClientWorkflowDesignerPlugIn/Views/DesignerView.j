@@ -42,27 +42,27 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         frame = aFrame;
 
         //Hover output / input view (inspector)
-        outputPortView = [[CPView alloc] initWithFrame:CGRectMake(0, 0, 175, 175)];
-        [outputPortView setBackgroundColor:[CPColor colorWithHexString:"FFFFCC"]];
-        [self addSubview:outputPortView];
-        [outputPortView setHidden:YES];
+        infoOutputPortView = [[CPView alloc] initWithFrame:CGRectMake(0, 0, 175, 175)];
+        [infoOutputPortView setBackgroundColor:[CPColor colorWithHexString:"FFFFCC"]];
+        [self addSubview:infoOutputPortView];
+        [infoOutputPortView setHidden:YES];
 
-        outputTypeText = [[CPTextField alloc] initWithFrame:CGRectMake(10, 10, 170, 20)];
-        [outputTypeText setStringValue:@"Output Type:"];
-        [outputTypeText setHighlighted:YES];
-        [outputPortView addSubview:outputTypeText];
+        infoOutputTypeText = [[CPTextField alloc] initWithFrame:CGRectMake(10, 10, 170, 20)];
+        [infoOutputTypeText setStringValue:@"Output Type:"];
+        [infoOutputTypeText setHighlighted:YES];
+        [infoOutputPortView addSubview:infoOutputTypeText];
 
 
-        inputPortView = [[CPView alloc] initWithFrame:CGRectMake(0, 0, 175, 175)];
-        [inputPortView setBackgroundColor:[CPColor colorWithHexString:"FFFFCC"]];
-        [inputTypeText setHighlighted:YES];
-        [self addSubview:inputPortView];
-        [inputPortView setHidden:YES];
+        infoInputPortView = [[CPView alloc] initWithFrame:CGRectMake(0, 0, 175, 175)];
+        [infoInputPortView setBackgroundColor:[CPColor colorWithHexString:"FFFFCC"]];
+        [infoInputTypeText setHighlighted:YES];
+        [self addSubview:infoInputPortView];
+        [infoInputPortView setHidden:YES];
 
-        inputTypeText = [[CPTextField alloc] initWithFrame:CGRectMake(10, 10, 170, 20)];
-        [inputTypeText setStringValue:@"Input Type:"];
+        infoInputTypeText = [[CPTextField alloc] initWithFrame:CGRectMake(10, 10, 170, 20)];
+        [infoInputTypeText setStringValue:@"Input Type:"];
 
-        [inputPortView addSubview:inputTypeText];
+        [infoInputPortView addSubview:infoInputTypeText];
 
         [self setNeedsDisplay:YES];
     }
