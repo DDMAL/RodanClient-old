@@ -45,9 +45,7 @@ var PORT_SIZE = 8.5,
         //set reference to associated controller
         workflowJobViewController = aViewController;
 
-
         workflowJob = [[CPBox alloc] initWithFrame:aRect];
-        refNumber = aNumber;
 
         [self changeBoxAttributes:1.0 cornerRadius:15.0 fillColor:[CPColor colorWithHexString:"E6E6E6"] boxType:CPBoxPrimary title:"Border Crop"];
 

@@ -40,14 +40,11 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
                 WorkflowJobViewController currentHoverInputWorkflowJob; //pos. 0 = workflowJob, pos. 1 = inputNumber (for current hover)
                 InputPortViewController   currentHoverInputPort;
 
-                CPEvent                   mouseDownEvent;
-
                 CPString                  outputTypeText;
                 CPString                  inputTypeText;
 
                 //dragging helper variables
                 BOOL                      isInView;
-                CPInteger                 currentDraggingIndex;
 
                 WorkflowJobViewController draggingWorkflowJob;
 
@@ -106,10 +103,6 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         deleteCacheController = [[DeleteCacheController alloc] init];
 
         isInView = NO;
-
-    // ---------------------------------------------------------- //
-    // -------- REGISTER NOTIFICATIONS  ------------------------- //
-    // AH: Is this comment really necessary? I can see that's what's happening! :)
 
     [[CPNotificationCenter defaultCenter] addObserver:self
                                           selector:@selector(receiveAddLink:)
@@ -187,10 +180,11 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
                                           selector:@selector(receiveModelWasCreatedNotification:)
                                           name:RodanModelCreatedNotification
                                           object:nil];
-    }
 
+    }
     return self;
 }
+
 
 // ---------------------------------------------------------- //
 // -------------------- DRAGGING METHODS -------------------- //
@@ -198,8 +192,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
 - (void)hasPerformedDraggingOperation:(CPDraggingInfo)aSender
 {
-    var aSender = [aNotification object],
-        pboard = [aSender draggingPasteboard],
+    var pboard = [aSender draggingPasteboard],
         content = [jobArrayController arrangedObjects],
         sourceIndexes = [pboard dataForType:JobsTableDragAndDropTableViewDataType],
         job = [content objectAtIndex:[sourceIndexes firstIndex]],
@@ -210,7 +203,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         inputPortTypes = [job inputPortTypes],
         outputPortTypes = [job outputPortTypes];
 
-    //populate dictionary to later create I/O ports for corresponding wkJob
+        //populate dictionary to later create I/O ports for corresponding wkJob
     [creatingWorkflowJobIOTypes setObject:inputPortTypes forKey:@"input_port_types"];
     [creatingWorkflowJobIOTypes setObject:outputPortTypes forKey:@"output_port_types"];
 
@@ -237,10 +230,9 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
         creatingWorkflowJob = draggingWorkflowJob; //to later create I/O ports for workflowJob (asynchronous)
     }
+
     else
     {
-        // AH: This should be re-worked. Since the alert will be async, you can easily put this check at the beginning
-        //   of this method, and check if (!isCurrentSelection) before executing anything else.
         //if no workflow selected, warn user they must select a workflow
         var alert = [CPAlert alertWithMessageText:@"Must select workflow to create workflowJob"
                                     defaultButton:@"Okay"
@@ -258,6 +250,8 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     [designerView display];
 }
 
+
+
 - (void)draggingHasEntered:(CPDraggingInfo)aSender
 {
     console.log("Dragging Entered");
@@ -272,7 +266,8 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         location = [self convertPoint:[aSender draggingLocation] fromView:nil],
 
         inputPortTypes = [aJob inputPortTypes],
-        outputPortTypes = [aJob outputPortTypes];
+        outputPortTypes = [aJob outputPortTypes],
+        i;
 
     if (aJob !== nil)
     {
@@ -286,16 +281,6 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
             outputLoop = [outputContentArray count],
             inputContentArray = [[workflowJobViewController inputPorts] contentArray],
             inputLoop = [inputContentArray count];
-
-        // AH: Just for fun, there's also 'enumerateObjectsUsingBlock:'
-        /*
-        [outputContentArray enumerateObjectsUsingBlock:function(object, idx, stop)
-        {
-            [designerView addSubView:[object outputPortView]];
-        }];
-
-        This keeps you from having to keep track of iterator variables...
-        */
 
         for (var j = 0; j < outputLoop; j++)
             [designerView addSubview:[outputContentArray[j] outputPortView]];
@@ -358,7 +343,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
                                                          inputRef:nil
                                                   resourceListRef:nil];
 
-    [[designerView infoOutputPortView] setHidden:YES]; //hide Oportview from designerVIew
+    [[designerView infoOutputPortView] setHidden:YES]; //hide Oportview from designerView
 
     [connections addObject:newConnection];
 
@@ -372,6 +357,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
 - (void)receiveReleaseLink:(CPNotification)aNotification
 {
+
     var info = [aNotification userInfo],
         anEvent = [info objectForKey:"event"],
         currentMouseLocation = [designerView convertPoint:[anEvent locationInWindow] fromView:nil],
@@ -379,6 +365,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         outputPortViewController = [aNotification object],
 
         connection = [outputPortViewController connection];
+
 
     if ([self _isInInputLocation:currentMouseLocation])
     {
@@ -404,14 +391,15 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
         console.log("Created Link");
     }
+
     else
     {
         // -------- REMOVE LINK -------- //
+
         [connections removeObject:connection];
         connection = nil;
         console.log("Removed Link");
     }
-
     [designerView display];
 }
 
@@ -485,7 +473,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         var outputConnection = [outputContentArray[i] connection],
             newOPoint = [[outputContentArray[i] outputPortView] outputStart];
 
-        if (outputConnection !== nil)
+        if (outputConnection != nil)
         {
             outputConnection.startPoint = newOPoint;
             outputConnection.controlPoint1 = newOPoint;
@@ -497,17 +485,17 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     var inputContentArray = [[aWorkflowJobViewController inputPorts] contentArray],
         inputLoop = [inputContentArray count];
 
-    for (var j = 0; j < inputLoop; j++)
+    for (var i = 0; i < inputLoop; i++)
     {
-        [[inputContentArray[j] inputPortView] arrangeInputPosition:origin iteration:j];
+        [[inputContentArray[i] inputPortView] arrangeInputPosition:origin iteration:i];
 
-        var inputConnection = [inputContentArray[j] connection],
-            newIPoint = [[inputContentArray[j] inputPortView] inputEnd];
+        var inputConnection = [inputContentArray[i] connection],
+            newIPoint = [[inputContentArray[i] inputPortView] inputEnd];
 
-        if (inputConnection !== nil)
+        if (inputConnection != nil)
         {
             inputConnection.endPoint = newIPoint;
-            inputConnection.controlPoint1 = newIpoint;
+            inputConnection.controlPoint1 = newIPoint;
             inputConnection.controlPoint2 = newIPoint;
         }
     };
@@ -525,10 +513,10 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     var workflowJobViewController = [aNotification object];
 
     draggingWorkflowJob = workflowJobViewController;
-    var workflowJob = [workflowJobViewController workflowJob];
+    var workflowJob = [workflowJobViewController workflowJob],
 
     //delete workflow and I/O ports on server
-    var outputContentArray = [[workflowJobViewController outputPorts] contentArray],
+        outputContentArray = [[workflowJobViewController outputPorts] contentArray],
         inputContentArray = [[workflowJobViewController inputPorts] contentArray];
 
     [outputContentArray makeObjectsPerformSelector:@selector(ensureDeleted)];
@@ -569,11 +557,9 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         var outputConnection = [resourceListViewController connection];
 
         [[outputContentArray[i] outputPortView] arrangeOutputPosition:origin iteration:i];
-
-        if (outputConnection !== nil)
+        if (outputConnection != nil)
             [outputConnection setStartPoint:[[outputContentArray[i] outputPortView] outputStart]];
     };
-
     [designerView display];
 }
 
@@ -610,7 +596,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         mouseLocation = [designerView convertPoint:[anEvent locationInWindow] fromView:nil],
         inputPortViewController = [aNotification object],
 
-        inputType = [outputPortViewController inputPortType];
+        inputType = [inputPortViewController inputPortType];
 
     [[designerView infoOutputPortView] setHidden:NO];
     [[designerView infoOutputPortView] setFrameOrigin:CGPointMake(mouseLocation.x - 175.0, mouseLocation.y)];
@@ -642,7 +628,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     // {
     //   [inputViewAnimation stopAnimation];
     // }
-    [[designerView infoInputPortView] setHidden:YES];
+        [[designerView infoInputPortView] setHidden:YES];
 }
 
 - (void)receiveNewResourceList:(CPNotification)aNotification
@@ -655,6 +641,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     [resourceLists addObject:newList];
     [designerView addSubview:[newList resourceListView]];
     [designerView addSubview:[[newList outputPorts][0] outputPortView]];
+
 
     //NOTE: need to add funcationality to support varied sized resourceLists for multiple outputPorts (similar implementation as workflowJobView)
       console.info("New Resource List");
@@ -740,14 +727,17 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 {
     var counter = 0,
         inputPortTypes = [creatingWorkflowJobIOTypes objectForKey:@"input_port_types"],
-        inputLoop = [inputPortTypes count];
+        inputLoop = [inputPortTypes count],
+        minimumInputPorts = 0;
 
     createInputPortsCounter = 0;
 
     //create input ports (minimum required) for workflowJob
     for (var i = 0; i < inputLoop; i++)
     {
-        for (var j = 0; j < inputPortTypes[i].minimum; j++)
+        minimumInputPorts = inputPortTypes[i].minimum;
+
+        for (var j = 0; j < minimumInputPorts; j++)
         {
             var iPortObject = {
                             "workflow_job":[workflowJobObject pk],
@@ -815,9 +805,10 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     [[aConnection inputWorkflowJob] setIsUsed:false];
 
     //delete server connection model
-    if ([[aConnection connection] pk] !== nil)
+    if ([[aConnection connection] pk] != nil)
         [[aConnection connection] ensureDeleted]; //delete connection model
-    else  //add to deletecache and wait for notification
+
+    else //add to deletecache and wait for notification
         [deleteCacheController.connectionsToDelete addObject:[aConnection connection]];
 
     [connectionArrayController deleteConnection:[aConnection connection]]; //remove from server array controller
@@ -833,7 +824,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
     for (var i = 0; i < workflowJobCount; i++)
     {
-        inputPortNumber = [workflowJobsContentArray[i] inputPortNumber];
+        inputPortNumber = [workflowJobContentArray[i] inputPortNumber];
 
         for (var j = 0; j < inputPortNumber; j++)
         {
@@ -857,7 +848,6 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
         };
     };
-
     return false;
 }
 
@@ -899,3 +889,5 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 }
 
 @end
+
+
