@@ -183,7 +183,7 @@ activeUser = nil;
 {
     var username = [usernameField objectValue],
         password = [passwordField objectValue],
-        request = [self _addAuthenticationHeaders:request];
+        request = [self _createRequestWithAuthenticationHeaders:_urlLogin];
 
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"]
@@ -196,7 +196,7 @@ activeUser = nil;
 {
     activeUser = nil;
 
-    var request = [self _addAuthenticationHeaders:request];
+    var request = [self _createRequestWithAuthenticationHeaders:_urlLogout];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPMethod:@"POST"];
     var conn = [CPURLConnection connectionWithRequest:request delegate:self withCredentials:YES];
@@ -204,7 +204,13 @@ activeUser = nil;
                                           object:nil];
 }
 
-- (void)_addAuthenticationHeaders:(CPURLRequest)aRequest
+- (CPURLRequest)_createRequestWithAuthenticationHeaders:(CPURL)aUrl
+{
+    var request = [CPURLRequest requestWithURL:aUrl];
+    return [self _addAuthenticationHeaders:request];
+}
+
+- (CPURLRequest)_addAuthenticationHeaders:(CPURLRequest)aRequest
 {
     if (_authenticationType == "session")
     {
