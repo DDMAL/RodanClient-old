@@ -1,9 +1,10 @@
 @import <Foundation/CPObject.j>
 @import <RodanKit/RodanKit.j>
 
-@import "WorkflowDesignerView.j"
-@import "JobsTableController.j"
-@import "WorkflowTableController.j"
+@import "Views/DesignerView.j"
+@import "Controllers/DesignerViewController.j"
+@import "Controllers/JobsTableController.j"
+@import "Controllers/WorkflowTableController.j"
 
 //import controllers to access database
 @import <RodanKit/JobController.j>

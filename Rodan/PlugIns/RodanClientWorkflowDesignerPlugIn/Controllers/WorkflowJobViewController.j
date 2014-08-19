@@ -5,7 +5,7 @@
 @import "OutputPortViewController.j"
 @import "../Views/WorkflowJobView.j"
 @import "../Views/OutputPortView.j"
-@import "../View/InputPortView.j"
+@import "../Views/InputPortView.j"
 
 
 

@@ -250,7 +250,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         [self removeWorkflowJob];
     }
 
-    draggingWorkflowJob = null;
+    draggingWorkflowJob = nil;
     [designerView display];
 }
 
@@ -273,7 +273,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         outputPortTypes = [aJob outputPortTypes],
         i;
 
-    if (aJob !== null)
+    if (aJob !== nil)
     {
         //create view controllers & views
         var workflowJobViewController = [[WorkflowJobViewController alloc] initWithJob:aJob];
@@ -485,7 +485,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         var outputConnection = [outputContentArray[i] connection],
             newOPoint = [[outputContentArray[i] outputPortView] outputStart];
 
-        if (outputConnection != null)
+        if (outputConnection != nil)
         {
             outputConnection.startPoint = newOPoint;
             outputConnection.controlPoint1 = newOPoint;
@@ -504,7 +504,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         var inputConnection = [inputContentArray[i] connection],
             newIPoint = [[inputContentArray[i] inputPortView] inputEnd];
 
-        if (inputConnection != null)
+        if (inputConnection != nil)
         {
             inputConnection.endPoint = newIPoint;
             inputConnection.controlPoint1 = newIpoint;
@@ -572,7 +572,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         var outputConnection = [resourceListViewController connection];
 
         [[outputContentArray[i] outputPortView] arrangeOutputPosition:origin iteration:i];
-        if (outputConnection != null)
+        if (outputConnection != nil)
             [outputConnection setStartPoint:[[outputContentArray[i] outputPortView] outputStart]];
     };
     [designerView display];
@@ -779,19 +779,19 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     {
         var outputView = [outputContentArray[j] outputPortView];
         [outputView removeFromSuperview];
-        outputView = null;
-        outputContentArray[j] = null;
+        outputView = nil;
+        outputContentArray[j] = nil;
     };
 
     for (k = 0; k < inputLoop; k++)
     {
         var inputView = [inputContentArray[k] inputPortView];
         [inputView removeFromSuperview];
-        inputView = null;
-        inputContentArray[k] = null;
+        inputView = nil;
+        inputContentArray[k] = nil;
     };
 
-    draggingWorkflowJob = null;
+    draggingWorkflowJob = nil;
 }
 
 - (void)createConnectionModelFromInputPort:(InputPort)anInputPort inputWorkflowJob:(WorkflowJob)iWorkflowJob outputPort:(OutputPort)anOutputPort outputWorkflowJob:(WorkflowJob)oWorkflowJob connectionRef:(ConnectionViewController)connectionRef
@@ -816,14 +816,14 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     [[aConnection inputWorkflowJob] setIsUsed:false];
 
     //delete server connection model
-    if ([[aConnection connection] pk] != null)
+    if ([[aConnection connection] pk] != nil)
         [[aConnection connection] ensureDeleted]; //delete connection model
 
     else //add to deletecache and wait for notification
         [deleteCacheController.connectionsToDelete addObject:[aConnection connection]];
 
     [connectionArrayController deleteConnection:[aConnection connection]]; //remove from server array controller
-    [aConnection = null];
+    [aConnection = nil];
 
     console.info("Connection Deleted");
 }
@@ -875,11 +875,11 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     {
         var resourceView = [outputContentArray[i] resourceListView];
         [resourceView removeFromSuperview];
-        resourceView = null;
-        outputContentArray[i] = null;
+        resourceView = nil;
+        outputContentArray[i] = nil;
     };
 
-    aResourceListViewController = null;
+    aResourceListViewController = nil;
 }
 
 // -------------------------------------------------------- //
