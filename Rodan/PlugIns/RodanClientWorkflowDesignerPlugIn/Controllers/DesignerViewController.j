@@ -824,7 +824,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
     for (var i = 0; i < workflowJobCount; i++)
     {
-        inputPortNumber = [workflowJobContentArray[i] inputPortNumber];
+        inputPortNumber = [workflowJobsContentArray[i] inputPortNumber];
 
         for (var j = 0; j < inputPortNumber; j++)
         {

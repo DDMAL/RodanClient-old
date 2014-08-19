@@ -29,7 +29,6 @@ var PORT_SIZE = 8.5,
 - (id)initWithPoint:(CGPoint)aPoint withInitialPortNumber:(CPInteger)aPortNumber workflowJobControllerRef:(WorkflowJobViewController)aViewController
 {
 
-
     if (aPortNumber == 0 || aPortNumber == 1)
         workflowJobSize = CGSizeMake(LENGTH + 20, WIDTH);
     else

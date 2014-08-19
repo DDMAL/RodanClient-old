@@ -31,7 +31,6 @@
 
         workflowJobViewController = aWorkflowJobRef;
         resourceListViewController = aResourceListRef;
-
     }
 
     return self;
