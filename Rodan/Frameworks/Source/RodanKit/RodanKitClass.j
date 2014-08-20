@@ -52,9 +52,6 @@
     arrayCountTransformer = [[ArrayCountTransformer alloc] init];
     [ArrayCountTransformer setValueTransformer:arrayCountTransformer forName:@"ArrayCountTransformer"];
 
-    dateFormatTransformer = [[DateFormatTransformer alloc] init];
-    [DateFormatTransformer setValueTransformer:dateFormatTransformer forName:@"DateFormatTransformer"];
-
     runJobStatusTransformer = [[RunJobStatusTransformer alloc] init];
     [RunJobStatusTransformer setValueTransformer:runJobStatusTransformer forName:@"RunJobStatusTransformer"];
 }*/

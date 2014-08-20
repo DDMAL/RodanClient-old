@@ -96,7 +96,6 @@ RodanHasFocusProjectListViewNotification = @"RodanHasFocusProjectListViewNotific
 @import "ArrayCountTransformer.j"
 @import "ByteCountTransformer.j"
 @import "CheckBoxTransformer.j"
-@import "DateFormatTransformer.j"
 @import "JobTypeTransformer.j"
 @import "JobArgumentsTransformer.j"
 @import "PngTransformer.j"

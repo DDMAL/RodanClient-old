@@ -21,6 +21,8 @@
 
 activeUser = nil;
 
+var _authenticationTokenValue = nil;
+
 @implementation AuthenticationController : RKController
 {
     @outlet     CPTextField         usernameField;
@@ -32,7 +34,21 @@ activeUser = nil;
                 CPString            _urlLogin;
                 CPString            _urlCheckIsAuthenticated;
                 CPCookie            _CSRFToken;
-                CPString            _authenticationToken;
+                CPString            _authenticationHeader; // Either "Authorization" or "X-CSRFToken".
+
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Public Static Methods
+///////////////////////////////////////////////////////////////////////////////
+#pragma mark Public Static Methods
+
+/**
+    Returns value of token authorization IFF it has been set.
+ */
++ (CPString)tokenAuthorizationValue
+{
+    return _authenticationTokenValue;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -47,16 +63,19 @@ activeUser = nil;
         _urlLogout = [CPURL URLWithString:[self serverHost] + "/auth/logout/"];
         _urlCheckIsAuthenticated = [CPURL URLWithString:[self serverHost] + "/auth/status/"];
         _CSRFToken = nil;
-        _authenticationToken = nil;
+        _authenticationTokenValue = nil;
+        _authenticationHeader = nil;
 
         switch (_authenticationType)
         {
             case "token":
                 _urlLogin = [CPURL URLWithString:[self serverHost] + "/auth/token/"];
+                _authenticationHeader = @"Authorization";
                 break;
 
             case "session":
                 _CSRFToken = [[CPCookie alloc] initWithName:@"csrftoken"];
+                _authenticationHeader = @"X-CSRFToken";
                 _urlLogin = [CPURL URLWithString:[self serverHost] + "/auth/session/"];
                 break;
 
@@ -149,7 +168,7 @@ activeUser = nil;
 
         if (data.hasOwnProperty('token') && _authenticationType == "token")
         {
-            _authenticationToken = "Token " + data.token;
+            _authenticationTokenValue = "Token " + data.token;
             [[CPNotificationCenter defaultCenter] postNotificationName:RodanDidLogInNotification
                                                   object:nil];
         }
@@ -220,14 +239,14 @@ activeUser = nil;
             case "PUT":
             case "PATCH":
             case "DELETE":
-                [aRequest setValue:[_CSRFToken value] forHTTPHeaderField:"X-CSRFToken"];
+                [aRequest setValue:[_CSRFToken value] forHTTPHeaderField:_authenticationHeader];
         }
     }
     else if (_authenticationType == "token")
     {
-        if (_authenticationToken != nil)
+        if (_authenticationTokenValue != nil)
         {
-            [aRequest setValue:_authenticationToken forHTTPHeaderField:"Authorization"];
+            [aRequest setValue:_authenticationTokenValue forHTTPHeaderField:_authenticationHeader];
         }
     }
     else
