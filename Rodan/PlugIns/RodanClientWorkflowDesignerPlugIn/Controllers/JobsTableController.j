@@ -31,11 +31,12 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
 - (void)receiveDidLoadJobs:(CPNotification)aNotification
 {
-
+    console.log(jobArrayController);
 }
 
 - (void)tableViewSelectionDidChange:(CPNotification)aNotification
 {
+    console.log(jobArrayController);
     var row = [[[aNotification object] selectedRowIndexes] firstIndex];
 
     if (row === -1)

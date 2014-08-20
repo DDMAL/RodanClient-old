@@ -36,7 +36,7 @@ CustomOutlineViewDragType = @"CustomOutlineViewDragType";
 
 var _msLOADINTERVAL = 5.0;
 
-@implementation WorkflowDesignerViewController : CPViewController
+@implementation WorkflowDesignerViewControllerOld : CPViewController
 {
     // --------------------------------------------------------------- //
     //-------------------- GRAPHICAL PROPERTIES ---------------------- //

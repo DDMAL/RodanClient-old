@@ -10,7 +10,7 @@ var PORT_SIZE = 8.5,
     LENGTH = 40.0,
     WIDTH = 100.0;
 
-@implementation WorkflowJobView : CPView
+@implementation WorkflowJobViewOld : CPView
 {
     CPBox                   workflowJob                     @accessors;
     CPUInteger              outputPortNumber                @accessors;

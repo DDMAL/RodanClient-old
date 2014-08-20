@@ -3,7 +3,7 @@
 
 @import "OutputPortView.j"
 
-@implementation ResourceList : CPView
+@implementation ResourceListOld : CPView
 {
     CPBox               resourceList        @accessors;
     CPUInteger          numberOfPages       @accessors;

@@ -9,9 +9,12 @@
             <connections>
                 <outlet property="attributesPanel" destination="1Vd-qI-WKi" id="XdG-Fg-jHE"/>
                 <outlet property="connectButton" destination="XY0-QO-Hi0" id="a23-c8-AxM"/>
+                <outlet property="connectionArrayController" destination="S0r-xG-MDP" id="Fh2-Oq-ANQ"/>
                 <outlet property="contentView" destination="dKn-be-xKB" id="c3L-Gc-eBU"/>
                 <outlet property="designerScrollView" destination="fLW-ki-ODv" id="esq-pb-UcF"/>
+                <outlet property="designerViewController" destination="OuJ-uO-o9m" id="bix-K5-s7s"/>
                 <outlet property="helpIcon" destination="bD0-Gx-Vqh" id="9I3-H7-VgO"/>
+                <outlet property="jobArrayController" destination="ATt-y4-Flf" id="Fma-1S-9cu"/>
                 <outlet property="jobScrollView" destination="YzL-4b-JGo" id="keq-Bl-GpQ"/>
                 <outlet property="leftScrollView" destination="OMN-ro-P4F" id="l5h-ya-bog"/>
                 <outlet property="leftSideBar" destination="MMe-el-Ort" id="PsF-WI-wdJ"/>
@@ -28,6 +31,7 @@
                 <outlet property="settingsViewBase" destination="FwL-Pv-CHR" id="PzK-nh-vCM"/>
                 <outlet property="toolsIcon" destination="aUl-5y-ajM" id="FdH-YV-Ww5"/>
                 <outlet property="view" destination="dKn-be-xKB" id="wyM-ng-fl0"/>
+                <outlet property="workflowArrayController" destination="lIn-Ch-jiL" id="cj5-7D-0yc"/>
                 <outlet property="workflowDesignerView" destination="igf-M9-Ire" id="4Gg-UM-hXZ"/>
             </connections>
         </customObject>
@@ -298,46 +302,14 @@
         <customObject id="OuJ-uO-o9m" userLabel="Controller - Designer View" customClass="DesignerViewController">
             <connections>
                 <outlet property="connectionArrayController" destination="S0r-xG-MDP" id="eak-kA-Exb"/>
-                <outlet property="connectionController" destination="PQS-wh-f2A" id="FBp-09-PuQ"/>
                 <outlet property="connections" destination="O2n-kO-SNT" id="UvG-Qt-RvV"/>
-                <outlet property="jobArrayController" destination="ATt-y4-Flf" id="4wX-Zu-C7c"/>
-                <outlet property="jobController" destination="F24-JC-oRX" id="SjB-Nw-dZy"/>
-                <outlet property="workflowArrayController" destination="lIn-Ch-jiL" id="psi-3K-whH"/>
-                <outlet property="workflowController" destination="hDB-5H-J43" id="gsb-Jy-4M3"/>
-            </connections>
-        </customObject>
-        <customObject id="q89-eI-67v" userLabel="View - Designer View" customClass="DesignerView">
-            <connections>
-                <outlet property="connections" destination="O2n-kO-SNT" id="yjA-mL-kQb"/>
-            </connections>
-        </customObject>
-        <customObject id="hDB-5H-J43" userLabel="Controller - Workflow" customClass="WorkflowController">
-            <connections>
-                <outlet property="workflowArrayController" destination="lIn-Ch-jiL" id="Z4i-zi-k0l"/>
-            </connections>
-        </customObject>
-        <customObject id="F24-JC-oRX" userLabel="Controller - Job" customClass="JobController">
-            <connections>
-                <outlet property="jobArrayController" destination="ATt-y4-Flf" id="UX9-Qs-AvL"/>
-            </connections>
-        </customObject>
-        <customObject id="0v4-L3-dUp" userLabel="Controller - WorkflowJob" customClass="WorkflowJobController"/>
-        <customObject id="PQS-wh-f2A" userLabel="Controller - Connection" customClass="ConnectionController">
-            <connections>
-                <outlet property="connectionArrayController" destination="S0r-xG-MDP" id="7Ci-no-a5h"/>
-            </connections>
-        </customObject>
-        <customObject id="1GI-Vz-Lgq" userLabel="Controller - InputPort" customClass="InputPortController"/>
-        <customObject id="e4y-kD-aCr" userLabel="Controller - OutputPort" customClass="OutputPortController"/>
-        <customObject id="gY7-JX-cYJ" userLabel="Controller - Resource" customClass="ResourceController">
-            <connections>
-                <outlet property="arrayController" destination="UjB-xI-3Od" id="MFn-Yd-NSa"/>
+                <outlet property="jobArrayController" destination="ATt-y4-Flf" id="Xcp-ZI-ocC"/>
+                <outlet property="workflowArrayController" destination="lIn-Ch-jiL" id="sJe-DV-olG"/>
             </connections>
         </customObject>
         <customObject id="ak3-Ba-Xe7" userLabel="Table Controller - Jobs" customClass="JobsTableController">
             <connections>
-                <outlet property="jobArrayController" destination="ATt-y4-Flf" id="21m-yS-fcq"/>
-                <outlet property="jobController" destination="F24-JC-oRX" id="UyT-9l-seV"/>
+                <outlet property="jobArrayController" destination="ATt-y4-Flf" id="FjI-cr-Jft"/>
                 <outlet property="jobsTableView" destination="RR5-M6-41x" id="yOU-6c-WzS"/>
             </connections>
         </customObject>
@@ -348,8 +320,7 @@
                 <outlet property="removeWorkflow" destination="2ZI-Pd-Ia6" id="y0O-73-DAl"/>
                 <outlet property="selectWorkflow" destination="3sV-BT-xZe" id="rm4-lG-Ioi"/>
                 <outlet property="selectedWorkflowLabel" destination="KCu-0g-9BS" id="cYj-F7-y4o"/>
-                <outlet property="workflowArrayController" destination="lIn-Ch-jiL" id="ck9-ks-dyF"/>
-                <outlet property="workflowController" destination="hDB-5H-J43" id="W74-ql-HZi"/>
+                <outlet property="workflowArrayController" destination="lIn-Ch-jiL" id="atH-Vm-jCK"/>
                 <outlet property="workflowsTableView" destination="scL-JJ-Blb" id="uVc-8n-N1U"/>
             </connections>
         </customObject>

@@ -5,7 +5,7 @@
 
 
 
-@implementation Link : CPObject
+@implementation LinkOld : CPObject
 {
     CPBezierPath        pathAToB;
     CGPoint             endPoint            @accessors;

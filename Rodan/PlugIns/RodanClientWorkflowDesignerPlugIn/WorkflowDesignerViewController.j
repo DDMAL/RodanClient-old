@@ -35,7 +35,7 @@ var _msLOADINTERVAL = 5.0;
     @outlet             CPSplitView             leftSideBar             @accessors;
     @outlet             CPSplitView             rightSideBar            @accessors;
     @outlet             CPScrollView            designerScrollView      @accessors;
-                        DesignerViewController  designerViewController  @accessors;
+    @outlet             DesignerViewController  designerViewController  @accessors;
 
     //jobs View
     @outlet             CPScrollView            jobScrollView           @accessors;
@@ -76,9 +76,9 @@ var _msLOADINTERVAL = 5.0;
     // ------------------- DATABASES AND INFO -------------------------- //
     // ----------------------------------------------------------------- //
 
-    @outlet             CPArrayController           workflowArrayController;
-    @outlet             CPArrayController           currentWorkflowArrayController;
-    @outlet             CPArrayController           resourceArrayController;
+    @outlet             CPArrayController       connectionArrayController;
+    @outlet             CPArrayController       jobArrayController;
+    @outlet             CPArrayController       workflowArrayController;
 
 }
 
@@ -90,6 +90,15 @@ var _msLOADINTERVAL = 5.0;
 
 - (void)awakeFromCib
 {
+
+    var mainApplication = [CPApplication sharedApplication],
+        jobController = [mainApplication delegate].jobController,
+        workflowController = [mainApplication delegate].workflowController;
+
+    jobArrayController = jobController.jobArrayController;
+    workflowArrayController = workflowController.workflowArrayController;
+
+
 
     var center = [CPNotificationCenter defaultCenter];
 
@@ -117,8 +126,6 @@ var _msLOADINTERVAL = 5.0;
     [designerScrollView setBackgroundColor:[CPColor colorWithHexString:"999999"]];
 
 
-    //create instance of WorkflowDesignerViewhow did
-    designerViewController = [[DesignerViewController alloc] init];
     [[designerViewController designerView] setFrame:CGRectMake(0.0, 0.0, 2000, 2000)];        //NOTE -> must autoadjust to size of canvas
     [[designerViewController designerView] setAutoresizingMask:CPViewWidthSizable | CPViewHeightSizable];
     [designerScrollView setDocumentView:[designerViewController designerView]]; //scroll view that holds the designerView

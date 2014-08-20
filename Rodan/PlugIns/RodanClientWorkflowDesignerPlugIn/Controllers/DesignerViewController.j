@@ -77,7 +77,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     @outlet     Workflow                  currentWorkflow             @accessors;
     @outlet     CPArrayController         workflowArrayController     @accessors;
 
-    @outlet     CPArrayController         jobArrayController          @accessors;
+    @outlet     CPArrayController         jobArrayController;
 
     @outlet     CPArrayController         connectionArrayController   @accessors;
 
@@ -258,7 +258,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 {
     console.log("Dragging Entered");
     isInView = YES;
-
+    console.log(jobArrayController);
     //create view object
     var pboard = [aSender draggingPasteboard],
         content = [jobArrayController arrangedObjects],

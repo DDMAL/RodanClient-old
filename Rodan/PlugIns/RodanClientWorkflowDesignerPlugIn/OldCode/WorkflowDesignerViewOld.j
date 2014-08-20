@@ -19,7 +19,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 @global RodanModelCreatedNotification
 
 
-@implementation WorkflowDesignerView : CPView
+@implementation WorkflowDesignerViewOld : CPView
 {
     //graphical objects
     @outlet     CPArrayController       workflowJobs                @accessors;
