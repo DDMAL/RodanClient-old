@@ -31,6 +31,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
 - (id)initWithFrame:(CGRect)aFrame
 {
+    console.log("HI");
     if (self = [super initWithFrame:aFrame])
     {
         [self setBackgroundColor:[CPColor colorWithHexString:"E8EBF0"]];

@@ -3,7 +3,7 @@
 
 var DEFAULT_SIZE = 10.0;
 
-@implementation InputPortView : CPView
+@implementation InputPortViewOld : CPView
 {
     //info properties
     BOOL        isUsed          @accessors;

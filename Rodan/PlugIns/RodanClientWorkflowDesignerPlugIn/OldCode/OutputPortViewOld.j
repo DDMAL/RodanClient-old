@@ -6,7 +6,7 @@
 //output default size
 var DEFAULT_SIZE = 10.0;
 
-@implementation OutputPortView : CPView
+@implementation OutputPortViewOld : CPView
 {
     //info properties
     BOOL        isUsed          @accessors;
