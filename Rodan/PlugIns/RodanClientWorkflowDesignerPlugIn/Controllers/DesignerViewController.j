@@ -83,15 +83,6 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
 }
 
-- (id)initWithCoder:(CPCoder)aCoder
-{
-  if (self = [super initWithCoder:aCoder])
-  {
-    console.log("I *** UP");
-  }
-  return self;
-}
-
 - (id)init
 {
     if (self = [super init])
