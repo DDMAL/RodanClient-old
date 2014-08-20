@@ -81,6 +81,7 @@ RodanHasFocusProjectListViewNotification = @"RodanHasFocusProjectListViewNotific
 @import "OutputPortType.j"
 @import "Project.j"
 @import "Resource.j"
+@import "ResourceAssignment.j"
 @import "Result.j"
 @import "ResultsPackage.j"
 @import "RKModel.j"
