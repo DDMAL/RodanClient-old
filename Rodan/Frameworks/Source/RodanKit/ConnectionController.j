@@ -11,7 +11,7 @@ RodanDidLoadConnectionNotification = @"RodanDidLoadConnectionNotification"
 
 - (void)awakeFromCib
 {
-    currentConnectionArrayController = [[CPArrayController alloc] init];
+    connectionArrayController = [[CPArrayController alloc] init];
 }
 
 
@@ -19,7 +19,7 @@ RodanDidLoadConnectionNotification = @"RodanDidLoadConnectionNotification"
 {
     //fetch inputport response
     var connection = [Connection objectsFromJson:[anAction result]];
-    [currentConnectionArrayController addObject:connection];
+    [connectionArrayController addObject:connection];
     [[CPNotificationCenter defaultCenter] postNotificationName:RodanDidLoadConnectionNotification
                                                     object:[anAction result]];
 }
