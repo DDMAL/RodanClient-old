@@ -86,7 +86,6 @@ RodanHasFocusProjectListViewNotification = @"RodanHasFocusProjectListViewNotific
 @import "ResultsPackage.j"
 @import "RKModel.j"
 @import "RunJob.j"
-@import "TreeNode.j"
 @import "User.j"
 @import "Workflow.j"
 @import "WorkflowJob.j"
