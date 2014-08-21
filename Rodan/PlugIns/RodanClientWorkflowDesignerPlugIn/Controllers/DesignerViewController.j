@@ -436,7 +436,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     //adjust workflow job position
     var info = [aNotification userInfo],
         anEvent = [info objectForKey:"event"],
-        currentMouseLocation = [self convertPoint:[anEvent locationInWindow] fromView:nil],
+        currentMouseLocation = [designerView convertPoint:[anEvent locationInWindow] fromView:nil],
         workflowJobViewController = [aNotification object];
 
     [self workflowJobDrag:workflowJobViewController mouseLocation:currentMouseLocation];
