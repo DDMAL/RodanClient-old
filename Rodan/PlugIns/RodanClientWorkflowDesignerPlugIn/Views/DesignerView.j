@@ -12,8 +12,8 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     @outlet     CPView                  infoOutputPortView              @accessors;
     @outlet     CPView                  infoInputPortView               @accessors;
 
-                CPString                infoOutputTypeText;
-                CPString                infoInputTypeText;
+                CPString                infoOutputTypeText              @accessors;
+                CPString                infoInputTypeText               @accessors;
 
                 CPViewAnimation         inputViewAnimation;
                 CPViewAnimation         outputViewAnimation;
