@@ -28,7 +28,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 {
 
                 //associated view
-                DesignerView              designerView                @accessors;
+    @outlet     DesignerView              designerView                @accessors;
 
                 //view array controllers
     @outlet     CPArrayController         workflowJobs                @accessors;
@@ -49,6 +49,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
                 BOOL                      isInView;
 
                 WorkflowJobViewController draggingWorkflowJob;
+                ConnectionViewController  draggingConnection;
 
                 //variables to reference graphical <-> server objects
                 WorkflowJobViewController creatingWorkflowJob;
@@ -65,6 +66,9 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     // ------------------------ SERVER PROPERTIES ---------------------------- //
     /////////////////////////////////////////////////////////////////////////////
 
+
+    //IMPORTANT: needs review, to connect to server objects without creating multiple instances
+
     //model controllers to fetch (load) the models from server side - connected via .xib file
     @outlet     WorkflowController        workflowController          @accessors;
     @outlet     WorkflowJobController     workflowJobController       @accessors;
@@ -79,7 +83,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
     @outlet     CPArrayController         jobArrayController;
 
-    @outlet     CPArrayController         connectionArrayController   @accessors;
+    // @outlet     CPArrayController         connectionArrayController   @accessors;
 
 }
 
@@ -88,12 +92,12 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     if (self = [super init])
     {
         //not will support expanding frame size in later method (TO DO:)
-        designerView = [[DesignerView alloc] initWithFrame:CGRectMake(0.0, 0.0, 2000.0, 2000.0)];
+        designerView = [[DesignerView alloc] init];
         [designerView setDesignerViewController:self];
 
-        workflowJobs = [[CPArrayController alloc] init];
         connections = [[CPArrayController alloc] init];
         resourceLists = [[CPArrayController alloc] init];
+        workflowJobs = [[CPArrayController alloc] init];
 
         connectionsContentArray = [connections contentArray];
         workflowJobsContentArray = [workflowJobs contentArray];
@@ -107,17 +111,17 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         isInView = NO;
 
     [[CPNotificationCenter defaultCenter] addObserver:self
-                                          selector:@selector(receiveAddLink:)
+                                          selector:@selector(receiveAddConnection:)
                                           name:@"AddLinkToViewNotification"
                                           object:nil];
 
     [[CPNotificationCenter defaultCenter] addObserver:self
-                                          selector:@selector(receiveReleaseLink:)
+                                          selector:@selector(receiveReleaseConnection:)
                                           name:@"ReleaseLinkNotification"
                                           object:nil];
 
     [[CPNotificationCenter defaultCenter] addObserver:self
-                                          selector:@selector(receiveDragLink:)
+                                          selector:@selector(receiveDragConnection:)
                                           name:@"LinkIsBeingDraggedNotification"
                                           object:nil];
 
@@ -325,7 +329,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     isCurrentSelection = YES;
 }
 
-- (void)receiveAddLink:(CPNotification)aNotification
+- (void)receiveAddConnection:(CPNotification)aNotification
 {
 
     var info = [aNotification userInfo],
@@ -335,28 +339,31 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         outputPortViewController = [aNotification object],
         outputWorkflowJob = [outputPortViewController workflowJobViewController],
         outputResourceList = [outputPortViewController resourceListViewController],
-        outputRoot = (outputWorkflowJob) ? outputWorkflowJob : outputResourceList,
 
         newConnection = [[ConnectionViewController alloc] initWithName:""
-                                                 outputWorkflowJob:outputRoot
+                                                 outputWorkflowJob:outputWorkflowJob
                                                  inputWorkflowJob:nil
                                                         outputRef:outputPortViewController
                                                          inputRef:nil
-                                                  resourceListRef:nil];
+                                                  resourceListRef:outputResourceList];
 
     [[designerView infoOutputPortView] setHidden:YES]; //hide Oportview from designerView
 
     [connections addObject:newConnection];
 
-    [newConnection makeConnectPointAtCurrentPoint:currentMouseLocation controlPoint1:0.0 controlPoint2:0.0 endPoint:currentMouseLocation];
+    [newConnection makeConnectPointAtCurrentPoint:currentMouseLocation
+                                    controlPoint1:0.0
+                                    controlPoint2:0.0
+                                    endPoint:currentMouseLocation];
 
-    [outputPortViewController setConnection:newConnection];
+
+    draggingConnection = newConnection;
 
     console.info("Added Link");
 }
 
 
-- (void)receiveReleaseLink:(CPNotification)aNotification
+- (void)receiveReleaseConnection:(CPNotification)aNotification
 {
 
     var info = [aNotification userInfo],
@@ -388,7 +395,11 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         [currentHoverInputPort setConnection:connection];
         [currentHoverInputPort setIsUsed:YES];
 
-        [self createConnectionModelFromInputPort:[currentHoverInputPort inputPort] inputWorkflowJob:[currentHoverInputPort workflowJobViewController] outputPort:[outputPortViewController outputPort] outputWorkflowJob:[outputPortViewController workflowJobViewController] connectionRef:connection];
+        [self createConnectionModelFromInputPort:[currentHoverInputPort inputPort]
+                                inputWorkflowJob:[[currentHoverInputPort workflowJobViewController] workflowJob]
+                                outputPort:[outputPortViewController outputPort]
+                                outputWorkflowJob:[[outputPortViewController workflowJobViewController] workflowJob]
+                                connectionRef:connection];
 
         console.log("Created Link");
     }
@@ -401,11 +412,11 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         connection = nil;
         console.log("Removed Link");
     }
+    draggingConnection = nil;
     [designerView display];
 }
 
-
-- (void)receiveDragLink:(CPNotification)aNotification
+- (void)receiveDragConnection:(CPNotification)aNotification
 {
     var info = [aNotification userInfo],
         anEvent = [info objectForKey:"event"],
@@ -421,13 +432,16 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
     //make graphical connection    NOTE: Can change control points to form bezier curve based on graphics avoidance algorithm - TO DO:
     var startPoint = [[outputPortViewController outputPortView] outputStart];
-    [connection makeConnectPointAtCurrentPoint:startPoint
-                                 controlPoint1:startPoint
-                                 controlPoint2:startPoint
-                                      endPoint:currentMouseLocation];
+    [draggingConnection makeConnectPointAtCurrentPoint:startPoint
+                                         controlPoint1:startPoint
+                                         controlPoint2:startPoint
+                                              endPoint:currentMouseLocation];
+
+    [outputPortViewController setConnection:draggingConnection];
 
     //refresh and display views
     [designerView display];
+    [designerView setNeedsDisplay:YES];
     [[CPNotificationCenter defaultCenter] postNotificationName:@"RefreshScrollView" object:nil];
 }
 
@@ -802,8 +816,8 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
 - (void)deleteConnection:(ConnectionViewController)aConnection
 {
-    [[aConnection outputWorkflowJob] setIsUsed:false];
-    [[aConnection inputWorkflowJob] setIsUsed:false];
+    [[aConnection outputReference] setIsUsed:false];
+    [[aConnection inputReference] setIsUsed:false];
 
     //delete server connection model
     if ([[aConnection connection] pk] != nil)
@@ -812,7 +826,9 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     else //add to deletecache and wait for notification
         [deleteCacheController.connectionsToDelete addObject:[aConnection connection]];
 
-    [connectionArrayController deleteConnection:[aConnection connection]]; //remove from server array controller
+    // [connectionArrayController deleteConnection:[aConnection connection]]; //remove from server array controller
+    [connections removeObject:aConnection];
+
     aConnection = nil;
 
     console.info("Connection Deleted");

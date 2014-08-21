@@ -29,9 +29,10 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     @outlet     CPArrayController       connections                     @accessors;
 }
 
-- (id)initWithFrame:(CGRect)aFrame
+- (id)init
 {
-    console.log("HI");
+    var aFrame = CGRectMake(0.0, 0.0, 2000.0, 2000.0);
+
     if (self = [super initWithFrame:aFrame])
     {
         [self setBackgroundColor:[CPColor colorWithHexString:"E8EBF0"]];
@@ -71,6 +72,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 //DRAWING LINKS (LINES)
 - (void)drawRect:(CGRect)aRect
 {
+    connections = [designerViewController connections];
     var connectionContentArray = [connections contentArray],
         loopCount = [connectionContentArray count];
 

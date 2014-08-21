@@ -298,7 +298,6 @@
         <customObject id="OuJ-uO-o9m" userLabel="Controller - Designer View" customClass="DesignerViewController">
             <connections>
                 <outlet property="connectionArrayController" destination="S0r-xG-MDP" id="eak-kA-Exb"/>
-                <outlet property="connections" destination="O2n-kO-SNT" id="UvG-Qt-RvV"/>
                 <outlet property="jobArrayController" destination="Ela-2W-KqE" id="OqJ-28-47i"/>
             </connections>
         </customObject>
@@ -769,7 +768,6 @@
             </holdingPriorities>
         </splitView>
         <arrayController id="S0r-xG-MDP" userLabel="Array Controller - Connection"/>
-        <arrayController id="O2n-kO-SNT" userLabel="Array Controller - Connection View"/>
         <arrayController id="UjB-xI-3Od" userLabel="Array Controller - Resource"/>
         <customView id="F7m-du-q4Q" userLabel="Custom View - Document Jobs View">
             <rect key="frame" x="0.0" y="0.0" width="284" height="581"/>
