@@ -655,7 +655,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
     [resourceLists addObject:newList];
     [designerView addSubview:[newList resourceListView]];
-    [designerView addSubview:[[newList outputPorts][0] outputPortView]];
+    [designerView addSubview:[[[newList outputPorts] contentArray][0] outputPortView]];
 
 
     //NOTE: need to add funcationality to support varied sized resourceLists for multiple outputPorts (similar implementation as workflowJobView)
