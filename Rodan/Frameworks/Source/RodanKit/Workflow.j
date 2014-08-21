@@ -14,7 +14,7 @@
     CPNumber    runs            @accessors;
     CPArray     workflowJobs    @accessors;
     CPArray     workflowRuns    @accessors;
-    CPArray     Resource        @accessors;
+    CPArray     resources        @accessors;
     CPString    description     @accessors;
     BOOL        hasStarted      @accessors;
     CPString    workflowCreator @accessors;
@@ -50,7 +50,7 @@
         ['projectURL',      'project'         ],
         ['workflowJobs',    'workflow_jobs',  [WLForeignObjectsTransformer forObjectClass:WorkflowJob]],
         ['workflowRuns',    'workflow_runs',  [WLForeignObjectsTransformer forObjectClass:WorkflowRun]],
-        ['resources',       'resources',      [WLForeignObjectsTransformer forObjectClass:Resource]],   //change to resource?
+        ['resources',       'resources'],/*      [WLForeignObjectsTransformer forObjectClass:Resource]],   //change to resource? */
         ['description',     'description'     ],
         ['hasStarted',      'has_started'     ],
         ['workflowCreator', 'creator'         ],
