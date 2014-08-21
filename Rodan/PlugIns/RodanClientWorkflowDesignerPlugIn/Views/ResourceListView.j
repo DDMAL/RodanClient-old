@@ -4,7 +4,7 @@
 @import "OutputPortView.j"
 @import "../Controllers/ResourceListViewController.j"
 
-var DEFAULT_SIZE = CGRectMake(30.0, 30.0);
+var DEFAULT_SIZE = CGSizeMake(55.0, 55.0);
 
 @implementation ResourceListView : CPView
 {
