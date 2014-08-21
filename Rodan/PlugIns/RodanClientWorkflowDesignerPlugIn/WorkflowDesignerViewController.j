@@ -237,7 +237,7 @@ var _msLOADINTERVAL = 5.0;
     console.log("Tools");
 
     var i,
-        workflowJobsCount = [[designerViewController workflowJobs] count];
+        workflowJobsCount = [[[designerViewController workflowJobs] contentArray] count];
     for (i = 0 ; i < workflowJobsCount; i++)
     {
         if ([[designerViewController workflowJobs][i] firstResponder])

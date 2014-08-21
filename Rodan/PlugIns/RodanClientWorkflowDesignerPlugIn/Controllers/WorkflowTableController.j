@@ -84,7 +84,6 @@ var _msLOADINTERVAL = 3.0;
 
 - (void)receiveDidLoadWorkflows:(CPNotification)aNotification
 {
-    console.log(workflowArrayController);
     [tableWorkflowArrayController setContent:[workflowArrayController contentArray]];
 }
 

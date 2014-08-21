@@ -613,9 +613,9 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
         inputType = [inputPortViewController inputPortType];
 
-    [[designerView infoOutputPortView] setHidden:NO];
-    [[designerView infoOutputPortView] setFrameOrigin:CGPointMake(mouseLocation.x - 175.0, mouseLocation.y)];
-    [[designerView infoOutputTypeText] setStringValue:"Input Type: " + inputType];
+    [[designerView infoInputPortView] setHidden:NO];
+    [[designerView infoInputPortView] setFrameOrigin:CGPointMake(mouseLocation.x - 175.0, mouseLocation.y)];
+    [[designerView infoInputTypeText] setStringValue:"Input Type: " + inputType];
 
     //get connection info + add to view
     //get outputInfo and display to view
@@ -643,7 +643,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     // {
     //   [inputViewAnimation stopAnimation];
     // }
-        [[designerView infoInputPortView] setHidden:YES];
+    [[designerView infoInputPortView] setHidden:YES];
 }
 
 - (void)receiveNewResourceList:(CPNotification)aNotification

@@ -38,7 +38,6 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
 - (void)receiveDidLoadJobs:(CPNotification)aNotification
 {
-    console.log(jobArrayController);
     [tableJobArrayController setContent:[jobArrayController contentArray]];
 }
 
