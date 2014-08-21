@@ -18,7 +18,7 @@ var DEFAULT_SIZE = 10.0;
 
 }
 
-- (id)initWithPoint:(CGPoint)aPoint size:(CGSize)aSize type:(CPString)type subsection:(float)subsection iteration:(int)i outputPortViewControllerRef:(OutputPortViewController)aViewController
+- (id)initWithPoint:(CGPoint)aPoint size:(CGSize)aSize subsection:(float)subsection iteration:(int)i outputPortViewControllerRef:(OutputPortViewController)aViewController
 {
     boxSize = aSize;
     outputSection = subsection;
