@@ -72,14 +72,6 @@ var _msLOADINTERVAL = 5.0;
     @outlet             CPScrollView            attributesScrollView;
     @outlet             CPDictionary            attributesSettings;
 
-    // ----------------------------------------------------------------- //
-    // ------------------- DATABASES AND INFO -------------------------- //
-    // ----------------------------------------------------------------- //
-
-    @outlet             CPArrayController       connectionArrayController;
-    @outlet             CPArrayController       jobArrayController;
-    @outlet             CPArrayController       workflowArrayController;
-
 }
 
 - (void)applicationDidFinishLaunching:(CPNotification)aNotification
@@ -90,15 +82,6 @@ var _msLOADINTERVAL = 5.0;
 
 - (void)awakeFromCib
 {
-
-    var mainApplication = [CPApplication sharedApplication],
-        jobController = [mainApplication delegate].jobController,
-        workflowController = [mainApplication delegate].workflowController;
-
-    jobArrayController = jobController.jobArrayController;
-    workflowArrayController = workflowController.workflowArrayController;
-
-
 
     var center = [CPNotificationCenter defaultCenter];
 

@@ -9,19 +9,16 @@
             <connections>
                 <outlet property="attributesPanel" destination="1Vd-qI-WKi" id="XdG-Fg-jHE"/>
                 <outlet property="connectButton" destination="XY0-QO-Hi0" id="a23-c8-AxM"/>
-                <outlet property="connectionArrayController" destination="S0r-xG-MDP" id="Fh2-Oq-ANQ"/>
                 <outlet property="contentView" destination="dKn-be-xKB" id="c3L-Gc-eBU"/>
                 <outlet property="designerScrollView" destination="fLW-ki-ODv" id="esq-pb-UcF"/>
                 <outlet property="designerViewController" destination="OuJ-uO-o9m" id="bix-K5-s7s"/>
                 <outlet property="helpIcon" destination="bD0-Gx-Vqh" id="9I3-H7-VgO"/>
-                <outlet property="jobArrayController" destination="ATt-y4-Flf" id="Fma-1S-9cu"/>
                 <outlet property="jobScrollView" destination="YzL-4b-JGo" id="keq-Bl-GpQ"/>
                 <outlet property="leftScrollView" destination="OMN-ro-P4F" id="l5h-ya-bog"/>
                 <outlet property="leftSideBar" destination="MMe-el-Ort" id="PsF-WI-wdJ"/>
                 <outlet property="leftSideBarIcon" destination="vqu-wg-jbO" id="kRK-zg-Z4e"/>
                 <outlet property="mainToolbar" destination="KTH-10-jMy" id="L7Y-Io-Jj9"/>
                 <outlet property="pagesButton" destination="Roq-dI-vv0" id="hfW-87-FCF"/>
-                <outlet property="pagesTableView" destination="4mC-Vc-Bwl" id="EMi-mL-Td1"/>
                 <outlet property="rightSideBar" destination="b7Z-Oo-STT" id="m4g-TN-t9w"/>
                 <outlet property="rightSideBarIcon" destination="LPU-Ke-UwH" id="Ec4-Ma-dwu"/>
                 <outlet property="rightUpperScrollView" destination="Hu3-gd-vry" id="7yy-1r-lKq"/>
@@ -31,7 +28,6 @@
                 <outlet property="settingsViewBase" destination="FwL-Pv-CHR" id="PzK-nh-vCM"/>
                 <outlet property="toolsIcon" destination="aUl-5y-ajM" id="FdH-YV-Ww5"/>
                 <outlet property="view" destination="dKn-be-xKB" id="wyM-ng-fl0"/>
-                <outlet property="workflowArrayController" destination="lIn-Ch-jiL" id="cj5-7D-0yc"/>
                 <outlet property="workflowDesignerView" destination="igf-M9-Ire" id="4Gg-UM-hXZ"/>
             </connections>
         </customObject>
@@ -303,14 +299,13 @@
             <connections>
                 <outlet property="connectionArrayController" destination="S0r-xG-MDP" id="eak-kA-Exb"/>
                 <outlet property="connections" destination="O2n-kO-SNT" id="UvG-Qt-RvV"/>
-                <outlet property="jobArrayController" destination="ATt-y4-Flf" id="Xcp-ZI-ocC"/>
-                <outlet property="workflowArrayController" destination="lIn-Ch-jiL" id="sJe-DV-olG"/>
+                <outlet property="jobArrayController" destination="Ela-2W-KqE" id="OqJ-28-47i"/>
             </connections>
         </customObject>
         <customObject id="ak3-Ba-Xe7" userLabel="Table Controller - Jobs" customClass="JobsTableController">
             <connections>
-                <outlet property="jobArrayController" destination="ATt-y4-Flf" id="FjI-cr-Jft"/>
                 <outlet property="jobsTableView" destination="RR5-M6-41x" id="yOU-6c-WzS"/>
+                <outlet property="tableJobArrayController" destination="Ela-2W-KqE" id="1ow-cg-2v5"/>
             </connections>
         </customObject>
         <customObject id="AvZ-pw-DnK" userLabel="Table Controller - Resources" customClass="ResourceTableController"/>
@@ -320,12 +315,10 @@
                 <outlet property="removeWorkflow" destination="2ZI-Pd-Ia6" id="y0O-73-DAl"/>
                 <outlet property="selectWorkflow" destination="3sV-BT-xZe" id="rm4-lG-Ioi"/>
                 <outlet property="selectedWorkflowLabel" destination="KCu-0g-9BS" id="cYj-F7-y4o"/>
-                <outlet property="workflowArrayController" destination="lIn-Ch-jiL" id="atH-Vm-jCK"/>
+                <outlet property="tableWorkflowArrayController" destination="Vql-W6-9FG" id="raw-NG-628"/>
                 <outlet property="workflowsTableView" destination="scL-JJ-Blb" id="uVc-8n-N1U"/>
             </connections>
         </customObject>
-        <arrayController id="lIn-Ch-jiL" userLabel="Array Controller - Workflow"/>
-        <arrayController id="ATt-y4-Flf" userLabel="Array Controller - Job"/>
         <splitView dividerStyle="thin" vertical="YES" id="igf-M9-Ire" userLabel="Split View - WorkflowDesgnerView">
             <rect key="frame" x="0.0" y="0.0" width="1480" height="1032"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -372,7 +365,7 @@
                                                         </textFieldCell>
                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                         <connections>
-                                                            <binding destination="lIn-Ch-jiL" name="value" keyPath="arrangedObjects.workflowName" id="pZE-Zw-w6d"/>
+                                                            <binding destination="Vql-W6-9FG" name="value" keyPath="arrangedObjects.workflowName" id="F5X-Zi-J3v"/>
                                                         </connections>
                                                     </tableColumn>
                                                 </tableColumns>
@@ -511,7 +504,7 @@
                                         <autoresizingMask key="autoresizingMask"/>
                                     </scroller>
                                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Bl4-Jg-fTC">
-                                        <rect key="frame" x="323" y="0.0" width="15" height="471"/>
+                                        <rect key="frame" x="322" y="0.0" width="16" height="471"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </scroller>
                                 </scrollView>
@@ -552,7 +545,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="1Uf-dD-68e">
-                        <rect key="frame" x="815" y="1" width="15" height="1030"/>
+                        <rect key="frame" x="814" y="1" width="16" height="1030"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
@@ -614,7 +607,7 @@
                                         <autoresizingMask key="autoresizingMask"/>
                                     </scroller>
                                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="eqO-KM-jkD">
-                                        <rect key="frame" x="570" y="0.0" width="16" height="428"/>
+                                        <rect key="frame" x="571" y="0.0" width="15" height="428"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </scroller>
                                 </scrollView>
@@ -671,7 +664,7 @@
                                                                             </textFieldCell>
                                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                                                             <connections>
-                                                                                <binding destination="ATt-y4-Flf" name="value" keyPath="arrangedObjects.shortJobName" id="2Wf-8C-03i">
+                                                                                <binding destination="Ela-2W-KqE" name="value" keyPath="arrangedObjects.shortJobName" id="qAf-aF-E5i">
                                                                                     <dictionary key="options">
                                                                                         <bool key="NSConditionallySetsEditable" value="YES"/>
                                                                                     </dictionary>
@@ -691,7 +684,7 @@
                                                                             </textFieldCell>
                                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                             <connections>
-                                                                                <binding destination="ATt-y4-Flf" name="value" keyPath="arrangedObjects.category" id="fMF-YD-3eh"/>
+                                                                                <binding destination="Ela-2W-KqE" name="value" keyPath="arrangedObjects.category" id="QCZ-F3-k7r"/>
                                                                             </connections>
                                                                         </tableColumn>
                                                                         <tableColumn width="96" minWidth="10" maxWidth="3.4028234663852886e+38" id="Wee-06-Q03">
@@ -707,7 +700,7 @@
                                                                             </textFieldCell>
                                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                             <connections>
-                                                                                <binding destination="ATt-y4-Flf" name="value" keyPath="arrangedObjects.isInteractive" id="2yk-B2-1M1"/>
+                                                                                <binding destination="Ela-2W-KqE" name="value" keyPath="arrangedObjects.isInteractive" id="5YS-tJ-4uh"/>
                                                                             </connections>
                                                                         </tableColumn>
                                                                     </tableColumns>
@@ -741,7 +734,7 @@
                                         <autoresizingMask key="autoresizingMask"/>
                                     </scroller>
                                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="ZJN-36-VGu">
-                                        <rect key="frame" x="294" y="0.0" width="15" height="487"/>
+                                        <rect key="frame" x="293" y="0.0" width="16" height="487"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </scroller>
                                 </scrollView>
@@ -1852,6 +1845,8 @@
                 <toolbarItem reference="v5a-TL-wmy"/>
             </defaultToolbarItems>
         </toolbar>
+        <arrayController id="Vql-W6-9FG" userLabel="Array Controller - Table Workflow"/>
+        <arrayController id="Ela-2W-KqE" userLabel="Array Controller - Table Jobs"/>
         <menu id="45G-nQ-AvH">
             <items>
                 <menuItem title="Item 1" id="nJ2-ym-KSx">

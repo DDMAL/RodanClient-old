@@ -68,7 +68,7 @@
 {
     var portNumber = (outputPortNumber > inputPortNumber) ? outputPortNumber : inputPortNumber;
 
-    workflowJobView = [[WorkflowJobView alloc] initWithpoint:aPoint
+    workflowJobView = [[WorkflowJobView alloc] initWithPoint:aPoint
                                        withInitialPortNumber:portNumber
                                     workflowJobControllerRef:self];
 

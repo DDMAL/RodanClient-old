@@ -258,7 +258,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 {
     console.log("Dragging Entered");
     isInView = YES;
-    console.log(jobArrayController);
+
     //create view object
     var pboard = [aSender draggingPasteboard],
         content = [jobArrayController arrangedObjects],
@@ -289,7 +289,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         for (var k = 0; k < inputLoop; k++)
             [designerView addSubview:[inputContentArray[k] inputPortView]];
 
-        [designerView addSubview:[workflowJobViewController workflowJob]];
+        [designerView addSubview:[workflowJobViewController workflowJobView]];
         draggingWorkflowJob = workflowJobViewController;
     }
 }

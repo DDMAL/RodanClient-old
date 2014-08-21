@@ -13,10 +13,17 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     @outlet             JobController               jobController;
     @outlet             CPArrayController           jobArrayController;
 
+    @outlet             CPArrayController           tableJobArrayController;
+
 }
 
 - (void)awakeFromCib
 {
+    jobController = [[CPApplication sharedApplication] delegate].jobController;
+    jobArrayController = jobController.jobArrayController;
+
+    [tableJobArrayController setContent:[jobArrayController contentArray]];
+
     [[CPNotificationCenter defaultCenter] addObserver:self
                                     selector:@selector(receiveDidLoadJobs:)
                                     name:RodanDidLoadJobsNotification
@@ -32,11 +39,11 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 - (void)receiveDidLoadJobs:(CPNotification)aNotification
 {
     console.log(jobArrayController);
+    [tableJobArrayController setContent:[jobArrayController contentArray]];
 }
 
 - (void)tableViewSelectionDidChange:(CPNotification)aNotification
 {
-    console.log(jobArrayController);
     var row = [[[aNotification object] selectedRowIndexes] firstIndex];
 
     if (row === -1)

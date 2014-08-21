@@ -26,10 +26,15 @@ var _msLOADINTERVAL = 3.0;
     @outlet             Workflow            currentWorkflow;
     @outlet             CPTextField         selectedWorkflowLabel;
 
+    @outlet             CPArrayController   tableWorkflowArrayController;
+
 }
 
 - (void)awakeFromCib
 {
+    workflowController = [[CPApplication sharedApplication] delegate].workflowController;
+    workflowArrayController = workflowController.workflowArrayController;
+    [tableWorkflowArrayController setContent:[workflowArrayController contentArray]];
 
     [selectedWorkflowLabel setStringValue:""];
 
@@ -79,7 +84,8 @@ var _msLOADINTERVAL = 3.0;
 
 - (void)receiveDidLoadWorkflows:(CPNotification)aNotification
 {
-
+    console.log(workflowArrayController);
+    [tableWorkflowArrayController setContent:[workflowArrayController contentArray]];
 }
 
 - (void)receiveDidLoadWorkflow:(CPNotification)aNotification
@@ -124,7 +130,7 @@ var _msLOADINTERVAL = 3.0;
 - (void)selectWorkflowAction:(id)aSender
 {
     //sets current workflow as selected
-    var selectionIndexes = [workflowArrayController selectionIndexes];
+    var selectionIndexes = [tableWorkflowArrayController selectionIndexes];
     if ([selectionIndexes count] > 1)
     {
         var alert = [CPAlert alertWithMessageText:@"Only one workflow can be selected to work with"
