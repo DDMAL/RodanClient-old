@@ -102,7 +102,6 @@ var _msLOADINTERVAL = 3.0;
 - (void)tableViewSelectionDidChange:(CPNotification)aNotification
 {
     var row = [[[aNotification object] selectedRowIndexes] firstIndex];
-    console.info(row);
 
     if (row == -1)
         console.info(@"Nothing selected");
@@ -118,12 +117,14 @@ var _msLOADINTERVAL = 3.0;
 - (void)addWorkflowAction:(id)aSender
 {
     [workflowController newWorkflow];
+    [tableWorkflowArrayController setContent:[workflowArrayController contentArray]];
 }
 
 - (void)removeWorkflowAction:(id)aSender
 {
-    var selectedObjects = [workflowArrayController selectedObjects];
+    var selectedObjects = [tableWorkflowArrayController selectedObjects];
     [workflowController removeWorkflow:selectedObjects];
+    [tableWorkflowArrayController setContent:[workflowArrayController contentArray]];
 }
 
 - (void)selectWorkflowAction:(id)aSender
