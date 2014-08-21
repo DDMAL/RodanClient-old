@@ -247,6 +247,7 @@ var _msLOADINTERVAL = 5.0;
             [attributesPanel orderFront:self];
         }
     }
+    [attributesPanel orderFront:self];
 }
 
 - (void)saveAction:(id)aSender
