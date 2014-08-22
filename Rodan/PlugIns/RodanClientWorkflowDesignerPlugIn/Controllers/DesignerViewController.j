@@ -395,11 +395,16 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         [currentHoverInputPort setConnection:connection];
         [currentHoverInputPort setIsUsed:YES];
 
-        [self createConnectionModelFromInputPort:[currentHoverInputPort inputPort]
+
+        //if resourceLIstConnection - do not make connection - TO DO: post resource assignment inputPort
+        if (![outputPortViewController resourceListViewController])
+        {
+          [self createConnectionModelFromInputPort:[currentHoverInputPort inputPort]
                                 inputWorkflowJob:[[currentHoverInputPort workflowJobViewController] workflowJob]
                                 outputPort:[outputPortViewController outputPort]
                                 outputWorkflowJob:[[outputPortViewController workflowJobViewController] workflowJob]
                                 connectionRef:connection];
+        }
 
         console.log("Created Link");
     }
@@ -532,10 +537,26 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
     //delete workflow and I/O ports on server
         outputContentArray = [[workflowJobViewController outputPorts] contentArray],
-        inputContentArray = [[workflowJobViewController inputPorts] contentArray];
+        outputLoop = [outputContentArray count],
+        inputContentArray = [[workflowJobViewController inputPorts] contentArray],
+        inputLoop = [inputContentArray count],
+        connection;
 
-    [outputContentArray makeObjectsPerformSelector:@selector(ensureDeleted)];
-    [inputContentArray makeObjectsPerformSelector:@selector(ensureDeleted)];
+    for (var i = 0; i < outputLoop; i++)
+    {
+        connection = [outputContentArray[i] connection];
+        if (connection)
+            [self deleteConnection:connection];
+        [[outputContentArray[i] outputPort] ensureDeleted];
+    }
+
+    for (var j = 0; j < inputLoop; j++)
+    {
+        connection = [inputContentArray[j] connection];
+        if (connection)
+            [self deleteConnection:connection];
+        [[inputContentArray[j] inputPort] ensureDeleted];
+    }
 
     [self removeWorkflowJob];
     [workflowJob ensureDeleted];
@@ -547,7 +568,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 {
     var resourceListViewController = [aNotification object];
 
-    [self removeResourceList:ResourceListViewController];
+    [self removeResourceList:resourceListViewController];
 
     console.log("ResourceList Deleted");
 }
@@ -779,6 +800,8 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         inputLoop = [draggingWorkflowJob inputPortNumber],
         inputContentArray = [[draggingWorkflowJob inputPorts] contentArray];
 
+    //remove connection
+
     for (var j = 0; j < outputLoop; j++)
     {
         var outputView = [outputContentArray[j] outputPortView];
@@ -831,6 +854,9 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
     aConnection = nil;
 
+    [[CPNotificationCenter defaultCenter] postNotificationName:@"RefreshScrollView" object:nil];
+    [designerView setNeedsDisplay:YES];
+
     console.info("Connection Deleted");
 }
 
@@ -842,11 +868,12 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     for (var i = 0; i < workflowJobCount; i++)
     {
         inputPortNumber = [workflowJobsContentArray[i] inputPortNumber];
+        var inputsContentArray = [[workflowJobsContentArray[i] inputPorts] contentArray];
+
 
         for (var j = 0; j < inputPortNumber; j++)
         {
-            var inputsContentArray = [[workflowJobsContentArray[i] inputPorts] contentArray],
-                inputPortView = [inputsContentArray[j] inputPortView],
+            var inputPortView = [inputsContentArray[j] inputPortView],
                 aFrame = [inputPortView frame];
 
             //leniance on accuracy of user
@@ -878,9 +905,9 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
     for (var i = 0; i < resourceLoop; i++)
     {
-        var resourceView = [outputContentArray[i] resourceListView];
-        [resourceView removeFromSuperview];
-        resourceView = nil;
+        var outputView = [outputContentArray[i] outputPortView];
+        [outputView removeFromSuperview];
+        outputView = nil;
         outputContentArray[i] = nil;
     };
 
