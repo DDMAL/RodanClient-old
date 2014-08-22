@@ -558,8 +558,9 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         [[inputContentArray[j] inputPort] ensureDeleted];
     }
 
-    [self removeWorkflowJob];
     [workflowJob ensureDeleted];
+    [workflowJobs removeObject:workflowJobViewController];
+    [self removeWorkflowJob];
 
     console.log("WorkflowJob Deleted");
 }
@@ -800,8 +801,6 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         inputLoop = [draggingWorkflowJob inputPortNumber],
         inputContentArray = [[draggingWorkflowJob inputPorts] contentArray];
 
-    //remove connection
-
     for (var j = 0; j < outputLoop; j++)
     {
         var outputView = [outputContentArray[j] outputPortView];
@@ -817,7 +816,6 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         inputView = nil;
         inputContentArray[k] = nil;
     };
-
     draggingWorkflowJob = nil;
 }
 
@@ -841,6 +839,9 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 {
     [[aConnection outputReference] setIsUsed:false];
     [[aConnection inputReference] setIsUsed:false];
+
+    [[aConnection outputReference] setConnection:nil];
+    [[aConnection inputReference] setConnection:nil];
 
     //delete server connection model
     if ([[aConnection connection] pk] != nil)
@@ -867,6 +868,9 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
     for (var i = 0; i < workflowJobCount; i++)
     {
+        if (!workflowJobsContentArray[i])
+            continue;
+
         inputPortNumber = [workflowJobsContentArray[i] inputPortNumber];
         var inputsContentArray = [[workflowJobsContentArray[i] inputPorts] contentArray];
 
@@ -905,13 +909,18 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
     for (var i = 0; i < resourceLoop; i++)
     {
-        var outputView = [outputContentArray[i] outputPortView];
+        var outputView = [outputContentArray[i] outputPortView],
+            connection = [outputContentArray[i] connection];
+
+        [self deleteConnection:connection];
         [outputView removeFromSuperview];
         outputView = nil;
         outputContentArray[i] = nil;
     };
 
+    [resourceLists removeObject:aResourceListViewController];
     aResourceListViewController = nil;
+
 }
 
 // -------------------------------------------------------- //
