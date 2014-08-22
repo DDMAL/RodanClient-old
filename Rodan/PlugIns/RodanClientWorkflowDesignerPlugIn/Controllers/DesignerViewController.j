@@ -591,7 +591,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
 
     for (var i = 0; i < outputLoop; i++)
     {
-        var outputConnection = [resourceListViewController connection];
+        var outputConnection = [outputContentArray[i] connection];
 
         [[outputContentArray[i] outputPortView] arrangeOutputPosition:origin iteration:i];
         if (outputConnection != nil)
