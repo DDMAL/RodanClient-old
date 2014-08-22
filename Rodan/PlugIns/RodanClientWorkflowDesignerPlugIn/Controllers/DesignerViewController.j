@@ -412,7 +412,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     else
     {
         // -------- REMOVE LINK -------- //
-
+        [outputPortViewController setConnection:nil];
         [connections removeObject:connection];
         connection = nil;
         console.log("Removed Link");
@@ -847,7 +847,7 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
     if ([[aConnection connection] pk] != nil)
         [[aConnection connection] ensureDeleted]; //delete connection model
 
-    else //add to deletecache and wait for notification
+    else if (aConnection)//add to deletecache and wait for notification
         [deleteCacheController.connectionsToDelete addObject:[aConnection connection]];
 
     // [connectionArrayController deleteConnection:[aConnection connection]]; //remove from server array controller
@@ -912,7 +912,9 @@ JobsTableDragAndDropTableViewDataType = @"JobsTableDragAndDropTableViewDataType"
         var outputView = [outputContentArray[i] outputPortView],
             connection = [outputContentArray[i] connection];
 
-        [self deleteConnection:connection];
+        if (connection)
+            [self deleteConnection:connection];
+
         [outputView removeFromSuperview];
         outputView = nil;
         outputContentArray[i] = nil;
