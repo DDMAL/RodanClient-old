@@ -67,16 +67,20 @@
 + (void)registerValueTransformers
 {
     gameraClassNameTransformer = [[GameraClassNameTransformer alloc] init];
-    [GameraClassNameTransformer setValueTransformer:gameraClassNameTransformer forName:@"GameraClassNameTransformer"];
+    [GameraClassNameTransformer setValueTransformer:gameraClassNameTransformer
+                                            forName:@"GameraClassNameTransformer"];
 
     resultsDisplayTransformer = [[ResultsDisplayTransformer alloc] init];
-    [ResultsDisplayTransformer setValueTransformer:resultsDisplayTransformer forName:@"ResultsDisplayTransformer"];
+    [ResultsDisplayTransformer setValueTransformer:resultsDisplayTransformer
+                                           forName:@"ResultsDisplayTransformer"];
 
     resultThumbnailTransformer = [[ResultThumbnailTransformer alloc] init];
-    [ResultThumbnailTransformer setValueTransformer:resultThumbnailTransformer forName:@"ResultThumbnailTransformer"];
+    [ResultThumbnailTransformer setValueTransformer:resultThumbnailTransformer
+                                            forName:@"ResultThumbnailTransformer"];
 
     retryFailedRunJobsTransformer = [[RetryFailedRunJobsTransformer alloc] init];
-    [RetryFailedRunJobsTransformer setValueTransformer:retryFailedRunJobsTransformer forName:@"RetryFailedRunJobsTransformer"];
+    [RetryFailedRunJobsTransformer setValueTransformer:retryFailedRunJobsTransformer
+                                               forName:@"RetryFailedRunJobsTransformer"];
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -99,6 +103,7 @@
 {
     [RKNotificationTimer clearTimedNotification];
     [workspaceController clearView];
+    [workspaceController switchWorkspaceToProjects:nil];
 }
 
 - (void)didLogOut:(id)aNotification
@@ -114,7 +119,13 @@
 #pragma mark Private Methods
 - (void)_registerMessageListening
 {
-    [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(didLogIn:) name:RodanDidLogInNotification object:nil];
-    [[CPNotificationCenter defaultCenter] addObserver:self selector:@selector(didLogOut:) name:RodanDidLogOutNotification object:nil];
+    [[CPNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didLogIn:)
+                                                 name:RodanDidLogInNotification
+                                               object:nil];
+    [[CPNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didLogOut:)
+                                                 name:RodanDidLogOutNotification
+                                               object:nil];
 }
 @end
