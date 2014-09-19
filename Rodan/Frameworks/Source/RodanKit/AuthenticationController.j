@@ -172,7 +172,7 @@ var _authenticationTokenValue = nil;
             [[CPNotificationCenter defaultCenter] postNotificationName:RodanDidLogInNotification
                                                   object:nil];
         }
-        else if (data.hasOwnProperty('user') && _authenticationType == "session")
+        else if (data.hasOwnProperty('username') && _authenticationType == "session")
         {
             activeUser = [[User alloc] initWithJson:data];
             [[CPNotificationCenter defaultCenter] postNotificationName:RodanDidLogInNotification
