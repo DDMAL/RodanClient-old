@@ -156,6 +156,7 @@ _MESSAGE_RESOURCES_LOAD = "_MESSAGE_RESOURCES_LOAD";
 - (void)_uploadFilesUsingSession:(UploadButton)aButton
 {
     [aButton setValue:[activeProject pk] forParameter:@"project"];
+    [aButton setValue:[AuthenticationController csrfmiddlewaretokenValue] forParameter:@"csrfmiddlewaretoken"];
     [aButton submit];
 }
 @end

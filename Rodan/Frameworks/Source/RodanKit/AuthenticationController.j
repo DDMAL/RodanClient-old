@@ -22,6 +22,7 @@
 activeUser = nil;
 
 var _authenticationTokenValue = nil;
+var _CSRFToken = nil;
 
 @implementation AuthenticationController : RKController
 {
@@ -33,7 +34,6 @@ var _authenticationTokenValue = nil;
                 CPString            _urlLogout;
                 CPString            _urlLogin;
                 CPString            _urlCheckIsAuthenticated;
-                CPCookie            _CSRFToken;
                 CPString            _authenticationHeader; // Either "Authorization" or "X-CSRFToken".
 
 }
@@ -44,11 +44,22 @@ var _authenticationTokenValue = nil;
 #pragma mark Public Static Methods
 
 /**
-    Returns value of token authorization IFF it has been set.
+    Returns value of token authorization IFF it has been set (token authentication only).
  */
 + (CPString)tokenAuthorizationValue
 {
     return _authenticationTokenValue;
+}
+
+/**
+    Returns value of csrfmiddlewaretoken IFF it has been set (session authentication only).
+ */
++ (CPString)csrfmiddlewaretokenValue
+{
+    if (_CSRFToken !== nil)
+        return [_CSRFToken value];
+
+    return nil;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
